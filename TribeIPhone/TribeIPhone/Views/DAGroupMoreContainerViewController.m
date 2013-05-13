@@ -1,0 +1,117 @@
+//
+//  DAGroupMoreContainerViewController.m
+//  TribeIPhone
+//
+//  Created by LI LIN on 2013/04/23.
+//  Copyright (c) 2013年 kita. All rights reserved.
+//
+
+#import "DAGroupMoreContainerViewController.h"
+#import "DAGroupMoreViewController.h"
+#import "DAHelper.h"
+
+@interface DAGroupMoreContainerViewController ()
+{
+    DAGroupMoreViewController *moreViewController;
+}
+
+@end
+
+@implementation DAGroupMoreContainerViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Do any additional setup after loading the view from its nib.
+    UIStoryboard *stryBoard=[UIStoryboard storyboardWithName:@"DAGroupMoreViewController" bundle:nil];
+    moreViewController = [stryBoard instantiateInitialViewController];
+    
+    moreViewController.group = self.group;
+    moreViewController.view.frame = CGRectMake(0, 44, 320, 548);
+    [self addChildViewController:moreViewController];
+    [self.view addSubview:moreViewController.view];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)onCancelTouched:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)onSaveTouched:(id)sender
+{
+    
+    NSString *file = [DAHelper documentPath:@"upload.jpg"];
+    
+    if ([DAHelper isFileExist:file]) {
+        UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
+        [[DAFilePoster alloc] upload:image delegateObj:self];
+    } else {
+        DAGroup *g = [[DAGroup alloc] init];
+        
+        // 新创建组的时候，不指定gid
+        if (moreViewController.group != nil) {
+            g._id = moreViewController.group._id;
+        }
+        
+        GroupName *name = [[GroupName alloc] init];
+        name.name_zh = moreViewController.txtName.text;
+        g.name = name;
+        
+        g.description = moreViewController.txtDescription.text;
+        
+        if (moreViewController.group == nil) {
+            [[DAGroupUpdatePoster alloc] create:g delegateObj:self];
+        } else {
+            [[DAGroupUpdatePoster alloc] update:g delegateObj:self];
+        }
+    }
+}
+
+- (void)didFinishUpload:(DAFile *)file
+{
+    DAGroup *g = [[DAGroup alloc] init];
+    
+    // 新创建组的时候，不指定gid
+    if (moreViewController.group != nil) {
+        g._id = moreViewController.group._id;
+    }
+
+    GroupName *name = [[GroupName alloc] init];
+    name.name_zh = moreViewController.txtName.text;
+    g.name = name;
+
+    g.description = moreViewController.txtDescription.text;
+
+    GroupPhoto * photo = [[GroupPhoto alloc] init];
+    photo.big = file._id;
+    g.photo = photo;
+    
+    if (moreViewController.group == nil) {
+        [[DAGroupUpdatePoster alloc] create:g delegateObj:self];
+    } else {
+        [[DAGroupUpdatePoster alloc] update:g delegateObj:self];
+    }
+}
+
+- (void)didFinishUpdateGroup
+{
+    NSLog(@"didFinishUpdate");
+}
+
+@end

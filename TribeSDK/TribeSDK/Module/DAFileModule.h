@@ -1,0 +1,30 @@
+//
+//  DAFileModule.h
+//  TribeSDK
+//
+//  Created by LI LIN on 2013/05/03.
+//  Copyright (c) 2013年 LI LIN. All rights reserved.
+//
+
+#import "DAAFHttpClient.h"
+#import "DAFileList.h"
+#import "DAFile.h"
+#import "DAFileDetail.h"
+#import "DAFileHistory.h"
+
+@interface DAFileModule : NSObject
+
+
+- (void)getFileList:(int)start count:(int)count callback:(void (^)(NSError *error, DAFileList *files))callback;
+
+- (void)uploadFile:(NSData *)data
+          fileName:(NSString *)fileName
+          mimeType:(NSString *)mimeType
+          callback:(void (^)(NSError *error, DAFile *files))callback
+          progress:(void (^)(CGFloat percent))progress;
+
+- (void) getFileDetail :(NSString *)fid callback:(void (^)(NSError *error, DAFileDetail *file))callback;
+
+- (void) getFileHistory :(NSString *)fid callback:(void (^) (NSError *error, DAFileHistory *histroy))callback;
+
+@end
