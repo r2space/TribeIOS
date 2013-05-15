@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/DAUser.h>
-#import <TribeSDK/DAPictureFetcher.h>
+#import <TribeSDK/DAFileModule.h>
 
-@interface DAMemberDetailCell : UITableViewCell <DAPictureFetcherDelegate>
+@interface DAMemberDetailCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;

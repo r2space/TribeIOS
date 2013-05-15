@@ -38,15 +38,12 @@
     }
     
     if (group.photo != nil) {
-        [DAPictureFetcher getPictureWiDelegate:cell PictureId:group.photo.small];
+        [[DAFileModule alloc] getPicture:group.photo.small callback:^(NSError *err, NSString *pictureId){
+            cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
+        }];
     }
     
     return cell;
-}
-
-- (void) didFinishFetchPicture:(NSString *)pictureId
-{
-    self.imgPortrait.image = [DACommon getCatchedImage:pictureId];
 }
 
 @end

@@ -27,4 +27,6 @@
 
 - (void) getFileHistory :(NSString *)fid callback:(void (^) (NSError *error, DAFileHistory *histroy))callback;
 
+- (void)getPicture:(NSString *)pictureId callback:(void (^)(NSError *, NSString *))callback;
+
 @end

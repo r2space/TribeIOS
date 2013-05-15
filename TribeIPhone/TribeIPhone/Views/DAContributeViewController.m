@@ -274,7 +274,18 @@
         NSString *file = [DAHelper documentPath:@"attach.jpg"];
         if ([DAHelper isFileExist:file]) {
             UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
-            [[DAFilePoster alloc] upload:image delegateObj:self];
+            [[DAFileModule alloc] uploadFile:UIImageJPEGRepresentation(image, 1.0)
+                                    fileName:file mimeType:@"image/jpg"
+                                    callback:^(NSError *error, DAFile *file){
+                
+                MessageAttach *attach = [[MessageAttach alloc] init];
+                attach.fileid = file._id;
+                attach.filename = file.filename;
+                _message.attach = [NSArray arrayWithObjects:attach, nil];
+                
+                [self sendMessage:_message];
+                
+            } progress:nil];
         } else {
             // TODO error
         }
@@ -316,17 +327,6 @@
 -(void)didFinshSelectUser
 {
     
-}
-
-#pragma mark - DAFilePosterDelegate
--(void)didFinishUpload:(DAFile *)file
-{
-    MessageAttach *attach = [[MessageAttach alloc] init];
-    attach.fileid = file._id;
-    attach.filename = file.filename;
-    _message.attach = [NSArray arrayWithObjects:attach, nil];
-    
-    [self sendMessage:_message];
 }
 
 @end

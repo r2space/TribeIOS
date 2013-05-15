@@ -38,7 +38,9 @@
     
     DAUser *user = notification.user;
     if ([user isUserPhotoCatched] || [user getUserPhotoId] == nil) {
-        [DAPictureFetcher getPictureWiDelegate:cell PictureId:[user getUserPhotoId]];
+        [[DAFileModule alloc] getPicture:[user getUserPhotoId] callback:^(NSError *err, NSString *pictureId){
+            cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
+        }];
     }
     
     cell.lblName.text = [user getUserName];
@@ -47,9 +49,4 @@
     return cell;
 }
 
-#pragma mark - DAPictureFetcherDelegate
--(void)didFinishFetchPicture:(NSString *)pictureId
-{
-    self.imgPortrait.image = [DACommon getCatchedImage:pictureId];
-}
 @end

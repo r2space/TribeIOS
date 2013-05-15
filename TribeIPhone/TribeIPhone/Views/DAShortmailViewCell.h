@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/DAUser.h>
-#import <TribeSDK/DAPictureFetcher.h>
-#import <TribeSDK/DAPictureFetcher.h>
+#import <TribeSDK/DAFileModule.h>
 
 
-@interface DAShortmailViewCell : UITableViewCell <DAPictureFetcherDelegate>
+@interface DAShortmailViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lblContent;
 @property (weak, nonatomic) IBOutlet UILabel *lblAt;

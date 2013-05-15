@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/DAGroupUpdatePoster.h>
-#import <TribeSDK/DAFilePoster.h>
+#import <TribeSDK/DAFileModule.h>
 #import <TribeSDK/DAGroup.h>
 
-@interface DAGroupMoreContainerViewController : UIViewController <DAGroupUpdatePosterDelegate, DAFilePosterDelegate>
+@interface DAGroupMoreContainerViewController : UIViewController <DAGroupUpdatePosterDelegate>
 
 @property (weak, nonatomic) DAGroup *group;
 - (IBAction)onCancelTouched:(id)sender;

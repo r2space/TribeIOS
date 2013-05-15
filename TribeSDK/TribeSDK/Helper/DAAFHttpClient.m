@@ -32,7 +32,7 @@
     
     [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
     
-    NSString *cookie = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.sdk.cookie"];
+    NSString *cookie = [[NSUserDefaults standardUserDefaults] objectForKey:kHTTPCookie];
     [self setDefaultHeader:@"cookie" value:cookie];
 	[self setDefaultHeader:@"Accept" value:@"application/json"];
     
@@ -50,9 +50,14 @@
     [super getPath:path parameters:parameters success:success failure:failure];
 }
 
+- (void)imagePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    [self setDefaultHeader:@"Accept" value:@"image/jpeg"];
+    [super getPath:path parameters:parameters success:success failure:failure];
+}
+
 - (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
-//    [self setDefaultHeader:@"Content-Type" value:@"application/json"];
     self.parameterEncoding = AFJSONParameterEncoding;
     [super postPath:[self appendCsrf:path] parameters:parameters success:success failure:failure];
 }
@@ -76,7 +81,7 @@
 
 - (NSString *)appendCsrf:(NSString *)path
 {
-    NSString *csrftoken = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.sdk.csrftoken"];
+    NSString *csrftoken = [[NSUserDefaults standardUserDefaults] objectForKey:kHTTPCsrfToken];
     NSString *spliter = [path rangeOfString:@"?"].location == NSNotFound ? @"?" : @"&";
     
     return [NSString stringWithFormat:@"%@%@_csrf=%@", path, spliter, [DARequestHelper uriEncodeForString:csrftoken]];

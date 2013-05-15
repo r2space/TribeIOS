@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/DANotification.h>
-#import <TribeSDK/DAPictureFetcher.h>
+#import <TribeSDK/DAFileModule.h>
 
-@interface DANotificationCell : UITableViewCell<DAPictureFetcherDelegate>
+@interface DANotificationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblContent;

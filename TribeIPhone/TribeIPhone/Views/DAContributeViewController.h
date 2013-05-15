@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <TribeSDK/DAMessageModule.h>
-#import <TribeSDK/DAFilePoster.h>
+#import <TribeSDK/DAFileModule.h>
+#import <TribeSDK/DAFile.h>
 #import "DAMemberSelectViewController.h"
 #import "DAGroupSelectViewController.h"
 #import "DAHelper.h"
 
-@interface DAContributeViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, CLLocationManagerDelegate, DAMemberSelectViewControllerDelegate,DAGroupSelectViewControllerDelegate,DAFilePosterDelegate>
+@interface DAContributeViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, CLLocationManagerDelegate, DAMemberSelectViewControllerDelegate,DAGroupSelectViewControllerDelegate>
 {
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnLocation;

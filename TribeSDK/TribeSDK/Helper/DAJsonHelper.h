@@ -11,7 +11,6 @@
 @interface DAJsonHelper : NSObject
 
 + (NSDictionary *) decode:(NSData *) json;
-+ (NSString *) dataToFile:(NSData *)data fileName:(NSString *)fileName;
 
 + (id) objectAtPath:(id)json path:(NSString *)path;
 + (BOOL) isNumeric:(NSString *)string;

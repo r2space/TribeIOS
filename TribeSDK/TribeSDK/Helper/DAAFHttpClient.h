@@ -13,4 +13,6 @@
 
 + (DAAFHttpClient *)sharedClient;
 
+- (void)imagePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure;
+
 @end

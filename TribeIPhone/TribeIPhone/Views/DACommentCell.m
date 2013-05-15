@@ -38,7 +38,9 @@
     if ([user isUserPhotoCatched] || [user getUserPhotoId] == nil) {
         cell.imgPortrait.image = [user getUserPhotoImage];
     } else {
-        [DAPictureFetcher getPictureWiDelegate:cell PictureId:[user getUserPhotoId]];
+        [[DAFileModule alloc] getPicture:[user getUserPhotoId] callback:^(NSError *err, NSString *pictureId){
+            cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
+        }];
     }
     
     cell.lblCreateBy.text = [user getUserName];
@@ -56,9 +58,4 @@
     return [[DAMessageLabel alloc] initWithContent:content font:[UIFont systemFontOfSize:14] breakMode:NSLineBreakByCharWrapping maxFrame:CGRectMake(55,30,253,5000)];
 }
 
-#pragma mark - DAPictureFetcherDelegate
--(void)didFinishFetchPicture:(NSString *)pictureId
-{
-    self.imgPortrait.image = [DACommon getCatchedImage:pictureId];
-}
 @end

@@ -36,20 +36,6 @@
 }
 
 /**
- * データをファイルに保存
- */
-+ (NSString *) dataToFile:(NSData *)data fileName:(NSString *)fileName
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documentDir = [paths objectAtIndex:0];
-    
-    NSString* file = [NSString stringWithFormat:@"%@/%@", documentDir, fileName];
-    [data writeToFile:file atomically:YES];
-    
-    return file;
-}
-
-/**
  * 階層化されたJSONの値をパスで取得、
  * 数値の場合は配列、文字列の場合はハッシュとして深堀します。
  * paht : data/imtes/0/id

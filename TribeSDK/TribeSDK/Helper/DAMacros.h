@@ -9,7 +9,10 @@
 #ifndef smart_message_DAMacros_h
 #define smart_message_DAMacros_h
 
-#define kRemote @"http://127.0.0.1:3000/"
+#define kRemote             @"http://10.2.3.199:3000/"
+#define kHTTPCookie         @"jp.co.dreamarts.smart.sdk.cookie"
+#define kHTTPCsrfToken      @"jp.co.dreamarts.smart.sdk.csrftoken"
+#define kHTTPUser           @"jp.co.dreamarts.smart.sdk.userid"
 
 // ログ関連
 //////////////////////////////////////////////////////////////////////////////////////

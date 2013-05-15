@@ -8,16 +8,18 @@
 
 #import "DALoginModule.h"
 
-#define kURLLogin   @"simplelogin?name=%@&pass=%@"
-#define kURLLogout  @"simplelogout"
+#define kHTTPHeaderCookieName   @"Set-Cookie"
+#define kHTTPHeaderCsrftoken    @"csrftoken"
+#define kHTTPHeaderUserID       @"userid"
+#define kURLLogin               @"simplelogin?name=%@&pass=%@"
+#define kURLLogout              @"simplelogout"
 
 @implementation DALoginModule
 
 + (NSString *)getLoginUserId
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.sdk.userid"];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kHTTPUser];
 }
-
 
 // 登陆。block回调函数版。
 - (void)login:(NSString *)name
@@ -28,19 +30,19 @@
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSDictionary *headers = [operation.response allHeaderFields];
-        NSString *cookie = [headers objectForKey:@"Set-Cookie"];
-        NSString *csrftoken = [headers objectForKey:@"csrftoken"];
-        NSString *userid = [headers objectForKey:@"userid"];
+        NSString *cookie = [headers objectForKey:kHTTPHeaderCookieName];
+        NSString *csrftoken = [headers objectForKey:kHTTPHeaderCsrftoken];
+        NSString *userid = [headers objectForKey:kHTTPHeaderUserID];
         
         // Login信息保存到UserDefautls里
         if (cookie != nil) {
-            [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:@"jp.co.dreamarts.smart.sdk.cookie"];
+            [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:kHTTPCookie];
         }
         if (csrftoken != nil) {
-            [[NSUserDefaults standardUserDefaults] setObject:csrftoken forKey:@"jp.co.dreamarts.smart.sdk.csrftoken"];
+            [[NSUserDefaults standardUserDefaults] setObject:csrftoken forKey:kHTTPCsrfToken];
         }
         if (userid != nil) {
-            [[NSUserDefaults standardUserDefaults] setObject:userid forKey:@"jp.co.dreamarts.smart.sdk.userid"];
+            [[NSUserDefaults standardUserDefaults] setObject:userid forKey:kHTTPUser];
         }
         
         // 调用回调函数
@@ -65,19 +67,19 @@
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSDictionary *headers = [operation.response allHeaderFields];
-        NSString *cookie = [headers objectForKey:@"Set-Cookie"];
-        NSString *csrftoken = [headers objectForKey:@"csrftoken"];
-        NSString *userid = [headers objectForKey:@"userid"];
+        NSString *cookie = [headers objectForKey:kHTTPHeaderCookieName];
+        NSString *csrftoken = [headers objectForKey:kHTTPHeaderCsrftoken];
+        NSString *userid = [headers objectForKey:kHTTPHeaderUserID];
         
         // Login信息保存到UserDefautls里
         if (cookie != nil) {
-            [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:@"jp.co.dreamarts.smart.sdk.cookie"];
+            [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:kHTTPCookie];
         }
         if (csrftoken != nil) {
-            [[NSUserDefaults standardUserDefaults] setObject:csrftoken forKey:@"jp.co.dreamarts.smart.sdk.csrftoken"];
+            [[NSUserDefaults standardUserDefaults] setObject:csrftoken forKey:kHTTPCsrfToken];
         }
         if (userid != nil) {
-            [[NSUserDefaults standardUserDefaults] setObject:userid forKey:@"jp.co.dreamarts.smart.sdk.userid"];
+            [[NSUserDefaults standardUserDefaults] setObject:userid forKey:kHTTPUser];
         }
         
         // 调用回调函数
@@ -106,9 +108,9 @@
 {
     [[DAAFHttpClient sharedClient] getPath:kURLLogout parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
         // 删除UserDefautls信息
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.sdk.cookie"];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.sdk.csrftoken"];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.sdk.userid"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kHTTPCookie];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kHTTPCsrfToken];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kHTTPUser];
         
         // 调用回调函数
         if (callback) {

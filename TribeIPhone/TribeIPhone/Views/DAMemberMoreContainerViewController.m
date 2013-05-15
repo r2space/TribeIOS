@@ -59,7 +59,19 @@
     
     if ([DAHelper isFileExist:file]) {
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
-        [[DAFilePoster alloc] upload:image delegateObj:self];
+        [[DAFileModule alloc] uploadFile:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
+            NSMutableDictionary *userdata = [NSMutableDictionary dictionary];
+            [userdata setObject:moreViewController.uid forKey:@"_id"];
+            [userdata setObject:moreViewController.txtName.text forKey:@"name"];
+            [userdata setObject:moreViewController.txtEmail.text forKey:@"email"];
+            [userdata setObject:moreViewController.txtMobile.text forKey:@"tel"];
+            
+            //    [userdata setObject:moreViewController.txtDescription.text forKey:@"description"];
+            [userdata setObject:file._id forKey:@"fid"];
+            
+            [[DAUserUpdatePoster alloc] update:userdata delegateObj:self];
+        } progress:nil];
+        
     } else {
         NSMutableDictionary *userdata = [NSMutableDictionary dictionary];
         [userdata setObject:moreViewController.uid forKey:@"_id"];
@@ -70,20 +82,6 @@
         [[DAUserUpdatePoster alloc] update:userdata delegateObj:self];
 
     }
-}
-
-- (void) didFinishUpload:(DAFile *)file
-{
-    NSMutableDictionary *userdata = [NSMutableDictionary dictionary];
-    [userdata setObject:moreViewController.uid forKey:@"_id"];
-    [userdata setObject:moreViewController.txtName.text forKey:@"name"];
-    [userdata setObject:moreViewController.txtEmail.text forKey:@"email"];
-    [userdata setObject:moreViewController.txtMobile.text forKey:@"tel"];
-    
-//    [userdata setObject:moreViewController.txtDescription.text forKey:@"description"];
-    [userdata setObject:file._id forKey:@"fid"];
-    
-    [[DAUserUpdatePoster alloc] update:userdata delegateObj:self];
 }
 
 - (void) didFinishUpdate

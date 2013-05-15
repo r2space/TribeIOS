@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAPictureFetcher.h>
+#import <TribeSDK/DAFileModule.h>
 #import <TribeSDK/DAGroup.h>
 
-@interface DAGroupViewCell : UITableViewCell <DAPictureFetcherDelegate>
+@interface DAGroupViewCell : UITableViewCell
 
 +(DAGroupViewCell *)initWithMessage:(DAGroup *)group tableView:(UITableView *)tableView;
 

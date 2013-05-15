@@ -60,7 +60,31 @@
     
     if ([DAHelper isFileExist:file]) {
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
-        [[DAFilePoster alloc] upload:image delegateObj:self];
+        [[DAFileModule alloc] uploadFile:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
+            DAGroup *g = [[DAGroup alloc] init];
+            
+            // 新创建组的时候，不指定gid
+            if (moreViewController.group != nil) {
+                g._id = moreViewController.group._id;
+            }
+            
+            GroupName *name = [[GroupName alloc] init];
+            name.name_zh = moreViewController.txtName.text;
+            g.name = name;
+            
+            g.description = moreViewController.txtDescription.text;
+            
+            GroupPhoto * photo = [[GroupPhoto alloc] init];
+            photo.big = file._id;
+            g.photo = photo;
+            
+            if (moreViewController.group == nil) {
+                [[DAGroupUpdatePoster alloc] create:g delegateObj:self];
+            } else {
+                [[DAGroupUpdatePoster alloc] update:g delegateObj:self];
+            }
+
+        } progress:nil];
     } else {
         DAGroup *g = [[DAGroup alloc] init];
         
@@ -80,32 +104,6 @@
         } else {
             [[DAGroupUpdatePoster alloc] update:g delegateObj:self];
         }
-    }
-}
-
-- (void)didFinishUpload:(DAFile *)file
-{
-    DAGroup *g = [[DAGroup alloc] init];
-    
-    // 新创建组的时候，不指定gid
-    if (moreViewController.group != nil) {
-        g._id = moreViewController.group._id;
-    }
-
-    GroupName *name = [[GroupName alloc] init];
-    name.name_zh = moreViewController.txtName.text;
-    g.name = name;
-
-    g.description = moreViewController.txtDescription.text;
-
-    GroupPhoto * photo = [[GroupPhoto alloc] init];
-    photo.big = file._id;
-    g.photo = photo;
-    
-    if (moreViewController.group == nil) {
-        [[DAGroupUpdatePoster alloc] create:g delegateObj:self];
-    } else {
-        [[DAGroupUpdatePoster alloc] update:g delegateObj:self];
     }
 }
 

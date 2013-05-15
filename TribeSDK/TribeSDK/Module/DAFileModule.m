@@ -10,9 +10,10 @@
 
 #define kURLFileHistory @"/file/history_ios.json?fid=%@"
 
-#define kURLFileDetail @"/file/detail.json?fid=%@"
-#define kURLFileList @"/file/list.json?start=%d&count=%d&type=all"
-#define kURLUploadFile @"/file/upload.json"
+#define kURLFileDetail  @"/file/detail.json?fid=%@"
+#define kURLFileList    @"/file/list.json?start=%d&count=%d&type=all"
+#define kURLUploadFile  @"/file/upload.json"
+#define kURLGetPicture  @"/picture/%@"
 
 @implementation DAFileModule
 
@@ -109,4 +110,22 @@
 
 }
 
+- (void)getPicture:(NSString *)pictureId callback:(void (^)(NSError *, NSString *))callback
+{
+    NSString *path = [NSString stringWithFormat:kURLGetPicture, pictureId];
+    [[DAAFHttpClient sharedClient] imagePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (callback) {
+            
+            [DACommon dataToFile:responseObject fileName:pictureId];
+            callback(nil, pictureId);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+    }];
+}
 @end

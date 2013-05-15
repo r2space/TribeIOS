@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/DAUserUpdatePoster.h>
-#import <TribeSDK/DAFilePoster.h>
+#import <TribeSDK/DAFileModule.h>
 
-@interface DAMemberMoreContainerViewController : UIViewController <DAFilePosterDelegate, DAUserUpdatePosterDelegate>
+@interface DAMemberMoreContainerViewController : UIViewController <DAUserUpdatePosterDelegate>
 - (IBAction)onCancelTouched:(id)sender;
 @property (weak, nonatomic) NSString *uid;
 - (IBAction)onSaveTouched:(id)sender;

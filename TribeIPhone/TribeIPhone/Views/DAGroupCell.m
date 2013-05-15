@@ -40,16 +40,12 @@
     cell.lblName.text = group.name.name_zh;
     
     if (group.photo != nil) {
-        [DAPictureFetcher getPictureWiDelegate:cell PictureId:group.photo.small];
+        [[DAFileModule alloc] getPicture:group.photo.small callback:^(NSError *err, NSString *pictureId){
+            cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
+        }];
     }
     
     return cell;
-}
-
-#pragma mark - DAPictureFetcherDelegate
--(void)didFinishFetchPicture:(NSString *)pictureId
-{
-    self.imgPortrait.image = [DACommon getCatchedImage:pictureId];
 }
 
 @end

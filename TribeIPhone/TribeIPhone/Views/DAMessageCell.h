@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/DAMessage.h>
-#import <TribeSDK/DAPictureFetcher.h>
-#import <TribeSDK/DAImageAttachFetcher.h>
+#import <TribeSDK/DAFileModule.h>
 #import <TribeSDK/DAHeader.h>
 #import "DAMessageAtView.h"
 #import "DAMessageLabel.h"
@@ -18,7 +17,7 @@
 #import "DAMessageFileView.h"
 
 
-@interface DAMessageCell : UITableViewCell<DAPictureFetcherDelegate, DAMessageAtViewDelegate>
+@interface DAMessageCell : UITableViewCell<DAMessageAtViewDelegate>
 {
     NSMutableDictionary *touchContents;
 }

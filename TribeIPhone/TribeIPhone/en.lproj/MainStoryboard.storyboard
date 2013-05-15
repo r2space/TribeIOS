@@ -699,7 +699,7 @@
         <image name="Default.png" width="320" height="480"/>
         <image name="IMG_8057.jpg" width="1657" height="2486"/>
         <image name="heart.png" width="26" height="26"/>
-        <image name="house.png" width="52" height="52"/>
+        <image name="house.png" width="26" height="26"/>
         <image name="mailopened.png" width="26" height="26"/>
         <image name="refresh.png" width="26" height="26"/>
         <image name="tool-alert.png" width="24" height="24"/>
@@ -708,74 +708,6 @@
         <image name="tool-mail2.png" width="24" height="24"/>
         <image name="untitled.png" width="1344" height="1344"/>
     </resources>
-    <classes>
-        <class className="DAGroupViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAGroupViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgPortrait" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblOwner" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DAGroupViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAGroupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onAddTouched:"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tblGroups" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAMemberViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMemberViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgPortrait" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblName" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DAMemberViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMemberViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAMessageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMessageViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onAlertClicked:"/>
-                <relationship kind="action" name="onAtClicked:"/>
-                <relationship kind="action" name="onCommentClicked:"/>
-                <relationship kind="action" name="onMailClicked:"/>
-                <relationship kind="outlet" name="imgPortrait" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblBy" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tabBar" candidateClass="UITabBar"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tblComment" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAMoreViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMoreViewController.h"/>
-        </class>
-        <class className="DATimeLineViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DATimeLineViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onContributeClicked:"/>
-                <relationship kind="action" name="onRefreshClicked:"/>
-                <relationship kind="action" name="timeLineViewActionForSegue:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tblMessageList" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="DAViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

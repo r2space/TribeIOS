@@ -102,7 +102,9 @@
     if ([user getUserPhotoId] == nil) {
         self.imgPortrait.image = [user getUserPhotoImage];
     } else {
-        [DAPictureFetcher getPictureWiDelegate:(DAMessageCell *)self PictureId:[user getUserPhotoId]];
+        [[DAFileModule alloc] getPicture:[user getUserPhotoId] callback:^(NSError *err, NSString *pictureId){
+            self.imgPortrait.image = [DACommon getCatchedImage:pictureId];
+        }];
     }
     [touchContents setObject:user forKey:@"createby"];
     
@@ -158,7 +160,9 @@
             if ([DACommon isImageCatched:file.fileid]) {
                 self.imgAttach.image = [DACommon getCatchedImage:file.fileid];
             } else {
-                [[DAImageAttachFetcher alloc] getImageAttach:file.fileid withDelegate:self];
+                [[DAFileModule alloc] getPicture:file.fileid callback:^(NSError *err, NSString *pictureId){
+                    self.imgPortrait.image = [DACommon getCatchedImage:pictureId];
+                }];
             }
             [self.imgAttach setHidden:NO];
         }
@@ -209,12 +213,6 @@
     }
 }
 
-#pragma mark - DAPictureFetcherDelegate
--(void)didFinishFetchPicture:(NSString *)pictureId
-{
-    self.imgPortrait.image = [DACommon getCatchedImage:pictureId];
-}
-
 #pragma mark - DAMessageAtViewDelegate
 -(void)atUserClicked:(DAUser *)user
 {
@@ -228,9 +226,4 @@
     [self pushGroupDetailCtrlToParentNavCtrl:group];
 }
 
-#pragma mark - DAImageAttachFetcherDelegate
--(void)didFinishFetchingImageAttach:(NSString *)fileId
-{
-    self.imgAttach.image = [DACommon getCatchedImage:fileId];
-}
 @end

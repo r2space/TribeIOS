@@ -10,7 +10,7 @@
 #import "GTMHTTPFetcher.h"
 #import <UIKit/UIKit.h>
 
-#define kHost               @"http://10.2.8.228"
+#define kHost               @"http://10.2.3.199:3000"
 #define kBoundary           @"_boundary_jp_co_dreamarts_"
 
 @implementation DARequestHelper

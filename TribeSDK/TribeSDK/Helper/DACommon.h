@@ -14,4 +14,5 @@
 +(BOOL) isImageCatched:(NSString *)fileId;
 +(UIImage *) getCatchedImage:(NSString *)fileId;
 +(UIImage *) getCatchedImage:(NSString *)fileId defaultImage:(UIImage *)defaultImg;
++ (NSString *) dataToFile:(NSData *)data fileName:(NSString *)fileName;
 @end

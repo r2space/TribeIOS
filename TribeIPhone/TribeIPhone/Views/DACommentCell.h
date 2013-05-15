@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/DAMessage.h>
-#import <TribeSDK/DAPictureFetcher.h>
+#import <TribeSDK/DAFileModule.h>
 #import "DAMessageLabel.h"
 
-@interface DACommentCell : UITableViewCell <DAPictureFetcherDelegate>
+@interface DACommentCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
 @property (weak, nonatomic) IBOutlet UILabel *lblCreateBy;
 @property (weak, nonatomic) UILabel *lblComment;

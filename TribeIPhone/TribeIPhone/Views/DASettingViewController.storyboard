@@ -178,8 +178,8 @@
     </scenes>
     <resources>
         <image name="44-shoebox.png" width="24" height="22"/>
-        <image name="man.png" width="26" height="26"/>
-        <image name="preferences.png" width="52" height="52"/>
+        <image name="man.png" width="52" height="52"/>
+        <image name="preferences.png" width="26" height="26"/>
         <image name="world.png" width="26" height="26"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
