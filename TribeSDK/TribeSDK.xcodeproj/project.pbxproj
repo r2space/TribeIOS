@@ -240,6 +240,18 @@
 		F2A6EBD41730CD7700C1A9BF /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6EBB81730CD7700C1A9BF /* UIImageView+AFNetworking.m */; };
 		F2A6EBD61730CD8A00C1A9BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A6EBD51730CD8A00C1A9BF /* SystemConfiguration.framework */; };
 		F2A6EBD81730CD9200C1A9BF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A6EBD71730CD9200C1A9BF /* MobileCoreServices.framework */; };
+		F2A8314E1742262600375909 /* DADataStoreModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A8314C1742262600375909 /* DADataStoreModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2A8314F1742262600375909 /* DADataStoreModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8314D1742262600375909 /* DADataStoreModule.m */; };
+		F2A831501742262600375909 /* DADataStoreModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8314D1742262600375909 /* DADataStoreModule.m */; };
+		F2A831531742293600375909 /* DATurnover.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A831511742293600375909 /* DATurnover.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2A831541742293600375909 /* DATurnover.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A831521742293600375909 /* DATurnover.m */; };
+		F2A831551742293600375909 /* DATurnover.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A831521742293600375909 /* DATurnover.m */; };
+		F2A831581742296D00375909 /* DATurnoverList.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A831561742296D00375909 /* DATurnoverList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2A831591742296D00375909 /* DATurnoverList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A831571742296D00375909 /* DATurnoverList.m */; };
+		F2A8315A1742296D00375909 /* DATurnoverList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A831571742296D00375909 /* DATurnoverList.m */; };
+		F2A8315D17422B1100375909 /* DATurnoverModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A8315B17422B1100375909 /* DATurnoverModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2A8315E17422B1100375909 /* DATurnoverModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8315C17422B1100375909 /* DATurnoverModule.m */; };
+		F2A8315F17422B1100375909 /* DATurnoverModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8315C17422B1100375909 /* DATurnoverModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -431,6 +443,14 @@
 		F2A6EBB81730CD7700C1A9BF /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		F2A6EBD51730CD8A00C1A9BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F2A6EBD71730CD9200C1A9BF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F2A8314C1742262600375909 /* DADataStoreModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADataStoreModule.h; sourceTree = "<group>"; };
+		F2A8314D1742262600375909 /* DADataStoreModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADataStoreModule.m; sourceTree = "<group>"; };
+		F2A831511742293600375909 /* DATurnover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATurnover.h; sourceTree = "<group>"; };
+		F2A831521742293600375909 /* DATurnover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATurnover.m; sourceTree = "<group>"; };
+		F2A831561742296D00375909 /* DATurnoverList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATurnoverList.h; sourceTree = "<group>"; };
+		F2A831571742296D00375909 /* DATurnoverList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATurnoverList.m; sourceTree = "<group>"; };
+		F2A8315B17422B1100375909 /* DATurnoverModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATurnoverModule.h; sourceTree = "<group>"; };
+		F2A8315C17422B1100375909 /* DATurnoverModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATurnoverModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -508,7 +528,6 @@
 				F213C05C171BC26B00E562A8 /* TribeSDK.m */,
 				F213C058171BC26B00E562A8 /* Supporting Files */,
 			);
-			name = TribeSDK;
 			path = TribeSDK;
 			sourceTree = "<group>";
 		};
@@ -528,7 +547,6 @@
 				F213C073171BC26B00E562A8 /* TribeSDKTests.m */,
 				F213C06D171BC26B00E562A8 /* Supporting Files */,
 			);
-			name = TribeSDKTests;
 			path = TribeSDKTests;
 			sourceTree = "<group>";
 		};
@@ -590,6 +608,10 @@
 				F213C0A5171BC2B200E562A8 /* DAWebAccess.h */,
 				F213C0A6171BC2B200E562A8 /* DAWebAccess.m */,
 				F213C0A7171BC2B200E562A8 /* Entities */,
+				F2A8314C1742262600375909 /* DADataStoreModule.h */,
+				F2A8314D1742262600375909 /* DADataStoreModule.m */,
+				F2A8315B17422B1100375909 /* DATurnoverModule.h */,
+				F2A8315C17422B1100375909 /* DATurnoverModule.m */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -631,6 +653,10 @@
 				F2A6EAAD172AA2AA00C1A9BF /* DAShortmail.m */,
 				F2A6EAB1172AAF9C00C1A9BF /* DAShortmailList.h */,
 				F2A6EAB2172AAF9C00C1A9BF /* DAShortmailList.m */,
+				F2A831511742293600375909 /* DATurnover.h */,
+				F2A831521742293600375909 /* DATurnover.m */,
+				F2A831561742296D00375909 /* DATurnoverList.h */,
+				F2A831571742296D00375909 /* DATurnoverList.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -858,6 +884,10 @@
 				F22B381D173356740017A986 /* DAAFHttpClient.h in Headers */,
 				0472C81A1737ACD2006CED0F /* DAFileHistory.h in Headers */,
 				F22B38221733B7800017A986 /* DAFileModule.h in Headers */,
+				F2A8314E1742262600375909 /* DADataStoreModule.h in Headers */,
+				F2A831531742293600375909 /* DATurnover.h in Headers */,
+				F2A831581742296D00375909 /* DATurnoverList.h in Headers */,
+				F2A8315D17422B1100375909 /* DATurnoverModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,6 +1071,10 @@
 				47120B1117337B7600FB74AF /* DANotificationModule.m in Sources */,
 				046D9185173786550076B693 /* DAFileDetail.m in Sources */,
 				0472C81B1737ACD2006CED0F /* DAFileHistory.m in Sources */,
+				F2A8314F1742262600375909 /* DADataStoreModule.m in Sources */,
+				F2A831541742293600375909 /* DATurnover.m in Sources */,
+				F2A831591742296D00375909 /* DATurnoverList.m in Sources */,
+				F2A8315E17422B1100375909 /* DATurnoverModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1123,6 +1157,10 @@
 				47120B1217337B7600FB74AF /* DANotificationModule.m in Sources */,
 				046D9186173786550076B693 /* DAFileDetail.m in Sources */,
 				0472C81C1737ACD2006CED0F /* DAFileHistory.m in Sources */,
+				F2A831501742262600375909 /* DADataStoreModule.m in Sources */,
+				F2A831551742293600375909 /* DATurnover.m in Sources */,
+				F2A8315A1742296D00375909 /* DATurnoverList.m in Sources */,
+				F2A8315F17422B1100375909 /* DATurnoverModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

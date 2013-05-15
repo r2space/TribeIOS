@@ -78,7 +78,8 @@
 {
     NSString *csrftoken = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.sdk.csrftoken"];
     NSString *spliter = [path rangeOfString:@"?"].location == NSNotFound ? @"?" : @"&";
-    return [NSString stringWithFormat:@"%@%@_csrf=%@", path, spliter, csrftoken];
+    
+    return [NSString stringWithFormat:@"%@%@_csrf=%@", path, spliter, [DARequestHelper uriEncodeForString:csrftoken]];
 }
 
 @end
