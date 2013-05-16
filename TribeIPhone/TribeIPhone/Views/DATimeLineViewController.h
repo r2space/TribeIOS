@@ -11,11 +11,14 @@
 #import "DAMessageCell.h"
 #import "DAMessageDetailViewController.h"
 #import "DAContributeViewController.h"
+#import "DANotificationViewController.h"
+
 
 @interface DATimeLineViewController : UIViewController
 
 - (IBAction)onRefreshClicked:(id)sender;
 - (IBAction)onContributeClicked:(id)sender;
+- (IBAction)onNotifiactionClicked:(id)sender;
 
 - (void)showMessages;
 

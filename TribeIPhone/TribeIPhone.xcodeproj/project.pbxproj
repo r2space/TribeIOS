@@ -11,6 +11,8 @@
 		046D918D1737A7890076B693 /* DAFileDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046D918B1737A7890076B693 /* DAFileDetailViewController.xib */; };
 		04AC26B91738CE3C00FEED21 /* DAFileWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC26B71738CE3C00FEED21 /* DAFileWebViewController.m */; };
 		04AC26BA1738CE3C00FEED21 /* DAFileWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC26B81738CE3C00FEED21 /* DAFileWebViewController.xib */; };
+		0A90C8F11744C97A00CA4A14 /* DANotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8EF1744C97A00CA4A14 /* DANotificationViewController.m */; };
+		0A90C8F21744C97A00CA4A14 /* DANotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A90C8F01744C97A00CA4A14 /* DANotificationViewController.xib */; };
 		470D9B5D171E47BC009A6B0E /* DAMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 470D9B5C171E47BB009A6B0E /* DAMessageCell.xib */; };
 		47120B181733A57800FB74AF /* DANotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47120B171733A57800FB74AF /* DANotificationCell.m */; };
 		47120B1A1733A5C800FB74AF /* DANotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47120B191733A5C800FB74AF /* DANotificationCell.xib */; };
@@ -228,6 +230,9 @@
 		04AC26B61738CE3C00FEED21 /* DAFileWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFileWebViewController.h; sourceTree = "<group>"; };
 		04AC26B71738CE3C00FEED21 /* DAFileWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFileWebViewController.m; sourceTree = "<group>"; };
 		04AC26B81738CE3C00FEED21 /* DAFileWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAFileWebViewController.xib; sourceTree = "<group>"; };
+		0A90C8EE1744C97A00CA4A14 /* DANotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationViewController.h; sourceTree = "<group>"; };
+		0A90C8EF1744C97A00CA4A14 /* DANotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationViewController.m; sourceTree = "<group>"; };
+		0A90C8F01744C97A00CA4A14 /* DANotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DANotificationViewController.xib; sourceTree = "<group>"; };
 		470D9B5C171E47BB009A6B0E /* DAMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMessageCell.xib; sourceTree = "<group>"; };
 		47120B161733A57800FB74AF /* DANotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationCell.h; sourceTree = "<group>"; };
 		47120B171733A57800FB74AF /* DANotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationCell.m; sourceTree = "<group>"; };
@@ -514,6 +519,9 @@
 				47120B161733A57800FB74AF /* DANotificationCell.h */,
 				47120B171733A57800FB74AF /* DANotificationCell.m */,
 				47120B191733A5C800FB74AF /* DANotificationCell.xib */,
+				0A90C8EE1744C97A00CA4A14 /* DANotificationViewController.h */,
+				0A90C8EF1744C97A00CA4A14 /* DANotificationViewController.m */,
+				0A90C8F01744C97A00CA4A14 /* DANotificationViewController.xib */,
 			);
 			name = Notification;
 			sourceTree = "<group>";
@@ -1153,6 +1161,7 @@
 				47120B1A1733A5C800FB74AF /* DANotificationCell.xib in Resources */,
 				046D918D1737A7890076B693 /* DAFileDetailViewController.xib in Resources */,
 				04AC26BA1738CE3C00FEED21 /* DAFileWebViewController.xib in Resources */,
+				0A90C8F21744C97A00CA4A14 /* DANotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1237,6 +1246,7 @@
 				F22B38B21736682B0017A986 /* Reachability.m in Sources */,
 				046D918C1737A7890076B693 /* DAFileDetailViewController.m in Sources */,
 				04AC26B91738CE3C00FEED21 /* DAFileWebViewController.m in Sources */,
+				0A90C8F11744C97A00CA4A14 /* DANotificationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
