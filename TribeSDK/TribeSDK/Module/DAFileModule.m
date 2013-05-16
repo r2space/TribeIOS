@@ -7,13 +7,15 @@
 //
 
 #import "DAFileModule.h"
+#import "DAAFHttpOperation.h"
 
-#define kURLFileHistory @"/file/history_ios.json?fid=%@"
+#define kURLFileHistory     @"/file/history_ios.json?fid=%@"
 
-#define kURLFileDetail  @"/file/detail.json?fid=%@"
-#define kURLFileList    @"/file/list.json?start=%d&count=%d&type=all"
-#define kURLUploadFile  @"/file/upload.json"
-#define kURLGetPicture  @"/picture/%@"
+#define kURLFileDetail      @"/file/detail.json?fid=%@"
+#define kURLFileList        @"/file/list.json?start=%d&count=%d&type=all"
+#define kURLUploadFile      @"/file/upload.json"
+#define kURLGetPicture      @"/picture/%@"
+#define kURLDownloadFile    @"/file/download.json?_id=%@"
 
 @implementation DAFileModule
 
@@ -113,19 +115,39 @@
 - (void)getPicture:(NSString *)pictureId callback:(void (^)(NSError *, NSString *))callback
 {
     NSString *path = [NSString stringWithFormat:kURLGetPicture, pictureId];
-    [[DAAFHttpClient sharedClient] imagePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+    DAAFHttpOperation *daoperation = [[DAAFHttpOperation alloc] initWithRequestPath:path];
+    
+    [daoperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
         if (callback) {
-            
             [DACommon dataToFile:responseObject fileName:pictureId];
             callback(nil, pictureId);
         }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        NSLog(@"%@", error);
         if (callback) {
             callback(error, nil);
         }
     }];
+    [daoperation start];
 }
+
+- (void)downloadFile:(NSString *)fileId ext:(NSString *)ext callback:(void (^)(NSError *, NSString *))callback
+{
+    NSString *path = [NSString stringWithFormat:kURLDownloadFile, fileId];
+    DAAFHttpOperation *daoperation = [[DAAFHttpOperation alloc] initWithRequestPath:path];
+    
+    [daoperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+        if (callback) {
+            [DACommon dataToFile:responseObject fileName:[fileId stringByAppendingFormat:@".%@", ext]];
+            callback(nil, fileId);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        NSLog(@"%@", error);
+        if (callback) {
+            callback(error, nil);
+        }
+    }];
+    [daoperation start];
+}
+
 @end

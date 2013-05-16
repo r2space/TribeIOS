@@ -50,12 +50,6 @@
     [super getPath:path parameters:parameters success:success failure:failure];
 }
 
-- (void)imagePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
-{
-    [self setDefaultHeader:@"Accept" value:@"image/jpeg"];
-    [super getPath:path parameters:parameters success:success failure:failure];
-}
-
 - (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
     self.parameterEncoding = AFJSONParameterEncoding;

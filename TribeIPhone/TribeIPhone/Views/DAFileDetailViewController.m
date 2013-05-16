@@ -102,7 +102,7 @@
     DAFileWebViewController *detailView = [[DAFileWebViewController alloc] initWithNibName:@"DAFileWebViewController" bundle:nil];
     DAFile *file = [theFileList objectAtIndex:indexPath.row];
     
-    detailView.fileUrl = [NSString stringWithFormat:@"%@file/download.json?_id=%@", kRemote,file._id];
+    detailView.fileUrl = file._id;//[NSString stringWithFormat:@"%@file/download.json?_id=%@", kRemote,file._id];
     detailView.fileName = file.filename;
     detailView.downloadId = file._id;
     detailView.fileExt = file.extension;

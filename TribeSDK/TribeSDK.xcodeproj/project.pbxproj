@@ -246,6 +246,9 @@
 		F2A83167174386E400375909 /* DAJsonHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A83165174386E400375909 /* DAJsonHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A83168174386E400375909 /* DAJsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A83166174386E400375909 /* DAJsonHelper.m */; };
 		F2A83169174386E400375909 /* DAJsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A83166174386E400375909 /* DAJsonHelper.m */; };
+		F2A8316C1744B31300375909 /* DAAFHttpOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A8316A1744B31200375909 /* DAAFHttpOperation.h */; };
+		F2A8316D1744B31300375909 /* DAAFHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8316B1744B31300375909 /* DAAFHttpOperation.m */; };
+		F2A8316E1744B31300375909 /* DAAFHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8316B1744B31300375909 /* DAAFHttpOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -441,6 +444,8 @@
 		F2A831611743659B00375909 /* DAGroupModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGroupModule.m; sourceTree = "<group>"; };
 		F2A83165174386E400375909 /* DAJsonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAJsonHelper.h; sourceTree = "<group>"; };
 		F2A83166174386E400375909 /* DAJsonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAJsonHelper.m; sourceTree = "<group>"; };
+		F2A8316A1744B31200375909 /* DAAFHttpOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAFHttpOperation.h; sourceTree = "<group>"; };
+		F2A8316B1744B31300375909 /* DAAFHttpOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAFHttpOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -562,6 +567,8 @@
 				F213C085171BC2B200E562A8 /* DARequestHelper.m */,
 				F22B381B173356740017A986 /* DAAFHttpClient.h */,
 				F22B381C173356740017A986 /* DAAFHttpClient.m */,
+				F2A8316A1744B31200375909 /* DAAFHttpOperation.h */,
+				F2A8316B1744B31300375909 /* DAAFHttpOperation.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -864,6 +871,7 @@
 				F2A831621743659B00375909 /* DAGroupModule.h in Headers */,
 				F2A83167174386E400375909 /* DAJsonHelper.h in Headers */,
 				F2A8315D17422B1100375909 /* DATurnoverModule.h in Headers */,
+				F2A8316C1744B31300375909 /* DAAFHttpOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1049,6 +1057,7 @@
 				F2A8315E17422B1100375909 /* DATurnoverModule.m in Sources */,
 				F2A831631743659B00375909 /* DAGroupModule.m in Sources */,
 				F2A83168174386E400375909 /* DAJsonHelper.m in Sources */,
+				F2A8316D1744B31300375909 /* DAAFHttpOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1133,6 +1142,7 @@
 				F2A8315F17422B1100375909 /* DATurnoverModule.m in Sources */,
 				F2A831641743659B00375909 /* DAGroupModule.m in Sources */,
 				F2A83169174386E400375909 /* DAJsonHelper.m in Sources */,
+				F2A8316E1744B31300375909 /* DAAFHttpOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
