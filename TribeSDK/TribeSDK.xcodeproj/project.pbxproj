@@ -246,7 +246,7 @@
 		F2A83167174386E400375909 /* DAJsonHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A83165174386E400375909 /* DAJsonHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A83168174386E400375909 /* DAJsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A83166174386E400375909 /* DAJsonHelper.m */; };
 		F2A83169174386E400375909 /* DAJsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A83166174386E400375909 /* DAJsonHelper.m */; };
-		F2A8316C1744B31300375909 /* DAAFHttpOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A8316A1744B31200375909 /* DAAFHttpOperation.h */; };
+		F2A8316C1744B31300375909 /* DAAFHttpOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A8316A1744B31200375909 /* DAAFHttpOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A8316D1744B31300375909 /* DAAFHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8316B1744B31300375909 /* DAAFHttpOperation.m */; };
 		F2A8316E1744B31300375909 /* DAAFHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8316B1744B31300375909 /* DAAFHttpOperation.m */; };
 /* End PBXBuildFile section */
@@ -870,8 +870,8 @@
 				F2A831581742296D00375909 /* DATurnoverList.h in Headers */,
 				F2A831621743659B00375909 /* DAGroupModule.h in Headers */,
 				F2A83167174386E400375909 /* DAJsonHelper.h in Headers */,
-				F2A8315D17422B1100375909 /* DATurnoverModule.h in Headers */,
 				F2A8316C1744B31300375909 /* DAAFHttpOperation.h in Headers */,
+				F2A8315D17422B1100375909 /* DATurnoverModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
