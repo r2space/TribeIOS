@@ -11,5 +11,6 @@
 @interface DAAFHttpClient : AFHTTPClient
 
 + (DAAFHttpClient *)sharedClient;
+@property(nonatomic) BOOL isReachable;
                                                                                                                                          
 @end

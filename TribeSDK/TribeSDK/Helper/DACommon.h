@@ -35,6 +35,7 @@
 +(UIImage *) getCatchedImage:(NSString *)fileId defaultImage:(UIImage *)defaultImg;
 + (NSString *) dataToFile:(NSData *)data fileName:(NSString *)fileName;
 
-+ (NSString *) getServerAddress;
-+ (NSString *) getServerAddress:(BOOL)isSecure;
++ (NSString *) getServerHost; // Ex. 10.2.3.199
++ (NSString *) getServerAddress; // Ex. http://10.2.3.199
++ (NSString *) getServerAddress:(BOOL)isSecure; // Ex. https://10.2.3.199:3000
 @end

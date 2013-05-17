@@ -13,8 +13,9 @@
 #import "DAContributeViewController.h"
 #import "DANotificationViewController.h"
 
+#import "DABaseViewController.h"
 
-@interface DATimeLineViewController : UIViewController
+@interface DATimeLineViewController : DABaseViewController
 
 - (IBAction)onRefreshClicked:(id)sender;
 - (IBAction)onContributeClicked:(id)sender;

@@ -64,6 +64,11 @@
     return [DACommon getServerAddress:NO];
 }
 
++ (NSString *) getServerHost
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress];
+}
+
 + (NSString *) getServerAddress:(BOOL)isSecure
 {
     NSString *protocal = isSecure ? @"https" : @"http";

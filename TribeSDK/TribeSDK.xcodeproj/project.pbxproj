@@ -249,6 +249,9 @@
 		F2A8316C1744B31300375909 /* DAAFHttpOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A8316A1744B31200375909 /* DAAFHttpOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A8316D1744B31300375909 /* DAAFHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8316B1744B31300375909 /* DAAFHttpOperation.m */; };
 		F2A8316E1744B31300375909 /* DAAFHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8316B1744B31300375909 /* DAAFHttpOperation.m */; };
+		F2B29F3F17465477002F7CF8 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B29F3D17465477002F7CF8 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B29F4017465477002F7CF8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B29F3E17465477002F7CF8 /* Reachability.m */; };
+		F2B29F4117465477002F7CF8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B29F3E17465477002F7CF8 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -446,6 +449,8 @@
 		F2A83166174386E400375909 /* DAJsonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAJsonHelper.m; sourceTree = "<group>"; };
 		F2A8316A1744B31200375909 /* DAAFHttpOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAFHttpOperation.h; sourceTree = "<group>"; };
 		F2A8316B1744B31300375909 /* DAAFHttpOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAFHttpOperation.m; sourceTree = "<group>"; };
+		F2B29F3D17465477002F7CF8 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		F2B29F3E17465477002F7CF8 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -656,6 +661,7 @@
 		F213C0B8171BC2B200E562A8 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				F2B29F3C17465477002F7CF8 /* Reachability */,
 				F2A6EBA51730CD7700C1A9BF /* AFNetworking */,
 				F213C0B9171BC2B200E562A8 /* GTMHTTPFetcher */,
 				F213C0CB171BC2B200E562A8 /* Jastor */,
@@ -793,6 +799,15 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		F2B29F3C17465477002F7CF8 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				F2B29F3D17465477002F7CF8 /* Reachability.h */,
+				F2B29F3E17465477002F7CF8 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -872,6 +887,7 @@
 				F2A8316C1744B31300375909 /* DAAFHttpOperation.h in Headers */,
 				F2A8315D17422B1100375909 /* DATurnoverModule.h in Headers */,
 				F29A9B6A1745FD1E00273253 /* TribeSDKHeader.h in Headers */,
+				F2B29F3F17465477002F7CF8 /* Reachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1058,6 +1074,7 @@
 				F2A831631743659B00375909 /* DAGroupModule.m in Sources */,
 				F2A83168174386E400375909 /* DAJsonHelper.m in Sources */,
 				F2A8316D1744B31300375909 /* DAAFHttpOperation.m in Sources */,
+				F2B29F4017465477002F7CF8 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,6 +1160,7 @@
 				F2A831641743659B00375909 /* DAGroupModule.m in Sources */,
 				F2A83169174386E400375909 /* DAJsonHelper.m in Sources */,
 				F2A8316E1744B31300375909 /* DAAFHttpOperation.m in Sources */,
+				F2B29F4117465477002F7CF8 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

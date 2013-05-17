@@ -15,6 +15,8 @@
 #define kHTTPCsrfToken      @"jp.co.dreamarts.smart.sdk.csrftoken"
 #define kHTTPUser           @"jp.co.dreamarts.smart.sdk.userid"
 
+#define kNoticeNotReachable @"jp.co.dreamarts.smart.sdk.NoticeNotReachable"
+
 // ログ関連
 //////////////////////////////////////////////////////////////////////////////////////
 #define _printd(data) \

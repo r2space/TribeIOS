@@ -7,6 +7,7 @@
 //
 
 #import "DAHelper.h"
+#import <TribeSDK/DAAFHttpClient.h>
 
 @implementation DAHelper
 
@@ -54,6 +55,11 @@
     }
     
     return [NSString stringWithFormat:@"%@.png", result];
+}
+
++ (BOOL) isNetworkReachable
+{
+    return [[DAAFHttpClient sharedClient] isReachable];
 }
 
 @end

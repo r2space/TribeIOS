@@ -13,7 +13,6 @@
 #import "DAFileWebViewController.h"
 
 #import "WTStatusBar.h"
-#import "MBProgressHUD.h"
 
 @interface DAFileViewController ()
 {
@@ -38,24 +37,29 @@
 {
     [super viewDidLoad];
     
-    // 初始化HUD
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"Loging...";
-    _hud.color = DAColor;
-
-    [[DAFileModule alloc] getFileList:0 count:20 callback:^(NSError *error, DAFileList *files){
-        theFileList = files.items;
-        [self.tblFiles reloadData];
-        
-        [_hud hide:YES];
-    }];
-    
+    [self refresh];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)refresh
+{
+    if ([self startFetch]) {
+        return;
+    }
+    
+    [[DAFileModule alloc] getFileList:0 count:20 callback:^(NSError *error, DAFileList *files){
+        if (error == nil) {
+            theFileList = files.items;
+            [self.tableView reloadData];
+        }
+        
+        [self finishFetch:error];
+    }];
 }
 
 - (IBAction)onCancelTouched:(id)sender

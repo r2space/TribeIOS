@@ -8,6 +8,7 @@
 
 #import "DAAFHttpClient.h"
 #import "DACommon.h"
+#import "Reachability.h"
 
 @implementation DAAFHttpClient
 
@@ -19,6 +20,19 @@
     
     dispatch_once(&onceToken, ^{
         _sharedClient = [[DAAFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[DACommon getServerAddress]]];
+        
+        // 设定当前网络状态
+        _sharedClient.isReachable = [Reachability reachabilityWithHostname:[DACommon getServerHost]].isReachable;
+        
+        // 监控网络状态
+        [_sharedClient setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+            NSLog(@"network status : %d", status);
+            
+            _sharedClient.isReachable = (status != AFNetworkReachabilityStatusNotReachable);
+            if (_sharedClient.isReachable) {
+                [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNoticeNotReachable object:nil]];
+            }
+        }];
     });
     
     return _sharedClient;

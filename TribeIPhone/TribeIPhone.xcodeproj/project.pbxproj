@@ -160,7 +160,6 @@
 		F22B38AC173658E60017A986 /* WTStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38A7173658E60017A986 /* WTStatusBar.m */; };
 		F22B38AD173658E60017A986 /* WTStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38A9173658E60017A986 /* WTStatusView.m */; };
 		F22B38AE173658E60017A986 /* WTStatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38AB173658E60017A986 /* WTStatusWindow.m */; };
-		F22B38B21736682B0017A986 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38B11736682B0017A986 /* Reachability.m */; };
 		F24F5E58171D229C0032E93B /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24F5E57171D229C0032E93B /* DAViewController.m */; };
 		F24FC31B172775DB00C26D12 /* DAFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24FC319172775DB00C26D12 /* DAFileViewController.m */; };
 		F24FC31C172775DB00C26D12 /* DAFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F24FC31A172775DB00C26D12 /* DAFileViewController.xib */; };
@@ -211,6 +210,7 @@
 		F2A6EAD1173005BD00C1A9BF /* background2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A6EAD0173005BD00C1A9BF /* background2.jpg */; };
 		F2A6EBDA1730EB0000C1A9BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A6EBD91730EB0000C1A9BF /* SystemConfiguration.framework */; };
 		F2A6EBDC1730EB0900C1A9BF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A6EBDB1730EB0900C1A9BF /* MobileCoreServices.framework */; };
+		F2B29F441746580F002F7CF8 /* DABaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B29F431746580F002F7CF8 /* DABaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,8 +409,6 @@
 		F22B38A9173658E60017A986 /* WTStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTStatusView.m; sourceTree = "<group>"; };
 		F22B38AA173658E60017A986 /* WTStatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTStatusWindow.h; sourceTree = "<group>"; };
 		F22B38AB173658E60017A986 /* WTStatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTStatusWindow.m; sourceTree = "<group>"; };
-		F22B38B01736682B0017A986 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		F22B38B11736682B0017A986 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		F24F5E56171D229C0032E93B /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
 		F24F5E57171D229C0032E93B /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
 		F24FC318172775DB00C26D12 /* DAFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFileViewController.h; sourceTree = "<group>"; };
@@ -481,6 +479,8 @@
 		F2A6EAD0173005BD00C1A9BF /* background2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background2.jpg; sourceTree = "<group>"; };
 		F2A6EBD91730EB0000C1A9BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F2A6EBDB1730EB0900C1A9BF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F2B29F421746580F002F7CF8 /* DABaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABaseViewController.h; sourceTree = "<group>"; };
+		F2B29F431746580F002F7CF8 /* DABaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -644,6 +644,8 @@
 				F2656ED11720E12D007E8207 /* DAMemberController.xib */,
 				F24F5E56171D229C0032E93B /* DAViewController.h */,
 				F24F5E57171D229C0032E93B /* DAViewController.m */,
+				F2B29F421746580F002F7CF8 /* DABaseViewController.h */,
+				F2B29F431746580F002F7CF8 /* DABaseViewController.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -771,7 +773,6 @@
 		F22B38A0173652BF0017A986 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
-				F22B38AF1736682B0017A986 /* Reachability */,
 				F22B38A5173658E60017A986 /* WTStatusBar */,
 				F22B38A1173652BF0017A986 /* MBProgressHUD */,
 			);
@@ -798,15 +799,6 @@
 				F22B38AB173658E60017A986 /* WTStatusWindow.m */,
 			);
 			path = WTStatusBar;
-			sourceTree = "<group>";
-		};
-		F22B38AF1736682B0017A986 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				F22B38B01736682B0017A986 /* Reachability.h */,
-				F22B38B11736682B0017A986 /* Reachability.m */,
-			);
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 		F24F5E59171D277F0032E93B /* Member */ = {
@@ -1243,10 +1235,10 @@
 				F22B38AC173658E60017A986 /* WTStatusBar.m in Sources */,
 				F22B38AD173658E60017A986 /* WTStatusView.m in Sources */,
 				F22B38AE173658E60017A986 /* WTStatusWindow.m in Sources */,
-				F22B38B21736682B0017A986 /* Reachability.m in Sources */,
 				046D918C1737A7890076B693 /* DAFileDetailViewController.m in Sources */,
 				04AC26B91738CE3C00FEED21 /* DAFileWebViewController.m in Sources */,
 				0A90C8F11744C97A00CA4A14 /* DANotificationViewController.m in Sources */,
+				F2B29F441746580F002F7CF8 /* DABaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

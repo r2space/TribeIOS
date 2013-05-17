@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DAFileDetailViewController.h"
+#import "DABaseViewController.h"
 
-@interface DAFileViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface DAFileViewController : DABaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 - (IBAction)onCancelTouched:(id)sender;
 - (IBAction)onAddTouched:(id)sender;
-@property (weak, nonatomic) IBOutlet UITableView *tblFiles;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

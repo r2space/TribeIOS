@@ -15,5 +15,6 @@
 + (NSString *) documentPath:(NSString *)file;
 + (BOOL) isFileExist:(NSString *)fullPahtFile;
 + (NSString *) fileanExtension:(NSString *)type;
++ (BOOL) isNetworkReachable;
 
 @end

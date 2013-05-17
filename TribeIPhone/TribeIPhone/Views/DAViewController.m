@@ -8,6 +8,9 @@
 
 #import "DAViewController.h"
 #import "DALoginViewController.h"
+#import <TribeSDK/DAMacros.h>
+#import "MBProgressHUD.h"
+#import "DAHelper.h"
 
 @interface DAViewController ()
 {
@@ -36,6 +39,7 @@
     // 注册没有登陆时调用的函数
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(notificationShowLogin:) name:@"NeedsLogin" object:nil];
+    [nc addObserver:self selector:@selector(notificationNotReachable:) name:kNoticeNotReachable object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -65,5 +69,20 @@
     [self.view addSubview:loginViewController.view];
 }
 
+- (void)notificationNotReachable:(NSNotification*)note
+{
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//	
+//	hud.dimBackground = YES;
+//    
+//	hud.mode = MBProgressHUDModeText;
+//	hud.labelText = @"无法连接网络";
+//	hud.margin = 10.f;
+////	hud.yOffset = 150.f;
+//	hud.removeFromSuperViewOnHide = YES;
+//	
+//	[hud hide:YES afterDelay:3];
+
+}
 
 @end

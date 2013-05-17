@@ -7,7 +7,6 @@
 //
 
 #import "DATimeLineViewController.h"
-#import "MBProgressHUD.h"
 
 #define COUNT_PER_PAGE 20
 
@@ -16,11 +15,7 @@
     NSArray* messages;
     BOOL _hasMore;
     BOOL _loadingMore;
-    
-    UIRefreshControl *_refreshControl;
-    MBProgressHUD *_hud;
 }
-- (IBAction)timeLineViewActionForSegue:(UIStoryboardSegue *)segue;
 
 @end
 
@@ -30,22 +25,18 @@
 {
     [super viewDidLoad];
     
-    // 添加Pull To Refresh控件
-    _refreshControl = [[UIRefreshControl alloc] init];
-    _refreshControl.tintColor = DAColor;
-    [_refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:_refreshControl];
-    
-    // 初始化，并显示HUD
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];    
     [self showMessages];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 - (IBAction)onNotifiactionClicked:(id)sender
 {
     NSLog(@"notification");
     DANotificationViewController *ctrl = [[DANotificationViewController alloc]initWithNibName:@"DANotificationViewController" bundle:nil];
     [self presentViewController:ctrl animated:YES completion:nil];
-    
 }
 
 
@@ -95,10 +86,6 @@
     return [DAMessageCell cellHeightWithMessage:[messages objectAtIndex:indexPath.row]];
 }
 
-- (IBAction)timeLineViewActionForSegue:(UIStoryboardSegue *)segue
-{
-    NSLog(@"First view return action invoked.");
-}
 
 - (IBAction)onRefreshClicked:(id)sender
 {
@@ -118,23 +105,27 @@
 
 - (void)getMessages:(int)start count:(int)count before:(NSString *)date
 {
-    _hud.labelText = @"Loging...";
-    _hud.color = DAColor;
-    [_hud show:YES];
+
+    if ([self startFetch]) {
+        return;
+    }
+    
     [[DAMessageModule alloc] getMessagesInTimeLineStart:start count:count before:date callback:^(NSError *error, DAMessageList *messageList){
-        _hasMore = COUNT_PER_PAGE <= messageList.items.count;
-        if (!_loadingMore) {
-            messages = messageList.items;
-            [self.tableView reloadData];
-            [self.tableView setContentOffset:CGPointMake(0,0) animated:YES]; // scroll to top
-        } else{
-            messages = [messages arrayByAddingObjectsFromArray:messageList.items];
-            [self.tableView reloadData];
-            _loadingMore = NO;
-        }
         
-        [_hud hide:YES];
-        [_refreshControl endRefreshing];
+        if (error == nil) {
+            _hasMore = COUNT_PER_PAGE <= messageList.items.count;
+            if (!_loadingMore) {
+                messages = messageList.items;
+                [self.tableView reloadData];
+                [self.tableView setContentOffset:CGPointMake(0,0) animated:YES]; // scroll to top
+            } else{
+                messages = [messages arrayByAddingObjectsFromArray:messageList.items];
+                [self.tableView reloadData];
+                _loadingMore = NO;
+            }
+        }
+
+        [self finishFetch:error];
     }];
 }
 
@@ -158,8 +149,6 @@
 
 - (void)refresh
 {
-    NSLog(@"refresh");
-    
     [self showMessages];
 }
 
