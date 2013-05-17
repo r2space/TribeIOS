@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAGroup.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAGroupMoreViewController : UITableViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 

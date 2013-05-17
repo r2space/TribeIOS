@@ -6,9 +6,7 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import <TribeSDK/TribeSDK.h>
 #import "DAWebAccess.h"
-#import "DAHeader.h"
 #import "DAGroup.h"
 
 @protocol DAGroupUpdatePosterDelegate

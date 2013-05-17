@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAShortmail.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAShortmailStoryViewCell : UITableViewCell
 

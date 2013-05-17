@@ -7,7 +7,6 @@
 //
 
 #import "Jastor.h"
-#import "DAGroup.h"
 
 @interface DAGroupList : Jastor
 @property (retain, nonatomic) NSArray *items;

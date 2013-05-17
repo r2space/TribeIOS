@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAGroupListFetcher.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAGroupCell.h"
 
 @protocol DAGroupSelectViewControllerDelegate

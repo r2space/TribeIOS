@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAFileModule.h>
-#import <TribeSDK/DAFile.h>
-#import <TribeSDK/DAFileList.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAFileDetailViewController.h"
 
 @interface DAFileViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>

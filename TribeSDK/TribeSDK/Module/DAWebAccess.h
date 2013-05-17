@@ -6,8 +6,9 @@
 //  Copyright (c) 2013年 dac. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "DAHeader.h"
+
+#import "DACommon.h"
+#import "DAError.h"
 
 @protocol DAWebAccessProtocol
 

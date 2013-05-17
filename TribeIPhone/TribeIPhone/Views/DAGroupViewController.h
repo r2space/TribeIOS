@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAGroupListFetcher.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAGroupViewController : UIViewController <DAGroupListFetcherDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

@@ -9,7 +9,8 @@
 #ifndef smart_message_DAMacros_h
 #define smart_message_DAMacros_h
 
-#define kRemote             @"http://10.2.8.228"
+#define kServerAddress      @"jp.co.dreamarts.smart.sdk.server.address"
+#define kServerPort         @"jp.co.dreamarts.smart.sdk.server.port"
 #define kHTTPCookie         @"jp.co.dreamarts.smart.sdk.cookie"
 #define kHTTPCsrfToken      @"jp.co.dreamarts.smart.sdk.csrftoken"
 #define kHTTPUser           @"jp.co.dreamarts.smart.sdk.userid"

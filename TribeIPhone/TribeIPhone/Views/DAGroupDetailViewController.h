@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAGroupFetcher.h>
-#import <TribeSDK/DAGroupJoinModule.h>
-#import <TribeSDK/DALoginModule.h>
-#import <TribeSDK/DAMessageModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAGroupDetailCell.h"
 #import "DAMessageCell.h"
 

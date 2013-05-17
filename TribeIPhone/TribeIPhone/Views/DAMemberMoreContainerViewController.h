@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAUserUpdatePoster.h>
-#import <TribeSDK/DAFileModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAMemberMoreContainerViewController : UIViewController <DAUserUpdatePosterDelegate>
 - (IBAction)onCancelTouched:(id)sender;

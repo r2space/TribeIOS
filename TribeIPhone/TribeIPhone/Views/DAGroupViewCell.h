@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAFileModule.h>
-#import <TribeSDK/DAGroup.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAGroupViewCell : UITableViewCell
 

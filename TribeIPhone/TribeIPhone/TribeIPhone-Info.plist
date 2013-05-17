@@ -40,6 +40,10 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>ServerAddress</key>
+	<string>10.2.3.199</string>
+	<key>ServerPort</key>
+	<integer>3000</integer>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

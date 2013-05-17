@@ -7,7 +7,6 @@
 //
 
 #import "DAWebAccess.h"
-#import "DAError.h"
 
 @implementation DAWebAccess
 - (void)sendRequest:(NSURLRequest *)request

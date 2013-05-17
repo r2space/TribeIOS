@@ -7,6 +7,7 @@
 //
 
 #import "DACommon.h"
+#import "DAMacros.h"
 
 @implementation DACommon
 +(NSString *)getCatchedImagePath:(NSString *)fileId
@@ -56,6 +57,26 @@
     [data writeToFile:file atomically:YES];
     
     return file;
+}
+
++ (NSString *) getServerAddress
+{
+    return [DACommon getServerAddress:NO];
+}
+
++ (NSString *) getServerAddress:(BOOL)isSecure
+{
+    NSString *protocal = isSecure ? @"https" : @"http";
+    NSString *address = [[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress];
+    NSInteger port = [[NSUserDefaults standardUserDefaults] integerForKey:kServerPort];
+    
+    
+    NSString *url = [NSString stringWithFormat:@"%@://%@", protocal, address];
+    if (port == 80) {
+        return url;
+    } else {
+        return [url stringByAppendingFormat:@":%d", port];
+    }
 }
 
 @end

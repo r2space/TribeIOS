@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAMessageModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAMessageCell.h"
 #import "DAMessageDetailViewController.h"
 #import "DAContributeViewController.h"

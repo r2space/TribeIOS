@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
+#import "DANotification.h"
 #import "DANotificationList.h"
 
 @implementation DANotificationList

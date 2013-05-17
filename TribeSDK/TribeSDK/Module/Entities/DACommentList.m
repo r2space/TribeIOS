@@ -7,6 +7,7 @@
 //
 
 #import "DACommentList.h"
+#import "DAComment.h"
 
 @implementation DACommentList
 @synthesize total, items;

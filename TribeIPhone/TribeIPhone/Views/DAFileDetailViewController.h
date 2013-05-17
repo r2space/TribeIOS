@@ -7,11 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAFile.h>
-#import <TribeSDK/DAFileDetail.h>
-#import <TribeSDK/DAFileHistory.h>
-#import <TribeSDK/DAFileList.h>
-#import <TribeSDK/DAFileModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAFileDetailViewController : UIViewController
 

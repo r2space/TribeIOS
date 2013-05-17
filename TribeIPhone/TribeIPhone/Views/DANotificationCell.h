@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DANotification.h>
-#import <TribeSDK/DAFileModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DANotificationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;

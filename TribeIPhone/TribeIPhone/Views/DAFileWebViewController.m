@@ -5,13 +5,13 @@
 //  Created by mac on 13-5-7.
 //  Copyright (c) 2013年 kita. All rights reserved.
 //
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAFileDetailViewController.h"
 #import "DAFileWebViewController.h"
 #import "DAFileWebViewController.h"
 #import "WTStatusBar.h"
 #import "MBProgressHUD.h"
 #import "DAHelper.h"
-#import <TribeSDK/DAFileModule.h>
 
 @interface DAFileWebViewController ()
 {

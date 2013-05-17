@@ -6,8 +6,27 @@
 //  Copyright (c) 2013年 dac. All rights reserved.
 //
 
+
+#import <UIKit/UIKit.h>
+
+
+#ifndef smart_sdk_DACommon_h
+#define smart_sdk_DACommon_h
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+// Thirdpartys
+#import "AFNetworking.h"
+#import "GTMHTTPFetcher.h"
+#import "Jastor.h"
+
+//
+#import "DAMacros.h"
+#import "DAJsonHelper.h"
+#import "DARequestHelper.h"
+
+#endif
 
 @interface DACommon : NSObject
 +(NSString *)getCatchedImagePath:(NSString *)fileId;
@@ -15,4 +34,7 @@
 +(UIImage *) getCatchedImage:(NSString *)fileId;
 +(UIImage *) getCatchedImage:(NSString *)fileId defaultImage:(UIImage *)defaultImg;
 + (NSString *) dataToFile:(NSData *)data fileName:(NSString *)fileName;
+
++ (NSString *) getServerAddress;
++ (NSString *) getServerAddress:(BOOL)isSecure;
 @end

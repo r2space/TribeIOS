@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAShortmailModule.h>
-#import <TribeSDK/DAUser.h>
-#import <TribeSDK/DAUserList.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAShortmailViewController : UIViewController
 - (IBAction)onCancelTouched:(id)sender;

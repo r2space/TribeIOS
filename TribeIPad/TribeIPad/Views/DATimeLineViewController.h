@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DATimeLineCell.h"
 #import "DAMessageViewController.h"
-#import <TribeSDK/DAMessageListFetcher.h>
 
-@interface DATimeLineViewController : UIViewController <DAMessageListFetcherDelegate>
+@interface DATimeLineViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tblMessageList;
 
 @end

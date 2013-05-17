@@ -6,8 +6,7 @@
 //  Copyright (c) 2013年 dac. All rights reserved.
 //
 
-#import "DAHeader.h"
-#import <UIKit/UIKit.h>
+#import "DACommon.h"
 
 @interface UserName : Jastor <NSCoding>
 

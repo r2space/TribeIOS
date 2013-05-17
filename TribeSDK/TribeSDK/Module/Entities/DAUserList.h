@@ -7,7 +7,6 @@
 //
 
 #import "Jastor.h"
-#import "DAUser.h"
 
 @interface DAUserList : Jastor
 @property (retain, nonatomic) NSArray *items;

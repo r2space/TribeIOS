@@ -7,7 +7,6 @@
 //
 
 #import "DAUser.h"
-#import "DACommon.h"
 
 @implementation UserName
 - (void)encodeWithCoder:(NSCoder *)aCoder

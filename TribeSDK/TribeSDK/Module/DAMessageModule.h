@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 dac. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DAMessage.h"
 #import "DAMessageList.h"
 #import "DAAFHttpClient.h"
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DALoginModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DASettingViewController : UITableViewController
 

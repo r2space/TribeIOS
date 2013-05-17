@@ -7,7 +7,6 @@
 //
 
 #import "Jastor.h"
-#import "DAMessage.h"
 
 @interface DAMessageList : Jastor
 @property (retain, nonatomic) NSNumber *total;

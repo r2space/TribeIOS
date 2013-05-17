@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAGroup.h>
-#import <TribeSDK/DAGroupListFetcher.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAGroupController : UIViewController <DAGroupListFetcherDelegate>
 

@@ -6,9 +6,8 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import <TribeSDK/TribeSDK.h>
+#import "DACommon.h"
 #import "DAWebAccess.h"
-#import "DAHeader.h"
 
 @protocol DAUserUpdatePosterDelegate
 - (void)didFinishUpdate;

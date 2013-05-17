@@ -6,8 +6,7 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import <TribeSDK/TribeSDK.h>
-#import "DAComment.h"
+#import "Jastor.h"
 
 @interface DACommentList : Jastor
 @property (retain, nonatomic) NSNumber *total;

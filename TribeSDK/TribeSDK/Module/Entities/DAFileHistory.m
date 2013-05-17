@@ -7,6 +7,7 @@
 //
 
 #import "DAFileHistory.h"
+#import "DAFile.h"
 
 @implementation DAFileHistory
 @synthesize items;

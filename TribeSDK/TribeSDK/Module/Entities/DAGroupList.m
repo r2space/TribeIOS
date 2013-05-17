@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 dac. All rights reserved.
 //
 
+#import "DAGroup.h"
 #import "DAGroupList.h"
 
 @implementation DAGroupList

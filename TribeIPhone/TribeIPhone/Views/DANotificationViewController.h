@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DANotificationCell.h"
 #import "DAMessageCell.h"
-#import <TribeSDK/DAShortmailModule.h>
-#import <TribeSDK/DAUser.h>
-#import <TribeSDK/DAUserList.h>
-#import <TribeSDK/DANotificationModule.h>
 
 @interface DANotificationViewController : UIViewController
 

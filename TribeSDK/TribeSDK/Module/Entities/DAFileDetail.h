@@ -8,8 +8,6 @@
 #import "Jastor.h"
 #import "DAFile.h"
 #import "DAUser.h"
-#import "DACommon.h"
-#import <UIKit/UIKit.h>
 
 @interface DAFileDetail : Jastor
 

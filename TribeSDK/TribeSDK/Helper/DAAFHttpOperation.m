@@ -8,6 +8,7 @@
 
 #import "DAAFHttpOperation.h"
 #import "DAMacros.h"
+#import "DACommon.h"
 
 @implementation DAAFHttpOperation
 
@@ -19,7 +20,7 @@
 
 - (id)initWithRequestPath:(NSString *)path
 {
-    NSString *url = [NSString stringWithFormat:@"%@%@", kRemote, path];
+    NSString *url = [NSString stringWithFormat:@"%@%@", [DACommon getServerAddress], path];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     return [self initWithRequest:request];
 }

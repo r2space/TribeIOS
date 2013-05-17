@@ -6,8 +6,7 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "DAHeader.h"
+#import "DACommon.h"
 
 @interface DAAFHttpClient : AFHTTPClient
 

@@ -7,12 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAUserListFetcher.h>
-#import <TribeSDK/DAGroupMemberListFetcher.h>
-#import <TribeSDK/DAUserFollowerFetcher.h>
-#import <TribeSDK/DAUserFollowingFetcher.h>
-#import <TribeSDK/DAUser.h>
-#import <TribeSDK/DAUserList.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAMemberCell.h"
 
 

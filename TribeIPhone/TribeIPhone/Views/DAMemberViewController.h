@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAUserListFetcher.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAMemberViewController : UIViewController <DAUserListFetcherDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

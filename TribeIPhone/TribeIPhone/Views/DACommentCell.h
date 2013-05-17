@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAMessage.h>
-#import <TribeSDK/DAFileModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAMessageLabel.h"
 
 @interface DACommentCell : UITableViewCell

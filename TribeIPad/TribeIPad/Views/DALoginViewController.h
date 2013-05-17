@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DALoginModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
-@interface DALoginViewController : UIViewController <DALoginModuleDelegate>
+@interface DALoginViewController : UIViewController
 - (IBAction)onLoginTouched:(id)sender;
 - (IBAction)onLogoutTouched:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *txtUserID;

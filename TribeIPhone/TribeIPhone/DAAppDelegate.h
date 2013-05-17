@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAUserFetcher.h>
-#import <TribeSDK/DALoginModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAAppDelegate : UIResponder <UIApplicationDelegate, DAUserFetcherrDelegate>
 

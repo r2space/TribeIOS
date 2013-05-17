@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAMessage.h>
-#import <TribeSDK/DAFileModule.h>
-#import <TribeSDK/DAHeader.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAMessageAtView.h"
 #import "DAMessageLabel.h"
 #import "DAMemberDetailViewController.h"

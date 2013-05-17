@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import "DAHeader.h"
-#import "DAWebAccess.h"
+#import "DACommon.h"
 #import "DAGroup.h"
+#import "DAWebAccess.h"
 
 @protocol DAGroupJoinModuleDelegate
 - (void)didFinishJoin:(DAGroup *) group;

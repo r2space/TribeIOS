@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAUser.h>
-#import <TribeSDK/DAFileModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAMemberViewCell : UITableViewCell
 

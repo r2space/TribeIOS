@@ -7,6 +7,7 @@
 //
 
 #import "DAUserList.h"
+#import "DAUser.h"
 
 
 @implementation DAUserList

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAMessage.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @protocol DAMessageAtViewDelegate
 -(void)atUserClicked:(DAUser *)user;

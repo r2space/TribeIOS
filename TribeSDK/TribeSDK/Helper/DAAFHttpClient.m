@@ -7,6 +7,7 @@
 //
 
 #import "DAAFHttpClient.h"
+#import "DACommon.h"
 
 @implementation DAAFHttpClient
 
@@ -17,7 +18,7 @@
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[DAAFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:kRemote]];
+        _sharedClient = [[DAAFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[DACommon getServerAddress]]];
     });
     
     return _sharedClient;

@@ -6,9 +6,8 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import <TribeSDK/TribeSDK.h>
 #import "DAUser.h"
-
+#import "Jastor.h"
 
 @interface CommentPart : Jastor
 @property (retain, nonatomic) DAUser *createby;

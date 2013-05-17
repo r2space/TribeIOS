@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import "DAHeader.h"
+#import "Jastor.h"
 
 @interface DAShortmailList : Jastor
 @property (retain, nonatomic) NSArray *items;

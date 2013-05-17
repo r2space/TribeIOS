@@ -49,7 +49,7 @@
 }
 
 - (IBAction)onLoginTouched:(id)sender {
-    [[DALoginModule alloc] login:self name:@"l_li@dreamarts.co.jp" password:@"l_li"];
+//    [[DALoginModule alloc] login:self name:@"l_li@dreamarts.co.jp" password:@"l_li"];
 }
 
 - (IBAction)onLogoutTouched:(id)sender {

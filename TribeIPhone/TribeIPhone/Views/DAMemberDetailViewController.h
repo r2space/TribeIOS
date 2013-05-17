@@ -7,11 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAUser.h>
-#import <TribeSDK/DAUserFetcher.h>
-#import <TribeSDK/DALoginModule.h>
-#import <TribeSDK/DAUserFollowPoster.h>
-#import <TribeSDK/DAMessageModule.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAMemberDetailCell.h"
 #import "DAMessageCell.h"
 #import "DAMemberController.h"

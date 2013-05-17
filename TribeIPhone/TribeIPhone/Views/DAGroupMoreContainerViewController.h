@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAGroupUpdatePoster.h>
-#import <TribeSDK/DAFileModule.h>
-#import <TribeSDK/DAGroup.h>
+#import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAGroupMoreContainerViewController : UIViewController <DAGroupUpdatePosterDelegate>
 

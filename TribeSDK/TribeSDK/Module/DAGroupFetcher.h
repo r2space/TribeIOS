@@ -6,7 +6,6 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import <TribeSDK/TribeSDK.h>
 #import "DAGroup.h"
 #import "DAWebAccess.h"
 

@@ -6,7 +6,6 @@
 //  Copyright (c) 2012年 dac. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 @interface DARequestHelper : NSObject

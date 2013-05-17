@@ -7,6 +7,7 @@
 //
 
 #import "DAMessageList.h"
+#import "DAMessage.h"
 
 @implementation DAMessageList
 @synthesize total, items;
