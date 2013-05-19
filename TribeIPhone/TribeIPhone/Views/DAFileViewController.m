@@ -16,7 +16,6 @@
 
 @interface DAFileViewController ()
 {
-    NSArray *theFileList;
     MBProgressHUD *_hud;
 }
 
@@ -36,8 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self refresh];
+    [self fetch];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,19 +44,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)refresh
+- (void)fetch
 {
-    if ([self startFetch]) {
+    if ([self preFetch]) {
         return;
     }
     
-    [[DAFileModule alloc] getFileList:0 count:20 callback:^(NSError *error, DAFileList *files){
-        if (error == nil) {
-            theFileList = files.items;
-            [self.tableView reloadData];
-        }
-        
-        [self finishFetch:error];
+    [[DAFileModule alloc] getFileList:start count:count callback:^(NSError *error, DAFileList *files){
+        [self finishFetch:files.items error:error];
     }];
 }
 
@@ -115,13 +108,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return theFileList.count;
+    return list.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    DAFile *file = [theFileList objectAtIndex:indexPath.row];
+    DAFile *file = [list objectAtIndex:indexPath.row];
 	DAFileViewCell *cell = [DAFileViewCell initWithMessage:file tableView:tableView];
     
     cell.lblFileName.text = file.filename;
@@ -140,12 +133,12 @@
 {
     NSLog(@"FileDetailViewController");
     DAFileDetailViewController *detailViewController = [[DAFileDetailViewController alloc] initWithNibName:@"DAFileDetailViewController" bundle:nil];
-    detailViewController.getfile = [theFileList objectAtIndex:indexPath.row];
+    detailViewController.getfile = [list objectAtIndex:indexPath.row];
     //detailViewController.hidesBottomBarWhenPushed  = YES;
     [self.navigationController pushViewController:detailViewController animated:YES];
 //    NSLog(@"FileDetailViewController");
 //    DAFileWebViewController *detailView = [[DAFileWebViewController alloc] initWithNibName:@"DAFileWebViewController" bundle:nil];
-//    DAFile *file = [theFileList objectAtIndex:indexPath.row];
+//    DAFile *file = [list objectAtIndex:indexPath.row];
 //    //kRemote  是接口的网址
 //    detailView.fileUrl = [NSString stringWithFormat:@"%@file/download.json?_id=%@", kRemote,file.downloadId];
 //    

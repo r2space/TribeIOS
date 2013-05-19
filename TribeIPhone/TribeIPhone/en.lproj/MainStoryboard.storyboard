@@ -496,66 +496,6 @@
         <image name="house.png" width="52" height="52"/>
         <image name="refresh.png" width="26" height="26"/>
     </resources>
-    <classes>
-        <class className="DAFileViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAFileViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onAddTouched:"/>
-                <relationship kind="action" name="onCancelTouched:"/>
-                <relationship kind="outlet" name="tblFiles" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAGroupViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAGroupViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgPortrait" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblOwner" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DAGroupViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAGroupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onAddTouched:"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tblGroups" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAMemberViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMemberViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgPortrait" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblName" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DAMemberViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMemberViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAMoreViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMoreViewController.h"/>
-        </class>
-        <class className="DATimeLineViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DATimeLineViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onContributeClicked:"/>
-                <relationship kind="action" name="onNotifiactionClicked:"/>
-                <relationship kind="action" name="onRefreshClicked:"/>
-                <relationship kind="action" name="timeLineViewActionForSegue:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tblMessageList" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

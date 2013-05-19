@@ -17,73 +17,137 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // 缺省值
+    start = 0;
+    count = 20;
+    hasMore = YES;
 
-    // 添加Pull To Refresh控件
     if (self.tableView != nil) {
+        
+        // 添加PullToRefresh控件
         refresh = [[UIRefreshControl alloc] init];
         refresh.tintColor = DAColor;
         [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-        
         [self.tableView addSubview:refresh];
+
+        // 添加Bottom的indicator
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        spinner.frame = CGRectMake(0, 0, 320, 44);
+        self.tableView.tableFooterView = spinner;
     }
 }
 
-- (BOOL)startFetch
+// 进行获取后台数据之前的处理
+// 1. 检测网络
+// 2. 显示获取中信息
+- (BOOL)preFetch
 {
-    progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
+    // 判断网络是否可达
     if ([DAHelper isNetworkReachable]) {
 
         // 网络可达，显示等待
-        progress.mode = MBProgressHUDModeIndeterminate;
-        progress.labelText = @"Loging...";
-        progress.color = DAColor;
-        [progress show:YES];
-
+        [self showIndicator:@"Loging..."];
         return NO;
     }
     
-    progress.mode = MBProgressHUDModeText;
-    progress.dimBackground = YES;
-    
-    progress.labelText = @"无法连接网络";
-    progress.margin = 10.f;
-    //	hud.yOffset = 150.f;
-    progress.removeFromSuperViewOnHide = YES;
-    
-    [progress hide:YES afterDelay:3];
-    
+    // 显示无法连接网络
+    [self showMessage:@"无法连接网络" detail:nil];
+
+    // 停止UIRefreshControl控件
     [refresh endRefreshing];
+    
     return YES;
 }
 
-- (BOOL)finishFetch:(NSError *)error
+// 获取后台数据的代码，在这个方法里实装
+- (void)fetch
 {
-    [progress hide:YES];
-    [refresh endRefreshing];
-    
-    if (error == nil) {
-        return NO;
-    }
-    
-    NSLog(@"%@", error);
-    
-    progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    progress.dimBackground = YES;
-    
-    progress.mode = MBProgressHUDModeText;
-    progress.labelText = @"无法获取数据";
-	progress.detailsLabelText = [NSString stringWithFormat:@"error : %d", [error code]];
-    progress.margin = 10.f;
-    progress.removeFromSuperViewOnHide = YES;
-    
-    [progress hide:YES afterDelay:5];
-    return YES;
+    NSLog(@"the fetch not implemented");
 }
 
 - (void)refresh
 {
-    NSLog(@"请实现DABaseViewController的refresh");
+    start = 0;
+    [self fetch];
+}
+
+// 获取后台数据结束后调用
+// 1. 停止动画
+// 2. 判断是否发生异常
+// 3. 保存数据，并刷新
+- (BOOL)finishFetch:(NSArray *)result error:(NSError *)error
+{
+    [progress hide:YES];
+    [refresh endRefreshing];
+    [((UIActivityIndicatorView *)self.tableView.tableFooterView) stopAnimating];
+
+    // 判断是否有错误
+    if (error == nil) {
+        
+        // 如果获取的实际数小于，指定的数，则标记为没有更多数据
+        if (result.count < count) {
+            hasMore = false;
+        }
+        
+        // 保存数据
+        if (list == nil || start == 0) {
+            list = result;
+        } else {
+            list = [list arrayByAddingObjectsFromArray:result];
+        }
+        
+        // 刷新UITableView
+        [self.tableView reloadData];
+        return NO;
+    }
+    
+    // 显示错误消息
+    [self showMessage:@"无法获取数据" detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+
+    NSLog(@"%@", error);
+    return YES;
+}
+
+
+// UITableView滚动到最下面时，显示获取更多数据的indicator
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!hasMore) {
+        return;
+    }
+    
+    NSInteger currentOffset = scrollView.contentOffset.y;
+    NSInteger maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+    
+    if (maximumOffset - currentOffset <= -40) {
+        [((UIActivityIndicatorView *)self.tableView.tableFooterView) startAnimating];
+        
+        start += count;
+        [self fetch];
+    }
+}
+
+- (void)showMessage:(NSString *)message detail:(NSString *)detail
+{
+    progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    progress.mode = MBProgressHUDModeText;
+    progress.dimBackground = YES;
+    progress.labelText = message;
+	progress.detailsLabelText = detail;
+    progress.margin = 10.f;
+    progress.yOffset = 50.f;
+    progress.removeFromSuperViewOnHide = YES;
+    [progress hide:YES afterDelay:5];
+}
+
+- (void)showIndicator:(NSString *)message
+{
+    progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    progress.mode = MBProgressHUDModeIndeterminate;
+    progress.labelText = message;
+    progress.color = DAColor;
+    [progress show:YES];
 }
 
 @end

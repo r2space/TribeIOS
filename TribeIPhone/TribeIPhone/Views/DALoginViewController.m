@@ -65,7 +65,7 @@
         
         // 刷新数据
         DATimeLineViewController *timeLineViewController = [navigationController.viewControllers objectAtIndex:0];
-        [timeLineViewController showMessages];
+        [timeLineViewController fetch];
         
         NSLog(@"login ok");
         [self.view removeFromSuperview];

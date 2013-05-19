@@ -8,15 +8,10 @@
 
 #import "DATimeLineViewController.h"
 
-#define COUNT_PER_PAGE 20
-
 @interface DATimeLineViewController ()
 {
-    NSArray* messages;
-    BOOL _hasMore;
-    BOOL _loadingMore;
+    
 }
-
 @end
 
 @implementation DATimeLineViewController
@@ -24,14 +19,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self showMessages];
+    [self fetch];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
 - (IBAction)onNotifiactionClicked:(id)sender
 {
     NSLog(@"notification");
@@ -52,25 +42,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (_hasMore) {
-        return messages.count + 1;
-    }
-    return messages.count;
+    return list.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (_hasMore && indexPath.row == messages.count) {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        cell.textLabel.textColor = [UIColor grayColor];
-        cell.textLabel.text = @"More";
-        return cell;
-    }
-    DAMessage *message = [messages objectAtIndex:indexPath.row];
+    DAMessage *message = [list objectAtIndex:indexPath.row];
 	DAMessageCell *cell = [DAMessageCell initWithMessage:message tableView:tableView];
     cell.parentController = self;
 
@@ -79,17 +56,12 @@
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    if (_hasMore && indexPath.row == messages.count) {
-        return 50;
-    }
-    
-    return [DAMessageCell cellHeightWithMessage:[messages objectAtIndex:indexPath.row]];
+    return [DAMessageCell cellHeightWithMessage:[list objectAtIndex:indexPath.row]];
 }
-
 
 - (IBAction)onRefreshClicked:(id)sender
 {
-    [self showMessages];
+    [self refresh];
 }
 
 - (IBAction)onContributeClicked:(id)sender
@@ -98,34 +70,23 @@
     [self presentViewController:ctrl animated:YES completion:nil];
 }
 
-- (void)showMessages
-{
-    [self getMessages:0 count:COUNT_PER_PAGE before:@""];
-}
+#pragma mark - overwrite DABaseViewController
 
-- (void)getMessages:(int)start count:(int)count before:(NSString *)date
+- (void)fetch
 {
-
-    if ([self startFetch]) {
+    if ([self preFetch]) {
         return;
     }
     
-    [[DAMessageModule alloc] getMessagesInTimeLineStart:start count:count before:date callback:^(NSError *error, DAMessageList *messageList){
-        
-        if (error == nil) {
-            _hasMore = COUNT_PER_PAGE <= messageList.items.count;
-            if (!_loadingMore) {
-                messages = messageList.items;
-                [self.tableView reloadData];
-                [self.tableView setContentOffset:CGPointMake(0,0) animated:YES]; // scroll to top
-            } else{
-                messages = [messages arrayByAddingObjectsFromArray:messageList.items];
-                [self.tableView reloadData];
-                _loadingMore = NO;
-            }
-        }
-
-        [self finishFetch:error];
+    // 获取最后一条数据的时间，作为获取更多数据时的标识
+    NSString *before = @"";
+    if (list.count > 0) {
+        DAMessage *lastMsg = [list objectAtIndex:list.count - 1];
+        before = lastMsg.createat;
+    }
+    
+    [[DAMessageModule alloc] getMessagesInTimeLineStart:start count:count before:before callback:^(NSError *error, DAMessageList *messageList){
+        [self finishFetch:messageList.items error:error];
     }];
 }
 
@@ -133,23 +94,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_hasMore && indexPath.row == messages.count) {
-        DAMessage *lastMsg = [messages objectAtIndex:messages.count - 1];
-        _loadingMore = YES;
-        [self getMessages:0 count:COUNT_PER_PAGE before:lastMsg.createat];
-        return;
-    }
-    
     DAMessageDetailViewController *detailViewController = [[DAMessageDetailViewController alloc] initWithNibName:@"DAMessageDetailViewController" bundle:nil];
-    detailViewController.message = [messages objectAtIndex:indexPath.row];
+    detailViewController.message = [list objectAtIndex:indexPath.row];
     detailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailViewController animated:YES];
      
-}
-
-- (void)refresh
-{
-    [self showMessages];
 }
 
 @end

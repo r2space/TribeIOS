@@ -21,8 +21,6 @@
 - (IBAction)onContributeClicked:(id)sender;
 - (IBAction)onNotifiactionClicked:(id)sender;
 
-- (void)showMessages;
-
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

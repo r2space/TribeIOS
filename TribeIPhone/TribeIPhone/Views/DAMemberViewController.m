@@ -12,7 +12,6 @@
 
 @interface DAMemberViewController ()
 {
-    NSArray* theUsers;
 }
 @end
 
@@ -32,7 +31,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self refresh];
+    [self fetch];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -46,19 +45,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)refresh
+- (void)fetch
 {
-    if ([self startFetch]) {
+    if ([self preFetch]) {
         return;
     }
     
-    [[DAUserModule alloc] getUserListStart:0 count:20 callback:^(NSError *error, DAUserList *users){
-        if (error == nil) {
-            theUsers = users.items;
-            [self.tableView reloadData];
-        }
-        
-        [self finishFetch:error];
+    [[DAUserModule alloc] getUserListStart:start count:count callback:^(NSError *error, DAUserList *users){
+        [self finishFetch:users.items error:error];
     }];
 }
 
@@ -69,12 +63,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return theUsers.count;
+    return list.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAUser *user = [theUsers objectAtIndex:indexPath.row];
+    DAUser *user = [list objectAtIndex:indexPath.row];
 	DAMemberViewCell *cell = [DAMemberViewCell initWithMessage:user tableView:tableView];
 
     [cell lblName].text = [user getUserName];
@@ -97,7 +91,7 @@
     
     DAMemberDetailViewController *memberDetailViewController =[[DAMemberDetailViewController alloc]initWithNibName:@"DAMemberDetailViewController" bundle:nil];
     memberDetailViewController.hidesBottomBarWhenPushed = YES;
-    memberDetailViewController.uid = ((DAUser *)[theUsers objectAtIndex:indexPath.row])._id ;
+    memberDetailViewController.uid = ((DAUser *)[list objectAtIndex:indexPath.row])._id ;
     
     [self.navigationController pushViewController:memberDetailViewController animated:YES];
 //    [((UINavigationController *)[self parentViewController]) pushViewController:memberDetailViewController animated:YES];
