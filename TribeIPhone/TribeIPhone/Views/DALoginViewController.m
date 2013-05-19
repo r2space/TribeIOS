@@ -8,7 +8,7 @@
 
 #import "DALoginViewController.h"
 #import "DATimeLineViewController.h"
-#import "DAViewController.h"
+#import "DAMainViewController.h"
 
 @interface DALoginViewController ()
 
@@ -59,7 +59,7 @@
         [userdata writeToFile:[NSString stringWithFormat:@"%@/%@", documentDir, user._id] atomically:YES];
         
         // 显示第一个消息画面
-        DAViewController *controller = (DAViewController *)self.parentViewController;
+        DAMainViewController *controller = (DAMainViewController *)self.parentViewController;
         UINavigationController *navigationController = [controller.viewControllers objectAtIndex: 0];
         controller.selectedViewController = navigationController;
         

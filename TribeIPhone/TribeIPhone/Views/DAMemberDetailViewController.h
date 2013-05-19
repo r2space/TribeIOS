@@ -13,7 +13,7 @@
 #import "DAMemberController.h"
 #import "DAMemberMoreContainerViewController.h"
 
-@interface DAMemberDetailViewController : UIViewController<DAUserFetcherrDelegate,  DAUserFollowPosterDelegate, UITabBarDelegate>
+@interface DAMemberDetailViewController : UIViewController<UITabBarDelegate>
 
 - (IBAction)onCancelTouched:(id)sender;
 

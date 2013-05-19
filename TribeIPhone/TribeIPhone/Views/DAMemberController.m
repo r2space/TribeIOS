@@ -32,15 +32,27 @@
         
     if (self.kind == DAMemberListAll) {
         self.barTitle.title = @"所有用户";
-        [DAUserListFetcher getUserListStart:0 count:20 withDelegate:self];
+
+        [[DAUserModule alloc] getUserListStart:0 count:20 callback:^(NSError *error, DAUserList *users){
+            theMembers = users.items;
+            [self.tblUsers reloadData];
+        }];
     }
     if (self.kind == DAMemberListFollower) {
         self.barTitle.title = @"关注的人";
-        [DAUserFollowerFetcher getUserFollowerListByUser:self.uid start:0 count:20 withDelegate:self];
+        
+        [[DAUserModule alloc] getUserFollowerListByUser:self.uid start:0 count:20 callback:^(NSError *error, DAUserList *users){
+            theMembers = users.items;
+            [self.tblUsers reloadData];
+        }];
     }
     if (self.kind == DAMemberListFollowing) {
         self.barTitle.title = @"粉丝";
-        [DAUserFollowingFetcher getUserFollowingListByUser:self.uid start:0 count:20 withDelegate:self];
+
+        [[DAUserModule alloc] getUserFollowingListByUser:self.uid start:0 count:20 callback:^(NSError *error, DAUserList *users){
+            theMembers = users.items;
+            [self.tblUsers reloadData];
+        }];
     }
     if (self.kind == DAMemberListGroupMember) {
         self.barTitle.title = @"成员";
@@ -54,25 +66,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)didFinishFetchingUserList:(DAUserList *)userList
-{
-    theMembers = userList.items;
-    [self.tblUsers reloadData];
-}
 
 - (void)didFinishFetchingGroupMemberList:(DAUserList *)userList
-{
-    theMembers = userList.items;
-    [self.tblUsers reloadData];
-}
-
-- (void)didFinishFetchingUserFollowerList:(DAUserList *)userList
-{
-    theMembers = userList.items;
-    [self.tblUsers reloadData];
-}
-
-- (void)didFinishFetchingUserFollowingList:(DAUserList *)userList
 {
     theMembers = userList.items;
     [self.tblUsers reloadData];

@@ -6,20 +6,20 @@
 //  Copyright (c) 2013年 kita. All rights reserved.
 //
 
-#import "DAViewController.h"
+#import "DAMainViewController.h"
 #import "DALoginViewController.h"
 #import <TribeSDK/DAMacros.h>
 #import "MBProgressHUD.h"
 #import "DAHelper.h"
 
-@interface DAViewController ()
+@interface DAMainViewController ()
 {
 //    DALoginViewController *loginViewController;
 }
 
 @end
 
-@implementation DAViewController
+@implementation DAMainViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

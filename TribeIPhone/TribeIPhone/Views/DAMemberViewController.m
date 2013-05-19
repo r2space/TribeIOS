@@ -12,7 +12,7 @@
 
 @interface DAMemberViewController ()
 {
-    NSArray* users;
+    NSArray* theUsers;
 }
 @end
 
@@ -32,18 +32,34 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-
+    [self refresh];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [DAUserListFetcher getUserListStart:0 count:20 withDelegate:self];
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)refresh
+{
+    if ([self startFetch]) {
+        return;
+    }
+    
+    [[DAUserModule alloc] getUserListStart:0 count:20 callback:^(NSError *error, DAUserList *users){
+        if (error == nil) {
+            theUsers = users.items;
+            [self.tableView reloadData];
+        }
+        
+        [self finishFetch:error];
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -53,12 +69,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return users.count;
+    return theUsers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAUser *user = [users objectAtIndex:indexPath.row];
+    DAUser *user = [theUsers objectAtIndex:indexPath.row];
 	DAMemberViewCell *cell = [DAMemberViewCell initWithMessage:user tableView:tableView];
 
     [cell lblName].text = [user getUserName];
@@ -81,19 +97,12 @@
     
     DAMemberDetailViewController *memberDetailViewController =[[DAMemberDetailViewController alloc]initWithNibName:@"DAMemberDetailViewController" bundle:nil];
     memberDetailViewController.hidesBottomBarWhenPushed = YES;
-    memberDetailViewController.uid = ((DAUser *)[users objectAtIndex:indexPath.row])._id ;
+    memberDetailViewController.uid = ((DAUser *)[theUsers objectAtIndex:indexPath.row])._id ;
     
     [self.navigationController pushViewController:memberDetailViewController animated:YES];
 //    [((UINavigationController *)[self parentViewController]) pushViewController:memberDetailViewController animated:YES];
     
 }
 
-
-#pragma mark - DaUserListFetcherDelegate
--(void) didFinishFetchingUserList:(DAUserList *)userList
-{
-    users = userList.items;
-    [self.tableView reloadData];
-}
 
 @end

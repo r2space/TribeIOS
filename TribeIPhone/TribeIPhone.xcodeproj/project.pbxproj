@@ -160,7 +160,7 @@
 		F22B38AC173658E60017A986 /* WTStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38A7173658E60017A986 /* WTStatusBar.m */; };
 		F22B38AD173658E60017A986 /* WTStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38A9173658E60017A986 /* WTStatusView.m */; };
 		F22B38AE173658E60017A986 /* WTStatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38AB173658E60017A986 /* WTStatusWindow.m */; };
-		F24F5E58171D229C0032E93B /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24F5E57171D229C0032E93B /* DAViewController.m */; };
+		F24F5E58171D229C0032E93B /* DAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24F5E57171D229C0032E93B /* DAMainViewController.m */; };
 		F24FC31B172775DB00C26D12 /* DAFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24FC319172775DB00C26D12 /* DAFileViewController.m */; };
 		F24FC31C172775DB00C26D12 /* DAFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F24FC31A172775DB00C26D12 /* DAFileViewController.xib */; };
 		F2656EBA171FE355007E8207 /* 18-envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = F2656EB9171FE355007E8207 /* 18-envelope.png */; };
@@ -409,8 +409,8 @@
 		F22B38A9173658E60017A986 /* WTStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTStatusView.m; sourceTree = "<group>"; };
 		F22B38AA173658E60017A986 /* WTStatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTStatusWindow.h; sourceTree = "<group>"; };
 		F22B38AB173658E60017A986 /* WTStatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTStatusWindow.m; sourceTree = "<group>"; };
-		F24F5E56171D229C0032E93B /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
-		F24F5E57171D229C0032E93B /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
+		F24F5E56171D229C0032E93B /* DAMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMainViewController.h; sourceTree = "<group>"; };
+		F24F5E57171D229C0032E93B /* DAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMainViewController.m; sourceTree = "<group>"; };
 		F24FC318172775DB00C26D12 /* DAFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFileViewController.h; sourceTree = "<group>"; };
 		F24FC319172775DB00C26D12 /* DAFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFileViewController.m; sourceTree = "<group>"; };
 		F24FC31A172775DB00C26D12 /* DAFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAFileViewController.xib; sourceTree = "<group>"; };
@@ -642,8 +642,8 @@
 				F2656ECF1720E12C007E8207 /* DAMemberController.h */,
 				F2656ED01720E12C007E8207 /* DAMemberController.m */,
 				F2656ED11720E12D007E8207 /* DAMemberController.xib */,
-				F24F5E56171D229C0032E93B /* DAViewController.h */,
-				F24F5E57171D229C0032E93B /* DAViewController.m */,
+				F24F5E56171D229C0032E93B /* DAMainViewController.h */,
+				F24F5E57171D229C0032E93B /* DAMainViewController.m */,
 				F2B29F421746580F002F7CF8 /* DABaseViewController.h */,
 				F2B29F431746580F002F7CF8 /* DABaseViewController.m */,
 			);
@@ -1202,7 +1202,7 @@
 				4782C985171CF001009E74DC /* DACommentCell.m in Sources */,
 				4782C995171CFC32009E74DC /* DAMessageDetailCell.m in Sources */,
 				4782C9A3171D13FD009E74DC /* DAMessageDetailViewController.m in Sources */,
-				F24F5E58171D229C0032E93B /* DAViewController.m in Sources */,
+				F24F5E58171D229C0032E93B /* DAMainViewController.m in Sources */,
 				F29FBF8B171D2FDE006C9CCB /* DALoginViewController.m in Sources */,
 				F223E2D5171D8A760095F1C1 /* DAGroupDetailViewController.m in Sources */,
 				F223E2E1171E3AEC0095F1C1 /* DAGroupDetailCell.m in Sources */,

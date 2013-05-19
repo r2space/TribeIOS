@@ -12,7 +12,7 @@
 #import "DAInBoxViewController.h"
 #import "DALoginViewController.h"
 
-@interface DAViewController : UIViewController
+@interface DAMainViewController : UIViewController
 - (IBAction)onTimeLineTouched:(id)sender;
 - (IBAction)onInBoxTouched:(id)sender;
 - (IBAction)onGroupTouched:(id)sender;

@@ -19,10 +19,11 @@
     [super viewDidLoad];
 
     // 添加Pull To Refresh控件
-    refresh = [[UIRefreshControl alloc] init];
-    refresh.tintColor = DAColor;
-    [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     if (self.tableView != nil) {
+        refresh = [[UIRefreshControl alloc] init];
+        refresh.tintColor = DAColor;
+        [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+        
         [self.tableView addSubview:refresh];
     }
 }

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
+#import "DABaseViewController.h"
 
-@interface DAMemberViewController : UIViewController <DAUserListFetcherDelegate>
+@interface DAMemberViewController : DABaseViewController
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

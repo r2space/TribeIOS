@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
-@interface DAMemberMoreContainerViewController : UIViewController <DAUserUpdatePosterDelegate>
+@interface DAMemberMoreContainerViewController : UIViewController
 - (IBAction)onCancelTouched:(id)sender;
 @property (weak, nonatomic) NSString *uid;
 - (IBAction)onSaveTouched:(id)sender;

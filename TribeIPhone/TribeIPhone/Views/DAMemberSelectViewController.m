@@ -32,7 +32,11 @@
     
     _allUsers = [[NSArray alloc] init];
     _unSelectUsers = [[NSMutableArray alloc] init];
-    [DAUserListFetcher getUserListStart:0 count:200 withDelegate:self];
+    [[DAUserModule alloc] getUserListStart:0 count:20 callback:^(NSError *error, DAUserList *users){
+        _allUsers = users.items;
+        [self setUnSelectUsers];
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -149,11 +153,4 @@
     }];
 }
 
-#pragma mark - DAUserListFetcherDelegate
-- (void)didFinishFetchingUserList:(DAUserList *)userList
-{
-    _allUsers = userList.items;
-    [self setUnSelectUsers];
-    [self.tableView reloadData];
-}
 @end

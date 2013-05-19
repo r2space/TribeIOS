@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAUserListFetcher.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAMemberCell.h"
 
 @protocol DAMemberSelectViewControllerDelegate
 -(void) didFinshSelectUser;
 @end
 
-@interface DAMemberSelectViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, DAUserListFetcherDelegate>
+@interface DAMemberSelectViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) NSMutableArray *selectedUsers;
 @property (nonatomic) BOOL allowMultiSelect;

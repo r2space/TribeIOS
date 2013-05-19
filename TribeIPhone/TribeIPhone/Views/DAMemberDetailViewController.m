@@ -33,7 +33,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [[DAUserFetcher alloc] getUserById:self uid:self.uid];
+    [[DAUserModule alloc] getUserById:self.uid callback:^(NSError *error, DAUser *user){
+        theUser = user;
+        [[DAMessageModule alloc] getMessagesByUser:self.uid start:0 count:20 before:@"" callback:^(NSError *error, DAMessageList *messageList){
+            theMessageList = messageList.items;
+            [self.tblMessage reloadData];
+        }];
+    }];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* documentDir = [paths objectAtIndex:0];
@@ -98,15 +104,6 @@
 }
 
 
-- (void)didFinishFetchingUser:(DAUser *)user
-{
-    theUser = user;
-    [[DAMessageModule alloc] getMessagesByUser:self.uid start:0 count:20 before:@"" callback:^(NSError *error, DAMessageList *messageList){
-        theMessageList = messageList.items;
-        [self.tblMessage reloadData];
-    }];
-}
-
 - (IBAction)onCancelTouched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -144,9 +141,15 @@
     if (3 == item.tag) {
         // 参加的组
         if (isFollowed) {
-            [[DAUserFollowPoster alloc] follow:theUser._id delegateObj:self];
+            [[DAUserModule alloc] follow:theUser._id callback:^(NSError *error, NSString *uid){
+                isFollowed = !isFollowed;
+                self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
+            }];
         } else {
-            [[DAUserFollowPoster alloc] unfollow:theUser._id delegateObj:self];
+            [[DAUserModule alloc] unfollow:theUser._id callback:^(NSError *error, NSString *uid){
+                isFollowed = !isFollowed;
+                self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
+            }];
         }
     }
     
@@ -164,14 +167,5 @@
         [self.navigationController pushViewController:moreViewController animated:YES];
     }
 }
-
-- (void)didFinishFollow
-{
-    isFollowed = !isFollowed;
-    self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
-
-    NSLog(@"finish follow");
-}
-
 
 @end

@@ -17,7 +17,7 @@
 		F213BFE0171BBE2800E562A8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F213BFDF171BBE2800E562A8 /* Default@2x.png */; };
 		F213BFE2171BBE2800E562A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F213BFE1171BBE2800E562A8 /* Default-568h@2x.png */; };
 		F213BFE5171BBE2800E562A8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F213BFE3171BBE2800E562A8 /* MainStoryboard.storyboard */; };
-		F213BFE8171BBE2800E562A8 /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F213BFE7171BBE2800E562A8 /* DAViewController.m */; };
+		F213BFE8171BBE2800E562A8 /* DAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F213BFE7171BBE2800E562A8 /* DAMainViewController.m */; };
 		F213BFF0171BBE2900E562A8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F213BFEF171BBE2900E562A8 /* SenTestingKit.framework */; };
 		F213BFF1171BBE2900E562A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F213BFCB171BBE2800E562A8 /* UIKit.framework */; };
 		F213BFF2171BBE2900E562A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F213BFCD171BBE2800E562A8 /* Foundation.framework */; };
@@ -92,8 +92,8 @@
 		F213BFDF171BBE2800E562A8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F213BFE1171BBE2800E562A8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F213BFE4171BBE2800E562A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		F213BFE6171BBE2800E562A8 /* DAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
-		F213BFE7171BBE2800E562A8 /* DAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
+		F213BFE6171BBE2800E562A8 /* DAMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAMainViewController.h; sourceTree = "<group>"; };
+		F213BFE7171BBE2800E562A8 /* DAMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAMainViewController.m; sourceTree = "<group>"; };
 		F213BFEE171BBE2900E562A8 /* TribeIPadTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TribeIPadTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F213BFEF171BBE2900E562A8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F213BFF7171BBE2900E562A8 /* TribeIPadTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TribeIPadTests-Info.plist"; sourceTree = "<group>"; };
@@ -205,11 +205,10 @@
 				F213BFDA171BBE2800E562A8 /* DAAppDelegate.h */,
 				F213BFDB171BBE2800E562A8 /* DAAppDelegate.m */,
 				F213BFE3171BBE2800E562A8 /* MainStoryboard.storyboard */,
-				F213BFE6171BBE2800E562A8 /* DAViewController.h */,
-				F213BFE7171BBE2800E562A8 /* DAViewController.m */,
+				F213BFE6171BBE2800E562A8 /* DAMainViewController.h */,
+				F213BFE7171BBE2800E562A8 /* DAMainViewController.m */,
 				F213BFD2171BBE2800E562A8 /* Supporting Files */,
 			);
-			name = TribeIPad;
 			path = TribeIPad;
 			sourceTree = "<group>";
 		};
@@ -234,7 +233,6 @@
 				F213BFFC171BBE2900E562A8 /* TribeIPadTests.m */,
 				F213BFF6171BBE2900E562A8 /* Supporting Files */,
 			);
-			name = TribeIPadTests;
 			path = TribeIPadTests;
 			sourceTree = "<group>";
 		};
@@ -457,7 +455,7 @@
 				F213C1A5171BCBD500E562A8 /* DAMoreViewController.m in Sources */,
 				F213BFD8171BBE2800E562A8 /* main.m in Sources */,
 				F213BFDC171BBE2800E562A8 /* DAAppDelegate.m in Sources */,
-				F213BFE8171BBE2800E562A8 /* DAViewController.m in Sources */,
+				F213BFE8171BBE2800E562A8 /* DAMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import "DAViewController.h"
+#import "DAMainViewController.h"
 
-@interface DAViewController ()
+@interface DAMainViewController ()
 {
     DAMemberViewController *memberViewController;
     DATimeLineViewController *timeLineViewController;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation DAViewController
+@implementation DAMainViewController
 
 - (void)viewDidLoad
 {

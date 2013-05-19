@@ -66,9 +66,6 @@
 		F213C0D8171BC2B200E562A8 /* DALoginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C092171BC2B200E562A8 /* DALoginModule.m */; };
 		F213C0DB171BC2B200E562A8 /* DAMessageModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C098171BC2B200E562A8 /* DAMessageModule.m */; };
 		F213C0DE171BC2B200E562A8 /* DAReplyMeMessageListFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C09E171BC2B200E562A8 /* DAReplyMeMessageListFetcher.m */; };
-		F213C0DF171BC2B200E562A8 /* DAUserFollowerFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0A0171BC2B200E562A8 /* DAUserFollowerFetcher.m */; };
-		F213C0E0171BC2B200E562A8 /* DAUserFollowingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0A2171BC2B200E562A8 /* DAUserFollowingFetcher.m */; };
-		F213C0E1171BC2B200E562A8 /* DAUserListFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0A4171BC2B200E562A8 /* DAUserListFetcher.m */; };
 		F213C0E2171BC2B200E562A8 /* DAWebAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0A6171BC2B200E562A8 /* DAWebAccess.m */; };
 		F213C0E3171BC2B200E562A8 /* DAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0A9171BC2B200E562A8 /* DAFile.m */; };
 		F213C0E4171BC2B200E562A8 /* DAFileList.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0AB171BC2B200E562A8 /* DAFileList.m */; };
@@ -100,9 +97,6 @@
 		F213C112171BC64400E562A8 /* DALoginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F213C091171BC2B200E562A8 /* DALoginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F213C118171BC64400E562A8 /* DAMessageModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F213C097171BC2B200E562A8 /* DAMessageModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F213C11E171BC64400E562A8 /* DAReplyMeMessageListFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = F213C09D171BC2B200E562A8 /* DAReplyMeMessageListFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F213C120171BC64400E562A8 /* DAUserFollowerFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = F213C09F171BC2B200E562A8 /* DAUserFollowerFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F213C122171BC64400E562A8 /* DAUserFollowingFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = F213C0A1171BC2B200E562A8 /* DAUserFollowingFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F213C124171BC64400E562A8 /* DAUserListFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = F213C0A3171BC2B200E562A8 /* DAUserListFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F213C126171BC64400E562A8 /* DAWebAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = F213C0A5171BC2B200E562A8 /* DAWebAccess.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F213C128171BC64400E562A8 /* DAFile.h in Headers */ = {isa = PBXBuildFile; fileRef = F213C0A8171BC2B200E562A8 /* DAFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F213C12A171BC64400E562A8 /* DAFileList.h in Headers */ = {isa = PBXBuildFile; fileRef = F213C0AA171BC2B200E562A8 /* DAFileList.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -132,9 +126,6 @@
 		F213C162171BC6E900E562A8 /* DALoginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C092171BC2B200E562A8 /* DALoginModule.m */; };
 		F213C168171BC6E900E562A8 /* DAMessageModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C098171BC2B200E562A8 /* DAMessageModule.m */; };
 		F213C16E171BC6E900E562A8 /* DAReplyMeMessageListFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C09E171BC2B200E562A8 /* DAReplyMeMessageListFetcher.m */; };
-		F213C170171BC6E900E562A8 /* DAUserFollowerFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0A0171BC2B200E562A8 /* DAUserFollowerFetcher.m */; };
-		F213C172171BC6E900E562A8 /* DAUserFollowingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0A2171BC2B200E562A8 /* DAUserFollowingFetcher.m */; };
-		F213C174171BC6E900E562A8 /* DAUserListFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0A4171BC2B200E562A8 /* DAUserListFetcher.m */; };
 		F213C176171BC6E900E562A8 /* DAWebAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0A6171BC2B200E562A8 /* DAWebAccess.m */; };
 		F213C178171BC6E900E562A8 /* DAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0A9171BC2B200E562A8 /* DAFile.m */; };
 		F213C17A171BC6E900E562A8 /* DAFileList.m in Sources */ = {isa = PBXBuildFile; fileRef = F213C0AB171BC2B200E562A8 /* DAFileList.m */; };
@@ -172,16 +163,7 @@
 		F24F5E4F171CF0DF0032E93B /* DAError.h in Headers */ = {isa = PBXBuildFile; fileRef = F24F5E4D171CF0DF0032E93B /* DAError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F24F5E50171CF0DF0032E93B /* DAError.m in Sources */ = {isa = PBXBuildFile; fileRef = F24F5E4E171CF0DF0032E93B /* DAError.m */; };
 		F24F5E51171CF0DF0032E93B /* DAError.m in Sources */ = {isa = PBXBuildFile; fileRef = F24F5E4E171CF0DF0032E93B /* DAError.m */; };
-		F2656EC4171FFAC6007E8207 /* DAUserFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = F2656EC2171FFAC6007E8207 /* DAUserFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2656EC5171FFAC6007E8207 /* DAUserFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656EC3171FFAC6007E8207 /* DAUserFetcher.m */; };
-		F2656EC6171FFAC6007E8207 /* DAUserFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656EC3171FFAC6007E8207 /* DAUserFetcher.m */; };
-		F2656ED617214279007E8207 /* DAUserFollowPoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F2656ED417214279007E8207 /* DAUserFollowPoster.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2656ED717214279007E8207 /* DAUserFollowPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656ED517214279007E8207 /* DAUserFollowPoster.m */; };
-		F2656ED817214279007E8207 /* DAUserFollowPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656ED517214279007E8207 /* DAUserFollowPoster.m */; };
 		F2656EDC172145C5007E8207 /* DAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656EDB172145C5007E8207 /* DAUserTests.m */; };
-		F2656F141723E96E007E8207 /* DAUserUpdatePoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F2656F121723E96E007E8207 /* DAUserUpdatePoster.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2656F151723E96E007E8207 /* DAUserUpdatePoster.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656F131723E96E007E8207 /* DAUserUpdatePoster.m */; };
-		F2656F161723E96E007E8207 /* DAUserUpdatePoster.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656F131723E96E007E8207 /* DAUserUpdatePoster.m */; };
 		F2656F1E1723F542007E8207 /* DAFilePosterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656F1D1723F542007E8207 /* DAFilePosterTests.m */; };
 		F2656F2417250213007E8207 /* DAUserUpdatePosterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656F2317250213007E8207 /* DAUserUpdatePosterTests.m */; };
 		F29725A1172624BF0070B406 /* DAGroupUpdatePoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F297259F172624BF0070B406 /* DAGroupUpdatePoster.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -252,6 +234,9 @@
 		F2B29F3F17465477002F7CF8 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B29F3D17465477002F7CF8 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B29F4017465477002F7CF8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B29F3E17465477002F7CF8 /* Reachability.m */; };
 		F2B29F4117465477002F7CF8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B29F3E17465477002F7CF8 /* Reachability.m */; };
+		F2B29F471748A504002F7CF8 /* DAUserModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B29F451748A503002F7CF8 /* DAUserModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B29F481748A504002F7CF8 /* DAUserModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B29F461748A503002F7CF8 /* DAUserModule.m */; };
+		F2B29F491748A504002F7CF8 /* DAUserModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B29F461748A503002F7CF8 /* DAUserModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,12 +313,6 @@
 		F213C098171BC2B200E562A8 /* DAMessageModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMessageModule.m; sourceTree = "<group>"; };
 		F213C09D171BC2B200E562A8 /* DAReplyMeMessageListFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAReplyMeMessageListFetcher.h; sourceTree = "<group>"; };
 		F213C09E171BC2B200E562A8 /* DAReplyMeMessageListFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAReplyMeMessageListFetcher.m; sourceTree = "<group>"; };
-		F213C09F171BC2B200E562A8 /* DAUserFollowerFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserFollowerFetcher.h; sourceTree = "<group>"; };
-		F213C0A0171BC2B200E562A8 /* DAUserFollowerFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserFollowerFetcher.m; sourceTree = "<group>"; };
-		F213C0A1171BC2B200E562A8 /* DAUserFollowingFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserFollowingFetcher.h; sourceTree = "<group>"; };
-		F213C0A2171BC2B200E562A8 /* DAUserFollowingFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserFollowingFetcher.m; sourceTree = "<group>"; };
-		F213C0A3171BC2B200E562A8 /* DAUserListFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserListFetcher.h; sourceTree = "<group>"; };
-		F213C0A4171BC2B200E562A8 /* DAUserListFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserListFetcher.m; sourceTree = "<group>"; };
 		F213C0A5171BC2B200E562A8 /* DAWebAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAWebAccess.h; sourceTree = "<group>"; };
 		F213C0A6171BC2B200E562A8 /* DAWebAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAWebAccess.m; sourceTree = "<group>"; };
 		F213C0A8171BC2B200E562A8 /* DAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFile.h; sourceTree = "<group>"; };
@@ -391,14 +370,8 @@
 		F22B38211733B7800017A986 /* DAFileModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFileModule.m; sourceTree = "<group>"; };
 		F24F5E4D171CF0DF0032E93B /* DAError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAError.h; sourceTree = "<group>"; };
 		F24F5E4E171CF0DF0032E93B /* DAError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAError.m; sourceTree = "<group>"; };
-		F2656EC2171FFAC6007E8207 /* DAUserFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserFetcher.h; sourceTree = "<group>"; };
-		F2656EC3171FFAC6007E8207 /* DAUserFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserFetcher.m; sourceTree = "<group>"; };
-		F2656ED417214279007E8207 /* DAUserFollowPoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserFollowPoster.h; sourceTree = "<group>"; };
-		F2656ED517214279007E8207 /* DAUserFollowPoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserFollowPoster.m; sourceTree = "<group>"; };
 		F2656EDA172145C5007E8207 /* DAUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserTests.h; sourceTree = "<group>"; };
 		F2656EDB172145C5007E8207 /* DAUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserTests.m; sourceTree = "<group>"; };
-		F2656F121723E96E007E8207 /* DAUserUpdatePoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserUpdatePoster.h; sourceTree = "<group>"; };
-		F2656F131723E96E007E8207 /* DAUserUpdatePoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserUpdatePoster.m; sourceTree = "<group>"; };
 		F2656F1C1723F542007E8207 /* DAFilePosterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFilePosterTests.h; sourceTree = "<group>"; };
 		F2656F1D1723F542007E8207 /* DAFilePosterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFilePosterTests.m; sourceTree = "<group>"; };
 		F2656F2217250212007E8207 /* DAUserUpdatePosterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserUpdatePosterTests.h; sourceTree = "<group>"; };
@@ -451,6 +424,8 @@
 		F2A8316B1744B31300375909 /* DAAFHttpOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAFHttpOperation.m; sourceTree = "<group>"; };
 		F2B29F3D17465477002F7CF8 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		F2B29F3E17465477002F7CF8 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		F2B29F451748A503002F7CF8 /* DAUserModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserModule.h; sourceTree = "<group>"; };
+		F2B29F461748A503002F7CF8 /* DAUserModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,11 +556,13 @@
 		F213C086171BC2B200E562A8 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				F213C0A7171BC2B200E562A8 /* Entities */,
 				0417CEB91728C35A0061FFC6 /* Notification */,
 				F2656EC81720CE49007E8207 /* Group */,
-				F2656EC71720CE35007E8207 /* User */,
 				F2A831601743659B00375909 /* DAGroupModule.h */,
 				F2A831611743659B00375909 /* DAGroupModule.m */,
+				F2B29F451748A503002F7CF8 /* DAUserModule.h */,
+				F2B29F461748A503002F7CF8 /* DAUserModule.m */,
 				F213C097171BC2B200E562A8 /* DAMessageModule.h */,
 				F213C098171BC2B200E562A8 /* DAMessageModule.m */,
 				F2A6EAA7172AA1B600C1A9BF /* DAShortmailModule.h */,
@@ -608,7 +585,6 @@
 				F2A8314D1742262600375909 /* DADataStoreModule.m */,
 				F2A8315B17422B1100375909 /* DATurnoverModule.h */,
 				F2A8315C17422B1100375909 /* DATurnoverModule.m */,
-				F213C0A7171BC2B200E562A8 /* Entities */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -728,25 +704,6 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
-		F2656EC71720CE35007E8207 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				F2656EC2171FFAC6007E8207 /* DAUserFetcher.h */,
-				F2656EC3171FFAC6007E8207 /* DAUserFetcher.m */,
-				F213C09F171BC2B200E562A8 /* DAUserFollowerFetcher.h */,
-				F213C0A0171BC2B200E562A8 /* DAUserFollowerFetcher.m */,
-				F213C0A1171BC2B200E562A8 /* DAUserFollowingFetcher.h */,
-				F213C0A2171BC2B200E562A8 /* DAUserFollowingFetcher.m */,
-				F213C0A3171BC2B200E562A8 /* DAUserListFetcher.h */,
-				F213C0A4171BC2B200E562A8 /* DAUserListFetcher.m */,
-				F2656ED417214279007E8207 /* DAUserFollowPoster.h */,
-				F2656ED517214279007E8207 /* DAUserFollowPoster.m */,
-				F2656F121723E96E007E8207 /* DAUserUpdatePoster.h */,
-				F2656F131723E96E007E8207 /* DAUserUpdatePoster.m */,
-			);
-			name = User;
-			sourceTree = "<group>";
-		};
 		F2656EC81720CE49007E8207 /* Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,9 +782,6 @@
 				F213C112171BC64400E562A8 /* DALoginModule.h in Headers */,
 				F213C118171BC64400E562A8 /* DAMessageModule.h in Headers */,
 				F213C11E171BC64400E562A8 /* DAReplyMeMessageListFetcher.h in Headers */,
-				F213C120171BC64400E562A8 /* DAUserFollowerFetcher.h in Headers */,
-				F213C122171BC64400E562A8 /* DAUserFollowingFetcher.h in Headers */,
-				F213C124171BC64400E562A8 /* DAUserListFetcher.h in Headers */,
 				F213C126171BC64400E562A8 /* DAWebAccess.h in Headers */,
 				F213C128171BC64400E562A8 /* DAFile.h in Headers */,
 				F213C12A171BC64400E562A8 /* DAFileList.h in Headers */,
@@ -853,9 +807,6 @@
 				470D9B4E171D3290009A6B0E /* DACommentList.h in Headers */,
 				F223E2EE171E4F1C0095F1C1 /* DAGroupFetcher.h in Headers */,
 				F223E2FA171EC9090095F1C1 /* DAGroupJoinModule.h in Headers */,
-				F2656EC4171FFAC6007E8207 /* DAUserFetcher.h in Headers */,
-				F2656ED617214279007E8207 /* DAUserFollowPoster.h in Headers */,
-				F2656F141723E96E007E8207 /* DAUserUpdatePoster.h in Headers */,
 				F29725A1172624BF0070B406 /* DAGroupUpdatePoster.h in Headers */,
 				0417CEB11728C0170061FFC6 /* DANotification.h in Headers */,
 				0417CEB61728C08A0061FFC6 /* DANotificationList.h in Headers */,
@@ -888,6 +839,7 @@
 				F2A8315D17422B1100375909 /* DATurnoverModule.h in Headers */,
 				F29A9B6A1745FD1E00273253 /* TribeSDKHeader.h in Headers */,
 				F2B29F3F17465477002F7CF8 /* Reachability.h in Headers */,
+				F2B29F471748A504002F7CF8 /* DAUserModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,9 +966,6 @@
 				F213C162171BC6E900E562A8 /* DALoginModule.m in Sources */,
 				F213C168171BC6E900E562A8 /* DAMessageModule.m in Sources */,
 				F213C16E171BC6E900E562A8 /* DAReplyMeMessageListFetcher.m in Sources */,
-				F213C170171BC6E900E562A8 /* DAUserFollowerFetcher.m in Sources */,
-				F213C172171BC6E900E562A8 /* DAUserFollowingFetcher.m in Sources */,
-				F213C174171BC6E900E562A8 /* DAUserListFetcher.m in Sources */,
 				F213C176171BC6E900E562A8 /* DAWebAccess.m in Sources */,
 				F213C178171BC6E900E562A8 /* DAFile.m in Sources */,
 				F213C17A171BC6E900E562A8 /* DAFileList.m in Sources */,
@@ -1042,9 +991,6 @@
 				470D9B4F171D3290009A6B0E /* DACommentList.m in Sources */,
 				F223E2EF171E4F1C0095F1C1 /* DAGroupFetcher.m in Sources */,
 				F223E2FB171EC9090095F1C1 /* DAGroupJoinModule.m in Sources */,
-				F2656EC5171FFAC6007E8207 /* DAUserFetcher.m in Sources */,
-				F2656ED717214279007E8207 /* DAUserFollowPoster.m in Sources */,
-				F2656F151723E96E007E8207 /* DAUserUpdatePoster.m in Sources */,
 				F29725A2172624BF0070B406 /* DAGroupUpdatePoster.m in Sources */,
 				0417CEB21728C0170061FFC6 /* DANotification.m in Sources */,
 				0417CEB71728C08A0061FFC6 /* DANotificationList.m in Sources */,
@@ -1075,6 +1021,7 @@
 				F2A83168174386E400375909 /* DAJsonHelper.m in Sources */,
 				F2A8316D1744B31300375909 /* DAAFHttpOperation.m in Sources */,
 				F2B29F4017465477002F7CF8 /* Reachability.m in Sources */,
+				F2B29F481748A504002F7CF8 /* DAUserModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,9 +1039,6 @@
 				F213C0D8171BC2B200E562A8 /* DALoginModule.m in Sources */,
 				F213C0DB171BC2B200E562A8 /* DAMessageModule.m in Sources */,
 				F213C0DE171BC2B200E562A8 /* DAReplyMeMessageListFetcher.m in Sources */,
-				F213C0DF171BC2B200E562A8 /* DAUserFollowerFetcher.m in Sources */,
-				F213C0E0171BC2B200E562A8 /* DAUserFollowingFetcher.m in Sources */,
-				F213C0E1171BC2B200E562A8 /* DAUserListFetcher.m in Sources */,
 				F213C0E2171BC2B200E562A8 /* DAWebAccess.m in Sources */,
 				F213C0E3171BC2B200E562A8 /* DAFile.m in Sources */,
 				F213C0E4171BC2B200E562A8 /* DAFileList.m in Sources */,
@@ -1123,10 +1067,7 @@
 				F223E2F3171E669F0095F1C1 /* DAGroupFetcherTests.m in Sources */,
 				F223E2FC171EC9090095F1C1 /* DAGroupJoinModule.m in Sources */,
 				F223E302171ECDEF0095F1C1 /* DAGroupJoinModuleTests.m in Sources */,
-				F2656EC6171FFAC6007E8207 /* DAUserFetcher.m in Sources */,
-				F2656ED817214279007E8207 /* DAUserFollowPoster.m in Sources */,
 				F2656EDC172145C5007E8207 /* DAUserTests.m in Sources */,
-				F2656F161723E96E007E8207 /* DAUserUpdatePoster.m in Sources */,
 				F2656F1E1723F542007E8207 /* DAFilePosterTests.m in Sources */,
 				F2656F2417250213007E8207 /* DAUserUpdatePosterTests.m in Sources */,
 				F29725A3172624BF0070B406 /* DAGroupUpdatePoster.m in Sources */,
@@ -1161,6 +1102,7 @@
 				F2A83169174386E400375909 /* DAJsonHelper.m in Sources */,
 				F2A8316E1744B31300375909 /* DAAFHttpOperation.m in Sources */,
 				F2B29F4117465477002F7CF8 /* Reachability.m in Sources */,
+				F2B29F491748A504002F7CF8 /* DAUserModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

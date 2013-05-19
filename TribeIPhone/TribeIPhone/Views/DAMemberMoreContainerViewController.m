@@ -58,28 +58,44 @@
     NSString *file = [DAHelper documentPath:@"upload.jpg"];
     
     if ([DAHelper isFileExist:file]) {
+        
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
         [[DAFileModule alloc] uploadFile:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
-            NSMutableDictionary *userdata = [NSMutableDictionary dictionary];
-            [userdata setObject:moreViewController.uid forKey:@"_id"];
-            [userdata setObject:moreViewController.txtName.text forKey:@"name"];
-            [userdata setObject:moreViewController.txtEmail.text forKey:@"email"];
-            [userdata setObject:moreViewController.txtMobile.text forKey:@"tel"];
+
+            // TODO: 获取待更新的用户Object
+            DAUser *user = [[DAUser alloc] init];
+            user._id = moreViewController.uid;
             
-            //    [userdata setObject:moreViewController.txtDescription.text forKey:@"description"];
-            [userdata setObject:file._id forKey:@"fid"];
+            UserName *uname = [[UserName alloc] init];
+            user.name = uname;
+            user.name.name_zh = moreViewController.txtName.text;
+            // user.email
+            // user.tel
             
-            [[DAUserUpdatePoster alloc] update:userdata delegateObj:self];
+//            user.photo
+//            user.photo.fid
+//            user.photo.x
+//            user.photo.y
+//            user.photo.width
+
+            [[DAUserModule alloc] update:user callback:^(NSError *error, DAUser *user){
+                NSLog(@"didFinishUpdate");
+            }];
         } progress:nil];
         
     } else {
-        NSMutableDictionary *userdata = [NSMutableDictionary dictionary];
-        [userdata setObject:moreViewController.uid forKey:@"_id"];
-//        [userdata setObject:moreViewController.txtName.text forKey:@"name"];
-//        [userdata setObject:moreViewController.txtEmail.text forKey:@"email"];
-//        [userdata setObject:moreViewController.txtDescription.text forKey:@"description"];
+
+        // TODO: 获取待更新的用户Object
+        DAUser *user = [[DAUser alloc] init];
+        user._id = moreViewController.uid;
         
-        [[DAUserUpdatePoster alloc] update:userdata delegateObj:self];
+        UserName *uname = [[UserName alloc] init];
+        user.name = uname;
+        user.name.name_zh = moreViewController.txtName.text;
+
+        [[DAUserModule alloc] update:user callback:^(NSError *error, DAUser *user){
+            NSLog(@"didFinishUpdate");
+        }];
 
     }
 }

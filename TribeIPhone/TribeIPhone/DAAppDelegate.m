@@ -49,7 +49,18 @@
     
     NSString *loginuid = [DALoginModule getLoginUserId];
     if (loginuid != nil) {
-        [[DAUserFetcher alloc] getUserById:self uid:loginuid];
+
+        // 从新打开设备时，获取当前登陆用户的最新信息，该信息保存在文件当中，当做全局变量使用
+        // TODO:更新用户信息时，也需要更新该文件
+        [[DAUserModule alloc] getUserById:loginuid callback:^(NSError *error, DAUser *user){
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString* documentDir = [paths objectAtIndex:0];
+            
+            NSData *userdata = [NSKeyedArchiver archivedDataWithRootObject:user];
+            [userdata writeToFile:[NSString stringWithFormat:@"%@/%@", documentDir, user._id] atomically:YES];
+            
+            NSLog(@"save login user info ok!");
+        }];
     }
 }
 
@@ -63,19 +74,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-// 从新打开设备时，获取当前登陆用户的最新信息，该信息保存在文件当中，当做全局变量使用
-// TODO:更新用户信息时，也需要更新该文件
-- (void)didFinishFetchingUser:(DAUser *)user
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documentDir = [paths objectAtIndex:0];
-    
-    NSData *userdata = [NSKeyedArchiver archivedDataWithRootObject:user];
-    [userdata writeToFile:[NSString stringWithFormat:@"%@/%@", documentDir, user._id] atomically:YES];
-    
-    NSLog(@"save login user info ok!");
 }
 
 @end

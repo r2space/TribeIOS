@@ -58,12 +58,6 @@
 #import <TribeSDK/DAUser.h>
 #import <TribeSDK/DAUserList.h>
 #import <TribeSDK/DALoginModule.h>
-
-#import <TribeSDK/DAUserFetcher.h>
-#import <TribeSDK/DAUserFollowPoster.h>
-#import <TribeSDK/DAUserFollowerFetcher.h>
-#import <TribeSDK/DAUserFollowingFetcher.h>
-#import <TribeSDK/DAUserListFetcher.h>
-#import <TribeSDK/DAUserUpdatePoster.h>
+#import <TribeSDK/DAUserModule.h>
 
 #endif

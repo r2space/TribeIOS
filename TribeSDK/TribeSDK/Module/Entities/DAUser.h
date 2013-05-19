@@ -32,6 +32,7 @@
 @property (retain, nonatomic) UserName *name;
 @property (retain, nonatomic) UserPhoto *photo;
 @property (retain, nonatomic) NSArray *following;
+@property (retain, nonatomic) NSString *uid;
 
 -(NSString *)getUserName;
 -(NSString *)getUserPhotoId;

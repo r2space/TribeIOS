@@ -318,10 +318,10 @@
             </objects>
             <point key="canvasLocation" x="1988" y="-550"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="H4f-Ro-q8R">
             <objects>
-                <tabBarController id="4yk-1H-mB6" customClass="DAViewController" sceneMemberID="viewController">
+                <tabBarController id="4yk-1H-mB6" customClass="DAMainViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Bvk-Qj-wA3">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -548,9 +548,6 @@
                 <relationship kind="outlet" name="tblMessageList" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
-        </class>
-        <class className="DAViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAViewController.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
