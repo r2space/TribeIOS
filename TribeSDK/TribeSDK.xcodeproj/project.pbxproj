@@ -154,9 +154,6 @@
 		F2656EDC172145C5007E8207 /* DAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656EDB172145C5007E8207 /* DAUserTests.m */; };
 		F2656F1E1723F542007E8207 /* DAFilePosterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656F1D1723F542007E8207 /* DAFilePosterTests.m */; };
 		F2656F2417250213007E8207 /* DAUserUpdatePosterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656F2317250213007E8207 /* DAUserUpdatePosterTests.m */; };
-		F29725A1172624BF0070B406 /* DAGroupUpdatePoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F297259F172624BF0070B406 /* DAGroupUpdatePoster.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29725A2172624BF0070B406 /* DAGroupUpdatePoster.m in Sources */ = {isa = PBXBuildFile; fileRef = F29725A0172624BF0070B406 /* DAGroupUpdatePoster.m */; };
-		F29725A3172624BF0070B406 /* DAGroupUpdatePoster.m in Sources */ = {isa = PBXBuildFile; fileRef = F29725A0172624BF0070B406 /* DAGroupUpdatePoster.m */; };
 		F29A9B6A1745FD1E00273253 /* TribeSDKHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A9B691745FD1C00273253 /* TribeSDKHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A6EAA9172AA1B600C1A9BF /* DAShortmailModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A6EAA7172AA1B600C1A9BF /* DAShortmailModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A6EAAA172AA1B600C1A9BF /* DAShortmailModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6EAA8172AA1B600C1A9BF /* DAShortmailModule.m */; };
@@ -356,8 +353,6 @@
 		F2656F1D1723F542007E8207 /* DAFilePosterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFilePosterTests.m; sourceTree = "<group>"; };
 		F2656F2217250212007E8207 /* DAUserUpdatePosterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserUpdatePosterTests.h; sourceTree = "<group>"; };
 		F2656F2317250213007E8207 /* DAUserUpdatePosterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserUpdatePosterTests.m; sourceTree = "<group>"; };
-		F297259F172624BF0070B406 /* DAGroupUpdatePoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGroupUpdatePoster.h; sourceTree = "<group>"; };
-		F29725A0172624BF0070B406 /* DAGroupUpdatePoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGroupUpdatePoster.m; sourceTree = "<group>"; };
 		F29A9B691745FD1C00273253 /* TribeSDKHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeSDKHeader.h; sourceTree = "<group>"; };
 		F2A6EAA7172AA1B600C1A9BF /* DAShortmailModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAShortmailModule.h; sourceTree = "<group>"; };
 		F2A6EAA8172AA1B600C1A9BF /* DAShortmailModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAShortmailModule.m; sourceTree = "<group>"; };
@@ -538,7 +533,6 @@
 			children = (
 				F213C0A7171BC2B200E562A8 /* Entities */,
 				0417CEB91728C35A0061FFC6 /* Notification */,
-				F2656EC81720CE49007E8207 /* Group */,
 				F2A831601743659B00375909 /* DAGroupModule.h */,
 				F2A831611743659B00375909 /* DAGroupModule.m */,
 				F2B29F451748A503002F7CF8 /* DAUserModule.h */,
@@ -684,15 +678,6 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
-		F2656EC81720CE49007E8207 /* Group */ = {
-			isa = PBXGroup;
-			children = (
-				F297259F172624BF0070B406 /* DAGroupUpdatePoster.h */,
-				F29725A0172624BF0070B406 /* DAGroupUpdatePoster.m */,
-			);
-			name = Group;
-			sourceTree = "<group>";
-		};
 		F2656ED9172145AA007E8207 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,7 +760,6 @@
 				F24F5E4F171CF0DF0032E93B /* DAError.h in Headers */,
 				470D9B49171D30A0009A6B0E /* DAComment.h in Headers */,
 				470D9B4E171D3290009A6B0E /* DACommentList.h in Headers */,
-				F29725A1172624BF0070B406 /* DAGroupUpdatePoster.h in Headers */,
 				0417CEB11728C0170061FFC6 /* DANotification.h in Headers */,
 				0417CEB61728C08A0061FFC6 /* DANotificationList.h in Headers */,
 				0417CEBC1728C3A10061FFC6 /* DANotificationFetcher.h in Headers */,
@@ -955,7 +939,6 @@
 				F24F5E50171CF0DF0032E93B /* DAError.m in Sources */,
 				470D9B4A171D30A0009A6B0E /* DAComment.m in Sources */,
 				470D9B4F171D3290009A6B0E /* DACommentList.m in Sources */,
-				F29725A2172624BF0070B406 /* DAGroupUpdatePoster.m in Sources */,
 				0417CEB21728C0170061FFC6 /* DANotification.m in Sources */,
 				0417CEB71728C08A0061FFC6 /* DANotificationList.m in Sources */,
 				0417CEBD1728C3A10061FFC6 /* DANotificationFetcher.m in Sources */,
@@ -1030,7 +1013,6 @@
 				F2656EDC172145C5007E8207 /* DAUserTests.m in Sources */,
 				F2656F1E1723F542007E8207 /* DAFilePosterTests.m in Sources */,
 				F2656F2417250213007E8207 /* DAUserUpdatePosterTests.m in Sources */,
-				F29725A3172624BF0070B406 /* DAGroupUpdatePoster.m in Sources */,
 				0417CEB31728C0170061FFC6 /* DANotification.m in Sources */,
 				0417CEB81728C08A0061FFC6 /* DANotificationList.m in Sources */,
 				0417CEBE1728C3A10061FFC6 /* DANotificationFetcher.m in Sources */,

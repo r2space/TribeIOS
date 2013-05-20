@@ -79,9 +79,13 @@
             g.photo = photo;
             
             if (moreViewController.group == nil) {
-                [[DAGroupUpdatePoster alloc] create:g delegateObj:self];
+                [[DAGroupModule alloc] create:g callback:^(NSError *error, DAGroup *group) {
+                NSLog(@"didFinishUpdate");
+                }];
             } else {
-                [[DAGroupUpdatePoster alloc] update:g delegateObj:self];
+                [[DAGroupModule alloc] update:g callback:^(NSError *error, DAGroup *group) {
+                    NSLog(@"didFinishUpdate");
+                }];
             }
 
         } progress:nil];
@@ -100,16 +104,15 @@
         g.description = moreViewController.txtDescription.text;
         
         if (moreViewController.group == nil) {
-            [[DAGroupUpdatePoster alloc] create:g delegateObj:self];
+            [[DAGroupModule alloc] create:g callback:^(NSError *error, DAGroup *group) {
+                NSLog(@"didFinishUpdate");
+            }];
         } else {
-            [[DAGroupUpdatePoster alloc] update:g delegateObj:self];
+            [[DAGroupModule alloc] update:g callback:^(NSError *error, DAGroup *group) {
+                NSLog(@"didFinishUpdate");
+            }];
         }
     }
-}
-
-- (void)didFinishUpdateGroup
-{
-    NSLog(@"didFinishUpdate");
 }
 
 @end

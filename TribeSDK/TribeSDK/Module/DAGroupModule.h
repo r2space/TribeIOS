@@ -19,4 +19,6 @@
 - (void)getGroupListByUser:(NSString *)uid start:(int)start count:(int)count callback:(void (^)(NSError *error, DAGroupList *groups))callback;
 - (void)joinGroup:(NSString *)gid uid:(NSString *)uid callback:(void (^)(NSError *error, DAGroup *group))callback;
 - (void)leaveGroup:(NSString *)gid uid:(NSString *)uid callback:(void (^)(NSError *error, DAGroup *group))callback;
+- (void)create:(DAGroup *)group callback:(void (^)(NSError *error, DAGroup *group))callback;
+- (void)update:(DAGroup *)group callback:(void (^)(NSError *error, DAGroup *group))callback;
 @end

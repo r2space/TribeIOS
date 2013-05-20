@@ -21,7 +21,6 @@
 #import <TribeSDK/DAGroupList.h>
 
 #import <TribeSDK/DAGroupModule.h>
-#import <TribeSDK/DAGroupUpdatePoster.h>
 
 // message
 #import <TribeSDK/DAComment.h>

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
-@interface DAGroupMoreContainerViewController : UIViewController <DAGroupUpdatePosterDelegate>
+@interface DAGroupMoreContainerViewController : UIViewController
 
 @property (weak, nonatomic) DAGroup *group;
 - (IBAction)onCancelTouched:(id)sender;
