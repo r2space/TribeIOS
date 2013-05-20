@@ -30,7 +30,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [[DAGroupListFetcher alloc] getGroupListByUser:self.uid start:0 count:20 delegate:self];
+    [[DAGroupModule alloc] getGroupListByUser:self.uid start:0 count:20 callback:^(NSError *error, DAGroupList *groups){
+        NSLog(@"%d", groups.items.count);
+        theGroups = groups.items;
+        [self.tblGroupList reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,14 +65,6 @@
     
     cell.textLabel.text = group.name.name_zh;
     return cell;
-}
-
-- (void)didFinishFetchingGroupList:(DAGroupList *)groupList
-{
-    NSLog(@"%d", groupList.items.count);
-    theGroups = groupList.items;
-    [self.tblGroupList reloadData];
-    
 }
 
 - (IBAction)onCancelTouched:(id)sender {

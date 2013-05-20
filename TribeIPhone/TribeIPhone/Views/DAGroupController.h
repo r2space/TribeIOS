@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
-@interface DAGroupController : UIViewController <DAGroupListFetcherDelegate>
+@interface DAGroupController : UIViewController
 
 @property (weak, nonatomic) NSString *uid;
 - (IBAction)onCancelTouched:(id)sender;

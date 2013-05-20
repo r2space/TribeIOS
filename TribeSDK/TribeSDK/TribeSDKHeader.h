@@ -20,10 +20,6 @@
 #import <TribeSDK/DAGroup.h>
 #import <TribeSDK/DAGroupList.h>
 
-#import <TribeSDK/DAGroupFetcher.h>
-#import <TribeSDK/DAGroupJoinModule.h>
-#import <TribeSDK/DAGroupListFetcher.h>
-#import <TribeSDK/DAGroupMemberListFetcher.h>
 #import <TribeSDK/DAGroupModule.h>
 #import <TribeSDK/DAGroupUpdatePoster.h>
 

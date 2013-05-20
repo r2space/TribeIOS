@@ -14,7 +14,7 @@
 -(void) didFinshSelectGroup;
 @end
 
-@interface DAGroupSelectViewController : UIViewController<DAGroupListFetcherDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface DAGroupSelectViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSelect;
 @property (weak, nonatomic) NSMutableArray *selectedGroups;

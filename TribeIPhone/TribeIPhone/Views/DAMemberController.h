@@ -20,7 +20,7 @@ typedef enum {
 
 typedef void (^UserDidSelected)(DAUser *);
 
-@interface DAMemberController : UIViewController<DAGroupMemberListFetcherDelegate>
+@interface DAMemberController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tblUsers;
 @property (nonatomic) DAMemberListType kind;

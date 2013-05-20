@@ -40,7 +40,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[DAGroupListFetcher alloc] getGroupListWithDelegate:self];
+    [[DAGroupModule alloc] getGroupListStart:0 count:20 callback:^(NSError *error, DAGroupList *groups){
+        theGroups = groups.items;
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,15 +88,6 @@
     NSString *a = @"あ/か/さ/た/な/は/ま/や/ら/わ/A/●/D/●/G/●/J/●/M/●/P/●/T/●/Z";
     return [a pathComponents];
 }
-
-
-#pragma mark - DAGroupListFetcherDelegate
-- (void) didFinishFetchingGroupList:(DAGroupList *)groupList
-{
-    theGroups = groupList.items;
-    [self.tableView reloadData];
-}
-
 
 - (IBAction)onAddTouched:(id)sender {
     DAGroupMoreContainerViewController *moreViewController = [[DAGroupMoreContainerViewController alloc] initWithNibName:@"DAGroupMoreContainerViewController" bundle:nil];

@@ -56,7 +56,10 @@
     }
     if (self.kind == DAMemberListGroupMember) {
         self.barTitle.title = @"成员";
-        [DAGroupMemberListFetcher getUserListInGroup:self.gid start:0 count:20 withDelegate:self];
+        [[DAGroupModule alloc] getUserListInGroup:self.gid start:0 count:20 callback:^(NSError *error, DAUserList *users){
+            theMembers = users.items;
+            [self.tblUsers reloadData];
+        }];
     }
 }
 
@@ -65,14 +68,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-- (void)didFinishFetchingGroupMemberList:(DAUserList *)userList
-{
-    theMembers = userList.items;
-    [self.tblUsers reloadData];
-}
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

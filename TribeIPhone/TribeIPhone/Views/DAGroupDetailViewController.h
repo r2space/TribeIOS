@@ -11,7 +11,7 @@
 #import "DAGroupDetailCell.h"
 #import "DAMessageCell.h"
 
-@interface DAGroupDetailViewController : UIViewController <DAGroupFetcherDelegate, DAGroupJoinModuleDelegate, UITabBarDelegate>
+@interface DAGroupDetailViewController : UIViewController <UITabBarDelegate>
 - (IBAction)onCancelTouched:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tblMessage;
 @property (weak, nonatomic) NSString *gid;

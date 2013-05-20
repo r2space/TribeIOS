@@ -33,8 +33,11 @@
     _allGroups = [[NSArray alloc] init];
     _unSelectGroups = [[NSMutableArray alloc] init];
     
-    DAGroupListFetcher *fetcher = [[DAGroupListFetcher alloc] init];
-    [fetcher getGroupListWithDelegate:self];
+    [[DAGroupModule alloc] getGroupListStart:0 count:20 callback:^(NSError *error, DAGroupList *groups){
+        _allGroups = groups.items;
+        [self setUnSelectGroups];
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -143,14 +146,6 @@
     [self dismissViewControllerAnimated:YES completion:^{
         [self.delegate didFinshSelectGroup];
     }];
-}
-
-#pragma mark - DAGroupListFetcherDelegate
-- (void)didFinishFetchingGroupList:(DAGroupList *)groupList
-{
-    _allGroups = groupList.items;
-    [self setUnSelectGroups];
-    [self.tableView reloadData];
 }
 
 @end

@@ -40,34 +40,30 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [[DAGroupFetcher alloc] getGroupById:self gid:self.gid];
+    [[DAGroupModule alloc] getGroup:self.gid callback:^(NSError *error, DAGroup *group){
+        theGroup = group;
+    
+        // 判断当前用户是否是组的成员
+        for (NSString *member in group.member) {
+            if ([member isEqualToString:[DALoginModule getLoginUserId]]) {
+                isMember = YES;
+                break;
+            }
+        }
+        
+        self.barJoinOrLeave.title = isMember ? @"退出" : @"加入";
+        
+        [[DAMessageModule alloc] getMessagesInGroup:group._id start:0 count:20 before:@"" callback:^(NSError *error, DAMessageList *messageList){
+            theMessageList = messageList.items;
+            [self.tblMessage reloadData];
+        }];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-- (void)didFinishFetchingGroup:(DAGroup *)group
-{
-    theGroup = group;
-    
-    // 判断当前用户是否是组的成员
-    for (NSString *member in group.member) {
-        if ([member isEqualToString:[DALoginModule getLoginUserId]]) {
-            isMember = YES;
-            break;
-        }
-    }
-    
-    self.barJoinOrLeave.title = isMember ? @"退出" : @"加入";
-    
-    [[DAMessageModule alloc] getMessagesInGroup:group._id start:0 count:20 before:@"" callback:^(NSError *error, DAMessageList *messageList){
-        theMessageList = messageList.items;
-        [self.tblMessage reloadData];
-    }];
 }
 
 - (IBAction)onCancelTouched:(id)sender
@@ -144,9 +140,13 @@
         
         // 加入/退出
         if (isMember) {
-            [[DAGroupJoinModule alloc] leave:self gid:theGroup._id uid:[DALoginModule getLoginUserId]];
+            [[DAGroupModule alloc] leaveGroup:theGroup._id uid:[DALoginModule getLoginUserId] callback:^(NSError *error, DAGroup *group) {
+                [self didFinishJoin:group];
+            }];
         } else {
-            [[DAGroupJoinModule alloc] join:self gid:theGroup._id uid:[DALoginModule getLoginUserId]];
+            [[DAGroupModule alloc] joinGroup:theGroup._id uid:[DALoginModule getLoginUserId] callback:^(NSError *error, DAGroup *group) {
+                [self didFinishJoin:group];
+            }];
         }
     }
 
