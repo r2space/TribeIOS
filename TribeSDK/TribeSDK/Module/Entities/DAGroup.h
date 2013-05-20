@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 dac. All rights reserved.
 //
 
-#import "DAComment.h"
+#import "DACommon.h"
 
 @interface GroupName : Jastor
 @property(retain, nonatomic) NSString* letter_zh;

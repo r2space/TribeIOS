@@ -23,13 +23,9 @@
 #import <TribeSDK/DAGroupModule.h>
 
 // message
-#import <TribeSDK/DAComment.h>
-#import <TribeSDK/DACommentList.h>
 #import <TribeSDK/DAMessage.h>
 #import <TribeSDK/DAMessageList.h>
-#import <TribeSDK/DAAtMeMessageListFetcher.h>
 #import <TribeSDK/DAMessageModule.h>
-#import <TribeSDK/DAReplyMeMessageListFetcher.h>
 
 // notification
 #import <TribeSDK/DANotification.h>
