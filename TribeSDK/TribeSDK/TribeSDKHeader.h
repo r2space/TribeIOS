@@ -43,7 +43,10 @@
 #import <TribeSDK/DATurnover.h>
 #import <TribeSDK/DATurnoverList.h>
 #import <TribeSDK/DATurnoverModule.h>
-#import <TribeSDK/DADataStoreModule.h>
+
+// category
+#import <TribeSDK/DACategory.h>
+#import <TribeSDK/DACategoryModule.h>
 
 // user
 #import <TribeSDK/DAUser.h>

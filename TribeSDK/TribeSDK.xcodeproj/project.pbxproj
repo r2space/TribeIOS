@@ -142,6 +142,9 @@
 		F2656EDC172145C5007E8207 /* DAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656EDB172145C5007E8207 /* DAUserTests.m */; };
 		F2656F1E1723F542007E8207 /* DAFilePosterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656F1D1723F542007E8207 /* DAFilePosterTests.m */; };
 		F2656F2417250213007E8207 /* DAUserUpdatePosterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656F2317250213007E8207 /* DAUserUpdatePosterTests.m */; };
+		F29A8B82174B78AC006133C9 /* DACategory.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A8B80174B78AC006133C9 /* DACategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F29A8B83174B78AC006133C9 /* DACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A8B81174B78AC006133C9 /* DACategory.m */; };
+		F29A8B84174B78AC006133C9 /* DACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A8B81174B78AC006133C9 /* DACategory.m */; };
 		F29A9B6A1745FD1E00273253 /* TribeSDKHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A9B691745FD1C00273253 /* TribeSDKHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A6EAA9172AA1B600C1A9BF /* DAShortmailModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A6EAA7172AA1B600C1A9BF /* DAShortmailModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A6EAAA172AA1B600C1A9BF /* DAShortmailModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6EAA8172AA1B600C1A9BF /* DAShortmailModule.m */; };
@@ -183,9 +186,9 @@
 		F2A6EBD41730CD7700C1A9BF /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6EBB81730CD7700C1A9BF /* UIImageView+AFNetworking.m */; };
 		F2A6EBD61730CD8A00C1A9BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A6EBD51730CD8A00C1A9BF /* SystemConfiguration.framework */; };
 		F2A6EBD81730CD9200C1A9BF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A6EBD71730CD9200C1A9BF /* MobileCoreServices.framework */; };
-		F2A8314E1742262600375909 /* DADataStoreModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A8314C1742262600375909 /* DADataStoreModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2A8314F1742262600375909 /* DADataStoreModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8314D1742262600375909 /* DADataStoreModule.m */; };
-		F2A831501742262600375909 /* DADataStoreModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8314D1742262600375909 /* DADataStoreModule.m */; };
+		F2A8314E1742262600375909 /* DACategoryModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A8314C1742262600375909 /* DACategoryModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2A8314F1742262600375909 /* DACategoryModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8314D1742262600375909 /* DACategoryModule.m */; };
+		F2A831501742262600375909 /* DACategoryModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A8314D1742262600375909 /* DACategoryModule.m */; };
 		F2A831531742293600375909 /* DATurnover.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A831511742293600375909 /* DATurnover.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A831541742293600375909 /* DATurnover.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A831521742293600375909 /* DATurnover.m */; };
 		F2A831551742293600375909 /* DATurnover.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A831521742293600375909 /* DATurnover.m */; };
@@ -333,6 +336,8 @@
 		F2656F1D1723F542007E8207 /* DAFilePosterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFilePosterTests.m; sourceTree = "<group>"; };
 		F2656F2217250212007E8207 /* DAUserUpdatePosterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserUpdatePosterTests.h; sourceTree = "<group>"; };
 		F2656F2317250213007E8207 /* DAUserUpdatePosterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserUpdatePosterTests.m; sourceTree = "<group>"; };
+		F29A8B80174B78AC006133C9 /* DACategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACategory.h; sourceTree = "<group>"; };
+		F29A8B81174B78AC006133C9 /* DACategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACategory.m; sourceTree = "<group>"; };
 		F29A9B691745FD1C00273253 /* TribeSDKHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeSDKHeader.h; sourceTree = "<group>"; };
 		F2A6EAA7172AA1B600C1A9BF /* DAShortmailModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAShortmailModule.h; sourceTree = "<group>"; };
 		F2A6EAA8172AA1B600C1A9BF /* DAShortmailModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAShortmailModule.m; sourceTree = "<group>"; };
@@ -363,8 +368,8 @@
 		F2A6EBB81730CD7700C1A9BF /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		F2A6EBD51730CD8A00C1A9BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F2A6EBD71730CD9200C1A9BF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		F2A8314C1742262600375909 /* DADataStoreModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADataStoreModule.h; sourceTree = "<group>"; };
-		F2A8314D1742262600375909 /* DADataStoreModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADataStoreModule.m; sourceTree = "<group>"; };
+		F2A8314C1742262600375909 /* DACategoryModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACategoryModule.h; sourceTree = "<group>"; };
+		F2A8314D1742262600375909 /* DACategoryModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACategoryModule.m; sourceTree = "<group>"; };
 		F2A831511742293600375909 /* DATurnover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATurnover.h; sourceTree = "<group>"; };
 		F2A831521742293600375909 /* DATurnover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATurnover.m; sourceTree = "<group>"; };
 		F2A831561742296D00375909 /* DATurnoverList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATurnoverList.h; sourceTree = "<group>"; };
@@ -531,8 +536,8 @@
 				F213C092171BC2B200E562A8 /* DALoginModule.m */,
 				F213C0A5171BC2B200E562A8 /* DAWebAccess.h */,
 				F213C0A6171BC2B200E562A8 /* DAWebAccess.m */,
-				F2A8314C1742262600375909 /* DADataStoreModule.h */,
-				F2A8314D1742262600375909 /* DADataStoreModule.m */,
+				F2A8314C1742262600375909 /* DACategoryModule.h */,
+				F2A8314D1742262600375909 /* DACategoryModule.m */,
 				F2A8315B17422B1100375909 /* DATurnoverModule.h */,
 				F2A8315C17422B1100375909 /* DATurnoverModule.m */,
 			);
@@ -576,6 +581,8 @@
 				F2A831521742293600375909 /* DATurnover.m */,
 				F2A831561742296D00375909 /* DATurnoverList.h */,
 				F2A831571742296D00375909 /* DATurnoverList.m */,
+				F29A8B80174B78AC006133C9 /* DACategory.h */,
+				F29A8B81174B78AC006133C9 /* DACategory.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -750,7 +757,7 @@
 				F22B381D173356740017A986 /* DAAFHttpClient.h in Headers */,
 				0472C81A1737ACD2006CED0F /* DAFileHistory.h in Headers */,
 				F22B38221733B7800017A986 /* DAFileModule.h in Headers */,
-				F2A8314E1742262600375909 /* DADataStoreModule.h in Headers */,
+				F2A8314E1742262600375909 /* DACategoryModule.h in Headers */,
 				F2A831531742293600375909 /* DATurnover.h in Headers */,
 				F2A831581742296D00375909 /* DATurnoverList.h in Headers */,
 				F2A831621743659B00375909 /* DAGroupModule.h in Headers */,
@@ -760,6 +767,7 @@
 				F29A9B6A1745FD1E00273253 /* TribeSDKHeader.h in Headers */,
 				F2B29F3F17465477002F7CF8 /* Reachability.h in Headers */,
 				F2B29F471748A504002F7CF8 /* DAUserModule.h in Headers */,
+				F29A8B82174B78AC006133C9 /* DACategory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -924,7 +932,7 @@
 				47120B1117337B7600FB74AF /* DANotificationModule.m in Sources */,
 				046D9185173786550076B693 /* DAFileDetail.m in Sources */,
 				0472C81B1737ACD2006CED0F /* DAFileHistory.m in Sources */,
-				F2A8314F1742262600375909 /* DADataStoreModule.m in Sources */,
+				F2A8314F1742262600375909 /* DACategoryModule.m in Sources */,
 				F2A831541742293600375909 /* DATurnover.m in Sources */,
 				F2A831591742296D00375909 /* DATurnoverList.m in Sources */,
 				F2A8315E17422B1100375909 /* DATurnoverModule.m in Sources */,
@@ -933,6 +941,7 @@
 				F2A8316D1744B31300375909 /* DAAFHttpOperation.m in Sources */,
 				F2B29F4017465477002F7CF8 /* Reachability.m in Sources */,
 				F2B29F481748A504002F7CF8 /* DAUserModule.m in Sources */,
+				F29A8B83174B78AC006133C9 /* DACategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,7 +1005,7 @@
 				47120B1217337B7600FB74AF /* DANotificationModule.m in Sources */,
 				046D9186173786550076B693 /* DAFileDetail.m in Sources */,
 				0472C81C1737ACD2006CED0F /* DAFileHistory.m in Sources */,
-				F2A831501742262600375909 /* DADataStoreModule.m in Sources */,
+				F2A831501742262600375909 /* DACategoryModule.m in Sources */,
 				F2A831551742293600375909 /* DATurnover.m in Sources */,
 				F2A8315A1742296D00375909 /* DATurnoverList.m in Sources */,
 				F2A8315F17422B1100375909 /* DATurnoverModule.m in Sources */,
@@ -1005,6 +1014,7 @@
 				F2A8316E1744B31300375909 /* DAAFHttpOperation.m in Sources */,
 				F2B29F4117465477002F7CF8 /* Reachability.m in Sources */,
 				F2B29F491748A504002F7CF8 /* DAUserModule.m in Sources */,
+				F29A8B84174B78AC006133C9 /* DACategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
