@@ -7,6 +7,7 @@
 //
 
 #import "DAMessageDetailViewController.h"
+#import "DAPictureViewController.h"
 
 @interface DAMessageDetailViewController ()
 
@@ -213,6 +214,19 @@
         ctrl.isForward = YES;
         
         [self presentViewController:ctrl animated:YES completion:nil];
+    }
+    if (4 == item.tag) {
+        if ([message_contenttype_image isEqualToString:message.contentType]) {
+            if (message.attach.count > 0) {
+                DAPictureViewController *pictureCtrl = [[DAPictureViewController alloc] initWithNibName:@"DAPictureViewController" bundle:nil];
+                NSMutableArray *ids = [[NSMutableArray alloc] init];
+                for (MessageAttach *file in message.attach) {
+                    [ids addObject:file.fileid];
+                }
+                pictureCtrl.PictureIds = ids;
+                [self presentViewController:pictureCtrl animated:YES completion:nil];
+            }
+        }
     }
 }
 

@@ -68,6 +68,9 @@
 		471A0601171BCA250040CB93 /* DAMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05F1171BCA250040CB93 /* DAMessageViewController.m */; };
 		471A0602171BCA250040CB93 /* DAMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05F3171BCA250040CB93 /* DAMoreViewController.m */; };
 		471A0604171BCA250040CB93 /* DATimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05F6171BCA250040CB93 /* DATimeLineViewController.m */; };
+		473970D3174A3A6E00B78C1C /* DAPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 473970D1174A3A6E00B78C1C /* DAPictureViewController.m */; };
+		473970D4174A3A6E00B78C1C /* DAPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 473970D2174A3A6E00B78C1C /* DAPictureViewController.xib */; };
+		473970D7174B598500B78C1C /* DAScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 473970D6174B598400B78C1C /* DAScrollView.m */; };
 		4782C95D171BD67E009E74DC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4782C95C171BD67E009E74DC /* CoreLocation.framework */; };
 		4782C976171BF671009E74DC /* DAMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4782C975171BF671009E74DC /* DAMessageCell.m */; };
 		4782C97A171CE3CB009E74DC /* DAMessageDetailTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4782C979171CE3CB009E74DC /* DAMessageDetailTitleCell.xib */; };
@@ -304,6 +307,11 @@
 		471A05F2171BCA250040CB93 /* DAMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMoreViewController.h; sourceTree = "<group>"; };
 		471A05F3171BCA250040CB93 /* DAMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMoreViewController.m; sourceTree = "<group>"; };
 		471A05F6171BCA250040CB93 /* DATimeLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATimeLineViewController.m; sourceTree = "<group>"; };
+		473970D0174A3A6E00B78C1C /* DAPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPictureViewController.h; sourceTree = "<group>"; };
+		473970D1174A3A6E00B78C1C /* DAPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPictureViewController.m; sourceTree = "<group>"; };
+		473970D2174A3A6E00B78C1C /* DAPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPictureViewController.xib; sourceTree = "<group>"; };
+		473970D5174B598400B78C1C /* DAScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAScrollView.h; sourceTree = "<group>"; };
+		473970D6174B598400B78C1C /* DAScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAScrollView.m; sourceTree = "<group>"; };
 		4782C95C171BD67E009E74DC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4782C974171BF671009E74DC /* DAMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMessageCell.h; sourceTree = "<group>"; };
 		4782C975171BF671009E74DC /* DAMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMessageCell.m; sourceTree = "<group>"; };
@@ -646,6 +654,11 @@
 				F24F5E57171D229C0032E93B /* DAMainViewController.m */,
 				F2B29F421746580F002F7CF8 /* DABaseViewController.h */,
 				F2B29F431746580F002F7CF8 /* DABaseViewController.m */,
+				473970D5174B598400B78C1C /* DAScrollView.h */,
+				473970D6174B598400B78C1C /* DAScrollView.m */,
+				473970D0174A3A6E00B78C1C /* DAPictureViewController.h */,
+				473970D1174A3A6E00B78C1C /* DAPictureViewController.m */,
+				473970D2174A3A6E00B78C1C /* DAPictureViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1154,6 +1167,7 @@
 				046D918D1737A7890076B693 /* DAFileDetailViewController.xib in Resources */,
 				04AC26BA1738CE3C00FEED21 /* DAFileWebViewController.xib in Resources */,
 				0A90C8F21744C97A00CA4A14 /* DANotificationViewController.xib in Resources */,
+				473970D4174A3A6E00B78C1C /* DAPictureViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1239,6 +1253,8 @@
 				04AC26B91738CE3C00FEED21 /* DAFileWebViewController.m in Sources */,
 				0A90C8F11744C97A00CA4A14 /* DANotificationViewController.m in Sources */,
 				F2B29F441746580F002F7CF8 /* DABaseViewController.m in Sources */,
+				473970D3174A3A6E00B78C1C /* DAPictureViewController.m in Sources */,
+				473970D7174B598500B78C1C /* DAScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
