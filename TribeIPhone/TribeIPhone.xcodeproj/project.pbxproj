@@ -1372,8 +1372,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TribeIPhone/TribeIPhone-Prefix.pch";
 				INFOPLIST_FILE = "TribeIPhone/TribeIPhone-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TribeIPhone;
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1391,6 +1393,7 @@
 				INFOPLIST_FILE = "TribeIPhone/TribeIPhone-Info.plist";
 				PRODUCT_NAME = TribeIPhone;
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

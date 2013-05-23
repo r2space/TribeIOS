@@ -22,6 +22,7 @@
 
 @property (retain, nonatomic) NSString *date;
 @property (retain, nonatomic) NSString *weather;
+@property (retain, nonatomic) NSString *amount;
 @property (retain, nonatomic) NSArray *category;
 
 @property (retain, nonatomic) NSString *createby;
