@@ -8,7 +8,7 @@
 
 #import "DATurnover.h"
 
-@implementation Category
+@implementation DATurnoverItem
 @end
 
 @implementation DATurnover
@@ -16,7 +16,7 @@
 @synthesize id, _id;
 
 +(Class) category_class {
-    return [Category class];
+    return [DATurnoverItem class];
 }
 
 @end

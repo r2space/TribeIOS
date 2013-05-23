@@ -8,11 +8,10 @@
 
 #import "Jastor.h"
 
-@interface Category : Jastor
+@interface DATurnoverItem : Jastor
 
-@property (retain, nonatomic) NSString *name;
 @property (retain, nonatomic) NSString *amount;
-@property (retain, nonatomic) NSString *image;
+@property (retain, nonatomic) NSString *name;
 
 @end
 

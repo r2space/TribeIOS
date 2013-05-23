@@ -8,14 +8,14 @@
 
 #import "DACategory.h"
 
-@implementation CategoryItem
+@implementation DACategoryItem
 @end
 
 @implementation DACategory
 @synthesize id, _id;
 
 +(Class) items_class {
-    return [CategoryItem class];
+    return [DACategoryItem class];
 }
 
 @end

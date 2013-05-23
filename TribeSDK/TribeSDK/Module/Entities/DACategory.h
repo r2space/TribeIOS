@@ -8,7 +8,7 @@
 
 #import "Jastor.h"
 
-@interface CategoryItem : Jastor
+@interface DACategoryItem : Jastor
 
 @property (retain, nonatomic) NSString *name;
 @property (retain, nonatomic) NSString *value;

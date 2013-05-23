@@ -8,16 +8,36 @@
 
 #import "DATurnoverModule.h"
 
-#define kURLTurnoverAdd   @"app/turnover/add.json"
-#define kURLTurnoverList   @"/app/turnover/list.json?month=%@&start=%d&limit=%d"
+#define kURLTurnoverAdd     @"/app/turnover/add.json"
+#define kURLTurnoverUpdate  @"/app/turnover/update.json?id=%@"
+#define kURLTurnoverList    @"/app/turnover/list.json?month=%@&start=%d&limit=%d"
 
 @implementation DATurnoverModule
 
-- (void)save:(DATurnover *)daily callback:(void (^)(NSError *error, DATurnover *daily))callback
+- (void)add:(DATurnover *)daily callback:(void (^)(NSError *error, DATurnover *daily))callback
 {
     NSDictionary *params = [daily toDictionary];
     
     [[DAAFHttpClient sharedClient] postPath:kURLTurnoverAdd parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (callback) {
+            callback(nil, [[DATurnover alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+    }];
+}
+
+- (void)update:(DATurnover *)daily callback:(void (^)(NSError *error, DATurnover *daily))callback
+{
+    NSDictionary *params = [daily toDictionary];
+    NSString *path = [NSString stringWithFormat:kURLTurnoverUpdate, daily.id];
+    
+    [[DAAFHttpClient sharedClient] postPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
             callback(nil, [[DATurnover alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);

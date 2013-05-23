@@ -12,7 +12,9 @@
 
 @interface DATurnoverModule : NSObject
 
-- (void)save:(DATurnover *)daily callback:(void (^)(NSError *error, DATurnover *daily))callback;
+- (void)add:(DATurnover *)daily callback:(void (^)(NSError *error, DATurnover *daily))callback;
+
+- (void)update:(DATurnover *)daily callback:(void (^)(NSError *error, DATurnover *daily))callback;
 
 - (void)getListByMonth:(NSString *)month
                  start:(int)start
