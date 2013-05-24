@@ -7,6 +7,7 @@
 //
 
 #import "Jastor.h"
+#import "DAUser.h"
 
 @interface DATurnoverItem : Jastor
 
@@ -29,5 +30,6 @@
 @property (retain, nonatomic) NSString *createat;
 @property (retain, nonatomic) NSString *editby;
 @property (retain, nonatomic) NSString *editat;
+@property (retain, nonatomic) DAUser *user;
 
 @end

@@ -35,7 +35,7 @@
 - (void)update:(DATurnover *)daily callback:(void (^)(NSError *error, DATurnover *daily))callback
 {
     NSDictionary *params = [daily toDictionary];
-    NSString *path = [NSString stringWithFormat:kURLTurnoverUpdate, daily.id];
+    NSString *path = [NSString stringWithFormat:kURLTurnoverUpdate, daily._id];
     
     [[DAAFHttpClient sharedClient] postPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         

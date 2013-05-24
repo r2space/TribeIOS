@@ -19,4 +19,8 @@
     return [DATurnoverItem class];
 }
 
++(Class) user_class {
+    return [DAUser class];
+}
+
 @end
