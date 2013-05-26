@@ -21,4 +21,9 @@
                  count:(int)count
               callback:(void (^)(NSError *error, DATurnoverList *list))callback;
 
+- (void)getList:(NSString *)from
+          start:(int)start
+          count:(int)count
+       callback:(void (^)(NSError *error, DATurnoverList *list))callback;
+
 @end
