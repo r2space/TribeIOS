@@ -43,6 +43,9 @@
 #import <TribeSDK/DATurnover.h>
 #import <TribeSDK/DATurnoverList.h>
 #import <TribeSDK/DATurnoverModule.h>
+#import <TribeSDK/DAPurchase.h>
+#import <TribeSDK/DAPurchaseList.h>
+#import <TribeSDK/DAPurchaseModule.h>
 
 // category
 #import <TribeSDK/DACategory.h>
