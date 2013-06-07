@@ -187,6 +187,12 @@
 		F2656F0F1723D296007E8207 /* 07-map-marker.png in Resources */ = {isa = PBXBuildFile; fileRef = F2656F0E1723D296007E8207 /* 07-map-marker.png */; };
 		F2656F111723E13A007E8207 /* 121-lanscape.png in Resources */ = {isa = PBXBuildFile; fileRef = F2656F101723E13A007E8207 /* 121-lanscape.png */; };
 		F2656F2117240292007E8207 /* DAHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656F2017240292007E8207 /* DAHelper.m */; };
+		F28AD4B31761A8B000D7CDC3 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AD4AE1761A8B000D7CDC3 /* IISideController.m */; };
+		F28AD4B41761A8B000D7CDC3 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AD4B01761A8B000D7CDC3 /* IIViewDeckController.m */; };
+		F28AD4B51761A8B000D7CDC3 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AD4B21761A8B000D7CDC3 /* IIWrapController.m */; };
+		F28AD4B71761A8E200D7CDC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28AD4B61761A8E200D7CDC3 /* QuartzCore.framework */; };
+		F28AD4BB1761A99100D7CDC3 /* DALeftSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AD4B91761A99100D7CDC3 /* DALeftSideViewController.m */; };
+		F28AD4BC1761A99100D7CDC3 /* DALeftSideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28AD4BA1761A99100D7CDC3 /* DALeftSideViewController.xib */; };
 		F2972594172616A80070B406 /* DAGroupMoreViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2972593172616A80070B406 /* DAGroupMoreViewController.storyboard */; };
 		F2972597172616E00070B406 /* DAGroupMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2972596172616E00070B406 /* DAGroupMoreViewController.m */; };
 		F2972599172619AF0070B406 /* 59-flag.png in Resources */ = {isa = PBXBuildFile; fileRef = F2972598172619AF0070B406 /* 59-flag.png */; };
@@ -450,6 +456,16 @@
 		F2656F101723E13A007E8207 /* 121-lanscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "121-lanscape.png"; sourceTree = "<group>"; };
 		F2656F1F17240292007E8207 /* DAHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAHelper.h; sourceTree = "<group>"; };
 		F2656F2017240292007E8207 /* DAHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAHelper.m; sourceTree = "<group>"; };
+		F28AD4AD1761A8B000D7CDC3 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
+		F28AD4AE1761A8B000D7CDC3 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
+		F28AD4AF1761A8B000D7CDC3 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		F28AD4B01761A8B000D7CDC3 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		F28AD4B11761A8B000D7CDC3 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
+		F28AD4B21761A8B000D7CDC3 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
+		F28AD4B61761A8E200D7CDC3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F28AD4B81761A99100D7CDC3 /* DALeftSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALeftSideViewController.h; sourceTree = "<group>"; };
+		F28AD4B91761A99100D7CDC3 /* DALeftSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALeftSideViewController.m; sourceTree = "<group>"; };
+		F28AD4BA1761A99100D7CDC3 /* DALeftSideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DALeftSideViewController.xib; sourceTree = "<group>"; };
 		F2972593172616A80070B406 /* DAGroupMoreViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAGroupMoreViewController.storyboard; sourceTree = "<group>"; };
 		F2972595172616E00070B406 /* DAGroupMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGroupMoreViewController.h; sourceTree = "<group>"; };
 		F2972596172616E00070B406 /* DAGroupMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGroupMoreViewController.m; sourceTree = "<group>"; };
@@ -496,6 +512,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F28AD4B71761A8E200D7CDC3 /* QuartzCore.framework in Frameworks */,
 				F227AD56174081360086CFC7 /* TribeSDK.framework in Frameworks */,
 				F2A6EBDC1730EB0900C1A9BF /* MobileCoreServices.framework in Frameworks */,
 				F2A6EBDA1730EB0000C1A9BF /* SystemConfiguration.framework in Frameworks */,
@@ -573,6 +590,7 @@
 		471A055B171BC1AD0040CB93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F28AD4B61761A8E200D7CDC3 /* QuartzCore.framework */,
 				F2A6EBDB1730EB0900C1A9BF /* MobileCoreServices.framework */,
 				F2A6EBD91730EB0000C1A9BF /* SystemConfiguration.framework */,
 				4782C95C171BD67E009E74DC /* CoreLocation.framework */,
@@ -652,6 +670,9 @@
 				F2656ED11720E12D007E8207 /* DAMemberController.xib */,
 				F24F5E56171D229C0032E93B /* DAMainViewController.h */,
 				F24F5E57171D229C0032E93B /* DAMainViewController.m */,
+				F28AD4B81761A99100D7CDC3 /* DALeftSideViewController.h */,
+				F28AD4B91761A99100D7CDC3 /* DALeftSideViewController.m */,
+				F28AD4BA1761A99100D7CDC3 /* DALeftSideViewController.xib */,
 				F2B29F421746580F002F7CF8 /* DABaseViewController.h */,
 				F2B29F431746580F002F7CF8 /* DABaseViewController.m */,
 				473970D5174B598400B78C1C /* DAScrollView.h */,
@@ -786,6 +807,7 @@
 		F22B38A0173652BF0017A986 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				F28AD4AC1761A8B000D7CDC3 /* ViewDeck */,
 				F22B38A5173658E60017A986 /* WTStatusBar */,
 				F22B38A1173652BF0017A986 /* MBProgressHUD */,
 			);
@@ -893,6 +915,19 @@
 				4782C98E171CF40D009E74DC /* DACommentCell.xib */,
 			);
 			name = Message;
+			sourceTree = "<group>";
+		};
+		F28AD4AC1761A8B000D7CDC3 /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				F28AD4AD1761A8B000D7CDC3 /* IISideController.h */,
+				F28AD4AE1761A8B000D7CDC3 /* IISideController.m */,
+				F28AD4AF1761A8B000D7CDC3 /* IIViewDeckController.h */,
+				F28AD4B01761A8B000D7CDC3 /* IIViewDeckController.m */,
+				F28AD4B11761A8B000D7CDC3 /* IIWrapController.h */,
+				F28AD4B21761A8B000D7CDC3 /* IIWrapController.m */,
+			);
+			path = ViewDeck;
 			sourceTree = "<group>";
 		};
 		F29725AB172663BD0070B406 /* File */ = {
@@ -1168,6 +1203,7 @@
 				04AC26BA1738CE3C00FEED21 /* DAFileWebViewController.xib in Resources */,
 				0A90C8F21744C97A00CA4A14 /* DANotificationViewController.xib in Resources */,
 				473970D4174A3A6E00B78C1C /* DAPictureViewController.xib in Resources */,
+				F28AD4BC1761A99100D7CDC3 /* DALeftSideViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1255,6 +1291,10 @@
 				F2B29F441746580F002F7CF8 /* DABaseViewController.m in Sources */,
 				473970D3174A3A6E00B78C1C /* DAPictureViewController.m in Sources */,
 				473970D7174B598500B78C1C /* DAScrollView.m in Sources */,
+				F28AD4B31761A8B000D7CDC3 /* IISideController.m in Sources */,
+				F28AD4B41761A8B000D7CDC3 /* IIViewDeckController.m in Sources */,
+				F28AD4B51761A8B000D7CDC3 /* IIWrapController.m in Sources */,
+				F28AD4BB1761A99100D7CDC3 /* DALeftSideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,10 @@
 
 #import "DAAppDelegate.h"
 #import <TribeSDK/TribeSDKHeader.h>
+#import "DAMainViewController.h"
+
+#import "IIViewDeckController.h"
+#import "DALeftSideViewController.h"
 
 #define kInfoPlistKeyServerAddress @"ServerAddress"
 #define kInfoPlistKeyServerPort @"ServerPort"
@@ -24,6 +28,15 @@
         [[NSUserDefaults standardUserDefaults] setObject:serverAddress forKey:kServerAddress];
         [[NSUserDefaults standardUserDefaults] setInteger:serverPort.integerValue forKey:kServerPort];
     }
+    
+    // 初始化侧边栏（保留）
+    //UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle: nil];
+    //DAMainViewController *mainController = (DAMainViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"DAMainViewController"];
+    //DALeftSideViewController *leftController = [[DALeftSideViewController alloc] initWithNibName:@"DAMessageFilterViewController" bundle:nil];
+    //IIViewDeckController *center = [[IIViewDeckController alloc] initWithCenterViewController:mainController leftViewController:leftController];
+    //self.window.rootViewController = center;
+    // 在viewcontroller里显示侧边栏的的例子
+    //[(IIViewDeckController*)[UIApplication sharedApplication].keyWindow.rootViewController toggleLeftViewAnimated:YES];
     
     return YES;
 }
