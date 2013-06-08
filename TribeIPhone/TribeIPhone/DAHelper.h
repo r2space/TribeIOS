@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <TribeSDK/DAAFHttpClient.h>
+#import "CQMFloatingController.h"
 
 #define DAColor [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f]
 
@@ -16,5 +18,7 @@
 + (BOOL) isFileExist:(NSString *)fullPahtFile;
 + (NSString *) fileanExtension:(NSString *)type;
 + (BOOL) isNetworkReachable;
+
++ (CQMFloatingController *) showPopup:(UIViewController *)viewController;
 
 @end

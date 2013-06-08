@@ -187,9 +187,6 @@
 		F2656F0F1723D296007E8207 /* 07-map-marker.png in Resources */ = {isa = PBXBuildFile; fileRef = F2656F0E1723D296007E8207 /* 07-map-marker.png */; };
 		F2656F111723E13A007E8207 /* 121-lanscape.png in Resources */ = {isa = PBXBuildFile; fileRef = F2656F101723E13A007E8207 /* 121-lanscape.png */; };
 		F2656F2117240292007E8207 /* DAHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2656F2017240292007E8207 /* DAHelper.m */; };
-		F28AD4B31761A8B000D7CDC3 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AD4AE1761A8B000D7CDC3 /* IISideController.m */; };
-		F28AD4B41761A8B000D7CDC3 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AD4B01761A8B000D7CDC3 /* IIViewDeckController.m */; };
-		F28AD4B51761A8B000D7CDC3 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AD4B21761A8B000D7CDC3 /* IIWrapController.m */; };
 		F28AD4B71761A8E200D7CDC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28AD4B61761A8E200D7CDC3 /* QuartzCore.framework */; };
 		F28AD4BB1761A99100D7CDC3 /* DALeftSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AD4B91761A99100D7CDC3 /* DALeftSideViewController.m */; };
 		F28AD4BC1761A99100D7CDC3 /* DALeftSideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28AD4BA1761A99100D7CDC3 /* DALeftSideViewController.xib */; };
@@ -205,6 +202,15 @@
 		F29725BA17267D630070B406 /* DASettingContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29725B817267D630070B406 /* DASettingContainerViewController.xib */; };
 		F29725BE172681470070B406 /* DAFileViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29725BD172681470070B406 /* DAFileViewCell.xib */; };
 		F29725C017268C5F0070B406 /* DASettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29725BF17268C5F0070B406 /* DASettingViewController.storyboard */; };
+		F29ACD241762CA1400AC0B68 /* CQMFloatingContentOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD191762CA1400AC0B68 /* CQMFloatingContentOverlayView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F29ACD251762CA1400AC0B68 /* CQMFloatingController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD1B1762CA1400AC0B68 /* CQMFloatingController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F29ACD261762CA1400AC0B68 /* CQMFloatingFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD1D1762CA1400AC0B68 /* CQMFloatingFrameView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F29ACD271762CA1400AC0B68 /* CQMFloatingMaskControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD1F1762CA1400AC0B68 /* CQMFloatingMaskControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F29ACD281762CA1400AC0B68 /* CQMFloatingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD211762CA1400AC0B68 /* CQMFloatingNavigationBar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F29ACD291762CA1400AC0B68 /* CQMPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD231762CA1400AC0B68 /* CQMPathUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F29ACD311762CC3700AC0B68 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD2C1762CC3700AC0B68 /* IISideController.m */; };
+		F29ACD321762CC3700AC0B68 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD2E1762CC3700AC0B68 /* IIViewDeckController.m */; };
+		F29ACD331762CC3700AC0B68 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD301762CC3700AC0B68 /* IIWrapController.m */; };
 		F29FBF8B171D2FDE006C9CCB /* DALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29FBF89171D2FDE006C9CCB /* DALoginViewController.m */; };
 		F29FBF8C171D2FDE006C9CCB /* DALoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29FBF8A171D2FDE006C9CCB /* DALoginViewController.xib */; };
 		F2A6EABD172AD09900C1A9BF /* DAShortmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6EABB172AD09900C1A9BF /* DAShortmailViewController.m */; };
@@ -456,12 +462,6 @@
 		F2656F101723E13A007E8207 /* 121-lanscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "121-lanscape.png"; sourceTree = "<group>"; };
 		F2656F1F17240292007E8207 /* DAHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAHelper.h; sourceTree = "<group>"; };
 		F2656F2017240292007E8207 /* DAHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAHelper.m; sourceTree = "<group>"; };
-		F28AD4AD1761A8B000D7CDC3 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
-		F28AD4AE1761A8B000D7CDC3 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
-		F28AD4AF1761A8B000D7CDC3 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
-		F28AD4B01761A8B000D7CDC3 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
-		F28AD4B11761A8B000D7CDC3 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
-		F28AD4B21761A8B000D7CDC3 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		F28AD4B61761A8E200D7CDC3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F28AD4B81761A99100D7CDC3 /* DALeftSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALeftSideViewController.h; sourceTree = "<group>"; };
 		F28AD4B91761A99100D7CDC3 /* DALeftSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALeftSideViewController.m; sourceTree = "<group>"; };
@@ -483,6 +483,24 @@
 		F29725B817267D630070B406 /* DASettingContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASettingContainerViewController.xib; sourceTree = "<group>"; };
 		F29725BD172681470070B406 /* DAFileViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAFileViewCell.xib; sourceTree = "<group>"; };
 		F29725BF17268C5F0070B406 /* DASettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DASettingViewController.storyboard; sourceTree = "<group>"; };
+		F29ACD181762CA1400AC0B68 /* CQMFloatingContentOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingContentOverlayView.h; sourceTree = "<group>"; };
+		F29ACD191762CA1400AC0B68 /* CQMFloatingContentOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingContentOverlayView.m; sourceTree = "<group>"; };
+		F29ACD1A1762CA1400AC0B68 /* CQMFloatingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingController.h; sourceTree = "<group>"; };
+		F29ACD1B1762CA1400AC0B68 /* CQMFloatingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingController.m; sourceTree = "<group>"; };
+		F29ACD1C1762CA1400AC0B68 /* CQMFloatingFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingFrameView.h; sourceTree = "<group>"; };
+		F29ACD1D1762CA1400AC0B68 /* CQMFloatingFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingFrameView.m; sourceTree = "<group>"; };
+		F29ACD1E1762CA1400AC0B68 /* CQMFloatingMaskControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingMaskControl.h; sourceTree = "<group>"; };
+		F29ACD1F1762CA1400AC0B68 /* CQMFloatingMaskControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingMaskControl.m; sourceTree = "<group>"; };
+		F29ACD201762CA1400AC0B68 /* CQMFloatingNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingNavigationBar.h; sourceTree = "<group>"; };
+		F29ACD211762CA1400AC0B68 /* CQMFloatingNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingNavigationBar.m; sourceTree = "<group>"; };
+		F29ACD221762CA1400AC0B68 /* CQMPathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMPathUtilities.h; sourceTree = "<group>"; };
+		F29ACD231762CA1400AC0B68 /* CQMPathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMPathUtilities.m; sourceTree = "<group>"; };
+		F29ACD2B1762CC3700AC0B68 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
+		F29ACD2C1762CC3700AC0B68 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
+		F29ACD2D1762CC3700AC0B68 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		F29ACD2E1762CC3700AC0B68 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		F29ACD2F1762CC3700AC0B68 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
+		F29ACD301762CC3700AC0B68 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		F29FBF88171D2FDE006C9CCB /* DALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALoginViewController.h; sourceTree = "<group>"; };
 		F29FBF89171D2FDE006C9CCB /* DALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALoginViewController.m; sourceTree = "<group>"; };
 		F29FBF8A171D2FDE006C9CCB /* DALoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DALoginViewController.xib; sourceTree = "<group>"; };
@@ -807,7 +825,8 @@
 		F22B38A0173652BF0017A986 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
-				F28AD4AC1761A8B000D7CDC3 /* ViewDeck */,
+				F29ACD2A1762CC3700AC0B68 /* IIViewDeck */,
+				F29ACD171762CA1400AC0B68 /* CQMFloating */,
 				F22B38A5173658E60017A986 /* WTStatusBar */,
 				F22B38A1173652BF0017A986 /* MBProgressHUD */,
 			);
@@ -917,19 +936,6 @@
 			name = Message;
 			sourceTree = "<group>";
 		};
-		F28AD4AC1761A8B000D7CDC3 /* ViewDeck */ = {
-			isa = PBXGroup;
-			children = (
-				F28AD4AD1761A8B000D7CDC3 /* IISideController.h */,
-				F28AD4AE1761A8B000D7CDC3 /* IISideController.m */,
-				F28AD4AF1761A8B000D7CDC3 /* IIViewDeckController.h */,
-				F28AD4B01761A8B000D7CDC3 /* IIViewDeckController.m */,
-				F28AD4B11761A8B000D7CDC3 /* IIWrapController.h */,
-				F28AD4B21761A8B000D7CDC3 /* IIWrapController.m */,
-			);
-			path = ViewDeck;
-			sourceTree = "<group>";
-		};
 		F29725AB172663BD0070B406 /* File */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,6 +975,38 @@
 				F29725B817267D630070B406 /* DASettingContainerViewController.xib */,
 			);
 			name = Setting;
+			sourceTree = "<group>";
+		};
+		F29ACD171762CA1400AC0B68 /* CQMFloating */ = {
+			isa = PBXGroup;
+			children = (
+				F29ACD181762CA1400AC0B68 /* CQMFloatingContentOverlayView.h */,
+				F29ACD191762CA1400AC0B68 /* CQMFloatingContentOverlayView.m */,
+				F29ACD1A1762CA1400AC0B68 /* CQMFloatingController.h */,
+				F29ACD1B1762CA1400AC0B68 /* CQMFloatingController.m */,
+				F29ACD1C1762CA1400AC0B68 /* CQMFloatingFrameView.h */,
+				F29ACD1D1762CA1400AC0B68 /* CQMFloatingFrameView.m */,
+				F29ACD1E1762CA1400AC0B68 /* CQMFloatingMaskControl.h */,
+				F29ACD1F1762CA1400AC0B68 /* CQMFloatingMaskControl.m */,
+				F29ACD201762CA1400AC0B68 /* CQMFloatingNavigationBar.h */,
+				F29ACD211762CA1400AC0B68 /* CQMFloatingNavigationBar.m */,
+				F29ACD221762CA1400AC0B68 /* CQMPathUtilities.h */,
+				F29ACD231762CA1400AC0B68 /* CQMPathUtilities.m */,
+			);
+			path = CQMFloating;
+			sourceTree = "<group>";
+		};
+		F29ACD2A1762CC3700AC0B68 /* IIViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				F29ACD2B1762CC3700AC0B68 /* IISideController.h */,
+				F29ACD2C1762CC3700AC0B68 /* IISideController.m */,
+				F29ACD2D1762CC3700AC0B68 /* IIViewDeckController.h */,
+				F29ACD2E1762CC3700AC0B68 /* IIViewDeckController.m */,
+				F29ACD2F1762CC3700AC0B68 /* IIWrapController.h */,
+				F29ACD301762CC3700AC0B68 /* IIWrapController.m */,
+			);
+			path = IIViewDeck;
 			sourceTree = "<group>";
 		};
 		F2A6EAB9172AD05500C1A9BF /* Shortmail */ = {
@@ -1291,10 +1329,16 @@
 				F2B29F441746580F002F7CF8 /* DABaseViewController.m in Sources */,
 				473970D3174A3A6E00B78C1C /* DAPictureViewController.m in Sources */,
 				473970D7174B598500B78C1C /* DAScrollView.m in Sources */,
-				F28AD4B31761A8B000D7CDC3 /* IISideController.m in Sources */,
-				F28AD4B41761A8B000D7CDC3 /* IIViewDeckController.m in Sources */,
-				F28AD4B51761A8B000D7CDC3 /* IIWrapController.m in Sources */,
 				F28AD4BB1761A99100D7CDC3 /* DALeftSideViewController.m in Sources */,
+				F29ACD241762CA1400AC0B68 /* CQMFloatingContentOverlayView.m in Sources */,
+				F29ACD251762CA1400AC0B68 /* CQMFloatingController.m in Sources */,
+				F29ACD261762CA1400AC0B68 /* CQMFloatingFrameView.m in Sources */,
+				F29ACD271762CA1400AC0B68 /* CQMFloatingMaskControl.m in Sources */,
+				F29ACD281762CA1400AC0B68 /* CQMFloatingNavigationBar.m in Sources */,
+				F29ACD291762CA1400AC0B68 /* CQMPathUtilities.m in Sources */,
+				F29ACD311762CC3700AC0B68 /* IISideController.m in Sources */,
+				F29ACD321762CC3700AC0B68 /* IIViewDeckController.m in Sources */,
+				F29ACD331762CC3700AC0B68 /* IIWrapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
