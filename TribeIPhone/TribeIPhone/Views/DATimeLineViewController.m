@@ -95,7 +95,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DAMessageDetailViewController *detailViewController = [[DAMessageDetailViewController alloc] initWithNibName:@"DAMessageDetailViewController" bundle:nil];
-    detailViewController.message = [list objectAtIndex:indexPath.row];
+    DAMessage *message = [list objectAtIndex:indexPath.row];
+    detailViewController.messageId = message._id;
     detailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailViewController animated:YES];
      
