@@ -14,7 +14,10 @@
 @end
 
 @implementation DAMessageDetailViewController
-@synthesize message;
+{
+    DAMessage* _message;
+    int _commentsTotal;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,10 +32,7 @@
 {
     [super viewDidLoad];
     
-    [[DAMessageModule alloc] getComments:self.message._id start:0 count:20 callback:^(NSError *error, DAMessageList *commentList){
-        self.commentList = commentList;
-        [self.tableView reloadData];
-    }];
+    [self refresh];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,8 +55,8 @@
     if (section == 0) {
         return 2;
     }
-    if(section == 1 && self.commentList != nil){
-        return self.commentList.items.count;
+    if(section == 1 && list != nil){
+        return list.count;
     }
     return 0;
 }
@@ -79,7 +79,7 @@
         comment.textColor = [UIColor blueColor];
         comment.font = [UIFont systemFontOfSize:14];
         comment.frame = CGRectMake(8, 15, 60, 20);
-        comment.text =  [NSString stringWithFormat: @"评论：%@",self.commentList.total];
+        comment.text =  [NSString stringWithFormat: @"评论：%d",_commentsTotal];
         
         [containerView addSubview:comment];
         return containerView;
@@ -98,15 +98,15 @@
                 NSArray *array = [nib instantiateWithOwner:nil options:nil];
                 cell = [array objectAtIndex:0];
             }
-            cell.imgPortrait.image = [[message getCreatUser] getUserPhotoImage];
-            cell.lblName.text = [[message getCreatUser] getUserName];
+            cell.imgPortrait.image = [[_message getCreatUser] getUserPhotoImage];
+            cell.lblName.text = [[_message getCreatUser] getUserName];
             return cell;
         } else {
-            DAMessageDetailCell *cell = [DAMessageDetailCell initWithMessage:message tableView:tableView];
+            DAMessageDetailCell *cell = [DAMessageDetailCell initWithMessage:_message tableView:tableView];
             return cell;
         }
     } else {
-        DAMessage *comment = [self.commentList.items objectAtIndex:indexPath.row];
+        DAMessage *comment = [list objectAtIndex:indexPath.row];
         return [DACommentCell initWithComment:comment tableView:tableView];
     }
 }
@@ -119,11 +119,11 @@
             return 50;
         }
         if (indexPath.row == 1) {
-            return [DAMessageDetailCell cellHeightWithMessage:message];
+            return [DAMessageDetailCell cellHeightWithMessage:_message];
         }
     }
     if (indexPath.section == 1) {
-        DAMessage *comment = [self.commentList.items objectAtIndex:indexPath.row];
+        DAMessage *comment = [list objectAtIndex:indexPath.row];
         return [DACommentCell cellHeightWithComment:comment];
     }
     return 44;
@@ -181,6 +181,22 @@
      */
 }
 
+-(void)fetch
+{
+    if ([self preFetch]) {
+        return;
+    }
+    
+    [[DAMessageModule alloc] getMessage:_messageId callback:^(NSError *error, DAMessage *message) {
+        _message = message;
+        [[DAMessageModule alloc] getComments:_messageId start:start count:count callback:^(NSError *error, DAMessageList *commentList){
+            _commentsTotal = commentList.total.intValue;
+            [self finishFetch:commentList.items error:error];
+        }];
+    }];
+
+}
+
 - (IBAction)onCancelTouched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -195,14 +211,15 @@
 {
     if (1 == item.tag) {
         // refresh
+        [self refresh];
     }
     
     if (2 == item.tag) {
         // comment
         DAContributeViewController *ctrl = [[DAContributeViewController alloc] initWithNibName:@"DAContributeViewController" bundle:nil];
         ctrl.message.type = [NSNumber numberWithInt:2];
-        ctrl.message.range = self.message.range;
-        ctrl.message.target = self.message._id;
+        ctrl.message.range = _message.range;
+        ctrl.message.target = _message._id;
         
         [self presentViewController:ctrl animated:YES completion:nil];
     }
@@ -210,17 +227,17 @@
     if (3 == item.tag) {
         // forward
         DAContributeViewController *ctrl = [[DAContributeViewController alloc] initWithNibName:@"DAContributeViewController" bundle:nil];
-        ctrl.message.target = self.message._id;
+        ctrl.message.target = _message._id;
         ctrl.isForward = YES;
         
         [self presentViewController:ctrl animated:YES completion:nil];
     }
     if (4 == item.tag) {
-        if ([message_contenttype_image isEqualToString:message.contentType]) {
-            if (message.attach.count > 0) {
+        if ([message_contenttype_image isEqualToString:_message.contentType]) {
+            if (_message.attach.count > 0) {
                 DAPictureViewController *pictureCtrl = [[DAPictureViewController alloc] initWithNibName:@"DAPictureViewController" bundle:nil];
                 NSMutableArray *ids = [[NSMutableArray alloc] init];
-                for (MessageAttach *file in message.attach) {
+                for (MessageAttach *file in _message.attach) {
                     [ids addObject:file.fileid];
                 }
                 pictureCtrl.PictureIds = ids;

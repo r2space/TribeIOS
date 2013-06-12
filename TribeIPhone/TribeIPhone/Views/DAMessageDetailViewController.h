@@ -12,11 +12,11 @@
 #import "DAMessageDetailCell.h"
 #import "DACommentCell.h"
 #import "DAContributeViewController.h"
+#import "DABaseViewController.h"
 
-@interface DAMessageDetailViewController : UIViewController<UITabBarDelegate>
+@interface DAMessageDetailViewController : DABaseViewController<UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (retain, nonatomic) DAMessage* message;
-@property (retain, nonatomic) DAMessageList* commentList;
+@property (retain, nonatomic) NSString* messageId;
 
 - (IBAction)onCancelTouched:(id)sender;
 - (IBAction)btnHomeTouched:(id)sender;
