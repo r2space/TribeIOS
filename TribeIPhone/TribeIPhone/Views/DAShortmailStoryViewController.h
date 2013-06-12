@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
+#import "SocketIO.h"
+#import "SocketIOPacket.h"
 
-@interface DAShortmailStoryViewController : UIViewController
+@interface DAShortmailStoryViewController : UIViewController<SocketIODelegate>
 - (IBAction)onCancelTouched:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barUser;
 @property (weak, nonatomic) IBOutlet UITableView *tblStory;
 @property (weak, nonatomic) IBOutlet UITextField *txtContent;
 - (IBAction)onSendTouched:(id)sender;
 
-@property (weak, nonatomic) NSString *uid;
+@property (strong, nonatomic) NSString *uid;
 - (IBAction)onTextExit:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *viewContainer;
 

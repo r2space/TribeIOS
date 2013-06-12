@@ -27,9 +27,10 @@
 }
 
 
-+(DAShortmailViewCell *)initWithMessage:(DAUser *)user tableView:(UITableView *)tableView
++(DAShortmailViewCell *)initWithMessage:(DAContact *)contact tableView:(UITableView *)tableView
 {
     NSString *identifier = @"DAShortmailViewCell";
+    DAUser *user = contact.user;
     
 	DAShortmailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
@@ -38,7 +39,7 @@
         cell = [array objectAtIndex:0];
     }
     cell.lblName.text = user.name.name_zh;
-    if (user.photo != nil) {
+    if (user.photo.small != nil) {
         [[DAFileModule alloc] getPicture:user.photo.small callback:^(NSError *err, NSString *pictureId){
             cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
         }];

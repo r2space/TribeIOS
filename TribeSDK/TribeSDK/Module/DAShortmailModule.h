@@ -10,6 +10,8 @@
 #import "DAShortmail.h"
 #import "DAShortmailList.h"
 #import "DAUserList.h"
+#import "DAContact.h"
+#import "DAContactList.h"
 
 @interface DAShortmailModule : NSObject
 
@@ -26,6 +28,6 @@
 // 获取私信用户一览
 - (void)getUsers:(int)start
            count:(int)count
-        callback:(void (^)(NSError *error, DAUserList *users))callback;
+        callback:(void (^)(NSError *error, DAContactList *users))callback;
 
 @end

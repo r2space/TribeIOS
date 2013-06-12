@@ -38,6 +38,8 @@
 #import <TribeSDK/DAShortmail.h>
 #import <TribeSDK/DAShortmailList.h>
 #import <TribeSDK/DAShortmailModule.h>
+#import <TribeSDK/DAContact.h>
+#import <TribeSDK/DAContactList.h>
 
 // datastore
 #import <TribeSDK/DATurnover.h>
