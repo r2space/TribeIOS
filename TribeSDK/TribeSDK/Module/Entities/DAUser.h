@@ -7,6 +7,7 @@
 //
 
 #import "DACommon.h"
+#import "DAGroup.h"
 
 @interface UserName : Jastor <NSCoding>
 
@@ -23,7 +24,9 @@
 
 @end
 
-
+@interface UserCustom : Jastor <NSCoding>
+@property (retain, nonatomic) NSString *memo;
+@end
 
 @interface DAUser : Jastor <NSCoding>
 // TODO 服务器返回的JSON结构中有的地方是id有的地方是_id，需要进行统一
@@ -33,6 +36,8 @@
 @property (retain, nonatomic) UserPhoto *photo;
 @property (retain, nonatomic) NSArray *following;
 @property (retain, nonatomic) NSString *uid;
+@property (retain, nonatomic) DAGroup *department;
+@property (retain, nonatomic) UserCustom *custom;
 
 -(NSString *)getUserName;
 -(NSString *)getUserPhotoId;

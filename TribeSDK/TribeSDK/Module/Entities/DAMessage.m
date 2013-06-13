@@ -45,6 +45,10 @@
     return [MessageAttach class];
 }
 
++(Class)likers_class{
+    return [NSString class];
+}
+
 
 -(DAUser *)getCreatUser
 {
