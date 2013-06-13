@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4yk-1H-mB6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4yk-1H-mB6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -87,65 +87,6 @@
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fr1-7n-D14">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DAGroupViewCell" rowHeight="55" id="DIo-WD-6hl" customClass="DAGroupViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8r-Hf-gjC">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="45" id="JB8-9z-UdK"/>
-                                                        <constraint firstAttribute="width" constant="45" id="src-Ad-s0i"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsG-Zv-h12">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="242" id="jUk-nx-Fbt"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaZ-Fw-zeO">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="198" id="aac-EC-qVe"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="管理者 ：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oar-JS-wA4">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="MtL-dl-KDs"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="ZaZ-Fw-zeO" secondAttribute="trailing" constant="20" type="default" id="31L-ma-dis"/>
-                                            <constraint firstItem="Oar-JS-wA4" firstAttribute="top" secondItem="ZaZ-Fw-zeO" secondAttribute="top" type="default" id="6U6-ap-Lxy"/>
-                                            <constraint firstAttribute="bottom" secondItem="Oar-JS-wA4" secondAttribute="bottom" constant="1" id="82a-yl-Ut0"/>
-                                            <constraint firstItem="hsG-Zv-h12" firstAttribute="top" secondItem="DIo-WD-6hl" secondAttribute="top" constant="13" id="OXi-Aj-rqr"/>
-                                            <constraint firstAttribute="trailing" secondItem="hsG-Zv-h12" secondAttribute="trailing" constant="20" type="default" id="WQ5-8w-bTP"/>
-                                            <constraint firstItem="Oar-JS-wA4" firstAttribute="leading" secondItem="DIo-WD-6hl" secondAttribute="leading" constant="62" id="Z8j-AX-juW"/>
-                                            <constraint firstItem="Oar-JS-wA4" firstAttribute="baseline" secondItem="ZaZ-Fw-zeO" secondAttribute="baseline" type="default" id="oFb-Nu-A5W"/>
-                                            <constraint firstItem="hsG-Zv-h12" firstAttribute="leading" secondItem="y8r-Hf-gjC" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="rcK-Un-Hok"/>
-                                            <constraint firstItem="y8r-Hf-gjC" firstAttribute="top" secondItem="DIo-WD-6hl" secondAttribute="top" constant="4" id="uJY-g8-D6v"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="imgPortrait" destination="y8r-Hf-gjC" id="9Lf-2M-pab"/>
-                                            <outlet property="lblName" destination="hsG-Zv-h12" id="Ib4-bG-zJP"/>
-                                            <outlet property="lblOwner" destination="ZaZ-Fw-zeO" id="ygM-MY-s13"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="QyM-zc-Dtd" id="M0b-Kp-0ws"/>
                                     <outlet property="delegate" destination="QyM-zc-Dtd" id="Sj0-rl-ct6"/>
@@ -190,55 +131,6 @@
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gsC-eW-OZY">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DAMemberViewCell" rowHeight="55" id="som-3c-bfX" customClass="DAMemberViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="PbV-VG-Y3S">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="45" id="Zo5-rd-vdT"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZM-Fz-XQL">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="7Ch-rH-vXo"/>
-                                                        <constraint firstAttribute="width" constant="241" id="p6g-E1-WCJ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="系统开发部" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccO-30-Vrv">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="osL-w5-fSC"/>
-                                                        <constraint firstAttribute="width" constant="229" id="ysn-Qq-FCU"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="PbV-VG-Y3S" firstAttribute="top" secondItem="GZM-Fz-XQL" secondAttribute="top" type="default" id="7Nt-dc-GsY"/>
-                                            <constraint firstItem="PbV-VG-Y3S" firstAttribute="centerY" secondItem="som-3c-bfX" secondAttribute="centerY" type="default" id="Adm-Ji-65P"/>
-                                            <constraint firstItem="ccO-30-Vrv" firstAttribute="top" secondItem="GZM-Fz-XQL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="SHj-gr-DQf"/>
-                                            <constraint firstAttribute="trailing" secondItem="ccO-30-Vrv" secondAttribute="trailing" constant="20" type="default" id="Vq8-do-aRh"/>
-                                            <constraint firstAttribute="trailing" secondItem="GZM-Fz-XQL" secondAttribute="trailing" constant="20" type="default" id="dvv-zt-4Sm"/>
-                                            <constraint firstItem="ccO-30-Vrv" firstAttribute="bottom" secondItem="PbV-VG-Y3S" secondAttribute="bottom" type="default" id="pX9-hX-9Pl"/>
-                                            <constraint firstItem="GZM-Fz-XQL" firstAttribute="leading" secondItem="PbV-VG-Y3S" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="uC2-oD-Rhu"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="imgPortrait" destination="PbV-VG-Y3S" id="auy-Pq-W5b"/>
-                                            <outlet property="lblName" destination="GZM-Fz-XQL" id="faL-uQ-7zE"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="mdm-pk-ad7" id="pdc-09-c8e"/>
                                     <outlet property="delegate" destination="mdm-pk-ad7" id="f5A-tJ-Ex5"/>
@@ -494,7 +386,6 @@
     </scenes>
     <resources>
         <image name="44-shoebox.png" width="24" height="22"/>
-        <image name="Default.png" width="320" height="480"/>
         <image name="heart.png" width="26" height="26"/>
         <image name="house.png" width="52" height="52"/>
         <image name="refresh.png" width="26" height="26"/>
@@ -511,14 +402,6 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
-        <class className="DAGroupViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAGroupViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgPortrait" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblOwner" candidateClass="UILabel"/>
-            </relationships>
-        </class>
         <class className="DAGroupViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DAGroupViewController.h"/>
             <relationships>
@@ -529,13 +412,6 @@
         </class>
         <class className="DAMainViewController" superclassName="UITabBarController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMainViewController.h"/>
-        </class>
-        <class className="DAMemberViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMemberViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgPortrait" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblName" candidateClass="UILabel"/>
-            </relationships>
         </class>
         <class className="DAMemberViewController" superclassName="DABaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMemberViewController.h"/>
@@ -552,10 +428,7 @@
                 <relationship kind="action" name="onContributeClicked:"/>
                 <relationship kind="action" name="onFilterClicked:"/>
                 <relationship kind="action" name="onNotifiactionClicked:"/>
-                <relationship kind="action" name="onShowAllBtn:"/>
-                <relationship kind="action" name="onToolBtn:"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tblMessageList" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="titleFilter" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
