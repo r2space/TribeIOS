@@ -7,19 +7,25 @@
 //
 
 #import "DATimeLineViewController.h"
+#import "DALeftSideViewController.h"
 
 @interface DATimeLineViewController ()
 {
-    
+    NSString *filterType;
+    NSString *filterId;
 }
 @end
 
 @implementation DATimeLineViewController
-
+@synthesize titleFilter;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self fetch];
+    NSLog(@"DATimeLineViewController");
+    titleFilter.title = @"全部消息";
+    filterType = @"all";
+    
 }
 
 - (IBAction)onNotifiactionClicked:(id)sender
@@ -50,7 +56,7 @@
     DAMessage *message = [list objectAtIndex:indexPath.row];
 	DAMessageCell *cell = [DAMessageCell initWithMessage:message tableView:tableView];
     cell.parentController = self;
-
+    
     return cell;
 }
 
@@ -59,16 +65,55 @@
     return [DAMessageCell cellHeightWithMessage:[list objectAtIndex:indexPath.row]];
 }
 
-- (IBAction)onRefreshClicked:(id)sender
+- (IBAction)onFilterClicked:(id)sender
 {
-    [self refresh];
+    DALeftSideViewController *viewController = [[DALeftSideViewController alloc] initWithNibName:@"DALeftSideViewController" bundle:nil];
+    [viewController setTitle:@"筛选"];
+    viewController.contentController = self;
+    [DAHelper showPopup:viewController];
 }
+
 
 - (IBAction)onContributeClicked:(id)sender
 {
     DAContributeViewController *ctrl = [[DAContributeViewController alloc] initWithNibName:@"DAContributeViewController" bundle:nil];
     [self presentViewController:ctrl animated:YES completion:nil];
 }
+- (IBAction)onShowAllBtn:(id)sender
+{
+    
+    filterType = @"all";
+    titleFilter.title = @"全部消息";
+    UIBarButtonItem *fixItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    NSMutableArray *items = [NSMutableArray arrayWithArray:self.toolbar.items];
+    [items replaceObjectAtIndex:4 withObject:fixItem];
+    
+    [self.toolbar setItems:items];
+    [self fetch];
+}
+
+
+-(void)filter:(NSString*)type filterid:(NSString *)filterid filtername:(NSString *)filtername
+{
+    
+    
+    UIBarButtonItem *allItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(onShowAllBtn:)];
+    
+    UIBarButtonItem *fixItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    NSMutableArray *items = [NSMutableArray arrayWithArray:self.toolbar.items];
+    [items replaceObjectAtIndex:4 withObject:allItem];
+    [items replaceObjectAtIndex:5 withObject:fixItem];
+    [self.toolbar setItems:items];
+    
+    titleFilter.title =[NSString stringWithFormat:@"%@ ",filtername];
+    filterType = type;
+    filterId = filterid;
+    [self fetch];
+    
+}
+
+
 
 #pragma mark - overwrite DABaseViewController
 
@@ -85,9 +130,21 @@
         before = lastMsg.createat;
     }
     
-    [[DAMessageModule alloc] getMessagesInTimeLineStart:start count:count before:before callback:^(NSError *error, DAMessageList *messageList){
-        [self finishFetch:messageList.items error:error];
-    }];
+    if ([filterType isEqualToString:@"user"]) {
+        [[DAMessageModule alloc] getMessagesByUser:filterId start:start count:count before:before callback:^(NSError *error, DAMessageList *messageList){
+            [self finishFetch:messageList.items error:error];
+            
+        }];
+    }else if([filterType isEqualToString:@"group"] ){
+        [[DAMessageModule alloc] getMessagesInGroup:filterId start:start count:count before:before callback:^(NSError *error, DAMessageList *messageList){
+            [self finishFetch:messageList.items error:error];
+        }];
+
+    } else {
+        [[DAMessageModule alloc] getMessagesInTimeLineStart:start count:count before:before callback:^(NSError *error, DAMessageList *messageList){
+            [self finishFetch:messageList.items error:error];
+        }];
+    }
 }
 
 #pragma mark - Table view delegate
@@ -99,7 +156,7 @@
     detailViewController.messageId = message._id;
     detailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailViewController animated:YES];
-     
+    
 }
 
 @end
