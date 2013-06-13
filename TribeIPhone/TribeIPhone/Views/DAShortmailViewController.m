@@ -31,8 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAUserList *users){
-        theUsers = users.items;
+    [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAContactList *contact){
+        theUsers = contact.items;
         [self.tblUsers reloadData];
     }];
 }
@@ -60,10 +60,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAUser *user = [theUsers objectAtIndex:indexPath.row];
-	DAShortmailViewCell *cell = [DAShortmailViewCell initWithMessage:user  tableView:tableView];
+    DAContact *contact = [theUsers objectAtIndex:indexPath.row];
+	DAShortmailViewCell *cell = [DAShortmailViewCell initWithMessage:contact tableView:tableView];
     
-    cell.lblName.text = user.name.name_zh;
+    cell.lblName.text = contact.user.name.name_zh;
     
     return cell;
 }

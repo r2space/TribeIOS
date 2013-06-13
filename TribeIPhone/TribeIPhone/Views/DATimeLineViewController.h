@@ -17,10 +17,16 @@
 
 @interface DATimeLineViewController : DABaseViewController
 
-- (IBAction)onRefreshClicked:(id)sender;
+- (IBAction)onFilterClicked:(id)sender;
 - (IBAction)onContributeClicked:(id)sender;
 - (IBAction)onNotifiactionClicked:(id)sender;
 
+
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *titleFilter;
+
+-(void)filter:(NSString*)type filterid:(NSString *)filterid filtername:(NSString *)filtername;
+
 @end

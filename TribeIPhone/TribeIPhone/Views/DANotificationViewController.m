@@ -92,9 +92,9 @@
         case 2:
         {
             _content = 3;
-            [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAUserList *users){
-                theUsers = users.items;
-                user_count = users.items.count;
+            [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAContactList *contact){
+                theUsers = contact.items;
+                user_count = contact.items.count;
                 [self.tableView reloadData];
             }];
         }
@@ -140,9 +140,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_content == 3) {
-        DAUser *user = [theUsers objectAtIndex:indexPath.row];
-        DAShortmailViewCell *cells = [DAShortmailViewCell initWithMessage:user  tableView:tableView];
-        cells.lblName.text = user.name.name_zh;
+        DAContact *contact = [theUsers objectAtIndex:indexPath.row];
+        DAShortmailViewCell *cells = [DAShortmailViewCell initWithMessage:contact  tableView:tableView];
+        cells.lblName.text = contact.user.name.name_zh;
         return cells;
     }
     
@@ -199,9 +199,9 @@
 
 - (IBAction)onMailClicked:(id)sender {
     
-    [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAUserList *users){
-        theUsers = users.items;
-        user_count = users.items.count;
+    [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAContactList *contact){
+        theUsers = contact.items;
+        user_count = contact.items.count;
         _content = 3;
         [self.tableView reloadData];
     }];

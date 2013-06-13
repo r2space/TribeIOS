@@ -146,6 +146,12 @@
 		F29A8B83174B78AC006133C9 /* DACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A8B81174B78AC006133C9 /* DACategory.m */; };
 		F29A8B84174B78AC006133C9 /* DACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A8B81174B78AC006133C9 /* DACategory.m */; };
 		F29A9B6A1745FD1E00273253 /* TribeSDKHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A9B691745FD1C00273253 /* TribeSDKHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F29ACD69176873E100AC0B68 /* DAContact.h in Headers */ = {isa = PBXBuildFile; fileRef = F29ACD67176873E100AC0B68 /* DAContact.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F29ACD6A176873E100AC0B68 /* DAContact.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD68176873E100AC0B68 /* DAContact.m */; };
+		F29ACD6B176873E100AC0B68 /* DAContact.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD68176873E100AC0B68 /* DAContact.m */; };
+		F29ACD6E1768753600AC0B68 /* DAContactList.h in Headers */ = {isa = PBXBuildFile; fileRef = F29ACD6C1768753500AC0B68 /* DAContactList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F29ACD6F1768753600AC0B68 /* DAContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD6D1768753500AC0B68 /* DAContactList.m */; };
+		F29ACD701768753600AC0B68 /* DAContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD6D1768753500AC0B68 /* DAContactList.m */; };
 		F2A6EAA9172AA1B600C1A9BF /* DAShortmailModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A6EAA7172AA1B600C1A9BF /* DAShortmailModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A6EAAA172AA1B600C1A9BF /* DAShortmailModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6EAA8172AA1B600C1A9BF /* DAShortmailModule.m */; };
 		F2A6EAAB172AA1B600C1A9BF /* DAShortmailModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6EAA8172AA1B600C1A9BF /* DAShortmailModule.m */; };
@@ -348,6 +354,10 @@
 		F29A8B80174B78AC006133C9 /* DACategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACategory.h; sourceTree = "<group>"; };
 		F29A8B81174B78AC006133C9 /* DACategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACategory.m; sourceTree = "<group>"; };
 		F29A9B691745FD1C00273253 /* TribeSDKHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeSDKHeader.h; sourceTree = "<group>"; };
+		F29ACD67176873E100AC0B68 /* DAContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAContact.h; sourceTree = "<group>"; };
+		F29ACD68176873E100AC0B68 /* DAContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAContact.m; sourceTree = "<group>"; };
+		F29ACD6C1768753500AC0B68 /* DAContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAContactList.h; sourceTree = "<group>"; };
+		F29ACD6D1768753500AC0B68 /* DAContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAContactList.m; sourceTree = "<group>"; };
 		F2A6EAA7172AA1B600C1A9BF /* DAShortmailModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAShortmailModule.h; sourceTree = "<group>"; };
 		F2A6EAA8172AA1B600C1A9BF /* DAShortmailModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAShortmailModule.m; sourceTree = "<group>"; };
 		F2A6EAAC172AA2AA00C1A9BF /* DAShortmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAShortmail.h; sourceTree = "<group>"; };
@@ -593,6 +603,10 @@
 				F2A6EAB2172AAF9C00C1A9BF /* DAShortmailList.m */,
 				F29A8B80174B78AC006133C9 /* DACategory.h */,
 				F29A8B81174B78AC006133C9 /* DACategory.m */,
+				F29ACD67176873E100AC0B68 /* DAContact.h */,
+				F29ACD68176873E100AC0B68 /* DAContact.m */,
+				F29ACD6C1768753500AC0B68 /* DAContactList.h */,
+				F29ACD6D1768753500AC0B68 /* DAContactList.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -799,6 +813,8 @@
 				F2E4A527175B2E4B00BC839D /* DATurnoverList.h in Headers */,
 				F2E4A52C175B2EF900BC839D /* DAPurchase.h in Headers */,
 				F2E4A531175C8C1A00BC839D /* DAPurchaseList.h in Headers */,
+				F29ACD69176873E100AC0B68 /* DAContact.h in Headers */,
+				F29ACD6E1768753600AC0B68 /* DAContactList.h in Headers */,
 				F2E4A536175C8F8A00BC839D /* DAPurchaseModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -977,6 +993,8 @@
 				F2E4A52D175B2EF900BC839D /* DAPurchase.m in Sources */,
 				F2E4A532175C8C1A00BC839D /* DAPurchaseList.m in Sources */,
 				F2E4A537175C8F8A00BC839D /* DAPurchaseModule.m in Sources */,
+				F29ACD6A176873E100AC0B68 /* DAContact.m in Sources */,
+				F29ACD6F1768753600AC0B68 /* DAContactList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,6 +1071,8 @@
 				F2E4A52E175B2EF900BC839D /* DAPurchase.m in Sources */,
 				F2E4A533175C8C1A00BC839D /* DAPurchaseList.m in Sources */,
 				F2E4A538175C8F8A00BC839D /* DAPurchaseModule.m in Sources */,
+				F29ACD6B176873E100AC0B68 /* DAContact.m in Sources */,
+				F29ACD701768753600AC0B68 /* DAContactList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

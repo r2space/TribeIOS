@@ -215,6 +215,17 @@
 		F29ACD311762CC3700AC0B68 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD2C1762CC3700AC0B68 /* IISideController.m */; };
 		F29ACD321762CC3700AC0B68 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD2E1762CC3700AC0B68 /* IIViewDeckController.m */; };
 		F29ACD331762CC3700AC0B68 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD301762CC3700AC0B68 /* IIWrapController.m */; };
+		F29ACD3C17630E1B00AC0B68 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD3517630E1B00AC0B68 /* base64.c */; };
+		F29ACD3D17630E1B00AC0B68 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD3817630E1B00AC0B68 /* NSData+SRB64Additions.m */; };
+		F29ACD3E17630E1B00AC0B68 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD3B17630E1B00AC0B68 /* SRWebSocket.m */; };
+		F29ACD511763143D00AC0B68 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29ACD501763143D00AC0B68 /* CFNetwork.framework */; };
+		F29ACD531763145500AC0B68 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29ACD521763145500AC0B68 /* Security.framework */; };
+		F29ACD551763168600AC0B68 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F29ACD541763168600AC0B68 /* libicucore.dylib */; };
+		F29ACD62176316A300AC0B68 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD58176316A300AC0B68 /* SocketIO.m */; };
+		F29ACD63176316A300AC0B68 /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD5A176316A300AC0B68 /* SocketIOJSONSerialization.m */; };
+		F29ACD64176316A300AC0B68 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD5C176316A300AC0B68 /* SocketIOPacket.m */; };
+		F29ACD65176316A300AC0B68 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD5F176316A300AC0B68 /* SocketIOTransportWebsocket.m */; };
+		F29ACD66176316A300AC0B68 /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = F29ACD61176316A300AC0B68 /* SocketIOTransportXHR.m */; };
 		F29FBF8B171D2FDE006C9CCB /* DALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29FBF89171D2FDE006C9CCB /* DALoginViewController.m */; };
 		F29FBF8C171D2FDE006C9CCB /* DALoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29FBF8A171D2FDE006C9CCB /* DALoginViewController.xib */; };
 		F2A6EABD172AD09900C1A9BF /* DAShortmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6EABB172AD09900C1A9BF /* DAShortmailViewController.m */; };
@@ -509,6 +520,27 @@
 		F29ACD2E1762CC3700AC0B68 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
 		F29ACD2F1762CC3700AC0B68 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
 		F29ACD301762CC3700AC0B68 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
+		F29ACD3517630E1B00AC0B68 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		F29ACD3617630E1B00AC0B68 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		F29ACD3717630E1B00AC0B68 /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
+		F29ACD3817630E1B00AC0B68 /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
+		F29ACD3917630E1B00AC0B68 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		F29ACD3A17630E1B00AC0B68 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		F29ACD3B17630E1B00AC0B68 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		F29ACD501763143D00AC0B68 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F29ACD521763145500AC0B68 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F29ACD541763168600AC0B68 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		F29ACD57176316A300AC0B68 /* SocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIO.h; sourceTree = "<group>"; };
+		F29ACD58176316A300AC0B68 /* SocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
+		F29ACD59176316A300AC0B68 /* SocketIOJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOJSONSerialization.h; sourceTree = "<group>"; };
+		F29ACD5A176316A300AC0B68 /* SocketIOJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOJSONSerialization.m; sourceTree = "<group>"; };
+		F29ACD5B176316A300AC0B68 /* SocketIOPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOPacket.h; sourceTree = "<group>"; };
+		F29ACD5C176316A300AC0B68 /* SocketIOPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOPacket.m; sourceTree = "<group>"; };
+		F29ACD5D176316A300AC0B68 /* SocketIOTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransport.h; sourceTree = "<group>"; };
+		F29ACD5E176316A300AC0B68 /* SocketIOTransportWebsocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportWebsocket.h; sourceTree = "<group>"; };
+		F29ACD5F176316A300AC0B68 /* SocketIOTransportWebsocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportWebsocket.m; sourceTree = "<group>"; };
+		F29ACD60176316A300AC0B68 /* SocketIOTransportXHR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportXHR.h; sourceTree = "<group>"; };
+		F29ACD61176316A300AC0B68 /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = "<group>"; };
 		F29FBF88171D2FDE006C9CCB /* DALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALoginViewController.h; sourceTree = "<group>"; };
 		F29FBF89171D2FDE006C9CCB /* DALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALoginViewController.m; sourceTree = "<group>"; };
 		F29FBF8A171D2FDE006C9CCB /* DALoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DALoginViewController.xib; sourceTree = "<group>"; };
@@ -538,6 +570,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29ACD551763168600AC0B68 /* libicucore.dylib in Frameworks */,
+				F29ACD531763145500AC0B68 /* Security.framework in Frameworks */,
+				F29ACD511763143D00AC0B68 /* CFNetwork.framework in Frameworks */,
 				F28AD4B71761A8E200D7CDC3 /* QuartzCore.framework in Frameworks */,
 				F227AD56174081360086CFC7 /* TribeSDK.framework in Frameworks */,
 				F2A6EBDC1730EB0900C1A9BF /* MobileCoreServices.framework in Frameworks */,
@@ -616,6 +651,9 @@
 		471A055B171BC1AD0040CB93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F29ACD541763168600AC0B68 /* libicucore.dylib */,
+				F29ACD521763145500AC0B68 /* Security.framework */,
+				F29ACD501763143D00AC0B68 /* CFNetwork.framework */,
 				F28AD4B61761A8E200D7CDC3 /* QuartzCore.framework */,
 				F2A6EBDB1730EB0900C1A9BF /* MobileCoreServices.framework */,
 				F2A6EBD91730EB0000C1A9BF /* SystemConfiguration.framework */,
@@ -835,6 +873,8 @@
 		F22B38A0173652BF0017A986 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				F29ACD56176316A300AC0B68 /* SocketIO */,
+				F29ACD3417630E1B00AC0B68 /* SocketRocket */,
 				F29ACD2A1762CC3700AC0B68 /* IIViewDeck */,
 				F29ACD171762CA1400AC0B68 /* CQMFloating */,
 				F22B38A5173658E60017A986 /* WTStatusBar */,
@@ -1019,6 +1059,38 @@
 				F29ACD301762CC3700AC0B68 /* IIWrapController.m */,
 			);
 			path = IIViewDeck;
+			sourceTree = "<group>";
+		};
+		F29ACD3417630E1B00AC0B68 /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				F29ACD3517630E1B00AC0B68 /* base64.c */,
+				F29ACD3617630E1B00AC0B68 /* base64.h */,
+				F29ACD3717630E1B00AC0B68 /* NSData+SRB64Additions.h */,
+				F29ACD3817630E1B00AC0B68 /* NSData+SRB64Additions.m */,
+				F29ACD3917630E1B00AC0B68 /* SocketRocket-Prefix.pch */,
+				F29ACD3A17630E1B00AC0B68 /* SRWebSocket.h */,
+				F29ACD3B17630E1B00AC0B68 /* SRWebSocket.m */,
+			);
+			path = SocketRocket;
+			sourceTree = "<group>";
+		};
+		F29ACD56176316A300AC0B68 /* SocketIO */ = {
+			isa = PBXGroup;
+			children = (
+				F29ACD57176316A300AC0B68 /* SocketIO.h */,
+				F29ACD58176316A300AC0B68 /* SocketIO.m */,
+				F29ACD59176316A300AC0B68 /* SocketIOJSONSerialization.h */,
+				F29ACD5A176316A300AC0B68 /* SocketIOJSONSerialization.m */,
+				F29ACD5B176316A300AC0B68 /* SocketIOPacket.h */,
+				F29ACD5C176316A300AC0B68 /* SocketIOPacket.m */,
+				F29ACD5D176316A300AC0B68 /* SocketIOTransport.h */,
+				F29ACD5E176316A300AC0B68 /* SocketIOTransportWebsocket.h */,
+				F29ACD5F176316A300AC0B68 /* SocketIOTransportWebsocket.m */,
+				F29ACD60176316A300AC0B68 /* SocketIOTransportXHR.h */,
+				F29ACD61176316A300AC0B68 /* SocketIOTransportXHR.m */,
+			);
+			path = SocketIO;
 			sourceTree = "<group>";
 		};
 		F2A6EAB9172AD05500C1A9BF /* Shortmail */ = {
@@ -1355,6 +1427,14 @@
 				F29ACD311762CC3700AC0B68 /* IISideController.m in Sources */,
 				F29ACD321762CC3700AC0B68 /* IIViewDeckController.m in Sources */,
 				F29ACD331762CC3700AC0B68 /* IIWrapController.m in Sources */,
+				F29ACD3C17630E1B00AC0B68 /* base64.c in Sources */,
+				F29ACD3D17630E1B00AC0B68 /* NSData+SRB64Additions.m in Sources */,
+				F29ACD3E17630E1B00AC0B68 /* SRWebSocket.m in Sources */,
+				F29ACD62176316A300AC0B68 /* SocketIO.m in Sources */,
+				F29ACD63176316A300AC0B68 /* SocketIOJSONSerialization.m in Sources */,
+				F29ACD64176316A300AC0B68 /* SocketIOPacket.m in Sources */,
+				F29ACD65176316A300AC0B68 /* SocketIOTransportWebsocket.m in Sources */,
+				F29ACD66176316A300AC0B68 /* SocketIOTransportXHR.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1472,6 +1552,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TribeIPhone/TribeIPhone-Prefix.pch";
 				INFOPLIST_FILE = "TribeIPhone/TribeIPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TribeIPhone;
 				PROVISIONING_PROFILE = "";
@@ -1491,6 +1572,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TribeIPhone/TribeIPhone-Prefix.pch";
 				INFOPLIST_FILE = "TribeIPhone/TribeIPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = TribeIPhone;
 				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = armv7;

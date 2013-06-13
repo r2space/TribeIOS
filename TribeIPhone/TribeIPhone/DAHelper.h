@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <TribeSDK/DAAFHttpClient.h>
 #import "CQMFloatingController.h"
+#import "DALeftSideViewController.h"
 
 #define DAColor [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f]
 
@@ -19,6 +20,8 @@
 + (NSString *) fileanExtension:(NSString *)type;
 + (BOOL) isNetworkReachable;
 
-+ (CQMFloatingController *) showPopup:(UIViewController *)viewController;
 
+
++ (CQMFloatingController *) showPopup:(UIViewController *)viewController;
++ (void) hidePopup;
 @end

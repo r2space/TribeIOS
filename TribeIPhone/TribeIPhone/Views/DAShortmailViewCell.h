@@ -16,6 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
 
-+(DAShortmailViewCell *)initWithMessage:(DAUser *)user tableView:(UITableView *)tableView;
++(DAShortmailViewCell *)initWithMessage:(DAContact *)user tableView:(UITableView *)tableView;
 
 @end

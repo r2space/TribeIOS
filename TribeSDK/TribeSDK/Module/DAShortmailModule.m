@@ -55,14 +55,14 @@
 }
 
 
-- (void)getUsers:(int)start count:(int)count callback:(void (^)(NSError *error, DAUserList *users))callback
+- (void)getUsers:(int)start count:(int)count callback:(void (^)(NSError *error, DAContactList *contact))callback
 {
     NSString *path = [NSString stringWithFormat:kURLUsers, start, count];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
-            callback(nil, [[DAUserList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
+            callback(nil, [[DAContactList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

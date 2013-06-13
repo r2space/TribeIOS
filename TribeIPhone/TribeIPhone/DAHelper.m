@@ -61,20 +61,31 @@
     return [[DAAFHttpClient sharedClient] isReachable];
 }
 
+
+
 + (CQMFloatingController *) showPopup:(UIViewController *)viewController
 {
     // Get shared floating controller, and customize if needed
     CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
-    [floatingController setFrameColor:[UIColor orangeColor]];
+    [floatingController setFrameColor:[UIColor darkGrayColor]];
     
     // Show floating controller with content
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     UIView *rootView = [window.rootViewController view];
+    
+    
     [floatingController showInView:rootView
          withContentViewController:viewController
                           animated:YES];
-    
     return floatingController;
+}
+
++ (void) hidePopup
+{
+    // Get shared floating controller, and customize if needed
+    CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
+    
+    [floatingController dismissAnimated:YES];
 }
 
 @end

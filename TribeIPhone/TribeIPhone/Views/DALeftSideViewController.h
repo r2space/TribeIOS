@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TribeSDK/TribeSDKHeader.h>
+#import "DABaseViewController.h"
+
 
 @interface DALeftSideViewController : UIViewController
+
+@property (nonatomic, retain) NSArray *dataList;
+
+@property (weak, nonatomic) IBOutlet UITableView *tblFilter;
+
+@property (retain, nonatomic) UIViewController *contentController;
+
+
+
+
+-(IBAction)setSegment:(id)sender;
 
 @end

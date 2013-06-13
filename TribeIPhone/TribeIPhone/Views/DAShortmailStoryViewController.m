@@ -13,6 +13,7 @@
 @interface DAShortmailStoryViewController ()
 {
     NSArray *theMails;
+    SocketIO *socket;
 }
 
 @end
@@ -32,6 +33,7 @@
 {
     [super viewDidLoad];
     
+    // 没有用户ID，即新建会话
     if (self.uid == nil) {
         DAMemberController *members = [[DAMemberController alloc] initWithNibName:@"DAMemberController" bundle:nil];
         members.kind = DAMemberListAll;
@@ -63,6 +65,26 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification object:nil];
+    
+    NSLog(@"DAShortmailStoryViewController viewDidAppear");
+    
+    // 连接WebSocket
+    if (socket || ![socket isConnected]) {
+        socket = [[SocketIO alloc] initWithDelegate:self];
+        [socket connectToHost:@"10.2.3.199" onPort:3001];
+
+        // 发送用户ID
+        NSMutableDictionary *userinfo = [NSMutableDictionary dictionary];
+        [userinfo setObject:[DALoginModule getLoginUserId] forKey:@"id"];
+        [socket sendEvent:@"userid" withData:userinfo];
+    }
+}
+
+// 切断WebSocket连接
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"DAShortmailStoryViewController viewWillDisappear");
+    [socket disconnect];
 }
 
 // 显示键盘的时候，调整View的位置
@@ -86,12 +108,13 @@
 }
 
 
-- (IBAction)onCancelTouched:(id)sender {
+- (IBAction)onCancelTouched:(id)sender
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)onSendTouched:(id)sender {
-    
+- (IBAction)onSendTouched:(id)sender
+{
     DAShortmail *shortmail = [[DAShortmail alloc] init];
     shortmail.message = self.txtContent.text;
     shortmail._id = self.uid;
@@ -128,10 +151,12 @@
     return 91;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 }
 
-- (IBAction)onTextExit:(id)sender {
+- (IBAction)onTextExit:(id)sender
+{
     CGRect bounds = [self.viewContainer bounds];
     [UIView animateWithDuration:0.2
                      animations:^{
@@ -141,5 +166,17 @@
     UITextField *textField = sender;
     [textField resignFirstResponder];
 }
+
+- (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet
+{
+    NSDictionary *data = [packet dataAsJSON];
+    NSLog(@"didReceiveMessage() >>> data: %@", [data objectForKey:@"args"]);
+}
+
+- (void) socketIO:(SocketIO *)socket failedToConnectWithError:(NSError *)error
+{
+    NSLog(@"failedToConnectWithError() %@", error);
+}
+
 
 @end
