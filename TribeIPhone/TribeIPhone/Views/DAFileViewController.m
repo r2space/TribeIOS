@@ -17,6 +17,8 @@
 @interface DAFileViewController ()
 {
     MBProgressHUD *_hud;
+    NSString *_type;
+    NSDictionary *_typeValues;
 }
 
 @end
@@ -35,6 +37,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _type = @"all";
+    _typeValues = @{@"all":@"全部",@"image":@"图片",@"video":@"视频",@"audio":@"音频",@"application":@"其它"};
+    
     [self fetch];
 }
 
@@ -50,9 +55,20 @@
         return;
     }
     
-    [[DAFileModule alloc] getFileList:start count:count callback:^(NSError *error, DAFileList *files){
+    [[DAFileModule alloc] getFileList:start count:count type:_type callback:^(NSError *error, DAFileList *files){
         [self finishFetch:files.items error:error];
+        [self displayFilter];
     }];
+}
+
+-(void)displayFilter
+{
+    if ([_type isEqualToString:@"all"]) {
+        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_binoculars.png"]];
+    } else {
+        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_cross.png"]];
+    }
+    [self.barFilter setTitle:[_typeValues objectForKey:_type]];
 }
 
 - (IBAction)onCancelTouched:(id)sender
@@ -151,5 +167,23 @@
     
 //    [self.navigationController pushViewController:detailView animated:YES];
     
+}
+- (IBAction)barFilterOnClick:(id)sender {
+    DAFileFilterViewController *filterCtrl = [[DAFileFilterViewController alloc] initWithNibName:@"DAFileFilterViewController" bundle:nil];
+    filterCtrl.selectedBlocks = ^(NSString *filter){
+        _type = filter;
+        [self refresh];
+        [DAHelper hidePopup];
+    };
+    [DAHelper showPopup:filterCtrl];
+}
+
+- (IBAction)barFilterIcoOnClick:(id)sender {
+    if ([_type isEqualToString:@"all"]) {
+        [self barFilterOnClick:nil];
+    } else {
+        _type = @"all";
+        [self refresh];
+    }
 }
 @end

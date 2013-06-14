@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
+@property (weak, nonatomic) IBOutlet UILabel *lblDepart;
+@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 @property (weak, nonatomic) NSString* uid;
 
 +(DAMemberViewCell *)initWithMessage:(DAUser *)user tableView:(UITableView *)tableView;

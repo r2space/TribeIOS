@@ -61,6 +61,11 @@
     return theGroups.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DAGroup *group = [theGroups objectAtIndex:indexPath.row];
@@ -68,7 +73,9 @@
     
     [cell lblName].text = group.name.name_zh;
     cell.gid = group._id;
-    
+    cell.lblDescription.text = group.description;
+    cell.lblMembers.text = [NSString stringWithFormat:@"%d 成员",group.member.count];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -83,11 +90,11 @@
 }
 
 
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    NSString *a = @"あ/か/さ/た/な/は/ま/や/ら/わ/A/●/D/●/G/●/J/●/M/●/P/●/T/●/Z";
-    return [a pathComponents];
-}
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//    NSString *a = @"あ/か/さ/た/な/は/ま/や/ら/わ/A/●/D/●/G/●/J/●/M/●/P/●/T/●/Z";
+//    return [a pathComponents];
+//}
 
 - (IBAction)onAddTouched:(id)sender {
     DAGroupMoreContainerViewController *moreViewController = [[DAGroupMoreContainerViewController alloc] initWithNibName:@"DAGroupMoreContainerViewController" bundle:nil];

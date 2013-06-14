@@ -189,6 +189,7 @@
     
     [[DAMessageModule alloc] getMessage:_messageId callback:^(NSError *error, DAMessage *message) {
         _message = message;
+        [self setLike];
         [[DAMessageModule alloc] getComments:_messageId start:start count:count callback:^(NSError *error, DAMessageList *commentList){
             _commentsTotal = commentList.total.intValue;
             [self finishFetch:commentList.items error:error];
@@ -204,6 +205,15 @@
 - (IBAction)btnHomeTouched:(id)sender {
     UITabBarController *controller = self.tabBarController;
     controller.selectedViewController = [controller.viewControllers objectAtIndex: 0];
+}
+
+- (void) setLike
+{
+    if ([_message.likers containsObject:[DALoginModule getLoginUserId]]) {
+        self.barLike.image = [UIImage  imageNamed:@"like.png"];
+    } else {
+        self.barLike.image = [UIImage  imageNamed:@"like_outline.png"];
+    }
 }
 
 #pragma mark - UITabBarDelegate
@@ -233,18 +243,32 @@
         [self presentViewController:ctrl animated:YES completion:nil];
     }
     if (4 == item.tag) {
-        if ([message_contenttype_image isEqualToString:_message.contentType]) {
-            if (_message.attach.count > 0) {
-                DAPictureViewController *pictureCtrl = [[DAPictureViewController alloc] initWithNibName:@"DAPictureViewController" bundle:nil];
-                NSMutableArray *ids = [[NSMutableArray alloc] init];
-                for (MessageAttach *file in _message.attach) {
-                    [ids addObject:file.fileid];
-                }
-                pictureCtrl.PictureIds = ids;
-                [self presentViewController:pictureCtrl animated:YES completion:nil];
-            }
+        // like
+        if ([_message.likers containsObject:[DALoginModule getLoginUserId]]) {
+            [[DAMessageModule alloc] unlike:_messageId callback:^(NSError *error, DAMessage *message) {
+                _message = message;
+                [self setLike];
+            }];
+        } else {
+            [[DAMessageModule alloc] like:_messageId callback:^(NSError *error, DAMessage *message) {
+                _message = message;
+                [self setLike];
+            }];
         }
     }
 }
+
+//图片详细
+//        if ([message_contenttype_image isEqualToString:_message.contentType]) {
+//            if (_message.attach.count > 0) {
+//                DAPictureViewController *pictureCtrl = [[DAPictureViewController alloc] initWithNibName:@"DAPictureViewController" bundle:nil];
+//                NSMutableArray *ids = [[NSMutableArray alloc] init];
+//                for (MessageAttach *file in _message.attach) {
+//                    [ids addObject:file.fileid];
+//                }
+//                pictureCtrl.PictureIds = ids;
+//                [self presentViewController:pictureCtrl animated:YES completion:nil];
+//            }
+//        }
 
 @end

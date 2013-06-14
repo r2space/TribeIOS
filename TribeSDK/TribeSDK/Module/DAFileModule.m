@@ -12,16 +12,16 @@
 #define kURLFileHistory     @"/file/history_ios.json?fid=%@"
 
 #define kURLFileDetail      @"/file/detail.json?fid=%@"
-#define kURLFileList        @"/file/list.json?start=%d&count=%d&type=all"
+#define kURLFileList        @"/file/list.json?start=%d&count=%d&type=%@"
 #define kURLUploadFile      @"/file/upload.json"
 #define kURLGetPicture      @"/picture/%@"
 #define kURLDownloadFile    @"/file/download.json?_id=%@"
 
 @implementation DAFileModule
 
-- (void)getFileList:(int)start count:(int)count callback:(void (^)(NSError *error, DAFileList *files))callback
+- (void)getFileList:(int)start count:(int)count type:(NSString *)type callback:(void (^)(NSError *error, DAFileList *files))callback
 {
-    NSString *path = [NSString stringWithFormat:kURLFileList, start, count];
+    NSString *path = [NSString stringWithFormat:kURLFileList, start, count, type];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         

@@ -10,7 +10,7 @@
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DABaseViewController.h"
 
-@interface DAMemberViewController : DABaseViewController
+@interface DAMemberViewController : DABaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

@@ -43,6 +43,22 @@
 }
 @end
 
+@implementation UserCustom
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.memo forKey:@"memo"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    self.memo = [aDecoder decodeObjectForKey:@"memo"];
+    return self;
+}
+
+@end
+
 
 @implementation DAUser
 @synthesize id, _id;

@@ -66,6 +66,11 @@
     return list.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DAUser *user = [list objectAtIndex:indexPath.row];
@@ -73,19 +78,22 @@
 
     [cell lblName].text = [user getUserName];
     cell.uid = user._id;
+    cell.lblDepart.text = user.department.name.name_zh;
+    cell.lblDescription.text = user.custom.memo;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
 
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-//    NSArray *indexTitleArray;
-    
-    NSString *a = @"あ/か/さ/た/な/は/ま/や/ら/わ/A/●/D/●/G/●/J/●/M/●/P/●/T/●/Z";
-    return [a pathComponents];
-//    indexTitleArray = [NSArray arrayWithObjects:@"A", @"B", @"C", nil];
-//    return indexTitleArray;
-}
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+////    NSArray *indexTitleArray;
+//    
+//    NSString *a = @"あ/か/さ/た/な/は/ま/や/ら/わ/A/●/D/●/G/●/J/●/M/●/P/●/T/●/Z";
+//    return [a pathComponents];
+////    indexTitleArray = [NSArray arrayWithObjects:@"A", @"B", @"C", nil];
+////    return indexTitleArray;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     

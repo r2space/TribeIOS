@@ -17,7 +17,7 @@
 @interface DAMessageDetailViewController : DABaseViewController<UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (retain, nonatomic) NSString* messageId;
-
+@property (weak, nonatomic) IBOutlet UITabBarItem *barLike;
 - (IBAction)onCancelTouched:(id)sender;
 - (IBAction)btnHomeTouched:(id)sender;
 
