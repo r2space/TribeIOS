@@ -16,6 +16,7 @@
 @interface DAShortmail : Jastor
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *_id;
+@property (retain, nonatomic) NSString *contact;
 @property (retain, nonatomic) NSString *message;
 @property (retain, nonatomic) NSString *read;
 @property (retain, nonatomic) NSString *to;

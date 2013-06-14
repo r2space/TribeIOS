@@ -12,8 +12,10 @@
 
 @interface DAShortmailStoryViewController ()
 {
-    NSArray *theMails;
+    NSMutableArray *theMails;
     SocketIO *socket;
+    NSTimer *timer; // 涮新用计时器
+    BOOL puaseTimer; //
 }
 
 @end
@@ -34,7 +36,9 @@
     [super viewDidLoad];
     
     // 没有用户ID，即新建会话
-    if (self.uid == nil) {
+    if (self.contact == nil) {
+        
+        // 显示用户选择画面
         DAMemberController *members = [[DAMemberController alloc] initWithNibName:@"DAMemberController" bundle:nil];
         members.kind = DAMemberListAll;
         
@@ -50,11 +54,6 @@
         };
         
         [self presentViewController:members animated:YES completion:nil];
-    } else {
-        [[DAShortmailModule alloc] getStoryByUser:self.uid start:0 count:20 callback:^(NSError *error, DAShortmailList *shortmails){
-            theMails = shortmails.items;
-            [self.tblStory reloadData];
-        }];
     }
 }
 
@@ -72,11 +71,54 @@
     if (socket || ![socket isConnected]) {
         socket = [[SocketIO alloc] initWithDelegate:self];
         [socket connectToHost:@"10.2.3.199" onPort:3001];
-
+        
         // 发送用户ID
         NSMutableDictionary *userinfo = [NSMutableDictionary dictionary];
         [userinfo setObject:[DALoginModule getLoginUserId] forKey:@"id"];
         [socket sendEvent:@"userid" withData:userinfo];
+    }
+    
+    [self scrollToBottom];
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:10.0
+                                             target:self
+                                           selector:@selector(timerEvent:)
+                                           userInfo:nil
+                                            repeats:YES];
+    
+    [timer fire];
+}
+
+- (void)timerEvent:(NSTimer *)timer
+{
+    if (puaseTimer) {
+        return;
+    }
+    
+    NSDate *now = [NSDate date];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSLog(@"%@", [format stringFromDate:now]);
+
+    // 获取对话数据
+    [[DAShortmailModule alloc] getStoryByContact:self.contact
+                                            date:[format stringFromDate:now]
+                                           count:20
+                                        callback:^(NSError *error, DAShortmailList *shortmails){
+                                            
+                                            theMails = [NSMutableArray arrayWithArray:shortmails.items];
+                                            [self.tblStory reloadData];
+                                            [self scrollToBottom];
+                                        }];
+
+}
+
+- (void)scrollToBottom
+{
+    if (self.tblStory.contentSize.height > self.tblStory.frame.size.height)
+    {
+        CGPoint offset = CGPointMake(0, self.tblStory.contentSize.height - self.tblStory.frame.size.height);
+        [self.tblStory setContentOffset:offset animated:YES];
     }
 }
 
@@ -85,6 +127,7 @@
 {
     NSLog(@"DAShortmailStoryViewController viewWillDisappear");
     [socket disconnect];
+    [timer invalidate];
 }
 
 // 显示键盘的时候，调整View的位置
@@ -120,7 +163,14 @@
     shortmail._id = self.uid;
 
     [[DAShortmailModule alloc] send:shortmail callback:^(NSError *error, DAShortmail *shortmail) {
-        NSLog(@"create ok!");
+        
+        // 清除发送的文本框
+        self.txtContent.text = @"";
+        
+        // 重新加载数据
+        [theMails addObject:shortmail];
+        [self.tblStory reloadData];
+        [self scrollToBottom];
     }];
 }
 
@@ -167,10 +217,13 @@
     [textField resignFirstResponder];
 }
 
+// 接收到WebSocket数据时的处理
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet
 {
     NSDictionary *data = [packet dataAsJSON];
     NSLog(@"didReceiveMessage() >>> data: %@", [data objectForKey:@"args"]);
+    
+    // TODO:添加到数据数组，涮新
 }
 
 - (void) socketIO:(SocketIO *)socket failedToConnectWithError:(NSError *)error
@@ -178,5 +231,28 @@
     NSLog(@"failedToConnectWithError() %@", error);
 }
 
+// 滚动到最下面，从启Timer
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGPoint offset = scrollView.contentOffset;
+    CGRect bounds = scrollView.bounds;
+    CGSize size = scrollView.contentSize;
+    UIEdgeInsets inset = scrollView.contentInset;
+    
+    float y = offset.y + bounds.size.height - inset.bottom;
+    float h = size.height;
+    
+    if (y >= h) {
+        puaseTimer = NO;
+        NSLog(@"start timer");
+    }
+}
+
+// 滚动TableView，停止Timer
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    puaseTimer = YES;
+    NSLog(@"stop timer");
+}
 
 @end

@@ -71,6 +71,14 @@
 		473970D3174A3A6E00B78C1C /* DAPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 473970D1174A3A6E00B78C1C /* DAPictureViewController.m */; };
 		473970D4174A3A6E00B78C1C /* DAPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 473970D2174A3A6E00B78C1C /* DAPictureViewController.xib */; };
 		473970D7174B598500B78C1C /* DAScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 473970D6174B598400B78C1C /* DAScrollView.m */; };
+		475AC83F176465C10097851B /* DAMemberViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475AC83E176465C10097851B /* DAMemberViewCell.xib */; };
+		475AC841176472240097851B /* DAGroupViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475AC840176472240097851B /* DAGroupViewCell.xib */; };
+		475AC84417699A890097851B /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 475AC84217699A890097851B /* like.png */; };
+		475AC84517699A890097851B /* like_outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 475AC84317699A890097851B /* like_outline.png */; };
+		475AC8481769C3200097851B /* gateway_binoculars.png in Resources */ = {isa = PBXBuildFile; fileRef = 475AC8461769C3200097851B /* gateway_binoculars.png */; };
+		475AC8491769C3200097851B /* gateway_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 475AC8471769C3200097851B /* gateway_cross.png */; };
+		475AC84D1769D97A0097851B /* DAFileFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475AC84B1769D97A0097851B /* DAFileFilterViewController.m */; };
+		475AC84E1769D97A0097851B /* DAFileFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475AC84C1769D97A0097851B /* DAFileFilterViewController.xib */; };
 		4782C95D171BD67E009E74DC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4782C95C171BD67E009E74DC /* CoreLocation.framework */; };
 		4782C976171BF671009E74DC /* DAMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4782C975171BF671009E74DC /* DAMessageCell.m */; };
 		4782C97A171CE3CB009E74DC /* DAMessageDetailTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4782C979171CE3CB009E74DC /* DAMessageDetailTitleCell.xib */; };
@@ -335,6 +343,15 @@
 		473970D2174A3A6E00B78C1C /* DAPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPictureViewController.xib; sourceTree = "<group>"; };
 		473970D5174B598400B78C1C /* DAScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAScrollView.h; sourceTree = "<group>"; };
 		473970D6174B598400B78C1C /* DAScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAScrollView.m; sourceTree = "<group>"; };
+		475AC83E176465C10097851B /* DAMemberViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMemberViewCell.xib; sourceTree = "<group>"; };
+		475AC840176472240097851B /* DAGroupViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAGroupViewCell.xib; sourceTree = "<group>"; };
+		475AC84217699A890097851B /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		475AC84317699A890097851B /* like_outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like_outline.png; sourceTree = "<group>"; };
+		475AC8461769C3200097851B /* gateway_binoculars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gateway_binoculars.png; sourceTree = "<group>"; };
+		475AC8471769C3200097851B /* gateway_cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gateway_cross.png; sourceTree = "<group>"; };
+		475AC84A1769D97A0097851B /* DAFileFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFileFilterViewController.h; sourceTree = "<group>"; };
+		475AC84B1769D97A0097851B /* DAFileFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFileFilterViewController.m; sourceTree = "<group>"; };
+		475AC84C1769D97A0097851B /* DAFileFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAFileFilterViewController.xib; sourceTree = "<group>"; };
 		4782C95C171BD67E009E74DC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4782C974171BF671009E74DC /* DAMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMessageCell.h; sourceTree = "<group>"; };
 		4782C975171BF671009E74DC /* DAMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMessageCell.m; sourceTree = "<group>"; };
@@ -743,6 +760,10 @@
 		471A05A8171BC3D10040CB93 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				475AC8461769C3200097851B /* gateway_binoculars.png */,
+				475AC8471769C3200097851B /* gateway_cross.png */,
+				475AC84217699A890097851B /* like.png */,
+				475AC84317699A890097851B /* like_outline.png */,
 				F22B38961733D7CE0017A986 /* Default-568h@2x.png */,
 				F22B38971733D7CE0017A986 /* Default.png */,
 				F22B38981733D7CE0017A986 /* Default@2x.png */,
@@ -903,6 +924,7 @@
 				F29FBF8A171D2FDE006C9CCB /* DALoginViewController.xib */,
 				471A05E0171BCA250040CB93 /* DAMemberViewCell.h */,
 				471A05E1171BCA250040CB93 /* DAMemberViewCell.m */,
+				475AC83E176465C10097851B /* DAMemberViewCell.xib */,
 				471A05E2171BCA250040CB93 /* DAMemberViewController.h */,
 				471A05E3171BCA250040CB93 /* DAMemberViewController.m */,
 				F223E30A171EDF9F0095F1C1 /* DAMemberDetailViewController.h */,
@@ -929,6 +951,7 @@
 			children = (
 				F223E2E8171E4B930095F1C1 /* DAGroupViewCell.h */,
 				F223E2E9171E4B930095F1C1 /* DAGroupViewCell.m */,
+				475AC840176472240097851B /* DAGroupViewCell.xib */,
 				471A05E8171BCA250040CB93 /* DAGroupViewController.h */,
 				471A05E9171BCA250040CB93 /* DAGroupViewController.m */,
 				F223E2D2171D8A750095F1C1 /* DAGroupDetailViewController.h */,
@@ -991,6 +1014,9 @@
 				04AC26B61738CE3C00FEED21 /* DAFileWebViewController.h */,
 				04AC26B71738CE3C00FEED21 /* DAFileWebViewController.m */,
 				04AC26B81738CE3C00FEED21 /* DAFileWebViewController.xib */,
+				475AC84A1769D97A0097851B /* DAFileFilterViewController.h */,
+				475AC84B1769D97A0097851B /* DAFileFilterViewController.m */,
+				475AC84C1769D97A0097851B /* DAFileFilterViewController.xib */,
 			);
 			name = File;
 			sourceTree = "<group>";
@@ -1314,6 +1340,13 @@
 				0A90C8F21744C97A00CA4A14 /* DANotificationViewController.xib in Resources */,
 				473970D4174A3A6E00B78C1C /* DAPictureViewController.xib in Resources */,
 				F28AD4BC1761A99100D7CDC3 /* DALeftSideViewController.xib in Resources */,
+				475AC83F176465C10097851B /* DAMemberViewCell.xib in Resources */,
+				475AC841176472240097851B /* DAGroupViewCell.xib in Resources */,
+				475AC84417699A890097851B /* like.png in Resources */,
+				475AC84517699A890097851B /* like_outline.png in Resources */,
+				475AC8481769C3200097851B /* gateway_binoculars.png in Resources */,
+				475AC8491769C3200097851B /* gateway_cross.png in Resources */,
+				475AC84E1769D97A0097851B /* DAFileFilterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1419,6 +1452,7 @@
 				F29ACD64176316A300AC0B68 /* SocketIOPacket.m in Sources */,
 				F29ACD65176316A300AC0B68 /* SocketIOTransportWebsocket.m in Sources */,
 				F29ACD66176316A300AC0B68 /* SocketIOTransportXHR.m in Sources */,
+				475AC84D1769D97A0097851B /* DAFileFilterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

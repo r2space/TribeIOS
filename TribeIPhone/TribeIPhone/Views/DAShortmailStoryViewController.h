@@ -12,12 +12,14 @@
 #import "SocketIOPacket.h"
 
 @interface DAShortmailStoryViewController : UIViewController<SocketIODelegate>
+
 - (IBAction)onCancelTouched:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barUser;
 @property (weak, nonatomic) IBOutlet UITableView *tblStory;
 @property (weak, nonatomic) IBOutlet UITextField *txtContent;
 - (IBAction)onSendTouched:(id)sender;
 
+@property (strong, nonatomic) NSString *contact;
 @property (strong, nonatomic) NSString *uid;
 - (IBAction)onTextExit:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *viewContainer;

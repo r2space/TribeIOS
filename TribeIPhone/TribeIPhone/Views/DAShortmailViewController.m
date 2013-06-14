@@ -11,7 +11,7 @@
 #import "DAShortmailStoryViewController.h"
 @interface DAShortmailViewController ()
 {
-    NSArray *theUsers;
+    NSArray *theContacts;
 }
 @end
 
@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAContactList *contact){
-        theUsers = contact.items;
+        theContacts = contact.items;
         [self.tblUsers reloadData];
     }];
 }
@@ -55,12 +55,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return theUsers.count;
+    return theContacts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAContact *contact = [theUsers objectAtIndex:indexPath.row];
+    DAContact *contact = [theContacts objectAtIndex:indexPath.row];
 	DAShortmailViewCell *cell = [DAShortmailViewCell initWithMessage:contact tableView:tableView];
     
     cell.lblName.text = contact.user.name.name_zh;
@@ -77,7 +77,10 @@
     
     DAShortmailStoryViewController *shortmailStoryViewController =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];
     shortmailStoryViewController.hidesBottomBarWhenPushed = YES;
-    shortmailStoryViewController.uid = ((DAUser *)[theUsers objectAtIndex:indexPath.row])._id ;
+    
+    DAContact *contact = ((DAContact *)[theContacts objectAtIndex:indexPath.row]);
+    shortmailStoryViewController.contact = contact._id;
+    shortmailStoryViewController.uid = contact.user._id;
     
     [self.navigationController pushViewController:shortmailStoryViewController animated:YES];
     

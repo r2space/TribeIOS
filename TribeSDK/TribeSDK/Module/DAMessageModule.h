@@ -48,4 +48,7 @@
 -(void) forward:(DAMessage *)message
        callback:(void (^)(NSError *error, DAMessage *message))callback;
 
+-(void) like:(NSString *)messageId callback:(void(^)(NSError *error, DAMessage *message))callback;
+
+-(void) unlike:(NSString *)messageId callback:(void(^)(NSError *error, DAMessage *message))callback;
 @end

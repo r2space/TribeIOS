@@ -17,6 +17,8 @@
 #define kURLMessagesByUser @"/message/list/user.json?start=%d&count=%d&uid=%@&before=%@"
 
 #define kURLComments @"/message/list/reply.json?mid=%@&start=%d&count=%d"
+#define kURLLike    @"/message/like.json"
+#define kURLUnlike    @"/message/unlike.json"
 
 @implementation DAMessageModule
 
@@ -130,6 +132,38 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
+        if (callback) {
+            callback(error, nil);
+        }
+    }];
+}
+
+-(void) like:(NSString *)messageId callback:(void(^)(NSError *error, DAMessage *message))callback
+{
+    NSString *path = kURLLike;
+    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:messageId, @"mid", nil];
+    
+    [[DAAFHttpClient sharedClient] putPath:path parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (callback) {
+            callback(nil, [[DAMessage alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (callback) {
+            callback(error, nil);
+        }
+    }];
+}
+
+-(void) unlike:(NSString *)messageId callback:(void(^)(NSError *error, DAMessage *message))callback
+{
+    NSString *path = kURLUnlike;
+    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:messageId, @"mid", nil];
+    
+    [[DAAFHttpClient sharedClient] putPath:path parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (callback) {
+            callback(nil, [[DAMessage alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (callback) {
             callback(error, nil);
         }

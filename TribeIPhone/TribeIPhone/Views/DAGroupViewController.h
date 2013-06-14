@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
-@interface DAGroupViewController : UIViewController
+@interface DAGroupViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)onAddTouched:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tblGroups;

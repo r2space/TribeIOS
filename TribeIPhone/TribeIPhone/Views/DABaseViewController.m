@@ -87,7 +87,9 @@
         
         // 如果获取的实际数小于，指定的数，则标记为没有更多数据
         if (result.count < count) {
-            hasMore = false;
+            hasMore = NO;
+        } else {
+            hasMore = YES;
         }
         
         // 保存数据

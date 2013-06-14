@@ -15,7 +15,7 @@
 @interface DAFileModule : NSObject
 
 
-- (void)getFileList:(int)start count:(int)count callback:(void (^)(NSError *error, DAFileList *files))callback;
+- (void)getFileList:(int)start count:(int)count type:(NSString *)type callback:(void (^)(NSError *error, DAFileList *files))callback;
 
 - (void)uploadFile:(NSData *)data
           fileName:(NSString *)fileName

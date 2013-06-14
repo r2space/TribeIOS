@@ -58,6 +58,7 @@
 @property (retain, nonatomic) NSArray *attach;
 @property (retain, nonatomic) NSString *target;
 @property (retain, nonatomic) MessageThumb *thumb;
+@property (retain, nonatomic) NSArray *likers;
 
 -(DAUser *) getCreatUser;
 -(DAGroup *)getPublicRange;
