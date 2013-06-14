@@ -96,4 +96,13 @@
     return [NSString stringWithFormat:@"%@%@_csrf=%@", path, spliter, [DARequestHelper uriEncodeForString:csrftoken]];
 }
 
+- (NSString*)uriEncodeForString:(NSString *)string
+{
+    return (__bridge_transfer NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                                (__bridge CFStringRef)string,
+                                                                                NULL,
+                                                                                (CFStringRef)@"!*'();:@&=+$,./?%#[]",
+                                                                                kCFStringEncodingUTF8);
+}
+
 @end

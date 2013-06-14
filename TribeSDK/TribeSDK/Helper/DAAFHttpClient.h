@@ -12,5 +12,6 @@
 
 + (DAAFHttpClient *)sharedClient;
 @property(nonatomic) BOOL isReachable;
-                                                                                                                                         
+- (NSString*)uriEncodeForString:(NSString *)string;
+
 @end
