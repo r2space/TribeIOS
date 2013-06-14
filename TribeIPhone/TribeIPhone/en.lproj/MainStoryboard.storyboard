@@ -174,13 +174,19 @@
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="hXG-Vo-B2P">
                                 <items>
-                                    <barButtonItem title="返回" id="XJh-rF-gIE">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zCM-0l-Tsr"/>
+                                    <barButtonItem width="30" style="plain" systemItem="fixedSpace" id="Bv9-5C-XmQ"/>
+                                    <barButtonItem title="全部" style="plain" id="DOT-P5-CiO">
                                         <connections>
-                                            <action selector="onCancelTouched:" destination="1Uz-nr-Oz2" id="JRq-Rs-o88"/>
+                                            <action selector="barFilterOnClick:" destination="1Uz-nr-Oz2" id="9IA-hV-qD1"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zCM-0l-Tsr"/>
-                                    <barButtonItem title="文件" style="plain" id="DOT-P5-CiO"/>
+                                    <barButtonItem image="gateway_binoculars.png" style="plain" id="kox-q1-Ki2">
+                                        <inset key="imageInsets" minX="-15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="barFilterIcoOnClick:" destination="1Uz-nr-Oz2" id="iZy-jG-0WG"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tmA-wW-z08"/>
                                     <barButtonItem systemItem="add" id="Uwu-41-jlI">
                                         <connections>
@@ -206,6 +212,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="barFilter" destination="DOT-P5-CiO" id="3KC-JR-mDK"/>
+                        <outlet property="barFilterIco" destination="kox-q1-Ki2" id="otu-aW-gGu"/>
                         <outlet property="tableView" destination="cKu-FV-fkE" id="cvf-yj-JgB"/>
                     </connections>
                 </viewController>
@@ -386,57 +394,11 @@
     </scenes>
     <resources>
         <image name="44-shoebox.png" width="24" height="22"/>
+        <image name="gateway_binoculars.png" width="36" height="36"/>
         <image name="heart.png" width="26" height="26"/>
         <image name="house.png" width="52" height="52"/>
         <image name="refresh.png" width="26" height="26"/>
     </resources>
-    <classes>
-        <class className="DABaseViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DABaseViewController.h"/>
-        </class>
-        <class className="DAFileViewController" superclassName="DABaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAFileViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onAddTouched:"/>
-                <relationship kind="action" name="onCancelTouched:"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAGroupViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAGroupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onAddTouched:"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tblGroups" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAMainViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMainViewController.h"/>
-        </class>
-        <class className="DAMemberViewController" superclassName="DABaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMemberViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAMoreViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMoreViewController.h"/>
-        </class>
-        <class className="DATimeLineViewController" superclassName="DABaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DATimeLineViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onContributeClicked:"/>
-                <relationship kind="action" name="onFilterClicked:"/>
-                <relationship kind="action" name="onNotifiactionClicked:"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="titleFilter" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
