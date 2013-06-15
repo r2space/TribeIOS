@@ -88,4 +88,20 @@
     [floatingController dismissAnimated:YES];
 }
 
+
+// 日期相关
++ (NSDate *) dateWithISODateString:(NSString *)isodate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.zzz'Z'"];
+    return [dateFormatter dateFromString:isodate];
+}
+
++ (NSString *) currentDateString
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    return [format stringFromDate:[NSDate date]];
+}
+
 @end

@@ -9,9 +9,10 @@
 #import "DAShortmailViewController.h"
 #import "DAShortmailViewCell.h"
 #import "DAShortmailStoryViewController.h"
+#import "DAShortmailStoryController.h"
+
 @interface DAShortmailViewController ()
 {
-    NSArray *theContacts;
 }
 @end
 
@@ -29,12 +30,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAContactList *contact){
-        theContacts = contact.items;
-        [self.tblUsers reloadData];
-    }];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self fetch];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,15 +56,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return theContacts.count;
+    return list.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAContact *contact = [theContacts objectAtIndex:indexPath.row];
+    DAContact *contact = [list objectAtIndex:indexPath.row];
 	DAShortmailViewCell *cell = [DAShortmailViewCell initWithMessage:contact tableView:tableView];
     
     cell.lblName.text = contact.user.name.name_zh;
+    cell.lblContent.text = contact.lastMessage;
+    cell.lblAt.text = contact.editat;
     
     return cell;
 }
@@ -73,14 +76,21 @@
     return 61;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    DAShortmailStoryController *shortmailStory = [DAShortmailStoryController new];
+//    DAContact *contact = ((DAContact *)[list objectAtIndex:indexPath.row]);
+//    shortmailStory.contact = contact._id;
+//    shortmailStory.uid = contact.user._id;
+//    [self.navigationController pushViewController:shortmailStory animated:YES];
     
     DAShortmailStoryViewController *shortmailStoryViewController =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];
     shortmailStoryViewController.hidesBottomBarWhenPushed = YES;
     
-    DAContact *contact = ((DAContact *)[theContacts objectAtIndex:indexPath.row]);
+    DAContact *contact = ((DAContact *)[list objectAtIndex:indexPath.row]);
     shortmailStoryViewController.contact = contact._id;
     shortmailStoryViewController.uid = contact.user._id;
+    shortmailStoryViewController.name = contact.user.name.name_zh;
     
     [self.navigationController pushViewController:shortmailStoryViewController animated:YES];
     
@@ -92,5 +102,18 @@
     shortmailStoryViewController.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:shortmailStoryViewController animated:YES];
+}
+
+#pragma mark - overwrite DABaseViewController
+
+- (void)fetch
+{
+    if ([self preFetch]) {
+        return;
+    }
+    
+    [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAContactList *contact){
+        [self finishFetch:contact.items error:error];
+    }];
 }
 @end
