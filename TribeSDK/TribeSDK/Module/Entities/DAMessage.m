@@ -37,10 +37,12 @@
 @implementation MessageAttach
 @synthesize fileid,filename,_id;
 @end
-
+@implementation MessageThumb
+@synthesize fileid,width    ,height;
+@end
 @implementation DAMessage
 
-@synthesize _id, type, content, range, contentType, createat, createby, editat, editby, part;
+@synthesize _id, type, content, range, contentType, createat, createby, editat, editby, part ,thumb;
 +(Class)attach_class{
     return [MessageAttach class];
 }
