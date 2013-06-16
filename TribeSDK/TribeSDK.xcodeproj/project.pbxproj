@@ -136,6 +136,9 @@
 		F22B38221733B7800017A986 /* DAFileModule.h in Headers */ = {isa = PBXBuildFile; fileRef = F22B38201733B7800017A986 /* DAFileModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F22B38231733B7800017A986 /* DAFileModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38211733B7800017A986 /* DAFileModule.m */; };
 		F22B38241733B7800017A986 /* DAFileModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38211733B7800017A986 /* DAFileModule.m */; };
+		F23297B0176DC373003DF0BE /* DAApns.h in Headers */ = {isa = PBXBuildFile; fileRef = F23297AE176DC373003DF0BE /* DAApns.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F23297B1176DC373003DF0BE /* DAApns.m in Sources */ = {isa = PBXBuildFile; fileRef = F23297AF176DC373003DF0BE /* DAApns.m */; };
+		F23297B2176DC373003DF0BE /* DAApns.m in Sources */ = {isa = PBXBuildFile; fileRef = F23297AF176DC373003DF0BE /* DAApns.m */; };
 		F24F5E4F171CF0DF0032E93B /* DAError.h in Headers */ = {isa = PBXBuildFile; fileRef = F24F5E4D171CF0DF0032E93B /* DAError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F24F5E50171CF0DF0032E93B /* DAError.m in Sources */ = {isa = PBXBuildFile; fileRef = F24F5E4E171CF0DF0032E93B /* DAError.m */; };
 		F24F5E51171CF0DF0032E93B /* DAError.m in Sources */ = {isa = PBXBuildFile; fileRef = F24F5E4E171CF0DF0032E93B /* DAError.m */; };
@@ -343,6 +346,8 @@
 		F22B381C173356740017A986 /* DAAFHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAFHttpClient.m; sourceTree = "<group>"; };
 		F22B38201733B7800017A986 /* DAFileModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFileModule.h; sourceTree = "<group>"; };
 		F22B38211733B7800017A986 /* DAFileModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFileModule.m; sourceTree = "<group>"; };
+		F23297AE176DC373003DF0BE /* DAApns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAApns.h; sourceTree = "<group>"; };
+		F23297AF176DC373003DF0BE /* DAApns.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAApns.m; sourceTree = "<group>"; };
 		F24F5E4D171CF0DF0032E93B /* DAError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAError.h; sourceTree = "<group>"; };
 		F24F5E4E171CF0DF0032E93B /* DAError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAError.m; sourceTree = "<group>"; };
 		F2656EDA172145C5007E8207 /* DAUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserTests.h; sourceTree = "<group>"; };
@@ -607,6 +612,8 @@
 				F29ACD68176873E100AC0B68 /* DAContact.m */,
 				F29ACD6C1768753500AC0B68 /* DAContactList.h */,
 				F29ACD6D1768753500AC0B68 /* DAContactList.m */,
+				F23297AE176DC373003DF0BE /* DAApns.h */,
+				F23297AF176DC373003DF0BE /* DAApns.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -815,6 +822,7 @@
 				F2E4A531175C8C1A00BC839D /* DAPurchaseList.h in Headers */,
 				F29ACD69176873E100AC0B68 /* DAContact.h in Headers */,
 				F29ACD6E1768753600AC0B68 /* DAContactList.h in Headers */,
+				F23297B0176DC373003DF0BE /* DAApns.h in Headers */,
 				F2E4A536175C8F8A00BC839D /* DAPurchaseModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -995,6 +1003,7 @@
 				F2E4A537175C8F8A00BC839D /* DAPurchaseModule.m in Sources */,
 				F29ACD6A176873E100AC0B68 /* DAContact.m in Sources */,
 				F29ACD6F1768753600AC0B68 /* DAContactList.m in Sources */,
+				F23297B1176DC373003DF0BE /* DAApns.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,6 +1082,7 @@
 				F2E4A538175C8F8A00BC839D /* DAPurchaseModule.m in Sources */,
 				F29ACD6B176873E100AC0B68 /* DAContact.m in Sources */,
 				F29ACD701768753600AC0B68 /* DAContactList.m in Sources */,
+				F23297B2176DC373003DF0BE /* DAApns.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

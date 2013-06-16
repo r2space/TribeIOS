@@ -718,7 +718,6 @@
 		471A0550171BC1AD0040CB93 = {
 			isa = PBXGroup;
 			children = (
-				F232975A176B18C6003DF0BE /* AudioToolbox.framework */,
 				F2A385691740721C00194E00 /* TribeSDK.framework */,
 				471A0562171BC1AD0040CB93 /* TribeIPhone */,
 				471A0591171BC1AE0040CB93 /* TribeIPhoneTests */,
@@ -739,6 +738,7 @@
 		471A055B171BC1AD0040CB93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F232975A176B18C6003DF0BE /* AudioToolbox.framework */,
 				F29ACD541763168600AC0B68 /* libicucore.dylib */,
 				F29ACD521763145500AC0B68 /* Security.framework */,
 				F29ACD501763143D00AC0B68 /* CFNetwork.framework */,

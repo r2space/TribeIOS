@@ -13,8 +13,8 @@
 #import "IIViewDeckController.h"
 #import "DALeftSideViewController.h"
 
-#define kInfoPlistKeyServerAddress @"ServerAddress"
-#define kInfoPlistKeyServerPort @"ServerPort"
+#define kInfoPlistKeyServerAddress  @"ServerAddress"
+#define kInfoPlistKeyServerPort     @"ServerPort"
 
 @implementation DAAppDelegate
 
@@ -37,6 +37,26 @@
     //self.window.rootViewController = center;
     // 在viewcontroller里显示侧边栏的的例子
     //[(IIViewDeckController*)[UIApplication sharedApplication].keyWindow.rootViewController toggleLeftViewAnimated:YES];
+    
+    // 判断是否由远程消息通知触发应用程序启动
+    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil) {
+
+        NSLog(@"0. Receive remote notification : %@", launchOptions);
+
+        // 获取应用程序消息通知标记数（即小红圈中的数字）
+        int badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
+        if (badge > 0) {
+            // 如果应用程序消息通知标记数（即小红圈中的数字）大于0，清除标记。
+            
+            badge = badge - 1;
+            // 清除标记。清除小红圈中数字，小红圈中数字为0，小红圈才会消除。
+            [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
+        }
+    }
+    
+    // 消息推送注册
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge];
+
     
     return YES;
 }
@@ -87,6 +107,40 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+// 获取终端设备标识，这个标识需要通过接口发送到服务器端，服务器端推送消息到APNS时需要知道终端的标识，APNS通过注册的终端标识找到终端设备。
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"jp.co.dreamarts.smart.message.devicetoken"];
+    NSLog(@"device token is:%@", token);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSString *error_str = [NSString stringWithFormat: @"%@", error];
+    NSLog(@"Failed to get token, error:%@", error_str);
+}
+
+// 处理收到的消息推送
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    if (UIApplicationStateInactive == application.applicationState) {
+
+        // 由用户点击通知的消息，而启动时
+        NSLog(@"2. Receive remote notification : %@", userInfo);
+        return;
+    }
+
+    if (UIApplicationStateActive == application.applicationState) {
+        
+        // 应用程序正在运行时，接受消息
+        NSLog(@"3. Receive remote notification : %@", userInfo);
+        return;
+    }
+    
+    NSLog(@"1. Receive remote notification : %@", userInfo);
 }
 
 @end
