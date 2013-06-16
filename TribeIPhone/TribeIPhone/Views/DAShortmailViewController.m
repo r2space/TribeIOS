@@ -9,23 +9,12 @@
 #import "DAShortmailViewController.h"
 #import "DAShortmailViewCell.h"
 #import "DAShortmailStoryViewController.h"
-#import "DAShortmailStoryController.h"
+#import "DAHelper.h"
 
 @interface DAShortmailViewController ()
-{
-}
 @end
 
 @implementation DAShortmailViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -38,16 +27,10 @@
     [self fetch];
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)onCancelTouched:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)onCancelTouched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -66,24 +49,18 @@
     
     cell.lblName.text = contact.user.name.name_zh;
     cell.lblContent.text = contact.lastMessage;
-    cell.lblAt.text = contact.editat;
+    cell.lblAt.text = [DAHelper stringFromISODateString:contact.editat];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    return 61;
+    return 44;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    DAShortmailStoryController *shortmailStory = [DAShortmailStoryController new];
-//    DAContact *contact = ((DAContact *)[list objectAtIndex:indexPath.row]);
-//    shortmailStory.contact = contact._id;
-//    shortmailStory.uid = contact.user._id;
-//    [self.navigationController pushViewController:shortmailStory animated:YES];
-    
     DAShortmailStoryViewController *shortmailStoryViewController =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];
     shortmailStoryViewController.hidesBottomBarWhenPushed = YES;
     
@@ -95,7 +72,6 @@
     [self.navigationController pushViewController:shortmailStoryViewController animated:YES];
     
 }
-
 
 - (IBAction)onAddTouched:(id)sender {
     DAShortmailStoryViewController *shortmailStoryViewController =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];

@@ -43,6 +43,8 @@
         [[DAFileModule alloc] getPicture:user.photo.small callback:^(NSError *err, NSString *pictureId){
             cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
         }];
+    } else {
+        cell.imgPortrait.image = [UIImage imageNamed:@"Default.png"];
     }
     return cell;
 

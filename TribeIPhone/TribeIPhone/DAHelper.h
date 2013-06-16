@@ -25,7 +25,8 @@
 + (CQMFloatingController *) showPopup:(UIViewController *)viewController;
 + (void) hidePopup;
 
-+ (NSDate *) dateWithISODateString:(NSString *)isodate;
++ (NSDate *) dateFromISODateString:(NSString *)isodate;
 + (NSString *) currentDateString;
++ (NSString *) stringFromISODateString:(NSString *)isodate;
 
 @end

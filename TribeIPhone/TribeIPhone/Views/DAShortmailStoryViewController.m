@@ -7,7 +7,6 @@
 //
 
 #import "DAShortmailStoryViewController.h"
-#import "DAShortmailStoryViewCell.h"
 #import "DAMemberController.h"
 #import "DAShortmailStoryController.h"
 

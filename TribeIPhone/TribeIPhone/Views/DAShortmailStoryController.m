@@ -88,7 +88,7 @@
                                             if (mails.count > 0) {
                                                 // 设定初始时间
                                                 DAShortmail *first = [mails objectAtIndex:0];
-                                                timestamps = [DAHelper dateWithISODateString: first.createat];
+                                                timestamps = [DAHelper dateFromISODateString: first.createat];
                                                 
                                                 [self.tableView reloadData];
                                                 [self scrollToBottomAnimated:YES];
@@ -155,7 +155,7 @@
 - (NSDate *)timestampForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DAShortmail *shortmail = [mails objectAtIndex:indexPath.row];
-    return [DAHelper dateWithISODateString:shortmail.createat];
+    return [DAHelper dateFromISODateString:shortmail.createat];
 }
 
 // 每隔5个消息，显示一个时间
