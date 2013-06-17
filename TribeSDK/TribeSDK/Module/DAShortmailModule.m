@@ -9,7 +9,8 @@
 #import "DAShortmailModule.h"
 
 #define kURLCreate  @"shortmail/creat.json"
-#define kURLStory   @"shortmail/story.json?uid=%@&type=earlier&start=%d&count=%d"
+#define kURLStory   @"shortmail/story.json?contact=%@&date=%@&count=%d"
+//#define kURLStory   @"shortmail/story.json?uid=%@&type=earlier&start=%d&count=%d"
 #define kURLUsers   @"shortmail/users.json?start=%d&count=%d"
 
 @implementation DAShortmailModule
@@ -33,14 +34,17 @@
 }
 
 
-- (void)getStoryByUser:(NSString *)uid
-                 start:(int)start
-                 count:(int)count
-              callback:(void (^)(NSError *error, DAShortmailList *shortmails))callback
+- (void)getStoryByContact:(NSString *)contact
+                    date:(NSString *)date
+                    count:(int)count
+                 callback:(void (^)(NSError *error, DAShortmailList *shortmails))callback
 {
-    NSString *path = [NSString stringWithFormat:kURLStory, uid, start, count];
+    DAAFHttpClient *client = [DAAFHttpClient sharedClient];
     
-    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString *encodedDate = [client uriEncodeForString:date];
+    NSString *path = [NSString stringWithFormat:kURLStory, contact, encodedDate, count];
+    
+    [client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
             callback(nil, [[DAShortmailList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);

@@ -20,10 +20,10 @@
     callback:(void (^)(NSError *error, DAShortmail *shortmail))callback;
 
 // 获取私信对话
-- (void)getStoryByUser:(NSString *)uid
-                 start:(int)start
-                 count:(int)count
-              callback:(void (^)(NSError *error, DAShortmailList *shortmails))callback;
+- (void)getStoryByContact:(NSString *)contact
+                    date:(NSString *)date
+                    count:(int)count
+                 callback:(void (^)(NSError *error, DAShortmailList *shortmails))callback;
 
 // 获取私信用户一览
 - (void)getUsers:(int)start

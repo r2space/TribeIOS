@@ -146,7 +146,7 @@
     if (_content==3) {
         DAShortmailStoryViewController *shortmailStoryViewController =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];
         shortmailStoryViewController.hidesBottomBarWhenPushed = YES;
-        shortmailStoryViewController.uid = ((DAUser *)[theUsers objectAtIndex:indexPath.row])._id ;
+        shortmailStoryViewController.contact = ((DAUser *)[theUsers objectAtIndex:indexPath.row])._id;
         
         [self.navigationController pushViewController:shortmailStoryViewController animated:YES];
     }

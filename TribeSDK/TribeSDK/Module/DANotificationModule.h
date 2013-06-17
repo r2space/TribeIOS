@@ -8,9 +8,19 @@
 
 #import "DAAFHttpClient.h"
 #import "DANotificationList.h"
+#import "DAApns.h"
 
 @interface DANotificationModule : NSObject
 
--(void) getNotificationListByType: (NSString *)type start:(int)start count:(int)count callback:(void (^)(NSError *error, DANotificationList *notificationList))callback;
+-(void) getNotificationListByType: (NSString *)type
+                            start:(int)start
+                            count:(int)count
+                         callback:(void (^)(NSError *error, DANotificationList *notificationList))callback;
+
+- (void)updateDeviceToken:(DAApns *)apn
+                 callback:(void (^)(NSError *error, DAApns *apn))callback;
+
+- (void)clearDeviceToken:(DAApns *)apn
+                callback:(void (^)(NSError *error, DAApns *apn))callback;
 
 @end

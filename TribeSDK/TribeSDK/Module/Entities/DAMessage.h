@@ -36,6 +36,12 @@
 @property (retain, nonatomic) NSString *_id;
 @end
 
+@interface MessageThumb :Jastor
+@property (retain, nonatomic) NSString *fileid;
+@property (retain, nonatomic) NSNumber *width;
+@property (retain, nonatomic) NSNumber *height;
+@end
+
 @interface DAMessage : Jastor
 
 @property (retain, nonatomic) NSNumber *type;
@@ -51,6 +57,7 @@
 @property (retain, nonatomic) MessageAt *at;
 @property (retain, nonatomic) NSArray *attach;
 @property (retain, nonatomic) NSString *target;
+@property (retain, nonatomic) MessageThumb *thumb;
 @property (retain, nonatomic) NSArray *likers;
 
 -(DAUser *) getCreatUser;

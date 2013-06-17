@@ -9,44 +9,28 @@
 #import "DAShortmailViewController.h"
 #import "DAShortmailViewCell.h"
 #import "DAShortmailStoryViewController.h"
+#import "DAHelper.h"
+
 @interface DAShortmailViewController ()
-{
-    NSArray *theUsers;
-}
 @end
 
 @implementation DAShortmailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAContactList *contact){
-        theUsers = contact.items;
-        [self.tblUsers reloadData];
-    }];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewDidAppear:animated];
+    [self fetch];
 }
 
-- (IBAction)onCancelTouched:(id)sender {
+- (IBAction)onCancelTouched:(id)sender
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -55,39 +39,57 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return theUsers.count;
+    return list.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAContact *contact = [theUsers objectAtIndex:indexPath.row];
+    DAContact *contact = [list objectAtIndex:indexPath.row];
 	DAShortmailViewCell *cell = [DAShortmailViewCell initWithMessage:contact tableView:tableView];
     
     cell.lblName.text = contact.user.name.name_zh;
+    cell.lblContent.text = contact.lastMessage;
+    cell.lblAt.text = [DAHelper stringFromISODateString:contact.editat];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    return 61;
+    return 44;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     DAShortmailStoryViewController *shortmailStoryViewController =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];
     shortmailStoryViewController.hidesBottomBarWhenPushed = YES;
-    shortmailStoryViewController.uid = ((DAUser *)[theUsers objectAtIndex:indexPath.row])._id ;
+    
+    DAContact *contact = ((DAContact *)[list objectAtIndex:indexPath.row]);
+    shortmailStoryViewController.contact = contact._id;
+    shortmailStoryViewController.uid = contact.user._id;
+    shortmailStoryViewController.name = contact.user.name.name_zh;
     
     [self.navigationController pushViewController:shortmailStoryViewController animated:YES];
     
 }
-
 
 - (IBAction)onAddTouched:(id)sender {
     DAShortmailStoryViewController *shortmailStoryViewController =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];
     shortmailStoryViewController.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:shortmailStoryViewController animated:YES];
+}
+
+#pragma mark - overwrite DABaseViewController
+
+- (void)fetch
+{
+    if ([self preFetch]) {
+        return;
+    }
+    
+    [[DAShortmailModule alloc] getUsers:0 count:20 callback:^(NSError *error, DAContactList *contact){
+        [self finishFetch:contact.items error:error];
+    }];
 }
 @end

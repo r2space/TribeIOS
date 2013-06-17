@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
-@interface DAShortmailViewController : UIViewController
+#import "DABaseViewController.h"
+
+@interface DAShortmailViewController : DABaseViewController
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 - (IBAction)onCancelTouched:(id)sender;
-@property (weak, nonatomic) IBOutlet UITableView *tblUsers;
 - (IBAction)onAddTouched:(id)sender;
 
 @end

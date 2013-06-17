@@ -33,6 +33,7 @@
 #import <TribeSDK/DANotificationFetcher.h>
 #import <TribeSDK/DANotificationListFetcher.h>
 #import <TribeSDK/DANotificationModule.h>
+#import <TribeSDK/DAApns.h>
 
 // sortmail
 #import <TribeSDK/DAShortmail.h>

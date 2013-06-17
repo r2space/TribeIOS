@@ -67,10 +67,27 @@
         DATimeLineViewController *timeLineViewController = [navigationController.viewControllers objectAtIndex:0];
         [timeLineViewController fetch];
         
-        NSLog(@"login ok");
-        [self.view removeFromSuperview];
-
+        // 更新APN通知用设备ID
+        [self updateDeviceToken:user._id];
     }];
+}
+
+- (void) updateDeviceToken:(NSString *)uid
+{
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.message.devicetoken"];
+    
+    if (token) {
+        DAApns *apn = [[DAApns alloc] init];
+        apn.deviceowner = uid;
+        apn.devicetoken = token;
+        
+        [[DANotificationModule alloc] updateDeviceToken:apn callback:^(NSError *error, DAApns *apn){
+            [self.view removeFromSuperview];
+            NSLog(@"%@", apn);
+        }];
+    } else {
+        [self.view removeFromSuperview];
+    }
 }
 
 //- (void) loginSuccess:(DAUser *)user
