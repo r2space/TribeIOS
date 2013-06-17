@@ -13,6 +13,8 @@
 		04AC26BA1738CE3C00FEED21 /* DAFileWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC26B81738CE3C00FEED21 /* DAFileWebViewController.xib */; };
 		0A90C8F11744C97A00CA4A14 /* DANotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8EF1744C97A00CA4A14 /* DANotificationViewController.m */; };
 		0A90C8F21744C97A00CA4A14 /* DANotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A90C8F01744C97A00CA4A14 /* DANotificationViewController.xib */; };
+		0AB15093176E978F002F31FB /* DAMemberFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB15091176E978F002F31FB /* DAMemberFilterViewController.m */; };
+		0AB15094176E978F002F31FB /* DAMemberFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB15092176E978F002F31FB /* DAMemberFilterViewController.xib */; };
 		470D9B5D171E47BC009A6B0E /* DAMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 470D9B5C171E47BB009A6B0E /* DAMessageCell.xib */; };
 		47120B181733A57800FB74AF /* DANotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47120B171733A57800FB74AF /* DANotificationCell.m */; };
 		47120B1A1733A5C800FB74AF /* DANotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47120B191733A5C800FB74AF /* DANotificationCell.xib */; };
@@ -301,6 +303,9 @@
 		0A90C8EE1744C97A00CA4A14 /* DANotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationViewController.h; sourceTree = "<group>"; };
 		0A90C8EF1744C97A00CA4A14 /* DANotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationViewController.m; sourceTree = "<group>"; };
 		0A90C8F01744C97A00CA4A14 /* DANotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DANotificationViewController.xib; sourceTree = "<group>"; };
+		0AB15090176E978F002F31FB /* DAMemberFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMemberFilterViewController.h; sourceTree = "<group>"; };
+		0AB15091176E978F002F31FB /* DAMemberFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMemberFilterViewController.m; sourceTree = "<group>"; };
+		0AB15092176E978F002F31FB /* DAMemberFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMemberFilterViewController.xib; sourceTree = "<group>"; };
 		470D9B5C171E47BB009A6B0E /* DAMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMessageCell.xib; sourceTree = "<group>"; };
 		47120B161733A57800FB74AF /* DANotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationCell.h; sourceTree = "<group>"; };
 		47120B171733A57800FB74AF /* DANotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationCell.m; sourceTree = "<group>"; };
@@ -1096,6 +1101,9 @@
 				F2656F031723CDEA007E8207 /* DAGroupController.h */,
 				F2656F041723CDEC007E8207 /* DAGroupController.m */,
 				F2656F051723CDED007E8207 /* DAGroupController.xib */,
+				0AB15090176E978F002F31FB /* DAMemberFilterViewController.h */,
+				0AB15091176E978F002F31FB /* DAMemberFilterViewController.m */,
+				0AB15092176E978F002F31FB /* DAMemberFilterViewController.xib */,
 			);
 			name = Member;
 			sourceTree = "<group>";
@@ -1524,6 +1532,7 @@
 				F23297A8176B20AE003DF0BE /* send@2x.png in Resources */,
 				F23297A9176B20AE003DF0BE /* messageReceived.aiff in Resources */,
 				F23297AA176B20AE003DF0BE /* messageSent.aiff in Resources */,
+				0AB15094176E978F002F31FB /* DAMemberFilterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1639,6 +1648,7 @@
 				F23297AB176B20AE003DF0BE /* UIButton+JSMessagesView.m in Sources */,
 				F23297AC176B20AE003DF0BE /* UIColor+JSMessagesView.m in Sources */,
 				F23297AD176B20AE003DF0BE /* UIView+AnimationOptionsForCurve.m in Sources */,
+				0AB15093176E978F002F31FB /* DAMemberFilterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
