@@ -48,7 +48,7 @@
     _list = @[@"粉丝", @"关注"];
     _typeList = @[@"follower", @"following"];
     
-    [[DAGroupModule alloc] getGroupListStart:0 count:20 callback:^(NSError *error, DAGroupList *groups){
+    [[DAGroupModule alloc] getGroupListStart:0 count:20  type:@"" keywords:@"" callback:^(NSError *error, DAGroupList *groups){
         _groupList = groups.items;
         
     }];

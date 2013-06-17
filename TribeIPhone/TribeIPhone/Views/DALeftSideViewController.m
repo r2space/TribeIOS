@@ -37,7 +37,7 @@
     
     loginuid = [DALoginModule getLoginUserId];
     
-    [[DAGroupModule alloc] getGroupListStart:0 count:20 callback:^(NSError *error, DAGroupList *groups){
+    [[DAGroupModule alloc] getGroupListByUser:loginuid start:0 count:20 callback:^(NSError *error, DAGroupList *groups){
         self.dataList = groups.items;
         [self.tblFilter reloadData];
     }];
@@ -55,7 +55,7 @@
     NSInteger segment = segmentedControl.selectedSegmentIndex;
     if (0==segment) {
         type = @"group";
-        [[DAGroupModule alloc] getGroupListStart:0 count:20 callback:^(NSError *error, DAGroupList *groups){
+        [[DAGroupModule alloc] getGroupListByUser:loginuid start:0 count:20 callback:^(NSError *error, DAGroupList *groups){
             self.dataList = groups.items;
             [self.tblFilter reloadData];
         }];

@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
+#import "DAHelper.h"
+#import "DABaseViewController.h"
 
-@interface DAGroupViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface DAGroupViewController : DABaseViewController<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)onAddTouched:(id)sender;
-@property (weak, nonatomic) IBOutlet UITableView *tblGroups;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barFilterIco;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barFilter;
+
+- (IBAction)barFilterOnClick:(id)sender;
+- (IBAction)barFilterIcoOnClick:(id)sender;
 
 @end

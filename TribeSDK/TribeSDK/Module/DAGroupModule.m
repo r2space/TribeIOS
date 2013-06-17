@@ -10,7 +10,7 @@
 
 #define kURLGetGroupMember  @"group/members.json?start=%d&count=%d&gid=%@"
 #define kURLGetGroup        @"/group/get.json?_id=%@"
-#define kURLGetGroupList    @"/group/list.json?start=%d&count=%d"
+#define kURLGetGroupList    @"/group/list.json?start=%d&count=%d&type=%@&keywords=%@"
 #define kURLGetGroupListByUser  @"/group/list.json?joined=true&start=%d&count=%d&uid=%@"
 #define kURLJoinGroup       @"/group/join.json"
 #define kURLLeaveGroup      @"/group/leave.json"
@@ -54,10 +54,11 @@
     }];
 }
 
-- (void)getGroupListStart:(int)start count:(int)count callback:(void (^)(NSError *error, DAGroupList *groups))callback
+- (void)getGroupListStart:(int)start count:(int)count type:(NSString *)type keywords:(NSString *)keywords callback:(void (^)(NSError *error, DAGroupList *groups))callback
 {
-    NSString *path = [NSString stringWithFormat:kURLGetGroupList, start, count];
-    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    DAAFHttpClient *client = [DAAFHttpClient sharedClient];
+    NSString *path = [NSString stringWithFormat:kURLGetGroupList, start, count, type, [client uriEncodeForString:keywords]];
+    [client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
             callback(nil, [[DAGroupList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);

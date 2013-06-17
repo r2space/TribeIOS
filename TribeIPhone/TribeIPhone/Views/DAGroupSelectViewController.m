@@ -33,7 +33,7 @@
     _allGroups = [[NSArray alloc] init];
     _unSelectGroups = [[NSMutableArray alloc] init];
     
-    [[DAGroupModule alloc] getGroupListStart:0 count:20 callback:^(NSError *error, DAGroupList *groups){
+    [[DAGroupModule alloc] getGroupListStart:0 count:20  type:@"" keywords:@"" callback:^(NSError *error, DAGroupList *groups){
         _allGroups = groups.items;
         [self setUnSelectGroups];
         [self.tableView reloadData];
