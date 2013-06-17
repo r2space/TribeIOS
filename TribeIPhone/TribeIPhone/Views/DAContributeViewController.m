@@ -5,7 +5,7 @@
 //  Created by 李 林 on 2012/12/04.
 //  Copyright (c) 2012年 dac. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "DAContributeViewController.h"
 
 @interface DAContributeViewController ()
@@ -55,6 +55,10 @@
         [self.btnCamera setHidden:YES];
         [self.imgAttach setHidden:YES];
     }
+    
+    self.txtMessage.layer.borderWidth = 1.2;
+    self.txtMessage.layer.borderColor = [[UIColor grayColor] CGColor];
+    self.txtMessage.layer.cornerRadius = 10;
     
     self.btnClearImg.hidden = YES;
 }
