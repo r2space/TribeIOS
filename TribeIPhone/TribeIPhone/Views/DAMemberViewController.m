@@ -138,7 +138,8 @@
 
         }];
     } else {
-        [[DAUserModule alloc] getUserListStart:start count:count callback:^(NSError *error, DAUserList *users){
+        
+        [[DAUserModule alloc] getUserListStart:start count:count keywords:@"" callback:^(NSError *error, DAUserList *users){
             [self displayFilter];
             _filterId = @"group";
             [self finishFetch:users.items error:error];
@@ -154,6 +155,7 @@
                 self.savedSearchTerm = nil;
             }
         }];
+
     }
 }
 

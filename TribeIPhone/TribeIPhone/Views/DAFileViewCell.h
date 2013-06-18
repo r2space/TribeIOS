@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgFileType;
 @property (weak, nonatomic) IBOutlet UILabel *lblFileName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAt;
+@property (weak, nonatomic) IBOutlet UILabel *lblFileSize;
 
 + (DAFileViewCell *)initWithMessage:(DAFile *)file tableView:(UITableView *)tableView;
 

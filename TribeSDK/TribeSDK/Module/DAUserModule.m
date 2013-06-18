@@ -16,23 +16,47 @@
 #define kURLUnfollow                @"/user/unfollow.json?_id=%@"
 #define kURLUpdate                  @"/user/update.json?_id=%@"
 
+
+#define kURLGetUserSearchListBykeywords             @"/user/list.json?start=%d&count=%d&kind=%@&gid=%@&keywords=%@"
+
+#define kURLGetUserInGroupListBykeywords             @"/user/list.json?start=%d&count=%d&uid=%@&kind=%@&gid=%@&keywords=%@"
 @implementation DAUserModule
 
-- (void)getUserListStart:(int)start count:(int)count callback:(void (^)(NSError *error, DAUserList *users))callback
+- (void) getUserListStart:(int)start count:(int)count keywords:(NSString *)keywords callback:(void (^)(NSError *error, DAUserList *users))callback;
+
 {
-    NSString *path = [NSString stringWithFormat:kURLGetUserList, start, count];
-    
+    NSString *path = [NSString stringWithFormat:kURLGetUserSearchListBykeywords, start, count,@"all",@"",keywords];
+    NSLog(@"%@",path);
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
             callback(nil, [[DAUserList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
         }
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         if (callback) {
             callback(error, nil);
         }
+        
+    }];
+}
+
+
+- (void) getUserListInGroup:(NSString *)gid uid:(NSString *)uid start:(int)start count:(int)count keywords:(NSString *)keywords callback:(void (^)(NSError *error, DAUserList *users))callback
+{
+    NSString *path = [NSString stringWithFormat:kURLGetUserInGroupListBykeywords, start, count,uid,@"group",gid,keywords];
+    NSLog(@"%@",path);
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (callback) {
+            callback(nil, [[DAUserList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
     }];
 }
 

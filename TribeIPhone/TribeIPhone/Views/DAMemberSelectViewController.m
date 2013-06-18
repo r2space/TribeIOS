@@ -12,6 +12,7 @@
 {
     NSArray *_allUsers;
     NSMutableArray *_unSelectUsers;
+    NSString *loginuid;
 }
 @end
 
@@ -29,14 +30,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    loginuid = [DALoginModule getLoginUserId];
     _allUsers = [[NSArray alloc] init];
     _unSelectUsers = [[NSMutableArray alloc] init];
-    [[DAUserModule alloc] getUserListStart:0 count:20 callback:^(NSError *error, DAUserList *users){
-        _allUsers = users.items;
+    [[DAUserModule alloc] getUserListStart:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
         [self setUnSelectUsers];
         [self.tableView reloadData];
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning

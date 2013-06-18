@@ -24,6 +24,6 @@
 @property (retain, nonatomic) DAFile *fileDb;
 
 - (IBAction)onCancelTouched:(id)sender;
-//- (IBAction)onFileDetailTouched:(id)sender;
+- (IBAction)onFileDetailTouched:(id)sender;
 
 @end

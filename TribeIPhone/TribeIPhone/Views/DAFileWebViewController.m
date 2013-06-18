@@ -26,6 +26,14 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (void)onFileDetailTouched:(id)sender
+{
+    DAFileDetailViewController *detailViewController = [[DAFileDetailViewController alloc] initWithNibName:@"DAFileDetailViewController" bundle:nil];
+    detailViewController.getfile = self.fileDb;
+    detailViewController.hidesBottomBarWhenPushed = YES;
+    [self presentViewController:detailViewController animated:YES completion:nil];
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,7 +56,7 @@
     [WTStatusBar setStatusText:@"uploading..." animated:YES];
     
     //文件路径
-    NSString *m_fileName = [[DAHelper documentPath:fileUrl] stringByAppendingFormat:@".%@",self.fileExt];
+    NSString *m_fileName = [[DAHelper documentPath:self.downloadId] stringByAppendingFormat:@".%@",self.fileExt];
     
     NSURL *ssurl = [NSURL fileURLWithPath:m_fileName];
     NSURLRequest *requests = [NSURLRequest requestWithURL:ssurl];

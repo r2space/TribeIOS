@@ -46,6 +46,16 @@
         filedb = file;
         self.lblFileName.text = getfile.filename;
         self.lblAt.text = filedb.user.name.name_zh;
+       
+        
+        if (([getfile.length intValue]/1024)> 1024) {
+            self.lblSize.text = [NSString stringWithFormat:@"%dMB",[getfile.length intValue]/1024/1024];
+        }else{
+            self.lblSize.text = [NSString stringWithFormat:@"%dKB",[getfile.length intValue]/1024];
+        }
+        
+        
+        self.lblDate.text = [DAHelper stringFromISODateString:getfile.uploadDate];
         self.imgFileType.image = [UIImage imageNamed:[DAHelper fileanExtension:filedb.file.contentType]];
         
     }];
@@ -59,7 +69,8 @@
     
 }
 - (IBAction)onCancelTouched:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -85,7 +96,7 @@
 	DAFileViewCell *cell = [DAFileViewCell initWithMessage:file tableView:tableView];
     
     cell.lblFileName.text = file.filename;
-    cell.lblAt.text = file.uploadDate;
+    cell.lblAt.text = [DAHelper stringFromISODateString: file.uploadDate];;
     cell.imgFileType.image = [UIImage imageNamed:[DAHelper fileanExtension:file.contentType]];
     
     return cell;
@@ -96,26 +107,23 @@
     return 55;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"FileDetailViewController");
-    DAFileWebViewController *detailView = [[DAFileWebViewController alloc] initWithNibName:@"DAFileWebViewController" bundle:nil];
-    DAFile *file = [theFileList objectAtIndex:indexPath.row];
-    
-    detailView.fileUrl = file._id;//[NSString stringWithFormat:@"%@file/download.json?_id=%@", kRemote,file._id];
-    detailView.fileName = file.filename;
-    detailView.downloadId = file._id;
-    detailView.fileExt = file.extension;
-    detailView.fileDb = file;
-    
-    
-    
-    [self.navigationController pushViewController:detailView animated:YES];
-    
-    
-}
-
-
-
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"FileDetailViewController");
+//    DAFileWebViewController *detailView = [[DAFileWebViewController alloc] initWithNibName:@"DAFileWebViewController" bundle:nil];
+//    DAFile *file = [theFileList objectAtIndex:indexPath.row];
+//    
+//    detailView.fileUrl = file._id;//[NSString stringWithFormat:@"%@file/download.json?_id=%@", kRemote,file._id];
+//    detailView.fileName = file.filename;
+//    detailView.downloadId = file._id;
+//    detailView.fileExt = file.extension;
+//    detailView.fileDb = file;
+//    
+////    
+////    
+////    [self.navigationController pushViewController:detailView animated:YES];
+//    
+//    
+//}
 
 @end
