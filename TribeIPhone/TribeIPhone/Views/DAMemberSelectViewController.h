@@ -10,15 +10,16 @@
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DAMemberCell.h"
 
-@protocol DAMemberSelectViewControllerDelegate
--(void) didFinshSelectUser;
-@end
+typedef void (^UsersDidSelected)(NSArray *users);
+
 
 @interface DAMemberSelectViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) NSMutableArray *selectedUsers;
 @property (nonatomic) BOOL allowMultiSelect;
-@property (retain,nonatomic) id<DAMemberSelectViewControllerDelegate>delegate;
+@property(strong, nonatomic) UsersDidSelected selectedBlocks;
+@property(retain,nonatomic) DAGroup *inGroup;
+
 - (IBAction)onCancelClicked:(id)sender;
 - (IBAction)onSelectClicked:(id)sender;
 @end

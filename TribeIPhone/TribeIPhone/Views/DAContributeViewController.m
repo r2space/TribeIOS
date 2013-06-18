@@ -150,16 +150,28 @@
 
 - (IBAction)onCameraClicked:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-    actionSheet.delegate = self;
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
     
-    [actionSheet addButtonWithTitle:@"take photo"];
-    [actionSheet addButtonWithTitle:@"select saved"];
-    [actionSheet addButtonWithTitle:@"Cancel"];
-    [actionSheet setCancelButtonIndex:2];
+    ipc.delegate = self;
+    ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+    ipc.allowsEditing = NO;
     
-    [actionSheet showInView:self.view];
+    // モーダルビューとしてカメラ画面を呼び出す
+    [self presentViewController:ipc animated:YES completion:nil];
 }
+
+- (IBAction)onPhotoLibraryClicked:(id)sender
+{
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    
+    ipc.delegate = self;
+    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    ipc.allowsEditing = NO;
+    
+    // モーダルビューとしてカメラ画面を呼び出す
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
@@ -189,38 +201,21 @@
     if ([btnString isEqualToString:@"@groups"]) {
         DAGroupSelectViewController *ctrl = [[DAGroupSelectViewController alloc]initWithNibName:@"DAGroupSelectViewController" bundle:nil];
         ctrl.allowMultiSelect = YES;
-        ctrl.delegate = self;
+        ctrl.selectedBlocks = ^(NSArray *groups){
+            _atGroups = [NSMutableArray arrayWithArray:groups];
+        };
         ctrl.selectedGroups = _atGroups;
         [self presentViewController:ctrl animated:YES completion:nil];
     }
     if ([btnString isEqualToString:@"@users"]) {
         DAMemberSelectViewController *ctrl = [[DAMemberSelectViewController alloc]initWithNibName:@"DAMemberSelectViewController" bundle:nil];
         ctrl.allowMultiSelect = YES;
-        ctrl.delegate = self;
+        ctrl.selectedBlocks = ^(NSArray *users){
+            _atUsers = [NSMutableArray arrayWithArray:users];
+        };
         ctrl.selectedUsers = _atUsers;
         [self presentViewController:ctrl animated:YES completion:nil];
     }
-    if ([btnString isEqualToString:@"take photo"]) {
-        UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
-        
-        ipc.delegate = self;
-        ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
-        ipc.allowsEditing = NO;
-        
-        // モーダルビューとしてカメラ画面を呼び出す
-        [self presentViewController:ipc animated:YES completion:nil];
-    }
-    if ([btnString isEqualToString:@"select saved"]) {
-        UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
-        
-        ipc.delegate = self;
-        ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        ipc.allowsEditing = NO;
-        
-        // モーダルビューとしてカメラ画面を呼び出す
-        [self presentViewController:ipc animated:YES completion:nil];
-    }
-    
 }
 
 
@@ -240,7 +235,16 @@
     DAGroupSelectViewController *ctrl = [[DAGroupSelectViewController alloc]initWithNibName:@"DAGroupSelectViewController" bundle:nil];
     ctrl.selectedGroups = _rangeGroup;
     ctrl.allowMultiSelect = NO;
-    ctrl.delegate = self;
+    ctrl.selectedBlocks = ^(NSArray *groups){
+        _rangeGroup = [NSMutableArray arrayWithArray:groups];
+        if ([self hasRange]) {
+            self.lblRange.text = ((DAGroup *)[_rangeGroup objectAtIndex:0]).name.name_zh;
+            [_atGroups removeAllObjects];
+            [_atUsers removeAllObjects];
+        } else {
+            self.lblRange.text = @"公开";
+        }
+    };
     [self presentViewController:ctrl animated:YES completion:nil];
 }
 
@@ -316,21 +320,9 @@
     }];
 }
 
-#pragma mark - DAGroupSelectViewControllerDelegate
--(void)didFinshSelectGroup
+-(BOOL)hasRange
 {
-    if (_rangeGroup.count > 0) {
-        self.lblRange.text = ((DAGroup *)[_rangeGroup objectAtIndex:0]).name.name_zh;
-    } else {
-        self.lblRange.text = @"公开";
-    }
-    
-}
-
-#pragma mark - DAMemberSelectViewControllerDelegate
--(void)didFinshSelectUser
-{
-    
+    return _rangeGroup.count > 0;
 }
 
 @end

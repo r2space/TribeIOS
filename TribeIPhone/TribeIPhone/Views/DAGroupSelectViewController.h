@@ -10,16 +10,14 @@
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DAGroupCell.h"
 
-@protocol DAGroupSelectViewControllerDelegate
--(void) didFinshSelectGroup;
-@end
+typedef void (^GroupsDidSelected)(NSArray *groups);
 
 @interface DAGroupSelectViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSelect;
 @property (weak, nonatomic) NSMutableArray *selectedGroups;
 @property (nonatomic) BOOL allowMultiSelect;
-@property (retain,nonatomic) id<DAGroupSelectViewControllerDelegate>delegate;
+@property(strong, nonatomic) GroupsDidSelected selectedBlocks;
 - (IBAction)onCancelClicked:(id)sender;
 - (IBAction)onSelectClicked:(id)sender;
 @end

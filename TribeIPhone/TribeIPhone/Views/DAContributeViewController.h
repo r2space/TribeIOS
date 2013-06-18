@@ -13,7 +13,7 @@
 #import "DAGroupSelectViewController.h"
 #import "DAHelper.h"
 
-@interface DAContributeViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, CLLocationManagerDelegate, DAMemberSelectViewControllerDelegate,DAGroupSelectViewControllerDelegate>
+@interface DAContributeViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, CLLocationManagerDelegate>
 {
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnLocation;
@@ -29,6 +29,7 @@
 
 - (IBAction)onLocationClicked:(id)sender;
 - (IBAction)onCameraClicked:(id)sender;
+- (IBAction)onPhotoLibraryClicked:(id)sender;
 - (IBAction)onAtClicked:(id)sender;
 - (IBAction)onMoticonClicked:(id)sender;
 - (IBAction)onCancelClicked:(id)sender;

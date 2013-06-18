@@ -104,9 +104,7 @@
             [self.selectedUsers addObject:user];
             [self setUnSelectUsers];
             
-            [self dismissViewControllerAnimated:YES completion:^{
-                [self.delegate didFinshSelectUser];
-            }];
+            [self dismiss];
             
         }
     }
@@ -148,8 +146,15 @@
 }
 
 - (IBAction)onSelectClicked:(id)sender {
+    [self dismiss];
+}
+
+-(void)dismiss
+{
     [self dismissViewControllerAnimated:YES completion:^{
-        [self.delegate didFinshSelectUser];
+        if (self.selectedBlocks != nil) {
+            self.selectedBlocks(_selectedUsers);
+        }
     }];
 }
 
