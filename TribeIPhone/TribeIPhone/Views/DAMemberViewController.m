@@ -20,11 +20,13 @@
     NSDictionary *_typeValues;
     NSString *loginuid ;
     
+    NSString *_keywords;
+    
 }
 @end
 
 @implementation DAMemberViewController
-@synthesize listContent, filteredListContent, savedSearchTerm, savedScopeButtonIndex, searchWasActive;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,8 +43,10 @@
     _type = @"all";
     _filterId = @"all";
     loginuid = [DALoginModule getLoginUserId];
+    _keywords =@"";
     _typeValues = @{@"all":@"全部",@"follower":@"粉丝",@"following":@"关注",@"group":@"参加的组"};
     [self fetch];
+    _searchBar.placeholder = @"检索名称、拼音、邮箱";
 }
 -(void)displayFilter
 {
@@ -85,75 +89,29 @@
     {
         if ([_filterId isEqualToString:@"following"])
         {
-            [[DAUserModule alloc] getUserFollowingListByUser:loginuid start:start count:count callback:^(NSError *error, DAUserList *users){
+            [[DAUserModule alloc] getUserFollowingListByUser:loginuid start:start count:count keywords:_keywords callback:^(NSError *error, DAUserList *users){
                 [self displayFilter];
                 [self finishFetch:users.items error:error];
-                self.filteredListContent = [NSMutableArray arrayWithCapacity:[users.items count]];
-            
-            // restore search settings if they were saved in didReceiveMemoryWarning.
-                if (self.savedSearchTerm)
-                {
-                    [self.searchDisplayController setActive:self.searchWasActive];
-                    [self.searchDisplayController.searchBar setSelectedScopeButtonIndex:self.savedScopeButtonIndex];
-                    [self.searchDisplayController.searchBar setText:savedSearchTerm];
-                
-                    self.savedSearchTerm = nil;
-                }
             }];
         } else if ([_filterId isEqualToString:@"follower"]){
-            [[DAUserModule alloc] getUserFollowerListByUser:loginuid start:start count:count callback:^(NSError *error, DAUserList *users){
+            [[DAUserModule alloc] getUserFollowerListByUser:loginuid start:start count:count keywords:_keywords callback:^(NSError *error, DAUserList *users){
                 [self displayFilter];
                 [self finishFetch:users.items error:error];
-                self.filteredListContent = [NSMutableArray arrayWithCapacity:[users.items count]];
-            
-            // restore search settings if they were saved in didReceiveMemoryWarning.
-                if (self.savedSearchTerm)
-                {
-                    [self.searchDisplayController setActive:self.searchWasActive];
-                    [self.searchDisplayController.searchBar setSelectedScopeButtonIndex:    self.savedScopeButtonIndex];
-                    [self.searchDisplayController.searchBar setText:savedSearchTerm];
-                
-                    self.savedSearchTerm = nil;
-                }
             }];
         }
             
     }
     else if ([_type isEqualToString:@"group"])
     {
-        [[DAGroupModule alloc] getUserListInGroup:_filterId start:0 count:20 callback:^(NSError *error, DAUserList *users){
+        [[DAUserModule alloc] getUserListInGroup:_filterId uid:loginuid start:start count:count keywords:_keywords callback:^(NSError *error, DAUserList *users){
             [self displayFilter];
             [self finishFetch:users.items error:error];
-            self.filteredListContent = [NSMutableArray arrayWithCapacity:[users.items count]];
-            
-            // restore search settings if they were saved in didReceiveMemoryWarning.
-            if (self.savedSearchTerm)
-            {
-                [self.searchDisplayController setActive:self.searchWasActive];
-                [self.searchDisplayController.searchBar setSelectedScopeButtonIndex:self.savedScopeButtonIndex];
-                [self.searchDisplayController.searchBar setText:savedSearchTerm];
-                
-                self.savedSearchTerm = nil;
-            }
-
         }];
     } else {
         
-        [[DAUserModule alloc] getUserListStart:start count:count keywords:@"" callback:^(NSError *error, DAUserList *users){
+        [[DAUserModule alloc] getUserListStart:start count:count keywords:_keywords callback:^(NSError *error, DAUserList *users){
             [self displayFilter];
-            _filterId = @"group";
             [self finishFetch:users.items error:error];
-            self.filteredListContent = [NSMutableArray arrayWithCapacity:[users.items count]];
-            
-            // restore search settings if they were saved in didReceiveMemoryWarning.
-            if (self.savedSearchTerm)
-            {
-                [self.searchDisplayController setActive:self.searchWasActive];
-                [self.searchDisplayController.searchBar setSelectedScopeButtonIndex:self.savedScopeButtonIndex];
-                [self.searchDisplayController.searchBar setText:savedSearchTerm];
-                
-                self.savedSearchTerm = nil;
-            }
         }];
 
     }
@@ -166,13 +124,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView)
-	{
-        return [filteredListContent count];
-    }else
-	{
-        return [list count];
-    }
+    return [list count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -184,13 +136,9 @@
 {
     DAUser *user = [list objectAtIndex:indexPath.row];
 	DAMemberViewCell *cell = [DAMemberViewCell initWithMessage:user tableView:tableView];
-    if (tableView == self.searchDisplayController.searchResultsTableView)
-	{
-        user = [self.filteredListContent objectAtIndex:indexPath.row];
-    }else
-	{
-        user = [list objectAtIndex:indexPath.row];
-    }
+ 
+    user = [list objectAtIndex:indexPath.row];
+  
     [cell lblName].text = [user getUserName];
     cell.uid = user._id;
     cell.lblDepart.text = user.department.name.name_zh;
@@ -221,51 +169,12 @@
     
 }
 
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
-{
-	/*
-	 Update the filtered array based on the search text and scope.
-	 */
-	
-	[self.filteredListContent removeAllObjects]; // First clear the filtered array.
-	
-	/*
-	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
-	 */
-	for (DAUser *user in list)
-	{
-		
-        NSComparisonResult result = [user.name.name_zh compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-        if (result == NSOrderedSame)
-        {
-            [self.filteredListContent addObject:user];
-        }
-		
-	}
-}
+
 
 
 #pragma mark -
 #pragma mark UISearchDisplayController Delegate Methods
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
-}
-
-
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
-{
-    [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
-    
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
-}
 - (IBAction)barFilterOnClick:(id)sender {
     DAMemberFilterViewController *filterCtrl = [[DAMemberFilterViewController alloc] initWithNibName:@"DAMemberFilterViewController" bundle:nil];
     [filterCtrl setTitle:@"筛选"];
@@ -273,6 +182,7 @@
         _type = type;
         _filterId = filter;
         _filterTitle = title;
+        _keywords = @"";
         [self refresh];
         [DAHelper hidePopup];
     };
@@ -289,6 +199,25 @@
     }
 }
 
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    
+    [self.view endEditing:YES];
+    _keywords = searchBar.text;
+    [self refresh];
+    _searchBar.text = @"";
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    
+    [_searchBar resignFirstResponder];
+    _searchBar.text = @"";
+    _keywords = @"";
+//    _type = @"all";
+//    _filterId = @"all";
+    [self refresh];
+}
 
 
 @end

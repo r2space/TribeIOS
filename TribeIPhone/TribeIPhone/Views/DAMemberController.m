@@ -42,7 +42,7 @@
     if (self.kind == DAMemberListFollower) {
         self.barTitle.title = @"关注的人";
         
-        [[DAUserModule alloc] getUserFollowerListByUser:self.uid start:0 count:20 callback:^(NSError *error, DAUserList *users){
+        [[DAUserModule alloc] getUserFollowerListByUser:self.uid start:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
             theMembers = users.items;
             [self.tblUsers reloadData];
         }];
@@ -50,7 +50,7 @@
     if (self.kind == DAMemberListFollowing) {
         self.barTitle.title = @"粉丝";
 
-        [[DAUserModule alloc] getUserFollowingListByUser:self.uid start:0 count:20 callback:^(NSError *error, DAUserList *users){
+        [[DAUserModule alloc] getUserFollowingListByUser:self.uid start:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
             theMembers = users.items;
             [self.tblUsers reloadData];
         }];
