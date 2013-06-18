@@ -10,24 +10,25 @@
 
 #define kURLGetUser                 @"/user/get.json?_id=%@"
 #define kURLGetUserList             @"/user/list.json?start=%d&count=%d"
-#define kURLGetUserFollowerList     @"/user/list.json?kind=follower&uid=%@&start=%d&count=%d"
-#define kURLGetUserFollowingList    @"/user/list.json?kind=following&uid=%@&start=%d&count=%d"
+#define kURLGetUserFollowerList     @"/user/list.json?kind=follower&uid=%@&start=%d&count=%d&keywords=%@"
+#define kURLGetUserFollowingList    @"/user/list.json?kind=following&uid=%@&start=%d&count=%d&keywords=%@"
 #define kURLFollow                  @"/user/follow.json?_id=%@"
 #define kURLUnfollow                @"/user/unfollow.json?_id=%@"
 #define kURLUpdate                  @"/user/update.json?_id=%@"
 
 
-#define kURLGetUserSearchListBykeywords             @"/user/list.json?start=%d&count=%d&kind=%@&gid=%@&keywords=%@"
+#define kURLGetUserSearchListBykeywords             @"/user/list.json?start=%d&count=%d&kind=all&gid=%@&keywords=%@"
 
-#define kURLGetUserInGroupListBykeywords             @"/user/list.json?start=%d&count=%d&uid=%@&kind=%@&gid=%@&keywords=%@"
+#define kURLGetUserInGroupListBykeywords             @"/user/list.json?start=%d&count=%d&uid=%@&kind=group&gid=%@&keywords=%@"
 @implementation DAUserModule
 
 - (void) getUserListStart:(int)start count:(int)count keywords:(NSString *)keywords callback:(void (^)(NSError *error, DAUserList *users))callback;
 
 {
-    NSString *path = [NSString stringWithFormat:kURLGetUserSearchListBykeywords, start, count,@"all",@"",keywords];
-    NSLog(@"%@",path);
-    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    DAAFHttpClient *client = [DAAFHttpClient sharedClient];
+    NSString *path = [NSString stringWithFormat:kURLGetUserSearchListBykeywords, start, count,@"",[client uriEncodeForString:keywords]];
+    
+    [client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
             callback(nil, [[DAUserList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
@@ -44,9 +45,9 @@
 
 - (void) getUserListInGroup:(NSString *)gid uid:(NSString *)uid start:(int)start count:(int)count keywords:(NSString *)keywords callback:(void (^)(NSError *error, DAUserList *users))callback
 {
-    NSString *path = [NSString stringWithFormat:kURLGetUserInGroupListBykeywords, start, count,uid,@"group",gid,keywords];
-    NSLog(@"%@",path);
-    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    DAAFHttpClient *client = [DAAFHttpClient sharedClient];
+    NSString *path = [NSString stringWithFormat:kURLGetUserInGroupListBykeywords, start, count,uid,gid,[client uriEncodeForString:keywords]];
+    [client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
             callback(nil, [[DAUserList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
@@ -61,11 +62,12 @@
 }
 
 
-- (void)getUserFollowerListByUser:(NSString *)uid start:(int)start count:(int)count callback:(void (^)(NSError *error, DAUserList *users))callback
+- (void)getUserFollowerListByUser:(NSString *)uid start:(int)start count:(int)count  keywords:(NSString *)keywords callback:(void (^)(NSError *error, DAUserList *users))callback
 {
-    NSString *path = [NSString stringWithFormat:kURLGetUserFollowerList, uid, start, count];
+    DAAFHttpClient *client = [DAAFHttpClient sharedClient];
+    NSString *path = [NSString stringWithFormat:kURLGetUserFollowerList, uid, start, count,[client uriEncodeForString:keywords]];
     
-    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
             callback(nil, [[DAUserList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
@@ -79,11 +81,12 @@
     }];
 }
 
-- (void)getUserFollowingListByUser:(NSString *)uid start:(int)start count:(int)count callback:(void (^)(NSError *error, DAUserList *users))callback
+- (void)getUserFollowingListByUser:(NSString *)uid start:(int)start count:(int)count  keywords:(NSString *)keywords callback:(void (^)(NSError *error, DAUserList *users))callback
 {
-    NSString *path = [NSString stringWithFormat:kURLGetUserFollowingList, uid, start, count];
+    DAAFHttpClient *client = [DAAFHttpClient sharedClient];
+    NSString *path = [NSString stringWithFormat:kURLGetUserFollowingList, uid, start, count,[client uriEncodeForString:keywords]];
     
-    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
             callback(nil, [[DAUserList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);

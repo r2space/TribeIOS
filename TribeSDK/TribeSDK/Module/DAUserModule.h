@@ -21,11 +21,13 @@
 - (void)getUserFollowerListByUser:(NSString *)uid
                             start:(int)start
                             count:(int)count
+                         keywords:(NSString *)keywords
                          callback:(void (^)(NSError *error, DAUserList *users))callback;
 
 - (void)getUserFollowingListByUser:(NSString *)uid
                              start:(int)start
                              count:(int)count
+                          keywords:(NSString *)keywords
                           callback:(void (^)(NSError *error, DAUserList *users))callback;
 
 - (void)getUserById:(NSString *)uid callback:(void (^)(NSError *error, DAUser *user))callback;

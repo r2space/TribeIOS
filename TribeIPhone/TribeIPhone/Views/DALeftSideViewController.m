@@ -63,7 +63,7 @@
     }else{
         type = @"user";
         
-        [[DAUserModule alloc] getUserFollowerListByUser:loginuid start:0 count:20 callback:^(NSError *error, DAUserList *users){
+        [[DAUserModule alloc] getUserFollowerListByUser:loginuid start:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
             self.dataList = users.items;
             
             [self.tblFilter reloadData];
