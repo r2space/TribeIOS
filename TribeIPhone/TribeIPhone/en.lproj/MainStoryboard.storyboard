@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4yk-1H-mB6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4yk-1H-mB6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -76,7 +76,18 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="eJe-fW-mkj">
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="5XP-V3-lRT"/>
-                                    <barButtonItem title="部门/组" style="plain" id="2g8-7o-PDG"/>
+                                    <barButtonItem width="30" style="plain" systemItem="fixedSpace" id="v7V-1r-QJz"/>
+                                    <barButtonItem title="部门/组" style="plain" id="2g8-7o-PDG">
+                                        <connections>
+                                            <action selector="barFilterOnClick:" destination="QyM-zc-Dtd" id="pvX-Mt-YzE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="gateway_binoculars.png" style="plain" id="Ijz-zN-FdG">
+                                        <inset key="imageInsets" minX="-15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="barFilterIcoOnClick:" destination="QyM-zc-Dtd" id="D7H-tX-6Xt"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="eP1-ts-HfM"/>
                                     <barButtonItem systemItem="add" id="ChP-H8-thm">
                                         <connections>
@@ -87,6 +98,18 @@
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fr1-7n-D14">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" showsCancelButton="YES" id="l8j-bs-9Hw">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <scopeButtonTitles>
+                                        <string>Title</string>
+                                        <string>Title</string>
+                                    </scopeButtonTitles>
+                                    <connections>
+                                        <outlet property="delegate" destination="QyM-zc-Dtd" id="2bT-eP-Oje"/>
+                                    </connections>
+                                </searchBar>
                                 <connections>
                                     <outlet property="dataSource" destination="QyM-zc-Dtd" id="M0b-Kp-0ws"/>
                                     <outlet property="delegate" destination="QyM-zc-Dtd" id="Sj0-rl-ct6"/>
@@ -98,16 +121,18 @@
                             <constraint firstItem="fr1-7n-D14" firstAttribute="leading" secondItem="uJo-5V-mW9" secondAttribute="leading" type="default" id="BFC-r2-gbp"/>
                             <constraint firstItem="fr1-7n-D14" firstAttribute="trailing" secondItem="uJo-5V-mW9" secondAttribute="trailing" type="default" id="Bbd-UB-cNR"/>
                             <constraint firstItem="eJe-fW-mkj" firstAttribute="top" secondItem="uJo-5V-mW9" secondAttribute="top" type="default" id="UQP-PY-rKQ"/>
+                            <constraint firstItem="fr1-7n-D14" firstAttribute="top" secondItem="eJe-fW-mkj" secondAttribute="bottom" type="default" id="ZSx-D2-4Ii"/>
                             <constraint firstItem="eJe-fW-mkj" firstAttribute="trailing" secondItem="uJo-5V-mW9" secondAttribute="trailing" type="default" id="cty-CG-rob"/>
-                            <constraint firstItem="fr1-7n-D14" firstAttribute="top" secondItem="eJe-fW-mkj" secondAttribute="bottom" type="default" id="eDQ-v8-Eoz"/>
                             <constraint firstItem="eJe-fW-mkj" firstAttribute="leading" secondItem="uJo-5V-mW9" secondAttribute="leading" type="default" id="gWB-PE-q0R"/>
                             <constraint firstItem="fr1-7n-D14" firstAttribute="bottom" secondItem="uJo-5V-mW9" secondAttribute="bottom" type="default" id="lDo-tJ-Fv4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zPW-Pg-ZXI"/>
                     <connections>
+                        <outlet property="barFilter" destination="2g8-7o-PDG" id="IiD-qK-DRz"/>
+                        <outlet property="barFilterIco" destination="Ijz-zN-FdG" id="WSW-4s-ieL"/>
+                        <outlet property="searchBar" destination="l8j-bs-9Hw" id="wBN-ef-qTk"/>
                         <outlet property="tableView" destination="fr1-7n-D14" id="fNB-Zb-KQg"/>
-                        <outlet property="tblGroups" destination="fr1-7n-D14" id="JIH-qG-Xuw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPl-mR-OPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -435,7 +460,7 @@
         <image name="44-shoebox.png" width="24" height="22"/>
         <image name="gateway_binoculars.png" width="36" height="36"/>
         <image name="heart.png" width="26" height="26"/>
-        <image name="house.png" width="26" height="26"/>
+        <image name="house.png" width="52" height="52"/>
         <image name="refresh.png" width="26" height="26"/>
     </resources>
     <classes>
@@ -454,12 +479,16 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
-        <class className="DAGroupViewController" superclassName="UIViewController">
+        <class className="DAGroupViewController" superclassName="DABaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DAGroupViewController.h"/>
             <relationships>
+                <relationship kind="action" name="barFilterIcoOnClick:"/>
+                <relationship kind="action" name="barFilterOnClick:"/>
                 <relationship kind="action" name="onAddTouched:"/>
+                <relationship kind="outlet" name="barFilter" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="barFilterIco" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tblGroups" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="DAMainViewController" superclassName="UITabBarController">
@@ -477,9 +506,6 @@
         </class>
         <class className="DAMoreViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMoreViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="firstViewReturnActionForSegue:" candidateClass="UIStoryboardSegue"/>
-            </relationships>
         </class>
         <class className="DATimeLineViewController" superclassName="DABaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DATimeLineViewController.h"/>
@@ -494,9 +520,6 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

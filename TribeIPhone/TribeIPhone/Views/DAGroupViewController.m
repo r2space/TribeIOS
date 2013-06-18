@@ -10,10 +10,13 @@
 #import "DAGroupViewCell.h"
 #import "DAGroupDetailViewController.h"
 #import "DAGroupMoreContainerViewController.h"
+#import "DAGroupFilterViewController.h"
 
 @interface DAGroupViewController ()
 {
-    NSArray* theGroups;
+    NSString *_type;
+    NSDictionary *_typeValues;
+    NSString *_keywords;
 }
 @end
 
@@ -33,22 +36,46 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    _type = @"all";
+    _typeValues = @{@"all":@"组/部门",@"1":@"组",@"2":@"部门"};
+    _keywords =@"";
+    
     // 不显示空行的cell分隔线
-    self.tblGroups.tableFooterView = [[UIView alloc]init];
+//    self.tblGroups.tableFooterView = [[UIView alloc]init];
+    [self fetch];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[DAGroupModule alloc] getGroupListStart:0 count:20 callback:^(NSError *error, DAGroupList *groups){
-        theGroups = groups.items;
-        [self.tableView reloadData];
-    }];
+    _searchBar.placeholder = @"检索名称、拼音";
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)fetch
+{
+    if ([self preFetch]) {
+        return;
+    }
+    NSString *type = [_type isEqualToString:@"all"] ? @"" : _type;
+    [[DAGroupModule alloc] getGroupListStart:0 count:20 type:type keywords:_keywords callback:^(NSError *error, DAGroupList *groups){
+        [self finishFetch:groups.items error:error];
+        [self displayFilter];
+    }];
+}
+
+-(void)displayFilter
+{
+    if ([_type isEqualToString:@"all"]) {
+        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_binoculars.png"]];
+    } else {
+        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_cross.png"]];
+    }
+    [self.barFilter setTitle:[_typeValues objectForKey:_type]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -58,7 +85,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return theGroups.count;
+    return list.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,7 +95,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAGroup *group = [theGroups objectAtIndex:indexPath.row];
+    DAGroup *group = [list objectAtIndex:indexPath.row];
 	DAGroupViewCell *cell = [DAGroupViewCell initWithMessage:group  tableView:tableView];
     
     [cell lblName].text = group.name.name_zh;
@@ -83,7 +110,7 @@
     
     DAGroupDetailViewController *groupDetailViewController =[[DAGroupDetailViewController alloc]initWithNibName:@"DAGroupDetailViewController" bundle:nil];
     groupDetailViewController.hidesBottomBarWhenPushed = YES;
-    groupDetailViewController.gid = ((DAGroup *)[theGroups objectAtIndex:indexPath.row])._id ;
+    groupDetailViewController.gid = ((DAGroup *)[list objectAtIndex:indexPath.row])._id ;
     
     [self.navigationController pushViewController:groupDetailViewController animated:YES];
     
@@ -100,5 +127,44 @@
     DAGroupMoreContainerViewController *moreViewController = [[DAGroupMoreContainerViewController alloc] initWithNibName:@"DAGroupMoreContainerViewController" bundle:nil];
     [self.navigationController pushViewController:moreViewController animated:YES];
 }
+
+- (IBAction)barFilterOnClick:(id)sender {
+    DAGroupFilterViewController *filterCtrl = [[DAGroupFilterViewController alloc] initWithNibName:@"DAGroupFilterViewController" bundle:nil];
+    filterCtrl.selectedBlocks = ^(NSString *filter){
+        _type = filter;
+        _keywords = @"";
+        _searchBar.text = @"";
+        [self refresh];
+        [DAHelper hidePopup];
+    };
+    [DAHelper showPopup:filterCtrl];
+}
+
+- (IBAction)barFilterIcoOnClick:(id)sender {
+    if ([_type isEqualToString:@"all"]) {
+        [self barFilterOnClick:nil];
+    } else {
+        _type = @"all";
+        _keywords = @"";
+        _searchBar.text = @"";
+        [self refresh];
+    }
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.view endEditing:YES];
+    _keywords = searchBar.text;
+    [self refresh];
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [_searchBar resignFirstResponder];
+    _searchBar.text = @"";
+    _keywords = @"";
+    [self refresh];
+}
+
 
 @end
