@@ -67,7 +67,7 @@
         
         [WTStatusBar setStatusText:@"done!" timeout:0.5 animated:YES];
     } else {
-        [[DAFileModule alloc] downloadFile:fileUrl ext:self.fileExt callback:^(NSError *err, NSString *fileid){
+        [[DAFileModule alloc] downloadFile:self.downloadId ext:self.fileExt callback:^(NSError *err, NSString *fileid){
             [self.webView loadRequest:requests];
             self.webView.scalesPageToFit = YES;
             
