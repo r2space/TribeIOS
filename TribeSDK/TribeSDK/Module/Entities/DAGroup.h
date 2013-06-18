@@ -29,5 +29,7 @@
 @property (retain, nonatomic) NSArray* member;
 @property (retain, nonatomic) GroupPhoto* photo;
 @property (retain, nonatomic) NSString* description;
+@property (retain, nonatomic) NSString* type;
+@property (retain, nonatomic) NSString* secure;
 -(UIImage *) getGroupPhotoImage;
 @end

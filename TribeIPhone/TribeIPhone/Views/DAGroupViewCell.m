@@ -46,6 +46,16 @@
         cell.imgPortrait.image = [UIImage imageNamed:@"second@2x.png"];
     }
     
+    if ([@"1" isEqualToString:group.type]) {
+        if ([@"1" isEqualToString:group.secure]) {
+            cell.groupIcon.image = [UIImage imageNamed:@"group_security.png"];
+        } else {
+            cell.groupIcon.image = [UIImage imageNamed:@"group.png"];
+        }
+    } else {
+        cell.groupIcon.image = [UIImage imageNamed:@"department.png"];
+    }
+    
     return cell;
 }
 

@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 @property (weak, nonatomic) IBOutlet UILabel *lblMembers;
 @property (weak, nonatomic) NSString* gid;
+@property (weak, nonatomic) IBOutlet UIImageView *groupIcon;
 
 @end
