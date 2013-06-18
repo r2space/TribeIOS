@@ -15,6 +15,7 @@
     NSMutableArray *_rangeGroup;
     NSMutableArray *_atGroups;
     NSMutableArray *_atUsers;
+    BOOL _photoFromCamera;
 }
 
 @end
@@ -45,7 +46,10 @@
     _rangeGroup = [[NSMutableArray alloc] init];
     _atGroups = [[NSMutableArray alloc] init];
     _atUsers = [[NSMutableArray alloc] init];
-    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
     if ([_message.type isEqualToNumber:[NSNumber numberWithInt:2]]) {
         [self.optionView setHidden:YES];
     }
@@ -61,12 +65,36 @@
     self.txtMessage.layer.cornerRadius = 10;
     
     self.btnClearImg.hidden = YES;
+    
+    [self renderButtons];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)renderButtons
+{
+    if ([self hasAt]) {
+        [self.btnAt setImage:[UIImage imageNamed:@"group_add_highlight.png"] forState:UIControlStateNormal];
+    } else {
+        [self.btnAt setImage:[UIImage imageNamed:@"group_add.png"] forState:UIControlStateNormal];
+    }
+    
+    if ([message_contenttype_image isEqualToString:_message.contentType]) {
+        if (_photoFromCamera) {
+            [self.btnCamera setImage:[UIImage imageNamed:@"camera_highlight.png"] forState:UIControlStateNormal];
+            [self.btnPhoto setImage:[UIImage imageNamed:@"photo.png"] forState:UIControlStateNormal];
+        } else {
+            [self.btnCamera setImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
+            [self.btnPhoto setImage:[UIImage imageNamed:@"photo_highlight.png"] forState:UIControlStateNormal];
+        }
+    } else {
+        [self.btnCamera setImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
+        [self.btnPhoto setImage:[UIImage imageNamed:@"photo.png"] forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)onLocationClicked:(id)sender
@@ -180,6 +208,12 @@
     [UIImageJPEGRepresentation(image, 1.0) writeToFile:[DAHelper documentPath:@"attach.jpg"] atomically:YES];
     _message.contentType = message_contenttype_image;
     self.btnClearImg.hidden = NO;
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        _photoFromCamera = YES;
+    } else {
+        _photoFromCamera = NO;
+    }
+    [self renderButtons];
 }
 
 - (IBAction)onAtClicked:(id)sender
@@ -187,10 +221,14 @@
     UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
     actionSheet.delegate = self;
     
+    int cancelIdx = 1;
     [actionSheet addButtonWithTitle:@"@users"];
-    [actionSheet addButtonWithTitle:@"@groups"];
+    if (![self hasRange]) {
+        [actionSheet addButtonWithTitle:@"@groups"];
+        cancelIdx = 2;
+    }
     [actionSheet addButtonWithTitle:@"Cancel"];
-    [actionSheet setCancelButtonIndex:2];
+    [actionSheet setCancelButtonIndex:cancelIdx];
     
     [actionSheet showInView:self.view];
 }
@@ -203,6 +241,7 @@
         ctrl.allowMultiSelect = YES;
         ctrl.selectedBlocks = ^(NSArray *groups){
             _atGroups = [NSMutableArray arrayWithArray:groups];
+            [self renderButtons];
         };
         ctrl.selectedGroups = _atGroups;
         [self presentViewController:ctrl animated:YES completion:nil];
@@ -212,8 +251,12 @@
         ctrl.allowMultiSelect = YES;
         ctrl.selectedBlocks = ^(NSArray *users){
             _atUsers = [NSMutableArray arrayWithArray:users];
+            [self renderButtons];
         };
         ctrl.selectedUsers = _atUsers;
+        if ([self hasRange]) {
+            ctrl.inGroup = [_rangeGroup objectAtIndex:0];
+        }
         [self presentViewController:ctrl animated:YES completion:nil];
     }
 }
@@ -244,6 +287,7 @@
         } else {
             self.lblRange.text = @"公开";
         }
+        [self renderButtons];
     };
     [self presentViewController:ctrl animated:YES completion:nil];
 }
@@ -323,6 +367,11 @@
 -(BOOL)hasRange
 {
     return _rangeGroup.count > 0;
+}
+
+-(BOOL)hasAt
+{
+    return _atUsers.count > 0 || _atGroups.count >0;
 }
 
 @end

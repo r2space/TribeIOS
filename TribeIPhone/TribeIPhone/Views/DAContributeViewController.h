@@ -19,10 +19,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnLocation;
 @property (weak, nonatomic) IBOutlet UIButton *btnClearImg;
 @property (weak, nonatomic) IBOutlet UIButton *btnCamera;
+@property (weak, nonatomic) IBOutlet UIButton *btnPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *lblRange;
 @property (weak, nonatomic) IBOutlet UITextView *txtMessage;
 @property (weak, nonatomic) IBOutlet UIImageView *imgAttach;
 @property (weak, nonatomic) IBOutlet UIView *optionView;
+@property (weak, nonatomic) IBOutlet UIButton *btnAt;
 
 @property (retain, nonatomic) DAMessage *message;
 @property (nonatomic) BOOL isForward;
