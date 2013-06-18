@@ -17,12 +17,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblFileName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAt;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblSize;
+@property (weak, nonatomic) IBOutlet UILabel *lblDate;
+
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIToolbar    *tabbar;
 @property (retain, nonatomic) DAFile *getfile;
 @property (retain, nonatomic) DAFileList *fileList;
 
+@property(nonatomic,retain) IBOutlet UIView *iview;
 
 - (IBAction)onCancelTouched:(id)sender;
 @end

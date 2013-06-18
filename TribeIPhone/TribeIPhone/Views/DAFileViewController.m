@@ -134,9 +134,14 @@
 	DAFileViewCell *cell = [DAFileViewCell initWithMessage:file tableView:tableView];
     
     cell.lblFileName.text = file.filename;
-    cell.lblAt.text = file.uploadDate;
+    cell.lblAt.text = [DAHelper stringFromISODateString: file.uploadDate];
     cell.imgFileType.image = [UIImage imageNamed:[DAHelper fileanExtension:file.contentType]];
-    
+    if (([file.length intValue]/1024)> 1024) {
+        cell.lblFileSize.text = [NSString stringWithFormat:@"%dMB",[file.length intValue]/1024/1024];
+    }else{
+        cell.lblFileSize.text = [NSString stringWithFormat:@"%dKB",[file.length intValue]/1024];
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -147,11 +152,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"FileDetailViewController");
-    DAFileDetailViewController *detailViewController = [[DAFileDetailViewController alloc] initWithNibName:@"DAFileDetailViewController" bundle:nil];
-    detailViewController.getfile = [list objectAtIndex:indexPath.row];
-    //detailViewController.hidesBottomBarWhenPushed  = YES;
-    [self.navigationController pushViewController:detailViewController animated:YES];
+//    NSLog(@"FileDetailViewController");
+//    DAFileDetailViewController *detailViewController = [[DAFileDetailViewController alloc] initWithNibName:@"DAFileDetailViewController" bundle:nil];
+//    detailViewController.getfile = [list objectAtIndex:indexPath.row];
+//    detailViewController.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:detailViewController animated:YES];
 //    NSLog(@"FileDetailViewController");
 //    DAFileWebViewController *detailView = [[DAFileWebViewController alloc] initWithNibName:@"DAFileWebViewController" bundle:nil];
 //    DAFile *file = [list objectAtIndex:indexPath.row];
@@ -162,10 +167,13 @@
 //    detailView.downloadId = file.downloadId;
 //    detailView.fileExt = file.extension;
 //    detailView.fileDb = file;
-    
-    
-    
-//    [self.navigationController pushViewController:detailView animated:YES];
+    DAFileWebViewController *detailView = [[DAFileWebViewController alloc] initWithNibName:@"DAFileWebViewController" bundle:nil];
+    DAFile *file = [list objectAtIndex:indexPath.row];
+    detailView.fileDb = file;
+    detailView.downloadId = file.downloadId;
+    detailView.fileExt = file.extension;
+    detailView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailView animated:YES];
     
 }
 - (IBAction)barFilterOnClick:(id)sender {

@@ -12,9 +12,11 @@
 
 @interface DAUserModule : NSObject
 
-- (void)getUserListStart:(int)start
-                   count:(int)count
-                callback:(void (^)(NSError *error, DAUserList *users))callback;
+
+- (void) getUserListStart:(int)start count:(int)count keywords:(NSString *)keywords callback:(void (^)(NSError *error, DAUserList *users))callback;
+
+- (void) getUserListInGroup:(NSString *)gid uid:(NSString *)uid start:(int)start count:(int)count keywords:(NSString *)keywords callback:(void (^)(NSError *error, DAUserList *users))callback;
+
 
 - (void)getUserFollowerListByUser:(NSString *)uid
                             start:(int)start

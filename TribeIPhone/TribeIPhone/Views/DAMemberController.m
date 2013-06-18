@@ -11,6 +11,7 @@
 @interface DAMemberController ()
 {
     NSArray *theMembers;
+    NSString *loginuid ;
 }
 
 @end
@@ -29,14 +30,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+    loginuid = [DALoginModule getLoginUserId];
     if (self.kind == DAMemberListAll) {
         self.barTitle.title = @"所有用户";
-
-        [[DAUserModule alloc] getUserListStart:0 count:20 callback:^(NSError *error, DAUserList *users){
+        [[DAUserModule alloc] getUserListStart:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
             theMembers = users.items;
             [self.tblUsers reloadData];
         }];
+
     }
     if (self.kind == DAMemberListFollower) {
         self.barTitle.title = @"关注的人";
