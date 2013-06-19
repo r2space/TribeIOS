@@ -17,5 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtDescription;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segSecurity;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
+@property (weak, nonatomic) IBOutlet UITextField *txtCategory;
+
+- (IBAction)didEndOnExit:(id)sender;
 
 @end
