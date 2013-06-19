@@ -82,7 +82,8 @@
         }
         case NotificationTypeSystemAlert:// 通知
         {
-            [[DANotificationModule alloc] getNotificationListByType:@"invite,remove,follow" start:0 count:20 callback:^(NSError *error, DANotificationList *notificationList){
+            [[DANotificationModule alloc] getNotificationListByType:@"invite,remove,follow" start:0 count:20
+                                                           callback:^(NSError *error, DANotificationList *notificationList){
                 _notifications = notificationList.items;
                 [self.tableView reloadData];
             }];
@@ -126,6 +127,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // 显示私信对话画面
     if (_content == NotificationTypePrivateMessage) {
         DAShortmailStoryViewController *shortmail =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];
         shortmail.hidesBottomBarWhenPushed = YES;
@@ -139,13 +141,21 @@
         return;
     }
     
-    DAMessageDetailViewController *detailViewController = [[DAMessageDetailViewController alloc] initWithNibName:@"DAMessageDetailViewController" bundle:nil];
-    
-    DANotification *notification = [_notifications objectAtIndex:indexPath.row];
-    detailViewController.messageId = notification.objectid;
-    detailViewController.hidesBottomBarWhenPushed = YES;
-    [self presentViewController:detailViewController animated:YES completion:nil];
+    // 到消息详细画面
+    if (_content == NotificationTypeAt) {
+        DAMessageDetailViewController *detailViewController = [[DAMessageDetailViewController alloc] initWithNibName:@"DAMessageDetailViewController" bundle:nil];
+        
+        DANotification *notification = [_notifications objectAtIndex:indexPath.row];
+        detailViewController.messageId = notification.objectid;
+        detailViewController.hidesBottomBarWhenPushed = YES;
+        [self presentViewController:detailViewController animated:YES completion:nil];
+    }
 
+    // 标记为已读
+    DANotification *notification = [_notifications objectAtIndex:indexPath.row];
+    [[DANotificationModule alloc] read:notification._id callback:^(NSError *error, NSString *nid) {
+        NSLog(@"read : %@", nid);
+    }];
 }
 
 @end

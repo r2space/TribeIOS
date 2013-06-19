@@ -27,12 +27,6 @@
 		0417CEB61728C08A0061FFC6 /* DANotificationList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0417CEB41728C08A0061FFC6 /* DANotificationList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0417CEB71728C08A0061FFC6 /* DANotificationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0417CEB51728C08A0061FFC6 /* DANotificationList.m */; };
 		0417CEB81728C08A0061FFC6 /* DANotificationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0417CEB51728C08A0061FFC6 /* DANotificationList.m */; };
-		0417CEBC1728C3A10061FFC6 /* DANotificationFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 0417CEBA1728C3A10061FFC6 /* DANotificationFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0417CEBD1728C3A10061FFC6 /* DANotificationFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0417CEBB1728C3A10061FFC6 /* DANotificationFetcher.m */; };
-		0417CEBE1728C3A10061FFC6 /* DANotificationFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0417CEBB1728C3A10061FFC6 /* DANotificationFetcher.m */; };
-		0417CEC11728C3BF0061FFC6 /* DANotificationListFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 0417CEBF1728C3BF0061FFC6 /* DANotificationListFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0417CEC21728C3BF0061FFC6 /* DANotificationListFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0417CEC01728C3BF0061FFC6 /* DANotificationListFetcher.m */; };
-		0417CEC31728C3BF0061FFC6 /* DANotificationListFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0417CEC01728C3BF0061FFC6 /* DANotificationListFetcher.m */; };
 		0417CECE1728D4390061FFC6 /* DANotificationFetcherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0417CECD1728D4390061FFC6 /* DANotificationFetcherTest.m */; };
 		046D9184173786550076B693 /* DAFileDetail.h in Headers */ = {isa = PBXBuildFile; fileRef = 046D9182173786550076B693 /* DAFileDetail.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		046D9185173786550076B693 /* DAFileDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D9183173786550076B693 /* DAFileDetail.m */; };
@@ -261,10 +255,6 @@
 		0417CEB01728C0170061FFC6 /* DANotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotification.m; sourceTree = "<group>"; };
 		0417CEB41728C08A0061FFC6 /* DANotificationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationList.h; sourceTree = "<group>"; };
 		0417CEB51728C08A0061FFC6 /* DANotificationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationList.m; sourceTree = "<group>"; };
-		0417CEBA1728C3A10061FFC6 /* DANotificationFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationFetcher.h; sourceTree = "<group>"; };
-		0417CEBB1728C3A10061FFC6 /* DANotificationFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationFetcher.m; sourceTree = "<group>"; };
-		0417CEBF1728C3BF0061FFC6 /* DANotificationListFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationListFetcher.h; sourceTree = "<group>"; };
-		0417CEC01728C3BF0061FFC6 /* DANotificationListFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationListFetcher.m; sourceTree = "<group>"; };
 		0417CECC1728D4390061FFC6 /* DANotificationFetcherTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationFetcherTest.h; sourceTree = "<group>"; };
 		0417CECD1728D4390061FFC6 /* DANotificationFetcherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationFetcherTest.m; sourceTree = "<group>"; };
 		046D9182173786550076B693 /* DAFileDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFileDetail.h; sourceTree = "<group>"; };
@@ -442,17 +432,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0417CEB91728C35A0061FFC6 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				0417CEBA1728C3A10061FFC6 /* DANotificationFetcher.h */,
-				0417CEBB1728C3A10061FFC6 /* DANotificationFetcher.m */,
-				0417CEBF1728C3BF0061FFC6 /* DANotificationListFetcher.h */,
-				0417CEC01728C3BF0061FFC6 /* DANotificationListFetcher.m */,
-			);
-			name = Notification;
-			sourceTree = "<group>";
-		};
 		F213C049171BC26B00E562A8 = {
 			isa = PBXGroup;
 			children = (
@@ -548,7 +527,6 @@
 			children = (
 				F2E4A51A175B2DA900BC839D /* Addon */,
 				F213C0A7171BC2B200E562A8 /* Entities */,
-				0417CEB91728C35A0061FFC6 /* Notification */,
 				F2A831601743659B00375909 /* DAGroupModule.h */,
 				F2A831611743659B00375909 /* DAGroupModule.m */,
 				F2B29F451748A503002F7CF8 /* DAUserModule.h */,
@@ -787,8 +765,6 @@
 				F24F5E4F171CF0DF0032E93B /* DAError.h in Headers */,
 				0417CEB11728C0170061FFC6 /* DANotification.h in Headers */,
 				0417CEB61728C08A0061FFC6 /* DANotificationList.h in Headers */,
-				0417CEBC1728C3A10061FFC6 /* DANotificationFetcher.h in Headers */,
-				0417CEC11728C3BF0061FFC6 /* DANotificationListFetcher.h in Headers */,
 				F2A6EAA9172AA1B600C1A9BF /* DAShortmailModule.h in Headers */,
 				F2A6EAAE172AA2AA00C1A9BF /* DAShortmail.h in Headers */,
 				F2A6EAB3172AAF9D00C1A9BF /* DAShortmailList.h in Headers */,
@@ -969,8 +945,6 @@
 				F24F5E50171CF0DF0032E93B /* DAError.m in Sources */,
 				0417CEB21728C0170061FFC6 /* DANotification.m in Sources */,
 				0417CEB71728C08A0061FFC6 /* DANotificationList.m in Sources */,
-				0417CEBD1728C3A10061FFC6 /* DANotificationFetcher.m in Sources */,
-				0417CEC21728C3BF0061FFC6 /* DANotificationListFetcher.m in Sources */,
 				F2A6EAAA172AA1B600C1A9BF /* DAShortmailModule.m in Sources */,
 				F2A6EAAF172AA2AA00C1A9BF /* DAShortmail.m in Sources */,
 				F2A6EAB4172AAF9D00C1A9BF /* DAShortmailList.m in Sources */,
@@ -1046,8 +1020,6 @@
 				F2656F2417250213007E8207 /* DAUserUpdatePosterTests.m in Sources */,
 				0417CEB31728C0170061FFC6 /* DANotification.m in Sources */,
 				0417CEB81728C08A0061FFC6 /* DANotificationList.m in Sources */,
-				0417CEBE1728C3A10061FFC6 /* DANotificationFetcher.m in Sources */,
-				0417CEC31728C3BF0061FFC6 /* DANotificationListFetcher.m in Sources */,
 				0417CECE1728D4390061FFC6 /* DANotificationFetcherTest.m in Sources */,
 				F2A6EAAB172AA1B600C1A9BF /* DAShortmailModule.m in Sources */,
 				F2A6EAB0172AA2AA00C1A9BF /* DAShortmail.m in Sources */,
