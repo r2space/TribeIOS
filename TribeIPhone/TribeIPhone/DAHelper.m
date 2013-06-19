@@ -97,13 +97,17 @@
     return [dateFormatter dateFromString:isodate];
 }
 
++ (NSString *) stringFromISODate:(NSDate *)isodate
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MM/dd HH:mm"];
+    return [format stringFromDate:isodate];
+}
+
 + (NSString *) stringFromISODateString:(NSString *)isodate
 {
     NSDate *date = [DAHelper dateFromISODateString:isodate];
-    
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MM月dd日 HH:mm"];
-    return [format stringFromDate:date];
+    return [DAHelper stringFromISODate:date];
 }
 
 + (NSString *) currentDateString
