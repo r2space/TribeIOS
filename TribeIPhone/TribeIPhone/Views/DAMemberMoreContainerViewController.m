@@ -14,95 +14,86 @@
 {
     DAMemberMoreViewController *moreViewController;
 }
-
 @end
 
 @implementation DAMemberMoreContainerViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
+    // 非本人，禁用保存按钮
+    if (![self.user._id isEqualToString:[DALoginModule getLoginUserId]]) {
+        self.btnSave.enabled = NO;
+    }
+
+    // 显示静态TableView
     UIStoryboard *stryBoard=[UIStoryboard storyboardWithName:@"DAMemberMoreViewController" bundle:nil];
     moreViewController = [stryBoard instantiateInitialViewController];
-    
-    moreViewController.uid = self.uid;
+    moreViewController.user = self.user;
     moreViewController.view.frame = CGRectMake(0, 44, 320, 548);
     [self addChildViewController:moreViewController];
     [self.view addSubview:moreViewController.view];
 }
 
-- (void)didReceiveMemoryWarning
+// 返回
+- (IBAction)onCancelTouched:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)onCancelTouched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
-- (IBAction)onSaveTouched:(id)sender {
-    
+// 保存
+- (IBAction)onSaveTouched:(id)sender
+{
+    // 更新的照片名称
     NSString *file = [DAHelper documentPath:@"upload.jpg"];
     
+    // 如果照片存在，则上传照片，然后更新
     if ([DAHelper isFileExist:file]) {
         
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
         [[DAFileModule alloc] uploadFile:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
 
-            // TODO: 获取待更新的用户Object
-            DAUser *user = [[DAUser alloc] init];
-            user._id = moreViewController.uid;
-            
-            UserName *uname = [[UserName alloc] init];
-            user.name = uname;
-            user.name.name_zh = moreViewController.txtName.text;
-            // user.email
-            // user.tel
-            
-//            user.photo
-//            user.photo.fid
-//            user.photo.x
-//            user.photo.y
-//            user.photo.width
-
-            [[DAUserModule alloc] update:user callback:^(NSError *error, DAUser *user){
-                NSLog(@"didFinishUpdate");
-            }];
+            [self update:file._id];
         } progress:nil];
-        
     } else {
-
-        // TODO: 获取待更新的用户Object
-        DAUser *user = [[DAUser alloc] init];
-        user._id = moreViewController.uid;
         
-        UserName *uname = [[UserName alloc] init];
-        user.name = uname;
-        user.name.name_zh = moreViewController.txtName.text;
-
-        [[DAUserModule alloc] update:user callback:^(NSError *error, DAUser *user){
-            NSLog(@"didFinishUpdate");
-        }];
-
+        // 更新
+        [self update:nil];
     }
 }
 
-- (void) didFinishUpdate
+// 更新用户信息
+- (void) update:(NSString *)photoId
 {
-    NSLog(@"didFinishUpdate");
+    self.user.name.name_zh = moreViewController.txtName.text;
+    
+    // 手机号
+    if (self.user.tel == nil) {
+        self.user.tel = [[UserTel alloc] init];
+    }
+    self.user.tel.mobile = moreViewController.txtMobile.text;
+    
+    // 头像
+    if (photoId != nil) {
+        if (self.user.photo == nil) {
+            self.user.photo = [[UserPhoto alloc] init];
+        }
+        self.user.photo.fid = photoId;
+        self.user.photo.x = @"0";
+        self.user.photo.y = @"0";
+        self.user.photo.width = @"320";
+    }
+    
+    // 描述
+    if (self.user.custom == nil) {
+        self.user.custom = [[UserCustom alloc] init];
+    }
+    self.user.custom.memo = moreViewController.txtDescription.text;
+    
+    [[DAUserModule alloc] update:self.user callback:^(NSError *error, DAUser *user){
+        NSLog(@"didFinishUpdate");
+    }];
 }
 
 @end
