@@ -13,6 +13,7 @@
 		04AC26BA1738CE3C00FEED21 /* DAFileWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC26B81738CE3C00FEED21 /* DAFileWebViewController.xib */; };
 		0A90C8F11744C97A00CA4A14 /* DANotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8EF1744C97A00CA4A14 /* DANotificationViewController.m */; };
 		0A90C8F21744C97A00CA4A14 /* DANotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A90C8F01744C97A00CA4A14 /* DANotificationViewController.xib */; };
+		0A93811C17714DAF00F65CA1 /* DAPictureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A93811B17714DAF00F65CA1 /* DAPictureScrollView.m */; };
 		0AB15093176E978F002F31FB /* DAMemberFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB15091176E978F002F31FB /* DAMemberFilterViewController.m */; };
 		0AB15094176E978F002F31FB /* DAMemberFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB15092176E978F002F31FB /* DAMemberFilterViewController.xib */; };
 		470D9B5D171E47BC009A6B0E /* DAMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 470D9B5C171E47BB009A6B0E /* DAMessageCell.xib */; };
@@ -90,6 +91,10 @@
 		476855DD17708F7C00759389 /* department.png in Resources */ = {isa = PBXBuildFile; fileRef = 476855DA17708F7C00759389 /* department.png */; };
 		476855DE17708F7C00759389 /* group_security.png in Resources */ = {isa = PBXBuildFile; fileRef = 476855DB17708F7C00759389 /* group_security.png */; };
 		476855DF17708F7C00759389 /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = 476855DC17708F7C00759389 /* group.png */; };
+		476855E11771540B00759389 /* document.png in Resources */ = {isa = PBXBuildFile; fileRef = 476855E01771540B00759389 /* document.png */; };
+		476855E51771562900759389 /* DAFileSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 476855E31771562800759389 /* DAFileSelectViewController.m */; };
+		476855E61771562900759389 /* DAFileSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476855E41771562800759389 /* DAFileSelectViewController.xib */; };
+		476855E81771877700759389 /* document_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 476855E71771877700759389 /* document_highlight.png */; };
 		4782C95D171BD67E009E74DC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4782C95C171BD67E009E74DC /* CoreLocation.framework */; };
 		4782C976171BF671009E74DC /* DAMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4782C975171BF671009E74DC /* DAMessageCell.m */; };
 		4782C97A171CE3CB009E74DC /* DAMessageDetailTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4782C979171CE3CB009E74DC /* DAMessageDetailTitleCell.xib */; };
@@ -312,6 +317,8 @@
 		0A90C8EE1744C97A00CA4A14 /* DANotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationViewController.h; sourceTree = "<group>"; };
 		0A90C8EF1744C97A00CA4A14 /* DANotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationViewController.m; sourceTree = "<group>"; };
 		0A90C8F01744C97A00CA4A14 /* DANotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DANotificationViewController.xib; sourceTree = "<group>"; };
+		0A93811A17714DAF00F65CA1 /* DAPictureScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPictureScrollView.h; sourceTree = "<group>"; };
+		0A93811B17714DAF00F65CA1 /* DAPictureScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPictureScrollView.m; sourceTree = "<group>"; };
 		0AB15090176E978F002F31FB /* DAMemberFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMemberFilterViewController.h; sourceTree = "<group>"; };
 		0AB15091176E978F002F31FB /* DAMemberFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMemberFilterViewController.m; sourceTree = "<group>"; };
 		0AB15092176E978F002F31FB /* DAMemberFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMemberFilterViewController.xib; sourceTree = "<group>"; };
@@ -409,6 +416,11 @@
 		476855DA17708F7C00759389 /* department.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = department.png; sourceTree = "<group>"; };
 		476855DB17708F7C00759389 /* group_security.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group_security.png; sourceTree = "<group>"; };
 		476855DC17708F7C00759389 /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
+		476855E01771540B00759389 /* document.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = document.png; sourceTree = "<group>"; };
+		476855E21771562700759389 /* DAFileSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFileSelectViewController.h; sourceTree = "<group>"; };
+		476855E31771562800759389 /* DAFileSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFileSelectViewController.m; sourceTree = "<group>"; };
+		476855E41771562800759389 /* DAFileSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAFileSelectViewController.xib; sourceTree = "<group>"; };
+		476855E71771877700759389 /* document_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = document_highlight.png; sourceTree = "<group>"; };
 		4782C95C171BD67E009E74DC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4782C974171BF671009E74DC /* DAMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMessageCell.h; sourceTree = "<group>"; };
 		4782C975171BF671009E74DC /* DAMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMessageCell.m; sourceTree = "<group>"; };
@@ -732,6 +744,9 @@
 				471648EF1727B62500622D5F /* DAGroupSelectViewController.h */,
 				471648F01727B62500622D5F /* DAGroupSelectViewController.m */,
 				471648F11727B62600622D5F /* DAGroupSelectViewController.xib */,
+				476855E21771562700759389 /* DAFileSelectViewController.h */,
+				476855E31771562800759389 /* DAFileSelectViewController.m */,
+				476855E41771562800759389 /* DAFileSelectViewController.xib */,
 			);
 			name = Contribute;
 			sourceTree = "<group>";
@@ -860,6 +875,8 @@
 		471A05A8171BC3D10040CB93 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				476855E71771877700759389 /* document_highlight.png */,
+				476855E01771540B00759389 /* document.png */,
 				476855DA17708F7C00759389 /* department.png */,
 				476855DB17708F7C00759389 /* group_security.png */,
 				476855DC17708F7C00759389 /* group.png */,
@@ -1165,6 +1182,7 @@
 				471648EE1727AF9400622D5F /* Contribute */,
 				471A05DB171BCA250040CB93 /* DATimeLineViewController.h */,
 				471A05F6171BCA250040CB93 /* DATimeLineViewController.m */,
+				47A021B217261BEF00E2AF6C /* DAMessageFileView.m */,
 				4782C974171BF671009E74DC /* DAMessageCell.h */,
 				4782C975171BF671009E74DC /* DAMessageCell.m */,
 				470D9B5C171E47BB009A6B0E /* DAMessageCell.xib */,
@@ -1173,7 +1191,6 @@
 				47A021AA17251E7300E2AF6C /* DAMessageLabel.h */,
 				47A021AB17251E7300E2AF6C /* DAMessageLabel.m */,
 				47A021B117261BEF00E2AF6C /* DAMessageFileView.h */,
-				47A021B217261BEF00E2AF6C /* DAMessageFileView.m */,
 				4782C979171CE3CB009E74DC /* DAMessageDetailTitleCell.xib */,
 				4782C9A0171D13FA009E74DC /* DAMessageDetailViewController.h */,
 				4782C9A1171D13FB009E74DC /* DAMessageDetailViewController.m */,
@@ -1181,6 +1198,8 @@
 				4782C993171CFC31009E74DC /* DAMessageDetailCell.h */,
 				4782C994171CFC32009E74DC /* DAMessageDetailCell.m */,
 				4782C989171CF0C0009E74DC /* DAMessageDetailCell.xib */,
+				0A93811A17714DAF00F65CA1 /* DAPictureScrollView.h */,
+				0A93811B17714DAF00F65CA1 /* DAPictureScrollView.m */,
 				4782C983171CF000009E74DC /* DACommentCell.h */,
 				4782C984171CF000009E74DC /* DACommentCell.m */,
 				4782C98E171CF40D009E74DC /* DACommentCell.xib */,
@@ -1569,6 +1588,9 @@
 				476855DD17708F7C00759389 /* department.png in Resources */,
 				476855DE17708F7C00759389 /* group_security.png in Resources */,
 				476855DF17708F7C00759389 /* group.png in Resources */,
+				476855E11771540B00759389 /* document.png in Resources */,
+				476855E61771562900759389 /* DAFileSelectViewController.xib in Resources */,
+				476855E81771877700759389 /* document_highlight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1685,6 +1707,8 @@
 				F23297AD176B20AE003DF0BE /* UIView+AnimationOptionsForCurve.m in Sources */,
 				0AB15093176E978F002F31FB /* DAMemberFilterViewController.m in Sources */,
 				476855D2176F08FF00759389 /* DAGroupFilterViewController.m in Sources */,
+				0A93811C17714DAF00F65CA1 /* DAPictureScrollView.m in Sources */,
+				476855E51771562900759389 /* DAFileSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1795,6 +1819,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
@@ -1806,6 +1831,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TribeIPhone;
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1815,6 +1841,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
@@ -1825,6 +1852,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = TribeIPhone;
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

@@ -55,7 +55,7 @@
 {
     DAMessage *message = [list objectAtIndex:indexPath.row];
 	DAMessageCell *cell = [DAMessageCell initWithMessage:message tableView:tableView];
-    cell.parentController = self;
+//    cell.parentController = self;
     
     return cell;
 }

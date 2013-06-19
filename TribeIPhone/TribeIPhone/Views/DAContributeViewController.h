@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgAttach;
 @property (weak, nonatomic) IBOutlet UIView *optionView;
 @property (weak, nonatomic) IBOutlet UIButton *btnAt;
+@property (weak, nonatomic) IBOutlet UIButton *btnDocument;
 
 @property (retain, nonatomic) DAMessage *message;
 @property (nonatomic) BOOL isForward;
@@ -36,6 +37,9 @@
 - (IBAction)onMoticonClicked:(id)sender;
 - (IBAction)onCancelClicked:(id)sender;
 - (IBAction)onRangeClicked:(id)sender;
+- (IBAction)onDocumetnClicked:(id)sender;
 - (IBAction)onSendClicked:(id)sender;
 - (IBAction)onClearImgClicked:(id)sender;
+
+-(void)setDocuments:(NSArray *)documents;
 @end

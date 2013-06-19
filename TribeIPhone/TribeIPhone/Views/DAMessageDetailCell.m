@@ -47,16 +47,16 @@
     }
     if ([message_contenttype_image isEqualToString:message.contentType]) {
         if (message.attach.count > 0) {
-            MessageAttach *file = [message.attach objectAtIndex:0];
-            if ([DACommon isImageCatched:file.fileid]) {
-                cell.imgAttach.image = [DACommon getCatchedImage:file.fileid];
-            } else {
-                
+            
+            NSMutableArray *ids = [[NSMutableArray alloc] init];
+            for (MessageAttach *file in message.attach) {
+                [ids addObject:file.fileid];
             }
-            [cell.imgAttach setHidden:NO];
+            [cell.scrollView renderWithPictureIds:ids];
+            [cell.scrollView setHidden:NO];
         }
     } else {
-        [cell.imgAttach setHidden:YES];
+        [cell.scrollView setHidden:YES];
     }
     
     return cell;
@@ -64,7 +64,7 @@
 
 -(float)cellHeight
 {
-    return self.lblMessage.frame.size.height + self.atArea.frame.size.height + self.imgAttach.frame.size.height + 40;
+    return self.lblMessage.frame.size.height + self.atArea.frame.size.height + self.scrollView.frame.size.height + 40;
 }
 
 +(float)cellHeightWithMessage:(DAMessage *)message
@@ -85,7 +85,7 @@
     }
     
     if ([message_contenttype_image isEqualToString:message.contentType]) {
-        height += 145;
+        height += 165;
     }
     
     // bottom
