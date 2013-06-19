@@ -112,7 +112,9 @@
                     cell.scrollView.pictureTouchedBlocks = ^(int idx){
                         DAPictureViewController *pictureCtrl = [[DAPictureViewController alloc] initWithNibName:@"DAPictureViewController" bundle:nil];
                         pictureCtrl.PictureIds = ids;
+                        pictureCtrl.currIndex = idx;
                         [self presentViewController:pictureCtrl animated:YES completion:nil];
+                        
                     };
                 }
             }

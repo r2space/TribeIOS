@@ -16,4 +16,5 @@ typedef void (^PictureDidTouched)(int idx);
 @property(strong, nonatomic) PageDidChanged pageChangedBlocks;
 @property(strong, nonatomic) PictureDidTouched pictureTouchedBlocks;
 -(void)renderWithPictureIds:(NSArray *)pictureIds;
+-(void)scrollToIndex:(int)index;
 @end

@@ -39,6 +39,8 @@
 -(void)renderWithPictureIds:(NSArray *)pictureIds
 {
     self.pagingEnabled = YES;
+//    self.showsHorizontalScrollIndicator = NO;
+//    self.showsVerticalScrollIndicator = NO;
     _pictureIds = pictureIds;
     if (_pictureIds.count > 0) {
         CGSize contentSize = self.frame.size;
@@ -130,6 +132,11 @@
         }
     }
     
+}
+
+-(void)scrollToIndex:(int)index
+{
+    [self setContentOffset:CGPointMake((self.frame.size.width + prictureSpace) *index, 0) animated:NO];
 }
 
 @end
