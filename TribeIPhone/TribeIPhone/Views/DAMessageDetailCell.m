@@ -7,6 +7,7 @@
 //
 
 #import "DAMessageDetailCell.h"
+#import "DAPictureViewController.h"
 
 @implementation DAMessageDetailCell
 
@@ -53,6 +54,7 @@
                 [ids addObject:file.fileid];
             }
             [cell.scrollView renderWithPictureIds:ids];
+            
             [cell.scrollView setHidden:NO];
         }
     } else {

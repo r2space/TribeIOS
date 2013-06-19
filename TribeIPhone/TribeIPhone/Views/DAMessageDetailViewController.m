@@ -103,6 +103,19 @@
             return cell;
         } else {
             DAMessageDetailCell *cell = [DAMessageDetailCell initWithMessage:_message tableView:tableView];
+            if ([message_contenttype_image isEqualToString:_message.contentType]) {
+                if (_message.attach.count > 0) {
+                    NSMutableArray *ids = [[NSMutableArray alloc] init];
+                    for (MessageAttach *file in _message.attach) {
+                        [ids addObject:file.fileid];
+                    }
+                    cell.scrollView.pictureTouchedBlocks = ^(int idx){
+                        DAPictureViewController *pictureCtrl = [[DAPictureViewController alloc] initWithNibName:@"DAPictureViewController" bundle:nil];
+                        pictureCtrl.PictureIds = ids;
+                        [self presentViewController:pictureCtrl animated:YES completion:nil];
+                    };
+                }
+            }
             return cell;
         }
     } else {

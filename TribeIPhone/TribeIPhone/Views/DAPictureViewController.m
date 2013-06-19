@@ -56,7 +56,7 @@
 
 -(void)loadPicture:(NSString *)pictureId index:(int)idx
 {
-    if (![DACommon isImageCatched:pictureId]) {
+    if ([DACommon isImageCatched:pictureId]) {
         [self setPicture:pictureId index:idx];
     } else {
         [[DAFileModule alloc] getPicture:pictureId callback:^(NSError *error, NSString *pid) {

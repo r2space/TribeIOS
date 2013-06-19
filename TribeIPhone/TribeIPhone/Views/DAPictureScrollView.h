@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
+typedef void (^PageDidChanged)(int idx);
+typedef void (^PictureDidTouched)(int idx);
+
 @interface DAPictureScrollView : UIScrollView <UIScrollViewDelegate>
+@property(strong, nonatomic) PageDidChanged pageChangedBlocks;
+@property(strong, nonatomic) PictureDidTouched pictureTouchedBlocks;
 -(void)renderWithPictureIds:(NSArray *)pictureIds;
 @end
