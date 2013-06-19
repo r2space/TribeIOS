@@ -125,7 +125,7 @@
     
     // 获取最后一条数据的时间，作为获取更多数据时的标识
     NSString *before = @"";
-    if (list.count > 0) {
+    if (start > 0) {
         DAMessage *lastMsg = [list objectAtIndex:list.count - 1];
         before = lastMsg.createat;
     }
