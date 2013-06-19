@@ -122,15 +122,16 @@
     
     self.lblCreateAt.text = [DAHelper stringFromISODateString:message.createat ];
     
-    if(!YES)
-        self.lblCommentCount.text = [NSString stringWithFormat:@"%@",[message getReplyCount]];
-    else
+    if([[message getReplyCount] intValue ]>99)
         self.lblCommentCount.text = @"99+";
-    
-    if(!YES)
-        self.lblForwardCount.text = [NSString stringWithFormat:@"%@",[message getForwardCount]];
     else
+        self.lblCommentCount.text = [NSString stringWithFormat:@"%@",[message getReplyCount]];
+    
+    if([[message getForwardCount] intValue]>99)
         self.lblForwardCount.text = @"99+";
+    else
+        self.lblForwardCount.text = [NSString stringWithFormat:@"%@",[message getForwardCount]];
+        
     
     float maxWidth = 253.0f;
     float height = 0;
