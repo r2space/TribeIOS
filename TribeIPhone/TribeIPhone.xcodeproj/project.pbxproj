@@ -72,7 +72,6 @@
 		471A0604171BCA250040CB93 /* DATimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05F6171BCA250040CB93 /* DATimeLineViewController.m */; };
 		473970D3174A3A6E00B78C1C /* DAPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 473970D1174A3A6E00B78C1C /* DAPictureViewController.m */; };
 		473970D4174A3A6E00B78C1C /* DAPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 473970D2174A3A6E00B78C1C /* DAPictureViewController.xib */; };
-		473970D7174B598500B78C1C /* DAScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 473970D6174B598400B78C1C /* DAScrollView.m */; };
 		475AC83F176465C10097851B /* DAMemberViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475AC83E176465C10097851B /* DAMemberViewCell.xib */; };
 		475AC841176472240097851B /* DAGroupViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475AC840176472240097851B /* DAGroupViewCell.xib */; };
 		475AC84417699A890097851B /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 475AC84217699A890097851B /* like.png */; };
@@ -394,8 +393,6 @@
 		473970D0174A3A6E00B78C1C /* DAPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPictureViewController.h; sourceTree = "<group>"; };
 		473970D1174A3A6E00B78C1C /* DAPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPictureViewController.m; sourceTree = "<group>"; };
 		473970D2174A3A6E00B78C1C /* DAPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPictureViewController.xib; sourceTree = "<group>"; };
-		473970D5174B598400B78C1C /* DAScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAScrollView.h; sourceTree = "<group>"; };
-		473970D6174B598400B78C1C /* DAScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAScrollView.m; sourceTree = "<group>"; };
 		475AC83E176465C10097851B /* DAMemberViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMemberViewCell.xib; sourceTree = "<group>"; };
 		475AC840176472240097851B /* DAGroupViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAGroupViewCell.xib; sourceTree = "<group>"; };
 		475AC84217699A890097851B /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
@@ -863,8 +860,8 @@
 				F28AD4BA1761A99100D7CDC3 /* DALeftSideViewController.xib */,
 				F2B29F421746580F002F7CF8 /* DABaseViewController.h */,
 				F2B29F431746580F002F7CF8 /* DABaseViewController.m */,
-				473970D5174B598400B78C1C /* DAScrollView.h */,
-				473970D6174B598400B78C1C /* DAScrollView.m */,
+				0A93811A17714DAF00F65CA1 /* DAPictureScrollView.h */,
+				0A93811B17714DAF00F65CA1 /* DAPictureScrollView.m */,
 				473970D0174A3A6E00B78C1C /* DAPictureViewController.h */,
 				473970D1174A3A6E00B78C1C /* DAPictureViewController.m */,
 				473970D2174A3A6E00B78C1C /* DAPictureViewController.xib */,
@@ -1198,8 +1195,6 @@
 				4782C993171CFC31009E74DC /* DAMessageDetailCell.h */,
 				4782C994171CFC32009E74DC /* DAMessageDetailCell.m */,
 				4782C989171CF0C0009E74DC /* DAMessageDetailCell.xib */,
-				0A93811A17714DAF00F65CA1 /* DAPictureScrollView.h */,
-				0A93811B17714DAF00F65CA1 /* DAPictureScrollView.m */,
 				4782C983171CF000009E74DC /* DACommentCell.h */,
 				4782C984171CF000009E74DC /* DACommentCell.m */,
 				4782C98E171CF40D009E74DC /* DACommentCell.xib */,
@@ -1675,7 +1670,6 @@
 				0A90C8F11744C97A00CA4A14 /* DANotificationViewController.m in Sources */,
 				F2B29F441746580F002F7CF8 /* DABaseViewController.m in Sources */,
 				473970D3174A3A6E00B78C1C /* DAPictureViewController.m in Sources */,
-				473970D7174B598500B78C1C /* DAScrollView.m in Sources */,
 				F28AD4BB1761A99100D7CDC3 /* DALeftSideViewController.m in Sources */,
 				F29ACD241762CA1400AC0B68 /* CQMFloatingContentOverlayView.m in Sources */,
 				F29ACD251762CA1400AC0B68 /* CQMFloatingController.m in Sources */,

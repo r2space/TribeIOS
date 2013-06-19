@@ -103,7 +103,12 @@
 	DAFileViewCell *cell = [DAFileViewCell initWithMessage:file tableView:tableView];
     
     cell.lblFileName.text = file.filename;
-    cell.lblAt.text = [DAHelper stringFromISODateString: file.uploadDate];;
+    cell.lblAt.text = [DAHelper stringFromISODateString: file.uploadDate];
+    if (([file.length intValue]/1024)> 1024) {
+        cell.lblFileSize.text = [NSString stringWithFormat:@"%dMB",[file.length intValue]/1024/1024];
+    }else{
+        cell.lblFileSize.text = [NSString stringWithFormat:@"%dKB",[file.length intValue]/1024];
+    }
     cell.imgFileType.image = [UIImage imageNamed:[DAHelper fileanExtension:file.contentType]];
     
     return cell;
