@@ -10,8 +10,11 @@
 #import <TribeSDK/TribeSDKHeader.h>
 
 @interface DAMemberMoreContainerViewController : UIViewController
+
 - (IBAction)onCancelTouched:(id)sender;
-@property (weak, nonatomic) NSString *uid;
 - (IBAction)onSaveTouched:(id)sender;
+
+@property (retain, nonatomic) DAUser *user;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
 
 @end

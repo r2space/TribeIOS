@@ -16,103 +16,49 @@
 
 @implementation DAMemberMoreViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // 显示用户基本信息
+    [self setDetailInfo];
+    
+    // 非本人，禁止更新
+    if (![self.user._id isEqualToString:[DALoginModule getLoginUserId]]) {
+        self.tvcPhoto.accessoryType = UITableViewCellAccessoryNone;
+        self.lblPhoto.text = @"头像";
+    }
 }
 
-- (void)cancelAction:(id)sender
+- (void)setDetailInfo
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    // 名称
+    self.txtName.text = self.user.name.name_zh;
+    
+    // 手机
+    if (self.user.tel != nil) {
+        self.txtMobile.text = self.user.tel.mobile;
+    }
+    
+    // 邮件
+    self.txtEmail.text = self.user.uid;
+    
+    // 简介
+    if (self.user.custom != nil) {
+        self.txtDescription.text = self.user.custom.memo;
+    }
+
+    // 语言
+    self.segLang.selectedSegmentIndex = 0;
+
+    // 地址
+    if (self.user.address != nil) {
+        self.txtAddress.text = self.user.address.city;
+    }
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)didEndOnExit:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-////#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-////#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-- (IBAction)didEndOnExit:(id)sender {
     [((UITextField *)sender) resignFirstResponder];
 }
 
@@ -125,14 +71,14 @@
     if (indexPath.section == 0 && indexPath.row == 0) {
         DAGroupController *groupController = [[DAGroupController alloc] initWithNibName:@"DAGroupController" bundle:nil];
         
-        groupController.uid = self.uid;
+        groupController.uid = self.user._id;
         [self.navigationController pushViewController:groupController animated:YES];
     }
 
     // 修改头像
     if (indexPath.section == 1 && indexPath.row == 0) {
         
-        // カメラが使用可能かどうか判定する
+        // 判断相机是否可用（模拟器）
         if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             return;
         }
@@ -165,7 +111,6 @@
 
     
     // 渡されてきた画像をフォトアルバムに保存
-    
     // UIImageWriteToSavedPhotosAlbum(image, self, @selector(targetImage:didFinishSavingWithError:contextInfo:), NULL);
 }
 
@@ -187,4 +132,5 @@
         // 保存成功時の処理
     }
 }
+
 @end

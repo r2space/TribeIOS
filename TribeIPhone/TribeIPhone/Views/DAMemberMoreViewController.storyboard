@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QqW-Cy-5OR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QqW-Cy-5OR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -201,7 +201,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="r2space@gmail.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h5o-Y9-h2k">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="r2space@gmail.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h5o-Y9-h2k">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="8EB-T2-rZs"/>
                                                         <constraint firstAttribute="width" constant="169" id="uHt-VN-xQs"/>
@@ -369,6 +369,9 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="tks-ze-CS7">
+                                <cells/>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="QqW-Cy-5OR" id="E8a-3y-9Sy"/>
@@ -376,7 +379,10 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="imgPhoto" destination="z2f-7Q-yh4" id="utb-2w-3RM"/>
+                        <outlet property="lblPhoto" destination="e4g-kl-w0V" id="iG6-6p-VA8"/>
                         <outlet property="segLang" destination="FlT-Wg-S2d" id="CeA-87-x37"/>
+                        <outlet property="tvcPhoto" destination="fhi-oM-rrV" id="CXL-UQ-8DO"/>
                         <outlet property="txtAddress" destination="K2e-Cm-ciD" id="ojH-GJ-4Vw"/>
                         <outlet property="txtDescription" destination="x63-Bt-Y9P" id="DOO-2q-ey3"/>
                         <outlet property="txtEmail" destination="h5o-Y9-h2k" id="Msr-NQ-wyC"/>
@@ -399,6 +405,26 @@
         <image name="32-iphone.png" width="16" height="28"/>
         <image name="66-microphone.png" width="12" height="24"/>
     </resources>
+    <classes>
+        <class className="DAMemberMoreViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMemberMoreViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didEndOnExit:"/>
+                <relationship kind="outlet" name="imgPhoto" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblPhoto" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="segLang" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="tvcPhoto" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="txtAddress" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtDescription" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtEmail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtMobile" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
