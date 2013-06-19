@@ -174,19 +174,21 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch *touch = event.allTouches.anyObject;
-    CGPoint touchPoint = [touch locationInView:self];
-    
-    if (CGRectContainsPoint(self.groupView.frame,touchPoint)) {
-        DAGroup *group = (DAGroup *)[touchContents objectForKey:@"range"];
-        [self pushGroupDetailCtrlToParentNavCtrl:group];
-        return;
-    }
-    
-    if (CGRectContainsPoint(self.imgPortrait.frame, touchPoint) || CGRectContainsPoint(self.lblBy.frame, touchPoint)) {
-        DAUser *user = (DAUser *)[touchContents objectForKey:@"createby"];
-        [self pushMemberDetailCtrlToParentNavCtrl:user];
-        return;
+    if (self.parentController != nil) {
+        UITouch *touch = event.allTouches.anyObject;
+        CGPoint touchPoint = [touch locationInView:self];
+        
+        if (CGRectContainsPoint(self.groupView.frame,touchPoint)) {
+            DAGroup *group = (DAGroup *)[touchContents objectForKey:@"range"];
+            [self pushGroupDetailCtrlToParentNavCtrl:group];
+            return;
+        }
+        
+        if (CGRectContainsPoint(self.imgPortrait.frame, touchPoint) || CGRectContainsPoint(self.lblBy.frame, touchPoint)) {
+            DAUser *user = (DAUser *)[touchContents objectForKey:@"createby"];
+            [self pushMemberDetailCtrlToParentNavCtrl:user];
+            return;
+        }
     }
     
     [self.nextResponder touchesEnded:touches withEvent:event];

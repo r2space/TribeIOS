@@ -27,5 +27,7 @@
 
 @property(nonatomic,retain) IBOutlet UIView *iview;
 
+
+- (IBAction)onShareTouched:(id)sender;
 - (IBAction)onCancelTouched:(id)sender;
 @end

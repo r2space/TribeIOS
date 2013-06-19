@@ -91,6 +91,10 @@
 		476855DD17708F7C00759389 /* department.png in Resources */ = {isa = PBXBuildFile; fileRef = 476855DA17708F7C00759389 /* department.png */; };
 		476855DE17708F7C00759389 /* group_security.png in Resources */ = {isa = PBXBuildFile; fileRef = 476855DB17708F7C00759389 /* group_security.png */; };
 		476855DF17708F7C00759389 /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = 476855DC17708F7C00759389 /* group.png */; };
+		476855E11771540B00759389 /* document.png in Resources */ = {isa = PBXBuildFile; fileRef = 476855E01771540B00759389 /* document.png */; };
+		476855E51771562900759389 /* DAFileSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 476855E31771562800759389 /* DAFileSelectViewController.m */; };
+		476855E61771562900759389 /* DAFileSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476855E41771562800759389 /* DAFileSelectViewController.xib */; };
+		476855E81771877700759389 /* document_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 476855E71771877700759389 /* document_highlight.png */; };
 		4782C95D171BD67E009E74DC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4782C95C171BD67E009E74DC /* CoreLocation.framework */; };
 		4782C976171BF671009E74DC /* DAMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4782C975171BF671009E74DC /* DAMessageCell.m */; };
 		4782C97A171CE3CB009E74DC /* DAMessageDetailTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4782C979171CE3CB009E74DC /* DAMessageDetailTitleCell.xib */; };
@@ -412,6 +416,11 @@
 		476855DA17708F7C00759389 /* department.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = department.png; sourceTree = "<group>"; };
 		476855DB17708F7C00759389 /* group_security.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group_security.png; sourceTree = "<group>"; };
 		476855DC17708F7C00759389 /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
+		476855E01771540B00759389 /* document.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = document.png; sourceTree = "<group>"; };
+		476855E21771562700759389 /* DAFileSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFileSelectViewController.h; sourceTree = "<group>"; };
+		476855E31771562800759389 /* DAFileSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFileSelectViewController.m; sourceTree = "<group>"; };
+		476855E41771562800759389 /* DAFileSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAFileSelectViewController.xib; sourceTree = "<group>"; };
+		476855E71771877700759389 /* document_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = document_highlight.png; sourceTree = "<group>"; };
 		4782C95C171BD67E009E74DC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4782C974171BF671009E74DC /* DAMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMessageCell.h; sourceTree = "<group>"; };
 		4782C975171BF671009E74DC /* DAMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMessageCell.m; sourceTree = "<group>"; };
@@ -737,6 +746,9 @@
 				471648EF1727B62500622D5F /* DAGroupSelectViewController.h */,
 				471648F01727B62500622D5F /* DAGroupSelectViewController.m */,
 				471648F11727B62600622D5F /* DAGroupSelectViewController.xib */,
+				476855E21771562700759389 /* DAFileSelectViewController.h */,
+				476855E31771562800759389 /* DAFileSelectViewController.m */,
+				476855E41771562800759389 /* DAFileSelectViewController.xib */,
 			);
 			name = Contribute;
 			sourceTree = "<group>";
@@ -865,6 +877,8 @@
 		471A05A8171BC3D10040CB93 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				476855E71771877700759389 /* document_highlight.png */,
+				476855E01771540B00759389 /* document.png */,
 				476855DA17708F7C00759389 /* department.png */,
 				476855DB17708F7C00759389 /* group_security.png */,
 				476855DC17708F7C00759389 /* group.png */,
@@ -1574,6 +1588,9 @@
 				476855DD17708F7C00759389 /* department.png in Resources */,
 				476855DE17708F7C00759389 /* group_security.png in Resources */,
 				476855DF17708F7C00759389 /* group.png in Resources */,
+				476855E11771540B00759389 /* document.png in Resources */,
+				476855E61771562900759389 /* DAFileSelectViewController.xib in Resources */,
+				476855E81771877700759389 /* document_highlight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1691,6 +1708,7 @@
 				F23297AD176B20AE003DF0BE /* UIView+AnimationOptionsForCurve.m in Sources */,
 				0AB15093176E978F002F31FB /* DAMemberFilterViewController.m in Sources */,
 				476855D2176F08FF00759389 /* DAGroupFilterViewController.m in Sources */,
+				476855E51771562900759389 /* DAFileSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
