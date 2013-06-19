@@ -8,9 +8,15 @@
 
 #import "DAMessageDetailCell.h"
 #import "DAPictureViewController.h"
+#import "DAHelper.h"
 
 @implementation DAMessageDetailCell
 
+- (IBAction)onRangeClicked:(id)sender {
+    if (self.rangeTouchedBlocked != nil) {
+        self.rangeTouchedBlocked(self.message.range);
+    }
+}
 
 +(DAMessageDetailCell *) initWithMessage:(DAMessage *)message tableView:(UITableView *)tableView
 {
@@ -21,7 +27,7 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
-    
+    [cell setMessage:message];
     float offset = 8;
     float height = 0;
     float maxWidth = 320 - offset*2;
@@ -61,6 +67,23 @@
         [cell.scrollView setHidden:YES];
     }
     
+    cell.lblCreateAt.text = [DAHelper stringFromISODateString:message.createat];
+    if(message.range != nil && [message getPublicRange] != nil){
+        cell.rangeArea.hidden = NO;
+        DAGroup *group = message.part.range;
+        cell.lblRange.text = group.name.name_zh;
+//        if ([@"1" isEqualToString:group.type]) {
+//            if ([@"1" isEqualToString:group.secure]) {
+//                cell.rangIcon.image = [UIImage imageNamed:@"group_security.png"];
+//            } else {
+//                cell.rangIcon.image = [UIImage imageNamed:@"group.png"];
+//            }
+//        } else {
+//            cell.rangIcon.image = [UIImage imageNamed:@"department.png"];
+//        }
+    } else {
+        cell.rangeArea.hidden = YES;
+    }
     return cell;
 }
 

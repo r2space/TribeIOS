@@ -13,15 +13,22 @@
 #import "DAMessageFileView.h"
 #import "DAPictureScrollView.h"
 
+typedef void (^RangeDidTouched)(NSString *groupId);
+
 @interface DAMessageDetailCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblCreateAt;
+@property (retain, nonatomic) DAMessage *message;
 @property (weak, nonatomic) DAMessageLabel *lblMessage;
 @property (weak, nonatomic) DAMessageAtView *atArea;
 @property (weak, nonatomic) DAMessageFileView *fileArea;
 //@property (weak, nonatomic) IBOutlet UIImageView *imgAttach;
+@property (weak, nonatomic) IBOutlet UILabel *lblRange;
+@property (weak, nonatomic) IBOutlet UIImageView *rangIcon;
 @property (weak, nonatomic) IBOutlet DAPictureScrollView *scrollView;
-@property(retain,nonatomic) NSArray *PictureIds;
+@property (weak, nonatomic) IBOutlet UIView *rangeArea;
+@property (strong, nonatomic) RangeDidTouched rangeTouchedBlocked;
 
+- (IBAction)onRangeClicked:(id)sender;
 +(DAMessageDetailCell *) initWithMessage:(DAMessage *)message tableView:(UITableView *)tableView;
 +(float)cellHeightWithMessage:(DAMessage *)message;
 -(float)cellHeight;

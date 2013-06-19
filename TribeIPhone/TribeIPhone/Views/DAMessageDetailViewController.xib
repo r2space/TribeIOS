@@ -59,19 +59,6 @@
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="37790555"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="127098182">
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<reference key="IBUIToolbar" ref="37790555"/>
-								<int key="IBUISystemItemIdentifier">5</int>
-							</object>
-							<object class="IBUIBarButtonItem" id="555145443">
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">53-house.png</string>
-								</object>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<reference key="IBUIToolbar" ref="37790555"/>
-							</object>
 						</array>
 					</object>
 					<object class="IBUITabBar" id="548250322">
@@ -80,7 +67,6 @@
 						<string key="NSFrame">{{0, 519}, {320, 49}}</string>
 						<reference key="NSSuperview" ref="623010731"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -88,16 +74,6 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<array class="NSMutableArray" key="IBUIItems">
-							<object class="IBUITabBarItem" id="514606310">
-								<int key="IBUITag">1</int>
-								<string key="IBUITitle">刷新</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">refresh.png</string>
-								</object>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<reference key="IBUITabBar" ref="548250322"/>
-							</object>
 							<object class="IBUITabBarItem" id="598759571">
 								<int key="IBUITag">2</int>
 								<string key="IBUITitle">评论</string>
@@ -114,6 +90,16 @@
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">forward.png</string>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<reference key="IBUITabBar" ref="548250322"/>
+							</object>
+							<object class="IBUITabBarItem" id="514606310">
+								<int key="IBUITag">1</int>
+								<string key="IBUITitle">刷新</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">refresh.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUITabBar" ref="548250322"/>
@@ -210,14 +196,6 @@
 						<reference key="destination" ref="29355845"/>
 					</object>
 					<int key="connectionID">52</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">btnHomeTouched:</string>
-						<reference key="source" ref="555145443"/>
-						<reference key="destination" ref="372490531"/>
-					</object>
-					<int key="connectionID">49</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -445,25 +423,13 @@
 						<int key="objectID">9</int>
 						<reference key="object" ref="37790555"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="555145443"/>
 							<reference ref="1062203170"/>
-							<reference ref="127098182"/>
 						</array>
 						<reference key="parent" ref="623010731"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">10</int>
-						<reference key="object" ref="555145443"/>
-						<reference key="parent" ref="37790555"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">11</int>
 						<reference key="object" ref="1062203170"/>
-						<reference key="parent" ref="37790555"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">12</int>
-						<reference key="object" ref="127098182"/>
 						<reference key="parent" ref="37790555"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -485,9 +451,9 @@
 						<int key="objectID">21</int>
 						<reference key="object" ref="548250322"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="141602128"/>
-							<reference ref="598759571"/>
 							<reference ref="514606310"/>
+							<reference ref="598759571"/>
+							<reference ref="141602128"/>
 							<reference ref="29355845"/>
 						</array>
 						<reference key="parent" ref="623010731"/>
@@ -560,11 +526,8 @@
 				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<boolean value="NO" key="11.showNotes"/>
-				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<boolean value="NO" key="12.showNotes"/>
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -668,7 +631,6 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="53-house.png">{22, 22}</string>
 			<string key="forward.png">{24, 20}</string>
 			<string key="like_outline.png">{26, 26}</string>
 			<string key="refresh.png">{26, 26}</string>

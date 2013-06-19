@@ -8,6 +8,8 @@
 
 #import "DAMessageDetailViewController.h"
 #import "DAPictureViewController.h"
+#import "DAMemberDetailViewController.h"
+#import "DAGroupDetailViewController.h"
 
 @interface DAMessageDetailViewController ()
 
@@ -100,9 +102,18 @@
             }
             cell.imgPortrait.image = [[_message getCreatUser] getUserPhotoImage];
             cell.lblName.text = [[_message getCreatUser] getUserName];
+            cell.lblGroup.text = [_message getCreatUser].department.name.name_zh;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         } else {
             DAMessageDetailCell *cell = [DAMessageDetailCell initWithMessage:_message tableView:tableView];
+            cell.rangeTouchedBlocked = ^(NSString *groupId){
+                DAGroupDetailViewController *groupDetailViewController =[[DAGroupDetailViewController alloc]initWithNibName:@"DAGroupDetailViewController" bundle:nil];
+                groupDetailViewController.hidesBottomBarWhenPushed = YES;
+                groupDetailViewController.gid = groupId;
+                [self.navigationController pushViewController:groupDetailViewController animated:YES];
+            };
             if ([message_contenttype_image isEqualToString:_message.contentType]) {
                 if (_message.attach.count > 0) {
                     NSMutableArray *ids = [[NSMutableArray alloc] init];
@@ -187,13 +198,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        DAMemberDetailViewController *memberDetailViewController =[[DAMemberDetailViewController alloc]initWithNibName:@"DAMemberDetailViewController" bundle:nil];
+        memberDetailViewController.hidesBottomBarWhenPushed = YES;
+        memberDetailViewController.uid = [[_message getCreatUser] _id];
+        [self.navigationController pushViewController:memberDetailViewController animated:YES];
+    }
 }
 
 -(void)fetch
@@ -276,18 +286,5 @@
         }
     }
 }
-
-//图片详细
-//        if ([message_contenttype_image isEqualToString:_message.contentType]) {
-//            if (_message.attach.count > 0) {
-//                DAPictureViewController *pictureCtrl = [[DAPictureViewController alloc] initWithNibName:@"DAPictureViewController" bundle:nil];
-//                NSMutableArray *ids = [[NSMutableArray alloc] init];
-//                for (MessageAttach *file in _message.attach) {
-//                    [ids addObject:file.fileid];
-//                }
-//                pictureCtrl.PictureIds = ids;
-//                [self presentViewController:pictureCtrl animated:YES completion:nil];
-//            }
-//        }
 
 @end
