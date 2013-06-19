@@ -7,6 +7,7 @@
 //
 
 #import "DANotificationCell.h"
+#import "DAHelper.h"
 
 @implementation DANotificationCell
 
@@ -49,6 +50,7 @@
     
     cell.lblName.text = [user getUserName];
     cell.lblContent.text = notification.content;
+    cell.lblAt.text = [DAHelper stringFromISODateString:notification.createat];
     
     return cell;
 }
