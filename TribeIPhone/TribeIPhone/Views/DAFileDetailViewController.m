@@ -12,6 +12,7 @@
 #import "DAFileViewCell.h"
 #import "WTStatusBar.h"
 #import "MBProgressHUD.h"
+#import "DAContributeViewController.h"
 
 @interface DAFileDetailViewController ()
 {
@@ -68,6 +69,12 @@
     
     
 }
+- (IBAction)onShareTouched:(id)sender {
+    DAContributeViewController *ctrl = [[DAContributeViewController alloc] initWithNibName:@"DAContributeViewController" bundle:nil];
+    [ctrl setDocuments:[[NSArray alloc] initWithObjects:self.getfile, nil]];
+    [self presentViewController:ctrl animated:YES completion:nil];
+}
+
 - (IBAction)onCancelTouched:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 //    [self.navigationController popViewControllerAnimated:YES];

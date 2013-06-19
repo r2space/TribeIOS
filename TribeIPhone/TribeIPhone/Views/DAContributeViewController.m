@@ -7,6 +7,7 @@
 //
 #import <QuartzCore/QuartzCore.h>
 #import "DAContributeViewController.h"
+#import "DAFileSelectViewController.h"
 
 @interface DAContributeViewController ()
 {
@@ -15,7 +16,9 @@
     NSMutableArray *_rangeGroup;
     NSMutableArray *_atGroups;
     NSMutableArray *_atUsers;
+    NSMutableArray *_documents;
     BOOL _photoFromCamera;
+    NSString *_actionType;
 }
 
 @end
@@ -46,10 +49,10 @@
     _rangeGroup = [[NSMutableArray alloc] init];
     _atGroups = [[NSMutableArray alloc] init];
     _atUsers = [[NSMutableArray alloc] init];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
+    if (_documents == nil) {
+        _documents = [[NSMutableArray alloc] init];
+    }
+    
     if ([_message.type isEqualToNumber:[NSNumber numberWithInt:2]]) {
         [self.optionView setHidden:YES];
     }
@@ -58,6 +61,8 @@
         [self.btnLocation setHidden:YES];
         [self.btnCamera setHidden:YES];
         [self.imgAttach setHidden:YES];
+        [self.btnDocument setHidden:YES];
+        [self.btnPhoto setHidden:YES];
     }
     
     self.txtMessage.layer.borderWidth = 1.2;
@@ -65,6 +70,12 @@
     self.txtMessage.layer.cornerRadius = 10;
     
     self.btnClearImg.hidden = YES;
+    
+    if ([@"shareDocument" isEqualToString:_actionType]) {
+        _message.contentType = message_contenttype_document;
+        [self.btnPhoto setHidden:YES];
+        [self.btnCamera setHidden:YES];
+    }
     
     [self renderButtons];
 }
@@ -75,6 +86,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)setDocuments:(NSArray *)documents
+{
+    _documents = [[NSMutableArray alloc] initWithArray:documents];
+    _actionType = @"shareDocument";
+}
+
 -(void)renderButtons
 {
     if ([self hasAt]) {
@@ -82,6 +99,8 @@
     } else {
         [self.btnAt setImage:[UIImage imageNamed:@"group_add.png"] forState:UIControlStateNormal];
     }
+    
+    
     
     if ([message_contenttype_image isEqualToString:_message.contentType]) {
         if (_photoFromCamera) {
@@ -94,6 +113,12 @@
     } else {
         [self.btnCamera setImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
         [self.btnPhoto setImage:[UIImage imageNamed:@"photo.png"] forState:UIControlStateNormal];
+    }
+    
+    if ([message_contenttype_document isEqualToString:_message.contentType]) {
+        [self.btnDocument setImage:[UIImage imageNamed:@"document_highlight.png"] forState:UIControlStateNormal];
+    } else {
+        [self.btnDocument setImage:[UIImage imageNamed:@"document.png"] forState:UIControlStateNormal];
     }
 }
 
@@ -292,6 +317,20 @@
     [self presentViewController:ctrl animated:YES completion:nil];
 }
 
+- (IBAction)onDocumetnClicked:(id)sender {
+    DAFileSelectViewController *ctrl = [[DAFileSelectViewController alloc] initWithNibName:@"DAFileSelectViewController" bundle:nil];
+    ctrl.selectedFiles = _documents;
+    ctrl.allowMultiSelect = NO;
+    ctrl.selectedBlocks = ^(NSArray *files){
+        _documents = [NSMutableArray arrayWithArray:files];
+        if (_documents.count > 0) {
+            _message.contentType = message_contenttype_document;
+        }
+        [self renderButtons];
+    };
+    [self presentViewController:ctrl animated:YES completion:nil];
+}
+
 - (IBAction)onCancelClicked:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -319,6 +358,17 @@
             [groups addObject:group._id];
         }
         _message.at.groups = groups;
+    }
+    
+    if ([message_contenttype_document isEqualToString:_message.contentType]) {
+        NSMutableArray *files = [[NSMutableArray alloc] init];
+        for (DAFile *file in _documents) {
+            MessageAttach *attach = [[MessageAttach alloc] init];
+            attach.fileid = file._id;
+            attach.filename = file.filename;
+            [files addObject:attach];
+        }
+        _message.attach = files;
     }
     
     

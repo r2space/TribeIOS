@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.tblMessage setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+//    [self.tblMessage setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -92,7 +92,17 @@
         cell.lblName.text = theGroup.name.name_zh;
         cell.txtDescription.text = theGroup.description;
         cell.imgPortrait.image = [theGroup getGroupPhotoImage];
-        cell.imgGroup.hidden = false;
+        
+        if ([@"1" isEqualToString:theGroup.type]) {
+            if ([@"1" isEqualToString:theGroup.secure]) {
+                cell.imgGroup.image = [UIImage imageNamed:@"group_security.png"];
+            } else {
+                cell.imgGroup.image = [UIImage imageNamed:@"group.png"];
+            }
+        } else {
+            cell.imgGroup.image = [UIImage imageNamed:@"department.png"];
+        }
+        
         return cell;
     } else {
         DAMessageCell *cell = [DAMessageCell initWithMessage:[theMessageList objectAtIndex:indexPath.row - 1] tableView:tableView];
