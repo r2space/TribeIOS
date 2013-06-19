@@ -68,7 +68,6 @@
 		471A05F9171BCA250040CB93 /* DAMemberViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05E1171BCA250040CB93 /* DAMemberViewCell.m */; };
 		471A05FA171BCA250040CB93 /* DAMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05E3171BCA250040CB93 /* DAMemberViewController.m */; };
 		471A05FD171BCA250040CB93 /* DAGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05E9171BCA250040CB93 /* DAGroupViewController.m */; };
-		471A0601171BCA250040CB93 /* DAMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05F1171BCA250040CB93 /* DAMessageViewController.m */; };
 		471A0602171BCA250040CB93 /* DAMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05F3171BCA250040CB93 /* DAMoreViewController.m */; };
 		471A0604171BCA250040CB93 /* DATimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05F6171BCA250040CB93 /* DATimeLineViewController.m */; };
 		473970D3174A3A6E00B78C1C /* DAPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 473970D1174A3A6E00B78C1C /* DAPictureViewController.m */; };
@@ -389,8 +388,6 @@
 		471A05E3171BCA250040CB93 /* DAMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMemberViewController.m; sourceTree = "<group>"; };
 		471A05E8171BCA250040CB93 /* DAGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGroupViewController.h; sourceTree = "<group>"; };
 		471A05E9171BCA250040CB93 /* DAGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGroupViewController.m; sourceTree = "<group>"; };
-		471A05F0171BCA250040CB93 /* DAMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMessageViewController.h; sourceTree = "<group>"; };
-		471A05F1171BCA250040CB93 /* DAMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMessageViewController.m; sourceTree = "<group>"; };
 		471A05F2171BCA250040CB93 /* DAMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMoreViewController.h; sourceTree = "<group>"; };
 		471A05F3171BCA250040CB93 /* DAMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMoreViewController.m; sourceTree = "<group>"; };
 		471A05F6171BCA250040CB93 /* DATimeLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATimeLineViewController.m; sourceTree = "<group>"; };
@@ -725,8 +722,6 @@
 		47120B151733A4F900FB74AF /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				471A05F0171BCA250040CB93 /* DAMessageViewController.h */,
-				471A05F1171BCA250040CB93 /* DAMessageViewController.m */,
 				47120B161733A57800FB74AF /* DANotificationCell.h */,
 				47120B171733A57800FB74AF /* DANotificationCell.m */,
 				47120B191733A5C800FB74AF /* DANotificationCell.xib */,
@@ -1637,7 +1632,6 @@
 				471A05F9171BCA250040CB93 /* DAMemberViewCell.m in Sources */,
 				471A05FA171BCA250040CB93 /* DAMemberViewController.m in Sources */,
 				471A05FD171BCA250040CB93 /* DAGroupViewController.m in Sources */,
-				471A0601171BCA250040CB93 /* DAMessageViewController.m in Sources */,
 				471A0602171BCA250040CB93 /* DAMoreViewController.m in Sources */,
 				471A0604171BCA250040CB93 /* DATimeLineViewController.m in Sources */,
 				4782C976171BF671009E74DC /* DAMessageCell.m in Sources */,

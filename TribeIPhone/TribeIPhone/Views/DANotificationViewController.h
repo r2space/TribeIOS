@@ -11,14 +11,18 @@
 #import "DANotificationCell.h"
 #import "DAMessageCell.h"
 
+
+typedef enum {
+    NotificationTypeAt = 0,             // 提到我
+    NotificationTypeReply = 1,          // 评论
+    NotificationTypePrivateMessage = 2, // 私信
+    NotificationTypeSystemAlert = 3     // 通知
+} NotificationType;
+
+
 @interface DANotificationViewController : UIViewController
 
-
 - (IBAction)onCancelClicked:(id)sender;
-- (IBAction)onCommentClicked:(id)sender;
-- (IBAction)onAtClicked:(id)sender;
-- (IBAction)onMailClicked:(id)sender;
-- (IBAction)onAlertClicked:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITabBar *tabBar;
