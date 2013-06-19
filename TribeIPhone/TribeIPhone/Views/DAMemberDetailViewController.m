@@ -163,7 +163,7 @@
         // 更多
         DAMemberMoreContainerViewController *moreViewController = [[DAMemberMoreContainerViewController alloc] initWithNibName:@"DAMemberMoreContainerViewController" bundle:nil];
         
-        moreViewController.uid = theUser._id;
+        moreViewController.user = theUser;
         [self.navigationController pushViewController:moreViewController animated:YES];
     }
 }

@@ -31,6 +31,10 @@
     [aCoder encodeObject:self.small forKey:@"small"];
     [aCoder encodeObject:self.middle forKey:@"middle"];
     [aCoder encodeObject:self.big forKey:@"big"];
+    [aCoder encodeObject:self.fid forKey:@"fid"];
+    [aCoder encodeObject:self.x forKey:@"x"];
+    [aCoder encodeObject:self.y forKey:@"y"];
+    [aCoder encodeObject:self.width forKey:@"width"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -39,6 +43,10 @@
     self.small = [aDecoder decodeObjectForKey:@"small"];
     self.middle = [aDecoder decodeObjectForKey:@"middle"];
     self.big = [aDecoder decodeObjectForKey:@"big"];
+    self.fid = [aDecoder decodeObjectForKey:@"fid"];
+    self.x = [aDecoder decodeObjectForKey:@"x"];
+    self.y = [aDecoder decodeObjectForKey:@"y"];
+    self.width = [aDecoder decodeObjectForKey:@"width"];
     return self;
 }
 @end
@@ -59,6 +67,61 @@
 
 @end
 
+@implementation UserTel
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.telephone forKey:@"telephone"];
+    [aCoder encodeObject:self.mobile forKey:@"mobile"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    self.telephone = [aDecoder decodeObjectForKey:@"telephone"];
+    self.mobile = [aDecoder decodeObjectForKey:@"mobile"];
+    return self;
+}
+
+@end
+
+@implementation UserAddress
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.country forKey:@"country"];
+    [aCoder encodeObject:self.state forKey:@"state"];
+    [aCoder encodeObject:self.province forKey:@"province"];
+    [aCoder encodeObject:self.city forKey:@"city"];
+    [aCoder encodeObject:self.county forKey:@"county"];
+    [aCoder encodeObject:self.district forKey:@"district"];
+    [aCoder encodeObject:self.township forKey:@"township"];
+    [aCoder encodeObject:self.village forKey:@"village"];
+    [aCoder encodeObject:self.street forKey:@"street"];
+    [aCoder encodeObject:self.road forKey:@"road"];
+    [aCoder encodeObject:self.zip forKey:@"zip"];
+
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    self.country = [aDecoder decodeObjectForKey:@"country"];
+    self.state = [aDecoder decodeObjectForKey:@"state"];
+    self.province = [aDecoder decodeObjectForKey:@"province"];
+    self.city = [aDecoder decodeObjectForKey:@"city"];
+    self.county = [aDecoder decodeObjectForKey:@"county"];
+    self.district = [aDecoder decodeObjectForKey:@"district"];
+    self.township = [aDecoder decodeObjectForKey:@"township"];
+    self.village = [aDecoder decodeObjectForKey:@"village"];
+    self.street = [aDecoder decodeObjectForKey:@"street"];
+    self.road = [aDecoder decodeObjectForKey:@"road"];
+    self.zip = [aDecoder decodeObjectForKey:@"zip"];
+
+    return self;
+}
+
+@end
 
 @implementation DAUser
 @synthesize id, _id;
@@ -104,6 +167,10 @@
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeObject:self.photo forKey:@"photo"];
     [aCoder encodeObject:self.following forKey:@"following"];
+    [aCoder encodeObject:self.address forKey:@"address"];
+    [aCoder encodeObject:self.tel forKey:@"tel"];
+    [aCoder encodeObject:self.lang forKey:@"lang"];
+    [aCoder encodeObject:self.title forKey:@"title"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -114,6 +181,11 @@
     self.name = [aDecoder decodeObjectForKey:@"name"];
     self.photo = [aDecoder decodeObjectForKey:@"photo"];
     self.following = [aDecoder decodeObjectForKey:@"following"];
+    self.address = [aDecoder decodeObjectForKey:@"address"];
+    self.tel = [aDecoder decodeObjectForKey:@"tel"];
+    self.lang = [aDecoder decodeObjectForKey:@"lang"];
+    self.title = [aDecoder decodeObjectForKey:@"title"];
+    
     return self;
 }
 
