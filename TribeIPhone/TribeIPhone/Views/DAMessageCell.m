@@ -83,7 +83,13 @@
     }
     
     if ([message_contenttype_image isEqualToString:message.contentType]) {
-        height += 66;
+        if (message.thumb!=nil) {
+            height =160* [message.thumb.height floatValue]/500;
+        }else{
+            height += 120;
+            
+        }
+        
     }
     
     // bottom
@@ -167,15 +173,29 @@
     
     if ([message_contenttype_image isEqualToString:message.contentType]) {
         if (message.attach.count > 0) {
+            
             MessageAttach *file = [message.attach objectAtIndex:0];
-            if ([DACommon isImageCatched:file.fileid]) {
-                self.imgAttach.image = [DACommon getCatchedImage:file.fileid];
+            float imgHeight;
+            NSString *fileid = @"";
+            if (message.thumb!=nil) {
+                imgHeight= 160.0f* [message.thumb.height floatValue]/500.0f;
+                fileid  = message.thumb.fileid;
+            }else{
+                fileid  = file.fileid;
+                imgHeight = 120;
+            }
+            [self.imgAttach removeFromSuperview];
+            UIImageView *newThumb = [[UIImageView alloc]initWithFrame:CGRectMake(56, height, 160, imgHeight)];
+            self.imgAttach = newThumb;
+            
+            if ([DACommon isImageCatched:fileid]) {
+                    self.imgAttach.image = [DACommon getCatchedImage:fileid];
             } else {
-                [[DAFileModule alloc] getPicture:file.fileid callback:^(NSError *err, NSString *pictureId){
+                [[DAFileModule alloc] getPicture:fileid callback:^(NSError *err, NSString *pictureId){
                     self.imgPortrait.image = [DACommon getCatchedImage:pictureId];
                 }];
             }
-            [self.imgAttach setHidden:NO];
+            [self addSubview:newThumb];
         }
     } else {
         [self.imgAttach setHidden:YES];
