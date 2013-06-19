@@ -8,9 +8,10 @@
 
 #import "DANotificationModule.h"
 
-#define kURLNotifications   @"notification/list.json?type=%@&start=%d&limit=%d"
+#define kURLNotifications   @"/notification/list.json?type=%@&start=%d&limit=%d"
 #define kURLAddToken        @"/notification/addtoken.json"
 #define kURLClearToken      @"/notification/cleartoken.json"
+#define kURLRead            @"/notification/read.json"
 
 @implementation DANotificationModule
 
@@ -31,6 +32,27 @@
         }
     }];
 }
+
+- (void)read:(NSString *)nid callback:(void (^)(NSError *error, NSString *nid))callback
+{
+    NSString *path = [NSString stringWithFormat:kURLRead];
+    
+    NSArray *array = [[NSArray alloc] initWithObjects:nid, nil];
+    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:array, @"nids", nil];
+    
+    [[DAAFHttpClient sharedClient] putPath:path parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (callback) {
+            callback(nil, nid);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+    }];
+}
+
 
 - (void)updateDeviceToken:(DAApns *)apn callback:(void (^)(NSError *error, DAApns *apn))callback
 {

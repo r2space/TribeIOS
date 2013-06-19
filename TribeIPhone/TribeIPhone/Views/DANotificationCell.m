@@ -7,6 +7,7 @@
 //
 
 #import "DANotificationCell.h"
+#import "DAHelper.h"
 
 @implementation DANotificationCell
 
@@ -37,14 +38,19 @@
     }
     
     DAUser *user = notification.user;
-    if ([user isUserPhotoCatched] || [user getUserPhotoId] == nil) {
-        [[DAFileModule alloc] getPicture:[user getUserPhotoId] callback:^(NSError *err, NSString *pictureId){
-            cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
-        }];
+    if ([user getUserPhotoId] == nil) {
+        cell.imgPortrait.image = [UIImage imageNamed:@"Default.png"];
+    } else {
+        if ([user isUserPhotoCatched]) {
+            [[DAFileModule alloc] getPicture:[user getUserPhotoId] callback:^(NSError *err, NSString *pictureId){
+                cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
+            }];
+        }
     }
     
     cell.lblName.text = [user getUserName];
     cell.lblContent.text = notification.content;
+    cell.lblAt.text = [DAHelper stringFromISODateString:notification.createat];
     
     return cell;
 }

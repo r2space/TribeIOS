@@ -7,6 +7,7 @@
 //
 
 #import "DAShortmailViewCell.h"
+#import "DAHelper.h"
 
 @implementation DAShortmailViewCell
 
@@ -38,7 +39,12 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
-    cell.lblName.text = user.name.name_zh;
+    
+    cell.lblName.text = contact.user.name.name_zh;
+    cell.lblContent.text = contact.lastMessage;
+    cell.lblAt.text = [DAHelper stringFromISODateString:contact.editat];
+
+    // 照片
     if (user.photo.small != nil) {
         [[DAFileModule alloc] getPicture:user.photo.small callback:^(NSError *err, NSString *pictureId){
             cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];

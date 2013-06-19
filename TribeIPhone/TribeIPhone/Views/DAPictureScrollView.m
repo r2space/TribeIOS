@@ -39,6 +39,8 @@
 -(void)renderWithPictureIds:(NSArray *)pictureIds
 {
     self.pagingEnabled = YES;
+//    self.showsHorizontalScrollIndicator = NO;
+//    self.showsVerticalScrollIndicator = NO;
     _pictureIds = pictureIds;
     if (_pictureIds.count > 0) {
         CGSize contentSize = self.frame.size;
@@ -107,9 +109,34 @@
     int idx = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     if (_currIndex!=idx) {
         _currIndex = idx;
-        
+        if (self.pageChangedBlocks != nil) {
+            self.pageChangedBlocks(_currIndex);
+        }
     }
 }
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    _touchTimer = [touch timestamp];
+}
 
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    _touchTimer = [touch timestamp] - _touchTimer;
+    
+    NSUInteger tapCount = [touch tapCount];
+    if (tapCount == 1 && _touchTimer <= 3){
+        if (self.pictureTouchedBlocks ) {
+            self.pictureTouchedBlocks(_currIndex);
+        }
+    }
+    
+}
+
+-(void)scrollToIndex:(int)index
+{
+    [self setContentOffset:CGPointMake((self.frame.size.width + prictureSpace) *index, 0) animated:NO];
+}
 
 @end

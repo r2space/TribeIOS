@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblContent;
+@property (weak, nonatomic) IBOutlet UILabel *lblAt;
 
 +(DANotificationCell *) initWithNotification:(DANotification *)notification tableView:(UITableView *)tableView;
 @end
