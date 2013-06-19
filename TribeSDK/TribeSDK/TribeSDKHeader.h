@@ -30,8 +30,6 @@
 // notification
 #import <TribeSDK/DANotification.h>
 #import <TribeSDK/DANotificationList.h>
-#import <TribeSDK/DANotificationFetcher.h>
-#import <TribeSDK/DANotificationListFetcher.h>
 #import <TribeSDK/DANotificationModule.h>
 #import <TribeSDK/DAApns.h>
 

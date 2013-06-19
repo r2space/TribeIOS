@@ -17,6 +17,9 @@
                             count:(int)count
                          callback:(void (^)(NSError *error, DANotificationList *notificationList))callback;
 
+- (void)read:(NSString *)nid
+    callback:(void (^)(NSError *error, NSString *nid))callback;
+
 - (void)updateDeviceToken:(DAApns *)apn
                  callback:(void (^)(NSError *error, DAApns *apn))callback;
 

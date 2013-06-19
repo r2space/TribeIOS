@@ -15,7 +15,7 @@
 @property (retain, nonatomic) NSString  *_id;
 @property (retain, nonatomic) DAUser    *user;
 @property (retain, nonatomic) NSString  *content;
-@property (retain, nonatomic) NSData    *createat;
+@property (retain, nonatomic) NSString  *createat;
 @property (retain, nonatomic) NSString  *createby;
 @property (retain, nonatomic) NSString  *objectid;
 @property (retain, nonatomic) NSString  *type;

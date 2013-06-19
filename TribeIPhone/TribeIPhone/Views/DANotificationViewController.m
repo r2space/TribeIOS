@@ -9,6 +9,7 @@
 #import "DANotificationViewController.h"
 #import "DAShortmailViewCell.h"
 #import "DAShortmailStoryViewController.h"
+#import "DAMessageDetailViewController.h"
 
 @interface DANotificationViewController ()
 {
@@ -81,7 +82,8 @@
         }
         case NotificationTypeSystemAlert:// 通知
         {
-            [[DANotificationModule alloc] getNotificationListByType:@"invite,remove,follow" start:0 count:20 callback:^(NSError *error, DANotificationList *notificationList){
+            [[DANotificationModule alloc] getNotificationListByType:@"invite,remove,follow" start:0 count:20
+                                                           callback:^(NSError *error, DANotificationList *notificationList){
                 _notifications = notificationList.items;
                 [self.tableView reloadData];
             }];
@@ -119,23 +121,41 @@
     }
     
     DANotification *notification = [_notifications objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [DANotificationCell initWithNotification:notification tableView:tableView];
+    DANotificationCell *cell = [DANotificationCell initWithNotification:notification tableView:tableView];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // 显示私信对话画面
     if (_content == NotificationTypePrivateMessage) {
-        DAShortmailStoryViewController *shortmailStoryViewController =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];
-        shortmailStoryViewController.hidesBottomBarWhenPushed = YES;
+        DAShortmailStoryViewController *shortmail =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];
+        shortmail.hidesBottomBarWhenPushed = YES;
         
         DAContact *contact = ((DAContact *)[_notifications objectAtIndex:indexPath.row]);
-        shortmailStoryViewController.contact = contact._id;
-        shortmailStoryViewController.uid = contact.user._id;
-        shortmailStoryViewController.name = contact.user.name.name_zh;
+        shortmail.contact = contact._id;
+        shortmail.uid = contact.user._id;
+        shortmail.name = contact.user.name.name_zh;
         
-        [self presentViewController:shortmailStoryViewController animated:YES completion:nil];
+        [self presentViewController:shortmail animated:YES completion:nil];
+        return;
     }
+    
+    // 到消息详细画面
+    if (_content == NotificationTypeAt) {
+        DAMessageDetailViewController *detailViewController = [[DAMessageDetailViewController alloc] initWithNibName:@"DAMessageDetailViewController" bundle:nil];
+        
+        DANotification *notification = [_notifications objectAtIndex:indexPath.row];
+        detailViewController.messageId = notification.objectid;
+        detailViewController.hidesBottomBarWhenPushed = YES;
+        [self presentViewController:detailViewController animated:YES completion:nil];
+    }
+
+    // 标记为已读
+    DANotification *notification = [_notifications objectAtIndex:indexPath.row];
+    [[DANotificationModule alloc] read:notification._id callback:^(NSError *error, NSString *nid) {
+        NSLog(@"read : %@", nid);
+    }];
 }
 
 @end

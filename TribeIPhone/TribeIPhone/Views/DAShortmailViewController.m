@@ -46,11 +46,7 @@
 {
     DAContact *contact = [list objectAtIndex:indexPath.row];
 	DAShortmailViewCell *cell = [DAShortmailViewCell initWithMessage:contact tableView:tableView];
-    
-    cell.lblName.text = contact.user.name.name_zh;
-    cell.lblContent.text = contact.lastMessage;
-    cell.lblAt.text = [DAHelper stringFromISODateString:contact.editat];
-    
+        
     return cell;
 }
 

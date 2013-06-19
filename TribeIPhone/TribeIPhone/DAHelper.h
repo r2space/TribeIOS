@@ -27,6 +27,7 @@
 
 + (NSDate *) dateFromISODateString:(NSString *)isodate;
 + (NSString *) currentDateString;
++ (NSString *) stringFromISODate:(NSDate *)isodate;
 + (NSString *) stringFromISODateString:(NSString *)isodate;
 
 @end
