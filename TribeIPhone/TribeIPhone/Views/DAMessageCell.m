@@ -107,6 +107,7 @@
         }];
     }
     [touchContents setObject:user forKey:@"createby"];
+
     
     if(message.range != nil && [message getPublicRange] != nil){
         [self.groupView setHidden:NO];
@@ -119,9 +120,17 @@
     
     self.lblBy.text = [user getUserName];
     
+    self.lblCreateAt.text = [DAHelper stringFromISODateString:message.createat ];
     
-    self.lblCommentCount.text = [NSString stringWithFormat:@"%@",[message getReplyCount]];
-    self.lblForwardCount.text = [NSString stringWithFormat:@"%@",[message getForwardCount]];
+    if(!YES)
+        self.lblCommentCount.text = [NSString stringWithFormat:@"%@",[message getReplyCount]];
+    else
+        self.lblCommentCount.text = @"99+";
+    
+    if(!YES)
+        self.lblForwardCount.text = [NSString stringWithFormat:@"%@",[message getForwardCount]];
+    else
+        self.lblForwardCount.text = @"99+";
     
     float maxWidth = 253.0f;
     float height = 0;
