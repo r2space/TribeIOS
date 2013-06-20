@@ -57,9 +57,10 @@
 
 - (void)updateGroup:(NSString *)fileId
 {
-    
-    if (self.group != nil) {
+    // 没有，则创建组
+    if (self.group == nil) {
         self.group = [[DAGroup alloc] init];
+        self.group.name = [[GroupName alloc] init];
     }
     
     self.group.name.name_zh = moreViewController.txtName.text;
@@ -67,19 +68,24 @@
     self.group.category = moreViewController.txtCategory.text;
     self.group.secure = moreViewController.segSecurity.selectedSegmentIndex == 0 ? GroupSecureTypePublic : GroupSecureTypePrivate;
 
+    // 如果头像存在，指定新照片的切割范围
     if (fileId) {
         GroupPhoto * photo = [[GroupPhoto alloc] init];
-        photo.big = fileId;
+        photo.fid = fileId;
+        photo.x = @"0";
+        photo.y = @"0";
+        photo.width = @"320";
         self.group.photo = photo;
     }
-    
+
+    // 更新或新规
     if (self.group._id == nil) {
         [[DAGroupModule alloc] create:self.group callback:^(NSError *error, DAGroup *group) {
-            NSLog(@"didFinishUpdate");
+            [DAHelper alert:self.view message:@"创建成功" detail:nil];
         }];
     } else {
         [[DAGroupModule alloc] update:self.group callback:^(NSError *error, DAGroup *group) {
-            NSLog(@"didFinishUpdate");
+            [DAHelper alert:self.view message:@"更新成功" detail:nil];
         }];
     }
 }

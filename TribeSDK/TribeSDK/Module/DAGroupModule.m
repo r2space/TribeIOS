@@ -127,27 +127,8 @@
 - (void)create:(DAGroup *)group callback:(void (^)(NSError *error, DAGroup *group))callback
 {
     NSString *path = [NSString stringWithFormat:kURLCreateGroup];
-    NSMutableDictionary * postData = [[NSMutableDictionary alloc] init];
-    
-    if (group.name != nil) {
-        NSDictionary *name = [NSDictionary dictionaryWithObjectsAndKeys:group.name.name_zh, @"name_zh", nil];
-        [postData setObject:name forKey:@"name"];
-    }
-    
-    if (group.photo != nil) {
-        
-        // 转换
-        NSDictionary *photo = [NSDictionary dictionaryWithObjectsAndKeys:group.photo.big, @"fid",
-                               @"0", @"x",
-                               @"0", @"y",
-                               @"320", @"width", nil];
-        [postData setObject:photo forKey:@"photo"];
-    }
-    
-    if (group.description != nil) {
-        [postData setObject:group.description forKey:@"description"];
-    }
-    [[DAAFHttpClient sharedClient] postPath:path parameters:postData success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+    [[DAAFHttpClient sharedClient] postPath:path parameters:[group toDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (callback) {
             callback(nil, [[DAGroup alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
         }
@@ -160,29 +141,9 @@
 
 - (void)update:(DAGroup *)group callback:(void (^)(NSError *error, DAGroup *group))callback
 {
-    NSMutableDictionary * postData = [NSMutableDictionary dictionaryWithObjectsAndKeys:group._id, @"_id",
-                                      group.description, @"description",
-                                      nil];
-    
-    if (group.name != nil) {
-        NSDictionary *name = [NSDictionary dictionaryWithObjectsAndKeys:group.name.name_zh, @"name_zh",
-                              nil];
-        [postData setObject:name forKey:@"name"];
-    }
-    
-    if (group.photo != nil) {
-        
-        // 转换
-        NSDictionary *photo = [NSDictionary dictionaryWithObjectsAndKeys:group.photo.big, @"fid",
-                               @"0", @"x",
-                               @"0", @"y",
-                               @"320", @"width", nil];
-        [postData setObject:photo forKey:@"photo"];
-    }
-    
     NSString *path = [NSString stringWithFormat:kURLUpdateGroup, group._id];
     
-    [[DAAFHttpClient sharedClient] postPath:path parameters:postData success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[DAAFHttpClient sharedClient] postPath:path parameters:[group toDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (callback) {
             callback(nil, [[DAGroup alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
         }

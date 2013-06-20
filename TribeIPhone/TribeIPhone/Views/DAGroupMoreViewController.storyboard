@@ -73,7 +73,7 @@
                                                         <constraint firstAttribute="height" constant="33" id="iap-XD-ZzK"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="李林" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fue-aP-bfR">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="组名称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fue-aP-bfR">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="169" id="Bf4-YH-bMl"/>
                                                         <constraint firstAttribute="height" constant="30" id="gtW-iT-AiJ"/>
