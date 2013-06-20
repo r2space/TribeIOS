@@ -186,6 +186,8 @@
 		F22B38AC173658E60017A986 /* WTStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38A7173658E60017A986 /* WTStatusBar.m */; };
 		F22B38AD173658E60017A986 /* WTStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38A9173658E60017A986 /* WTStatusView.m */; };
 		F22B38AE173658E60017A986 /* WTStatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B38AB173658E60017A986 /* WTStatusWindow.m */; };
+		F22D9A031772D16100D58187 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F22D9A011772D16100D58187 /* Icon.png */; };
+		F22D9A041772D16100D58187 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F22D9A021772D16100D58187 /* Icon@2x.png */; };
 		F232971C176B1487003DF0BE /* detail_btn_bg_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F232971B176B1487003DF0BE /* detail_btn_bg_normal.png */; };
 		F232975B176B18C6003DF0BE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F232975A176B18C6003DF0BE /* AudioToolbox.framework */; };
 		F232975E176B1921003DF0BE /* DAShortmailStoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = F232975D176B1921003DF0BE /* DAShortmailStoryController.m */; };
@@ -336,7 +338,7 @@
 		471648FB1729140700622D5F /* DAMemberSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMemberSelectViewController.xib; sourceTree = "<group>"; };
 		471648FF172932E700622D5F /* round_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = round_delete.png; sourceTree = "<group>"; };
 		471649011729350100622D5F /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
-		471A0559171BC1AD0040CB93 /* TribeIPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TribeIPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		471A0559171BC1AD0040CB93 /* Cross.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cross.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		471A055C171BC1AD0040CB93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		471A055E171BC1AD0040CB93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		471A0560171BC1AD0040CB93 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -523,6 +525,8 @@
 		F22B38A9173658E60017A986 /* WTStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTStatusView.m; sourceTree = "<group>"; };
 		F22B38AA173658E60017A986 /* WTStatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTStatusWindow.h; sourceTree = "<group>"; };
 		F22B38AB173658E60017A986 /* WTStatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTStatusWindow.m; sourceTree = "<group>"; };
+		F22D9A011772D16100D58187 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		F22D9A021772D16100D58187 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		F232971B176B1487003DF0BE /* detail_btn_bg_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detail_btn_bg_normal.png; sourceTree = "<group>"; };
 		F232975A176B18C6003DF0BE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F232975C176B1920003DF0BE /* DAShortmailStoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAShortmailStoryController.h; sourceTree = "<group>"; };
@@ -762,7 +766,7 @@
 		471A055A171BC1AD0040CB93 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				471A0559171BC1AD0040CB93 /* TribeIPhone.app */,
+				471A0559171BC1AD0040CB93 /* Cross.app */,
 				471A058A171BC1AE0040CB93 /* TribeIPhoneTests.octest */,
 			);
 			name = Products;
@@ -872,6 +876,8 @@
 		471A05A8171BC3D10040CB93 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F22D9A011772D16100D58187 /* Icon.png */,
+				F22D9A021772D16100D58187 /* Icon@2x.png */,
 				476855E71771877700759389 /* document_highlight.png */,
 				476855E01771540B00759389 /* document.png */,
 				476855DA17708F7C00759389 /* department.png */,
@@ -1345,7 +1351,7 @@
 			);
 			name = TribeIPhone;
 			productName = TribeIPhone;
-			productReference = 471A0559171BC1AD0040CB93 /* TribeIPhone.app */;
+			productReference = 471A0559171BC1AD0040CB93 /* Cross.app */;
 			productType = "com.apple.product-type.application";
 		};
 		471A0589171BC1AE0040CB93 /* TribeIPhoneTests */ = {
@@ -1586,6 +1592,8 @@
 				476855E11771540B00759389 /* document.png in Resources */,
 				476855E61771562900759389 /* DAFileSelectViewController.xib in Resources */,
 				476855E81771877700759389 /* document_highlight.png in Resources */,
+				F22D9A031772D16100D58187 /* Icon.png in Resources */,
+				F22D9A041772D16100D58187 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1823,7 +1831,7 @@
 				INFOPLIST_FILE = "TribeIPhone/TribeIPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = TribeIPhone;
+				PRODUCT_NAME = Cross;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
@@ -1844,7 +1852,7 @@
 				GCC_PREFIX_HEADER = "TribeIPhone/TribeIPhone-Prefix.pch";
 				INFOPLIST_FILE = "TribeIPhone/TribeIPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = TribeIPhone;
+				PRODUCT_NAME = Cross;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
