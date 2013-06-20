@@ -16,6 +16,7 @@
 		0A93811C17714DAF00F65CA1 /* DAPictureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A93811B17714DAF00F65CA1 /* DAPictureScrollView.m */; };
 		0AB15093176E978F002F31FB /* DAMemberFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB15091176E978F002F31FB /* DAMemberFilterViewController.m */; };
 		0AB15094176E978F002F31FB /* DAMemberFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB15092176E978F002F31FB /* DAMemberFilterViewController.xib */; };
+		0ABFF7BA17729FD300BFA909 /* user_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABFF7B917729FD300BFA909 /* user_thumb.png */; };
 		470D9B5D171E47BC009A6B0E /* DAMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 470D9B5C171E47BB009A6B0E /* DAMessageCell.xib */; };
 		47120B181733A57800FB74AF /* DANotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47120B171733A57800FB74AF /* DANotificationCell.m */; };
 		47120B1A1733A5C800FB74AF /* DANotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47120B191733A5C800FB74AF /* DANotificationCell.xib */; };
@@ -321,6 +322,7 @@
 		0AB15090176E978F002F31FB /* DAMemberFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMemberFilterViewController.h; sourceTree = "<group>"; };
 		0AB15091176E978F002F31FB /* DAMemberFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMemberFilterViewController.m; sourceTree = "<group>"; };
 		0AB15092176E978F002F31FB /* DAMemberFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMemberFilterViewController.xib; sourceTree = "<group>"; };
+		0ABFF7B917729FD300BFA909 /* user_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_thumb.png; sourceTree = "<group>"; };
 		470D9B5C171E47BB009A6B0E /* DAMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMessageCell.xib; sourceTree = "<group>"; };
 		47120B161733A57800FB74AF /* DANotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationCell.h; sourceTree = "<group>"; };
 		47120B171733A57800FB74AF /* DANotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationCell.m; sourceTree = "<group>"; };
@@ -872,6 +874,7 @@
 		471A05A8171BC3D10040CB93 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0ABFF7B917729FD300BFA909 /* user_thumb.png */,
 				476855E71771877700759389 /* document_highlight.png */,
 				476855E01771540B00759389 /* document.png */,
 				476855DA17708F7C00759389 /* department.png */,
@@ -1586,6 +1589,7 @@
 				476855E11771540B00759389 /* document.png in Resources */,
 				476855E61771562900759389 /* DAFileSelectViewController.xib in Resources */,
 				476855E81771877700759389 /* document_highlight.png in Resources */,
+				0ABFF7BA17729FD300BFA909 /* user_thumb.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

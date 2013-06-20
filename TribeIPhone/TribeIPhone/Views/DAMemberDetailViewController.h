@@ -13,12 +13,12 @@
 #import "DAMemberController.h"
 #import "DAMemberMoreContainerViewController.h"
 
-@interface DAMemberDetailViewController : UIViewController<UITabBarDelegate>
+@interface DAMemberDetailViewController : DABaseViewController<UITabBarDelegate>
 
 - (IBAction)onCancelTouched:(id)sender;
 
 
-@property (weak, nonatomic) IBOutlet UITableView *tblMessage;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)btnHomeTouched:(id)sender;
 

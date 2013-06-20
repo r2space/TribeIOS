@@ -13,7 +13,7 @@
 @interface DAGroupDetailViewController ()
 {
     DAGroup *theGroup;
-    NSArray *theMessageList;
+    int _messagesTotal;
     BOOL isMember;
 }
 
@@ -34,15 +34,22 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-//    [self.tblMessage setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self fetch];
 }
-
-- (void)viewDidAppear:(BOOL)animated
+-(void)fetch
 {
+    if ([self preFetch]) {
+        return;
+    }
+    // 获取最后一条数据的时间，作为获取更多数据时的标识
+    NSString *before = @"";
+    if (start > 0) {
+        DAMessage *lastMsg = [list objectAtIndex:list.count - 1];
+        before = lastMsg.createat;
+    }
     [[DAGroupModule alloc] getGroup:self.gid callback:^(NSError *error, DAGroup *group){
         theGroup = group;
-    
+        
         // 判断当前用户是否是组的成员
         for (NSString *member in group.member) {
             if ([member isEqualToString:[DALoginModule getLoginUserId]]) {
@@ -53,11 +60,18 @@
         
         self.barJoinOrLeave.title = isMember ? @"退出" : @"加入";
         
-        [[DAMessageModule alloc] getMessagesInGroup:group._id start:0 count:20 before:@"" callback:^(NSError *error, DAMessageList *messageList){
-            theMessageList = messageList.items;
-            [self.tblMessage reloadData];
+        [[DAMessageModule alloc] getMessagesInGroup:group._id start:start count:count  before:before callback:^(NSError *error, DAMessageList *messageList){
+            _messagesTotal = messageList.total.intValue;
+            [self finishFetch:messageList.items error:error];
         }];
     }];
+
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,23 +88,27 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1 + theMessageList.count;
+    // Return the number of rows in the section.
+    if (section == 0) {
+        return 1;
+    }
+    if(section == 1){
+        return list.count;
+    }
+    return 0;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%d", indexPath.row);
-    if (indexPath.row == 0) {
+    
+    if (indexPath.section == 0) {
         DAGroupDetailCell *cell = [DAGroupDetailCell initWithMessage:theGroup tableView:tableView];
-
-        NSLog(@"%@", theGroup.description);
+        
         cell.lblName.text = theGroup.name.name_zh;
-        cell.txtDescription.text = theGroup.description;
         cell.imgPortrait.image = [theGroup getGroupPhotoImage];
         
         if ([@"1" isEqualToString:theGroup.type]) {
@@ -104,20 +122,24 @@
         }
         
         return cell;
+        
     } else {
-        DAMessageCell *cell = [DAMessageCell initWithMessage:[theMessageList objectAtIndex:indexPath.row - 1] tableView:tableView];
-//        cell.parentController = self;
+        DAMessageCell *cell = [DAMessageCell initWithMessage:[list objectAtIndex:indexPath.row ] tableView:tableView];
+        //        cell.parentController = self;
         return cell;
     }
+    
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    if (indexPath.row == 0) {
-        return 232;
+    if (indexPath.section == 0) {
+        return 140;
     }
-
-    return [DAMessageCell cellHeightWithMessage:[theMessageList objectAtIndex:indexPath.row - 1]];
+    if (indexPath.section == 1) {
+        return [DAMessageCell cellHeightWithMessage:[list objectAtIndex:indexPath.row ]];
+    }
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
