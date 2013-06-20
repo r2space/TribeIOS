@@ -183,4 +183,21 @@
     }
 }
 
+
++ (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail
+{
+    MBProgressHUD *progress;
+    progress = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    
+    progress.mode = MBProgressHUDModeText;
+    progress.dimBackground = YES;
+    progress.labelText = message;
+    progress.detailsLabelText = detail;
+    progress.margin = 10.f;
+    progress.yOffset = 50.f;
+    progress.removeFromSuperViewOnHide = YES;
+    [progress hide:YES afterDelay:5];
+}
+
+
 @end

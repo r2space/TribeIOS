@@ -33,4 +33,7 @@
 + (int)fts:(NSString *)path;
 + (void)removeAllFile:(NSString *)directory;
 
+
++ (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail;
+
 @end

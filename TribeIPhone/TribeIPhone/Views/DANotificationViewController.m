@@ -36,15 +36,26 @@
 
     // 获取[提到我]
     _content = NotificationTypeAt;
-    [[DANotificationModule alloc] getNotificationListByType:@"at" start:0 count:20
+    [[DANotificationModule alloc] getNotificationListByType:NotificationTypeStringAt
+                                                      start:0 count:20
                                                    callback:^(NSError *error, DANotificationList *notificationList){
         _notifications = notificationList.items;
         [self.tableView reloadData];
     }];
     
-    // 显示通知件数
-    UITabBarItem *itemMail = [ self.tabBar.items objectAtIndex:2];
-    itemMail.badgeValue = @"2";
+    // 显示件数
+    [[DANotificationModule alloc] getUnreadNotificationListByType:NotificationTypeStringAt
+                                                            start:0 count:20
+                                                         callback:^(NSError *error, DANotificationList *notificationList){
+        
+        UITabBarItem *itemAr = [self.tabBar.items objectAtIndex:0];
+        if (notificationList.total.intValue > 0) {
+            itemAr.badgeValue = [notificationList.total stringValue];
+        } else {
+            itemAr.badgeValue = nil;
+        }
+    }];
+
 }
 
 // TabBar选择事件
@@ -56,7 +67,9 @@
         case NotificationTypeAt:// 提到我
         {
             _content = NotificationTypeAt;
-            [[DANotificationModule alloc] getNotificationListByType:@"at" start:0 count:20 callback:^(NSError *error, DANotificationList *notificationList){
+            [[DANotificationModule alloc] getNotificationListByType:NotificationTypeStringAt
+                                                              start:0 count:20
+                                                           callback:^(NSError *error, DANotificationList *notificationList){
                 _notifications = notificationList.items;
                 [self.tableView reloadData];
             }];
@@ -65,7 +78,9 @@
         case NotificationTypeReply:// 评论
         {
             _content = NotificationTypeReply;
-            [[DANotificationModule alloc] getNotificationListByType:@"reply" start:0 count:20 callback:^(NSError *error, DANotificationList *notificationList){
+            [[DANotificationModule alloc] getNotificationListByType:NotificationTypeStringReply
+                                                              start:0 count:20
+                                                           callback:^(NSError *error, DANotificationList *notificationList){
                 _notifications = notificationList.items;
                 [self.tableView reloadData];
             }];
@@ -154,7 +169,15 @@
     // 标记为已读
     DANotification *notification = [_notifications objectAtIndex:indexPath.row];
     [[DANotificationModule alloc] read:notification._id callback:^(NSError *error, NSString *nid) {
-        NSLog(@"read : %@", nid);
+        UITabBarItem *itemAr = [self.tabBar.items objectAtIndex:0];
+        
+        if (itemAr.badgeValue != nil) {
+            if ([itemAr.badgeValue intValue] > 1) {
+                itemAr.badgeValue = [NSString stringWithFormat:@"%d", [itemAr.badgeValue intValue] - 1];
+            } else {
+                itemAr.badgeValue = nil;
+            }
+        }
     }];
 }
 

@@ -19,6 +19,8 @@ typedef enum {
     NotificationTypeSystemAlert = 3     // 通知
 } NotificationType;
 
+#define NotificationTypeStringAt @"at"
+#define NotificationTypeStringReply @"reply"
 
 @interface DANotificationViewController : UIViewController
 
