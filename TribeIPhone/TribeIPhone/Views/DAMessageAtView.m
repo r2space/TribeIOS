@@ -78,6 +78,7 @@
             }
 
             lineWidth += label.frame.size.width + 5;
+            i++;
         }
         
         CGRect viewFrame = frame;
@@ -116,7 +117,8 @@
 {
     if (self.didTouchedBlocks != nil) {
         UIButton *btn = (UIButton *)sender;
-        self.didTouchedBlocks(1, [_message.at.users objectAtIndex:btn.tag]);
+        DAUser *user = [_message.part.atusers objectAtIndex:btn.tag];
+        self.didTouchedBlocks(1, user._id);
     }
 }
 
@@ -124,7 +126,8 @@
 {
     if (self.didTouchedBlocks != nil) {
         UIButton *btn = (UIButton *)sender;
-        self.didTouchedBlocks(2, [_message.at.groups objectAtIndex:btn.tag]);
+        DAGroup *group = [_message.part.atgroups objectAtIndex:btn.tag];
+        self.didTouchedBlocks(2, group._id);
     }
 }
 

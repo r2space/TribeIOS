@@ -184,7 +184,7 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            return 50;
+            return 55;
         }
         if (indexPath.row == 1) {
             return [DAMessageDetailCell cellHeightWithMessage:_message];

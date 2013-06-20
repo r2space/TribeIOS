@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.scrollView renderWithPictureIds:self.PictureIds];
+    
     self.scrollView.pageChangedBlocks = ^(int idx){
         _currIndex = idx;
         [self setTitle];
@@ -37,10 +37,15 @@
     self.scrollView.pictureTouchedBlocks = ^(int idx){
         [self setBarHidden:!_toolBar.hidden];
     };
-    [self.scrollView scrollToIndex:_currIndex];
-    [self setTitle];
     [self setBarHidden:YES];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self.scrollView renderWithPictureIds:self.PictureIds];
+    [self.scrollView scrollToIndex:_currIndex];
+    [self setTitle];
 }
 
 - (void)didReceiveMemoryWarning
