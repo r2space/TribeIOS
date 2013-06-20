@@ -78,7 +78,7 @@
     height += view.frame.size.height;
     
     if ([message_contenttype_document isEqualToString:message.contentType] || [message_contenttype_file isEqualToString:message.contentType]) {
-        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT + 10, height, maxWidth - 20, 0)];
+        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT + 10, height, maxWidth - 20, 0) touchEnable:NO];
         height += fview.frame.size.height;
     }
     
@@ -163,7 +163,7 @@
     height += view.frame.size.height;
     
     if ([message_contenttype_document isEqualToString:message.contentType] || [message_contenttype_file isEqualToString:message.contentType]) {
-        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT + 10, height, maxWidth - 20, 0)];
+        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT + 10, height, maxWidth - 20, 0) touchEnable:NO];
         [self.fileArea removeFromSuperview];
         self.fileArea = fview;
         [self addSubview:fview];

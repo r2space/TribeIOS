@@ -12,6 +12,7 @@
 {
     DAUser *theUser;
     NSArray *theMessageList;
+    int _messagesTotal;
     BOOL isFollowed;
 }
 
@@ -24,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -33,14 +35,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self fetch];
+
+
+}
+-(void)fetch
+{
+    if ([self preFetch]) {
+        return;
+    }
+    // 获取最后一条数据的时间，作为获取更多数据时的标识
+    NSString *before = @"";
+    if (start > 0) {
+        DAMessage *lastMsg = [list objectAtIndex:list.count - 1];
+        before = lastMsg.createat;
+    }
+
     [[DAUserModule alloc] getUserById:self.uid callback:^(NSError *error, DAUser *user){
         theUser = user;
-        [[DAMessageModule alloc] getMessagesByUser:self.uid start:0 count:20 before:@"" callback:^(NSError *error, DAMessageList *messageList){
-            theMessageList = messageList.items;
-            [self.tblMessage reloadData];
+        [[DAMessageModule alloc] getMessagesByUser:theUser._id start:start count:count before:before callback:^(NSError *error, DAMessageList *messageList){
+            
+            _messagesTotal = messageList.total.intValue;
+            [self finishFetch:messageList.items error:error];
+            
         }];
     }];
-    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* documentDir = [paths objectAtIndex:0];
     
@@ -50,59 +69,95 @@
     isFollowed = [loginuser.following containsObject:self.uid];
     self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
     [userdata writeToFile:[NSString stringWithFormat:@"%@/%@", documentDir, userdata] atomically:YES];
-
+    
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)viewDidUnload {
+    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
+    // For example: self.myOutlet = nil;
+    [super viewDidUnload];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1 + theMessageList.count;
+    // Return the number of rows in the section.
+    if (section == 0) {
+        return 1;
+    }
+    if(section == 1){
+        return list.count;
+    }
+    return 0;
 }
-
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    if (section == 0) {
+//        return 0;
+//    }
+//    return 50;
+//}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    NSLog(@"%d",section);
+//    if (section == 1) {
+//        UIView *containerView = [[UIView alloc] init];
+//        [containerView setBackgroundColor:[UIColor whiteColor]];
+//        
+//        UILabel *comment = [[UILabel alloc] initWithFrame:CGRectZero];
+//        comment.backgroundColor = [UIColor clearColor];
+//        comment.textColor = [UIColor blueColor];
+//        comment.font = [UIFont systemFontOfSize:14];
+//        comment.frame = CGRectMake(8, 15, 60, 20);
+//        comment.text = @"消息";
+//        
+//        [containerView addSubview:comment];
+//        return containerView;
+//    }
+//    return nil;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%d", indexPath.row);
-    if (indexPath.row == 0) {
-        DAMemberDetailCell *cell = [DAMemberDetailCell initWithMessage:theUser tableView:tableView];
+    if (indexPath.section == 0) {
+            DAMemberDetailCell *cell = [DAMemberDetailCell initWithMessage:theUser tableView:tableView];
+            
+            cell.lblName.text = theUser.name.name_zh;
+            
+            //        NSLog(@"%@", theGroup.description);
+            //        cell.lblName.text = theGroup.name.name_zh;
+            //        cell.txtDescription.text = theGroup.description;
+            //        cell.imgPortrait.image = [theGroup getGroupPhotoImage];
+            //        cell.imgGroup.hidden = false;
+            return cell;
         
-        cell.lblName.text = theUser.name.name_zh;
-        
-//        NSLog(@"%@", theGroup.description);
-//        cell.lblName.text = theGroup.name.name_zh;
-//        cell.txtDescription.text = theGroup.description;
-//        cell.imgPortrait.image = [theGroup getGroupPhotoImage];
-//        cell.imgGroup.hidden = false;
-        return cell;
     } else {
-        
-        DAMessageCell *cell = [DAMessageCell initWithMessage:[theMessageList objectAtIndex:indexPath.row - 1] tableView:tableView];
-//        cell.parentController = self;
+        DAMessageCell *cell = [DAMessageCell initWithMessage:[list objectAtIndex:indexPath.row ] tableView:tableView];
+        //        cell.parentController = self;
         return cell;
-    }
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == 0) {
-        return 232;
     }
     
-    return [DAMessageCell cellHeightWithMessage:[theMessageList objectAtIndex:indexPath.row - 1]];
 }
 
+
+
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    if (indexPath.section == 0) {
+            return 120;
+    }
+    if (indexPath.section == 1) {
+        return [DAMessageCell cellHeightWithMessage:[list objectAtIndex:indexPath.row ]];
+    }
+    return 0;
+}
 
 - (IBAction)onCancelTouched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -167,5 +222,6 @@
         [self.navigationController pushViewController:moreViewController animated:YES];
     }
 }
+
 
 @end

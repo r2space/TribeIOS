@@ -46,7 +46,8 @@
     height += view.frame.size.height;
     
     if ([message_contenttype_document isEqualToString:message.contentType] || [message_contenttype_file isEqualToString:message.contentType]) {
-        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(20, height, maxWidth - 40, 0)];
+        BOOL touchEnable = [message_contenttype_document isEqualToString:message.contentType] ? YES : NO;
+        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(20, height, maxWidth - 40, 0) touchEnable:touchEnable];
         [cell.fileArea removeFromSuperview];
         cell.fileArea = fview;
         [cell addSubview:fview];
@@ -105,7 +106,7 @@
     height += view.frame.size.height;
     
     if ([message_contenttype_document isEqualToString:message.contentType] || [message_contenttype_file isEqualToString:message.contentType]) {
-        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(20, height, maxWidth - 40, 0)];
+        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(20, height, maxWidth - 40, 0) touchEnable:NO];
         height += fview.frame.size.height;
     }
     
@@ -122,5 +123,10 @@
 -(void)setAtTouchedBlocks:(AtDidTouched)atTouchedBlocks
 {
     self.atArea.didTouchedBlocks = atTouchedBlocks;
+}
+
+-(void)setFileTouchedBlocks:(FileDidTouched)fileTouchedBlocks
+{
+    self.fileArea.didTouchedBlocks = fileTouchedBlocks;
 }
 @end
