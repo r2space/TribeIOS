@@ -8,10 +8,11 @@
 
 #import "DANotificationModule.h"
 
-#define kURLNotifications   @"/notification/list.json?type=%@&start=%d&limit=%d"
-#define kURLAddToken        @"/notification/addtoken.json"
-#define kURLClearToken      @"/notification/cleartoken.json"
-#define kURLRead            @"/notification/read.json"
+#define kURLNotificationsUnread     @"/notification/list/unread.json?type=%@&start=%d&limit=%d"
+#define kURLNotifications           @"/notification/list.json?type=%@&start=%d&limit=%d"
+#define kURLAddToken                @"/notification/addtoken.json"
+#define kURLClearToken              @"/notification/cleartoken.json"
+#define kURLRead                    @"/notification/read.json"
 
 @implementation DANotificationModule
 
@@ -32,6 +33,25 @@
         }
     }];
 }
+
+-(void)getUnreadNotificationListByType:(NSString *)type start:(int)start count:(int)count callback:(void (^)(NSError *, DANotificationList *))callback
+{
+    NSString *path = [NSString stringWithFormat:kURLNotificationsUnread, type, start, count];
+    
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (callback) {
+            callback(nil, [[DANotificationList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+    }];
+}
+
 
 - (void)read:(NSString *)nid callback:(void (^)(NSError *error, NSString *nid))callback
 {
