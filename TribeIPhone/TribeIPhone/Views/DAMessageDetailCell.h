@@ -27,9 +27,11 @@ typedef void (^RangeDidTouched)(NSString *groupId);
 @property (weak, nonatomic) IBOutlet DAPictureScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *rangeArea;
 @property (strong, nonatomic) RangeDidTouched rangeTouchedBlocked;
+//@property (strong, nonatomic) AtDidTouched atTouchedBlocks;
 
 - (IBAction)onRangeClicked:(id)sender;
 +(DAMessageDetailCell *) initWithMessage:(DAMessage *)message tableView:(UITableView *)tableView;
 +(float)cellHeightWithMessage:(DAMessage *)message;
 -(float)cellHeight;
+-(void)setAtTouchedBlocks:(AtDidTouched)atTouchedBlocks;
 @end

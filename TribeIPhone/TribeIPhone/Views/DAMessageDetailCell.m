@@ -39,7 +39,7 @@
     height += label.frame.size.height;
     
     // at view
-    DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(offset, height, maxWidth, 5000)];
+    DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(offset, height, maxWidth, 5000) touchEnable:YES];
     [cell.atArea removeFromSuperview];
     cell.atArea = view;
     [cell addSubview:view];
@@ -101,7 +101,7 @@
     DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:[UIFont systemFontOfSize:16] breakMode:NSLineBreakByCharWrapping maxFrame:CGRectMake(offset, height, maxWidth, 5000.0f)];
     height += label.frame.size.height;
     
-    DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(offset, height, maxWidth, 5000)];
+    DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(offset, height, maxWidth, 5000) touchEnable:NO];
     height += view.frame.size.height;
     
     if ([message_contenttype_document isEqualToString:message.contentType] || [message_contenttype_file isEqualToString:message.contentType]) {
@@ -117,5 +117,10 @@
     height += 40;
     
     return height;
+}
+
+-(void)setAtTouchedBlocks:(AtDidTouched)atTouchedBlocks
+{
+    self.atArea.didTouchedBlocks = atTouchedBlocks;
 }
 @end
