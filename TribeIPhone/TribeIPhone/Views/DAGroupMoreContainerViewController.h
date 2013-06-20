@@ -11,9 +11,9 @@
 
 @interface DAGroupMoreContainerViewController : UIViewController
 
-@property (weak, nonatomic) DAGroup *group;
+@property (retain, nonatomic) DAGroup *group;
+
 - (IBAction)onCancelTouched:(id)sender;
 - (IBAction)onSaveTouched:(id)sender;
-
 
 @end

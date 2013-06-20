@@ -42,13 +42,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3; // セクションは2個とします
+    return 2; // セクションは2個とします
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 3;
+        return 2;
     }
     if (section == 1) {
         return 1;
@@ -67,10 +67,6 @@
             cell.imageView.image = [UIImage imageNamed:@"18-envelope.png"];
         }
         if (1 == indexPath.row) {
-            cell.textLabel.text  = @"文书";
-            cell.imageView.image = [UIImage imageNamed:@"44-shoebox.png"];
-        }
-        if (2 == indexPath.row) {
             cell.textLabel.text  = @"账户";
             cell.imageView.image = [UIImage imageNamed:@"man.png"];
         }
@@ -82,12 +78,7 @@
             cell.imageView.image = [UIImage imageNamed:@"preferences.png"];
         }
     }
-    
-    if (2 == indexPath.section) {
-        cell.textLabel.text = @"版本信息";
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.imageView.image = [UIImage imageNamed:@"world.png"];
-    }
+
     return cell;
 }
 
@@ -99,13 +90,6 @@
             DAShortmailViewController *shortmailViewController = [[DAShortmailViewController alloc]initWithNibName:@"DAShortmailViewController" bundle:nil];
             shortmailViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:shortmailViewController animated:YES];
-        }
-        
-        // 文书画面
-        if (1 == indexPath.row) {
-            DAFileViewController *fileViewController = [[DAFileViewController alloc]initWithNibName:@"DAFileViewController" bundle:nil];
-            fileViewController.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:fileViewController animated:YES];
         }
         
         // 账户
