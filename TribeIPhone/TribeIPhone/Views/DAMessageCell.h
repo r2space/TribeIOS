@@ -16,9 +16,9 @@
 #import "DAMessageFileView.h"
 
 
-@interface DAMessageCell : UITableViewCell<DAMessageAtViewDelegate>
+@interface DAMessageCell : UITableViewCell
 {
-    NSMutableDictionary *touchContents;
+
 }
 @property (weak, nonatomic) IBOutlet UILabel *lblCreateAt;
 @property (weak, nonatomic) IBOutlet UILabel *lblBy;

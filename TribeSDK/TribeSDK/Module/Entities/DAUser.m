@@ -147,7 +147,7 @@
 
 -(UIImage *) getUserDefaultPhotoImage
 {
-    return [UIImage imageNamed:@"second@2x.png"];
+    return [UIImage imageNamed:@"user_thumb.png"];
 }
 
 -(UIImage *) getUserPhotoImage

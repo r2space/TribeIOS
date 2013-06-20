@@ -11,17 +11,17 @@
 
 typedef void (^AtDidTouched)(int type, NSString *objectId);
 
-@protocol DAMessageAtViewDelegate
--(void)atUserClicked:(DAUser *)user;
--(void)atGroupClicked:(DAGroup *)group;
-@end
+//@protocol DAMessageAtViewDelegate
+//-(void)atUserClicked:(DAUser *)user;
+//-(void)atGroupClicked:(DAGroup *)group;
+//@end
 
 @interface DAMessageAtView : UIView
 {
 //    NSMutableArray *touchLocations;
 //    NSMutableArray *touchContents;
 }
-@property (nonatomic, strong) id<DAMessageAtViewDelegate> delegate;
+//@property (nonatomic, strong) id<DAMessageAtViewDelegate> delegate;
 @property (strong, nonatomic) AtDidTouched didTouchedBlocks;
 -(UIView *)initWithMessage:(DAMessage *)message frame:(CGRect)frame touchEnable:(BOOL)touchEnable;
 @end

@@ -100,26 +100,23 @@
 
 -(void) cellInitWithMessage:(DAMessage *)message
 {
-    touchContents = [[NSMutableDictionary alloc] init];
     
     DAUser *user = message.part.createby;
     
-    //    if ([user isUserPhotoCatched] || [user getUserPhotoId] == nil) { // TODO catched photo
-    if ([user getUserPhotoId] == nil) {
+    if ([user isUserPhotoCatched] || [user getUserPhotoId] == nil) {
+//    if ([user getUserPhotoId] == nil) {
         self.imgPortrait.image = [user getUserPhotoImage];
     } else {
         [[DAFileModule alloc] getPicture:[user getUserPhotoId] callback:^(NSError *err, NSString *pictureId){
             self.imgPortrait.image = [DACommon getCatchedImage:pictureId];
         }];
     }
-    [touchContents setObject:user forKey:@"createby"];
 
     
     if(message.range != nil && [message getPublicRange] != nil){
         [self.groupView setHidden:NO];
         DAGroup *group = [message getPublicRange];
         self.lblRange.text = group.name.name_zh;
-        [touchContents setObject:group forKey:@"range"];
     } else {
         [self.groupView setHidden:YES];
     }
@@ -157,7 +154,6 @@
     // at view
     DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT, height, maxWidth, 0) touchEnable:NO];
     [self.atArea removeFromSuperview];
-    view.delegate = self;
     self.atArea = view;
     [self addSubview:view];
     height += view.frame.size.height;
@@ -192,7 +188,7 @@
                     self.imgAttach.image = [DACommon getCatchedImage:fileid];
             } else {
                 [[DAFileModule alloc] getPicture:fileid callback:^(NSError *err, NSString *pictureId){
-                    self.imgPortrait.image = [DACommon getCatchedImage:pictureId];
+                    self.imgAttach.image = [DACommon getCatchedImage:pictureId];
                 }];
             }
             [self addSubview:newThumb];
@@ -202,61 +198,5 @@
     }
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.parentController != nil) {
-        UITouch *touch = event.allTouches.anyObject;
-        CGPoint touchPoint = [touch locationInView:self];
-        
-        if (CGRectContainsPoint(self.groupView.frame,touchPoint)) {
-            DAGroup *group = (DAGroup *)[touchContents objectForKey:@"range"];
-            [self pushGroupDetailCtrlToParentNavCtrl:group];
-            return;
-        }
-        
-        if (CGRectContainsPoint(self.imgPortrait.frame, touchPoint) || CGRectContainsPoint(self.lblBy.frame, touchPoint)) {
-            DAUser *user = (DAUser *)[touchContents objectForKey:@"createby"];
-            [self pushMemberDetailCtrlToParentNavCtrl:user];
-            return;
-        }
-    }
-    
-    [self.nextResponder touchesEnded:touches withEvent:event];
-}
-
--(void)pushMemberDetailCtrlToParentNavCtrl:(DAUser *)user
-{
-    if (self.parentController != nil) {
-        DAMemberDetailViewController *memberDetailViewController =[[DAMemberDetailViewController alloc]initWithNibName:@"DAMemberDetailViewController" bundle:nil];
-        memberDetailViewController.hidesBottomBarWhenPushed = YES;
-        memberDetailViewController.uid = user._id ;
-        
-        [self.parentController.navigationController pushViewController:memberDetailViewController animated:YES];
-    }
-}
-
--(void)pushGroupDetailCtrlToParentNavCtrl:(DAGroup *)group
-{
-    if (self.parentController != nil) {
-        DAGroupDetailViewController *groupDetailViewController =[[DAGroupDetailViewController alloc]initWithNibName:@"DAGroupDetailViewController" bundle:nil];
-        groupDetailViewController.hidesBottomBarWhenPushed = YES;
-        groupDetailViewController.gid = group._id ;
-        
-        [self.parentController.navigationController pushViewController:groupDetailViewController animated:YES];
-    }
-}
-
-#pragma mark - DAMessageAtViewDelegate
--(void)atUserClicked:(DAUser *)user
-{
-    NSLog(@"atuser: %@", user._id);
-    [self pushMemberDetailCtrlToParentNavCtrl:user];
-}
-
--(void)atGroupClicked:(DAGroup *)group
-{
-    NSLog(@"atgroup: %@", group._id);
-    [self pushGroupDetailCtrlToParentNavCtrl:group];
-}
 
 @end
