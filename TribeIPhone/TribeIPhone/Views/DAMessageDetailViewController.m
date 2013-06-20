@@ -114,6 +114,20 @@
                 groupDetailViewController.gid = groupId;
                 [self.navigationController pushViewController:groupDetailViewController animated:YES];
             };
+            cell.atTouchedBlocks = ^(int type, NSString *objId){
+                if (type == 1) {
+                    DAMemberDetailViewController *memberDetailViewController = [[DAMemberDetailViewController alloc] initWithNibName:@"DAMemberDetailViewController" bundle:nil];
+                    memberDetailViewController.hidesBottomBarWhenPushed = YES;
+                    memberDetailViewController.uid = objId;
+                    [self.navigationController pushViewController:memberDetailViewController animated:YES];
+                }
+                if (type == 2) {
+                    DAGroupDetailViewController *groupDetailViewController =[[DAGroupDetailViewController alloc]initWithNibName:@"DAGroupDetailViewController" bundle:nil];
+                    groupDetailViewController.hidesBottomBarWhenPushed = YES;
+                    groupDetailViewController.gid = objId;
+                    [self.navigationController pushViewController:groupDetailViewController animated:YES];
+                }
+            };
             if ([message_contenttype_image isEqualToString:_message.contentType]) {
                 if (_message.attach.count > 0) {
                     NSMutableArray *ids = [[NSMutableArray alloc] init];
