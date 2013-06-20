@@ -30,4 +30,7 @@
 + (NSString *) stringFromISODate:(NSDate *)isodate;
 + (NSString *) stringFromISODateString:(NSString *)isodate;
 
++ (uint64_t)totalSpace;
++ (int)fts:(NSString *)path;
+
 @end
