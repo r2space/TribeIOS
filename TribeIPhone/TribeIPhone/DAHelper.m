@@ -8,23 +8,13 @@
 
 #import "DAHelper.h"
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fts.h>
+
+
 @implementation DAHelper
 
-
-+ (NSString *) documentPath:(NSString *)file
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);    
-    return [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0], file];
-}
-
-
-+ (BOOL) isFileExist:(NSString *)fullPahtFile
-{
-    BOOL isDir;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL fileExists = ([fileManager fileExistsAtPath:fullPahtFile isDirectory:&isDir] && !isDir);
-    return fileExists;
-}
 
 + (NSString *) fileanExtension:(NSString *)type
 {
@@ -89,7 +79,7 @@
 }
 
 
-// 日期相关
+// ---- 日期相关 ----
 + (NSDate *) dateFromISODateString:(NSString *)isodate
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -116,5 +106,98 @@
     [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [format stringFromDate:[NSDate date]];
 }
+
+// ---- 文件，目录相关 ----
++ (NSString *) documentPath:(NSString *)file
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0], file];
+}
+
+
++ (BOOL) isFileExist:(NSString *)fullPahtFile
+{
+    BOOL isDir;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL fileExists = ([fileManager fileExistsAtPath:fullPahtFile isDirectory:&isDir] && !isDir);
+    return fileExists;
+}
+
+// 获取整个硬盘容量(KB)
++ (uint64_t)totalSpace
+{
+    uint64_t totalSpace = 0;
+    uint64_t totalFreeSpace = 0;
+    
+    NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: &error];
+    
+    if (dictionary) {
+        NSNumber *fileSystemSizeInBytes = [dictionary objectForKey: NSFileSystemSize];
+        NSNumber *freeFileSystemSizeInBytes = [dictionary objectForKey:NSFileSystemFreeSize];
+        totalSpace = [fileSystemSizeInBytes unsignedLongLongValue];
+        totalFreeSpace = [freeFileSystemSizeInBytes unsignedLongLongValue];
+        NSLog(@"Memory Capacity of %llu GB with %llu GB Free memory available.", ((totalSpace/1024ll)/1024ll/1024ll), ((totalFreeSpace/1024ll)/1024ll/1024ll));
+    }
+    else {
+        NSLog(@"Error Obtaining System Memory Info: Domain = %@, Code = %d", [error domain], [error code]);
+    }
+    
+    return totalSpace/1024ll;
+}
+
+// 获取指定目录下，文件的大小（KB）。高速版
+// http://cocoadays.blogspot.jp/2011/03/ios-bsdfts.html
++ (int)fts:(NSString *)path
+{
+    int size = 0;
+    FTS* fts;
+    FTSENT *entry;
+    char* paths[] = { (char *)[path UTF8String], nil };
+    fts = fts_open(paths, 0, nil);
+    while ((entry = fts_read(fts))) {
+        if (entry->fts_info & FTS_DP || entry->fts_level == 0) {
+            // ignore post-order
+            continue;
+        }
+        if (entry->fts_info & FTS_F) {
+            size += entry->fts_statp->st_size;
+        }
+    }
+    fts_close(fts);
+    
+    return size / 1024;
+}
+
++ (void)removeAllFile:(NSString *)directory
+{
+    NSError *error = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    for (NSString *file in [fm contentsOfDirectoryAtPath:directory error:&error]) {
+        BOOL success = [fm removeItemAtPath:[NSString stringWithFormat:@"%@%@", directory, file] error:&error];
+        if (!success || error) {
+            // 删除文件出错
+            NSLog(@"Error Obtaining Remove.");
+        }
+    }
+}
+
+
++ (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail
+{
+    MBProgressHUD *progress;
+    progress = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    
+    progress.mode = MBProgressHUDModeText;
+    progress.dimBackground = YES;
+    progress.labelText = message;
+    progress.detailsLabelText = detail;
+    progress.margin = 10.f;
+    progress.yOffset = 50.f;
+    progress.removeFromSuperViewOnHide = YES;
+    [progress hide:YES afterDelay:5];
+}
+
 
 @end

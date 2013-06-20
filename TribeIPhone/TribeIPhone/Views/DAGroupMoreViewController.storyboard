@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="0xz-nd-ohz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="0xz-nd-ohz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -73,7 +73,7 @@
                                                         <constraint firstAttribute="height" constant="33" id="iap-XD-ZzK"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="李林" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fue-aP-bfR">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="组名称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fue-aP-bfR">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="169" id="Bf4-YH-bMl"/>
                                                         <constraint firstAttribute="height" constant="30" id="gtW-iT-AiJ"/>
@@ -81,6 +81,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="0xz-nd-ohz" eventType="editingDidEndOnExit" id="XL6-Mn-1Np"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -167,6 +170,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="0xz-nd-ohz" eventType="editingDidEndOnExit" id="GaH-eX-To4"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -210,6 +216,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="0xz-nd-ohz" eventType="editingDidEndOnExit" id="Zag-M3-CIg"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -235,6 +244,7 @@
                     <connections>
                         <outlet property="imgPortrait" destination="ElG-dX-Lqd" id="3AA-0B-IHL"/>
                         <outlet property="segSecurity" destination="wUM-a1-SiS" id="TeU-oz-lhC"/>
+                        <outlet property="txtCategory" destination="moH-74-SgE" id="wlY-8u-t9B"/>
                         <outlet property="txtDescription" destination="SIJ-x8-m3M" id="Kmk-Tc-KbR"/>
                         <outlet property="txtName" destination="fue-aP-bfR" id="uc3-ca-6WJ"/>
                     </connections>
@@ -258,6 +268,7 @@
                 <relationship kind="action" name="didEndOnExit:"/>
                 <relationship kind="outlet" name="imgPortrait" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="segSecurity" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="txtCategory" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txtDescription" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txtName" candidateClass="UITextField"/>
             </relationships>

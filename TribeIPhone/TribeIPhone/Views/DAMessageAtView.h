@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
+typedef void (^AtDidTouched)(int type, NSString *objectId);
+
 @protocol DAMessageAtViewDelegate
 -(void)atUserClicked:(DAUser *)user;
 -(void)atGroupClicked:(DAGroup *)group;
@@ -16,9 +18,10 @@
 
 @interface DAMessageAtView : UIView
 {
-    NSMutableArray *touchLocations;
-    NSMutableArray *touchContents;
+//    NSMutableArray *touchLocations;
+//    NSMutableArray *touchContents;
 }
 @property (nonatomic, strong) id<DAMessageAtViewDelegate> delegate;
--(UIView *)initWithMessage:(DAMessage *)message frame:(CGRect)frame;
+@property (strong, nonatomic) AtDidTouched didTouchedBlocks;
+-(UIView *)initWithMessage:(DAMessage *)message frame:(CGRect)frame touchEnable:(BOOL)touchEnable;
 @end

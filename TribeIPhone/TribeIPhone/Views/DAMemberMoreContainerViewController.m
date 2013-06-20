@@ -91,8 +91,30 @@
     }
     self.user.custom.memo = moreViewController.txtDescription.text;
     
+    // 语言
+    switch (moreViewController.segLang.selectedSegmentIndex) {
+        case 0:
+            self.user.lang = UserLanguageZH;
+            break;
+        case 1:
+            self.user.lang = UserLanguageJP;
+            break;
+        case 2:
+            self.user.lang = UserLanguageEN;
+            break;
+        default:
+            break;
+    }
+    
+    // 住址
+    if (self.user.address == nil) {
+        self.user.address = [[UserAddress alloc] init];
+    }
+    self.user.address.city = moreViewController.txtAddress.text;
+    
+    
     [[DAUserModule alloc] update:self.user callback:^(NSError *error, DAUser *user){
-        NSLog(@"didFinishUpdate");
+        [DAHelper alert:self.view message:@"更新成功" detail:nil];
     }];
 }
 

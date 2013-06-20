@@ -17,6 +17,11 @@
                             count:(int)count
                          callback:(void (^)(NSError *error, DANotificationList *notificationList))callback;
 
+-(void)getUnreadNotificationListByType:(NSString *)type
+                                 start:(int)start
+                                 count:(int)count
+                              callback:(void (^)(NSError *, DANotificationList *))callback;
+
 - (void)read:(NSString *)nid
     callback:(void (^)(NSError *error, NSString *nid))callback;
 

@@ -9,6 +9,10 @@
 #import "DACommon.h"
 #import "DAGroup.h"
 
+#define UserLanguageJP  @"jp"
+#define UserLanguageZH  @"zh"
+#define UserLanguageEN  @"en"
+
 @interface UserName : Jastor <NSCoding>
 
 @property (retain, nonatomic) NSString *name_zh;

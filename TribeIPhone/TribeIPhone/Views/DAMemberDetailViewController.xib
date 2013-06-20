@@ -340,7 +340,7 @@
 								<float key="scoringTypeFloat">40</float>
 								<int key="contentType">3</int>
 							</object>
-							<object class="IBNSLayoutConstraint" id="504867473">
+							<object class="IBNSLayoutConstraint" id="502773023">
 								<reference key="firstItem" ref="191373211"/>
 								<int key="firstAttribute">4</int>
 								<int key="relation">0</int>
@@ -356,7 +356,7 @@
 								<float key="scoringTypeFloat">40</float>
 								<int key="contentType">3</int>
 							</object>
-							<object class="IBNSLayoutConstraint" id="295216772">
+							<object class="IBNSLayoutConstraint" id="97982279">
 								<reference key="firstItem" ref="265817605"/>
 								<int key="firstAttribute">3</int>
 								<int key="relation">0</int>
@@ -617,12 +617,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">54</int>
-						<reference key="object" ref="295216772"/>
+						<reference key="object" ref="97982279"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">55</int>
-						<reference key="object" ref="504867473"/>
+						<reference key="object" ref="502773023"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -640,8 +640,8 @@
 					<reference ref="993215835"/>
 					<reference ref="1046653908"/>
 					<reference ref="21182102"/>
-					<reference ref="295216772"/>
-					<reference ref="504867473"/>
+					<reference ref="97982279"/>
+					<reference ref="502773023"/>
 					<reference ref="459032613"/>
 					<reference ref="876366572"/>
 					<reference ref="829305572"/>
@@ -696,11 +696,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="10-medical.png">{22, 22}</string>
-			<string key="111-user.png">{24, 21}</string>
-			<string key="12-eye.png">{24, 16}</string>
-			<string key="18-envelope.png">{24, 16}</string>
-			<string key="53-house.png">{22, 22}</string>
+			<string key="10-medical.png">{16, 16}</string>
+			<string key="111-user.png">{16, 16}</string>
+			<string key="12-eye.png">{16, 16}</string>
+			<string key="18-envelope.png">{16, 16}</string>
+			<string key="53-house.png">{16, 16}</string>
 		</dictionary>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 		<string key="IBCocoaTouchPluginVersion">2083</string>

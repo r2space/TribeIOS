@@ -7,6 +7,10 @@
 //
 
 #import "DASettingViewController.h"
+#import "DAHelper.h"
+
+#define kInfoPlistKeyServerAddress  @"ServerAddress"
+#define kInfoPlistKeyServerPort     @"ServerPort"
 
 @interface DASettingViewController ()
 
@@ -14,123 +18,86 @@
 
 @implementation DASettingViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    NSString *serverAddress = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerAddress];
+    NSNumber *serverPort = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerPort];
+    
+    self.txtServerAddress.text = serverAddress;
+    self.txtServerPort.text = [serverPort stringValue];
+    [self showFreeSpace];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewWillDisappear:animated];
+    
+    // 离开页面时，设定服务器地址
+    [[NSUserDefaults standardUserDefaults] setObject:self.txtServerAddress.text forKey:kServerAddress];
+    [[NSUserDefaults standardUserDefaults] setInteger:self.txtServerPort.text.intValue forKey:kServerPort];
 }
 
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-////#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-////#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+// 收键盘
+- (IBAction)didEndOnExit:(id)sender
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    [((UITextField *)sender) resignFirstResponder];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
+        if (indexPath.row == 1) {
             
-            [[DALoginModule alloc] logout:^(NSError *error){
-                
-                // 并清除数据
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.message.userid"];
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.message.password"];
-                
-                NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.message.userid"];
-                NSLog(@"current user : %@", userid);
-                
-                // 注销
-                [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"NeedsLogin" object:nil]];
-                
-                NSLog(@"logout");
-            }];
+            UIActionSheet *as = [[UIActionSheet alloc] init];
+            as.delegate = self;
+            as.title = @"确定删除吗？";
+            [as addButtonWithTitle:@"确定"];
+            [as addButtonWithTitle:@"取消"];
+            as.cancelButtonIndex = 1;
+            as.destructiveButtonIndex = 1;
+            [as showInView:self.view];
+            
+            // 并清除数据
+            [DAHelper removeAllFile:@"/"];
         }
     }
+
+    // 注销
+    if (indexPath.section == 2) {
+        [[DALoginModule alloc] logout:^(NSError *error){
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.message.userid"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.message.password"];
+            
+            // 显示登陆画面
+            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"NeedsLogin" object:nil]];
+        }];
+    }
+
+}
+
+- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (buttonIndex) {
+        case 0:
+            [DAHelper removeAllFile:[DAHelper documentPath:@"/"]];
+            [self showFreeSpace];
+            break;
+        case 1:
+            break;
+    }
+    
+}
+
+- (void)showFreeSpace
+{
+    // 获取document目录的大小，计算占整体百分比
+    uint64_t total = [DAHelper totalSpace];
+    int cache = [DAHelper fts:[DAHelper documentPath:@"/"]];
+    self.prvSpace.progress = cache / total;
 }
 
 @end

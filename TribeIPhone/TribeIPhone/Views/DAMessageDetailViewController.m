@@ -8,6 +8,9 @@
 
 #import "DAMessageDetailViewController.h"
 #import "DAPictureViewController.h"
+#import "DAMemberDetailViewController.h"
+#import "DAGroupDetailViewController.h"
+#import "DAFileWebViewController.h"
 
 @interface DAMessageDetailViewController ()
 
@@ -76,12 +79,23 @@
         
         UILabel *comment = [[UILabel alloc] initWithFrame:CGRectZero];
         comment.backgroundColor = [UIColor clearColor];
-        comment.textColor = [UIColor blueColor];
+        comment.textColor = [UIColor grayColor];
         comment.font = [UIFont systemFontOfSize:14];
-        comment.frame = CGRectMake(8, 15, 60, 20);
-        comment.text =  [NSString stringWithFormat: @"评论：%d",_commentsTotal];
+        comment.frame = CGRectMake(8, 15, 260, 20);
+        
+        NSMutableString *str = [NSMutableString stringWithFormat: @"评论：%d",_commentsTotal];
+        [str appendString:@"  "];
+        [str appendString:[NSString stringWithFormat:@"转发：%@", _message.part.forwardNums]];
+        [str appendString:@"  "];
+        [str appendString:[NSString stringWithFormat:@"赞：%d", _message.likers.count]];
+        comment.text =  str;
         
         [containerView addSubview:comment];
+        
+        UIImageView *imgSeparator = [[UIImageView alloc] initWithFrame:CGRectMake(1, 48, 320, 2)];
+        UIImage *img = [UIImage imageNamed:@"list_line.png"];
+        imgSeparator.image = img;
+        [containerView addSubview:imgSeparator];
         return containerView;
     }
     return nil;
@@ -100,9 +114,48 @@
             }
             cell.imgPortrait.image = [[_message getCreatUser] getUserPhotoImage];
             cell.lblName.text = [[_message getCreatUser] getUserName];
+            cell.lblGroup.text = [_message getCreatUser].department.name.name_zh;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         } else {
             DAMessageDetailCell *cell = [DAMessageDetailCell initWithMessage:_message tableView:tableView];
+            cell.rangeTouchedBlocked = ^(NSString *groupId){
+                DAGroupDetailViewController *groupDetailViewController =[[DAGroupDetailViewController alloc]initWithNibName:@"DAGroupDetailViewController" bundle:nil];
+                groupDetailViewController.hidesBottomBarWhenPushed = YES;
+                groupDetailViewController.gid = groupId;
+                [self.navigationController pushViewController:groupDetailViewController animated:YES];
+            };
+            cell.atTouchedBlocks = ^(int type, NSString *objId){
+                if (type == 1) {
+                    DAMemberDetailViewController *memberDetailViewController = [[DAMemberDetailViewController alloc] initWithNibName:@"DAMemberDetailViewController" bundle:nil];
+                    memberDetailViewController.hidesBottomBarWhenPushed = YES;
+                    memberDetailViewController.uid = objId;
+                    [self.navigationController pushViewController:memberDetailViewController animated:YES];
+                }
+                if (type == 2) {
+                    DAGroupDetailViewController *groupDetailViewController =[[DAGroupDetailViewController alloc]initWithNibName:@"DAGroupDetailViewController" bundle:nil];
+                    groupDetailViewController.hidesBottomBarWhenPushed = YES;
+                    groupDetailViewController.gid = objId;
+                    [self.navigationController pushViewController:groupDetailViewController animated:YES];
+                }
+            };
+            cell.fileTouchedBlocks = ^(int type, NSString *fileId){
+                if (type == 1) {
+                    [[DAFileModule alloc] getFileDetail:fileId callback:^(NSError *error, DAFileDetail *detail) {
+                        if (error == nil) {
+                            DAFileWebViewController *detailView = [[DAFileWebViewController alloc] initWithNibName:@"DAFileWebViewController" bundle:nil];
+                            DAFile *file = detail.file;
+                            detailView.fileDb = file;
+                            detailView.downloadId = file.downloadId;
+                            detailView.fileExt = file.extension;
+                            detailView.hidesBottomBarWhenPushed = YES;
+                            [self.navigationController pushViewController:detailView animated:YES];
+                        }
+                    }];
+                }
+            };
+            
             if ([message_contenttype_image isEqualToString:_message.contentType]) {
                 if (_message.attach.count > 0) {
                     NSMutableArray *ids = [[NSMutableArray alloc] init];
@@ -187,13 +240,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        DAMemberDetailViewController *memberDetailViewController =[[DAMemberDetailViewController alloc]initWithNibName:@"DAMemberDetailViewController" bundle:nil];
+        memberDetailViewController.hidesBottomBarWhenPushed = YES;
+        memberDetailViewController.uid = [[_message getCreatUser] _id];
+        [self.navigationController pushViewController:memberDetailViewController animated:YES];
+    }
 }
 
 -(void)fetch
@@ -276,18 +328,5 @@
         }
     }
 }
-
-//图片详细
-//        if ([message_contenttype_image isEqualToString:_message.contentType]) {
-//            if (_message.attach.count > 0) {
-//                DAPictureViewController *pictureCtrl = [[DAPictureViewController alloc] initWithNibName:@"DAPictureViewController" bundle:nil];
-//                NSMutableArray *ids = [[NSMutableArray alloc] init];
-//                for (MessageAttach *file in _message.attach) {
-//                    [ids addObject:file.fileid];
-//                }
-//                pictureCtrl.PictureIds = ids;
-//                [self presentViewController:pictureCtrl animated:YES completion:nil];
-//            }
-//        }
 
 @end

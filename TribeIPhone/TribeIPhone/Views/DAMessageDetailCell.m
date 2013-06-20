@@ -8,9 +8,15 @@
 
 #import "DAMessageDetailCell.h"
 #import "DAPictureViewController.h"
+#import "DAHelper.h"
 
 @implementation DAMessageDetailCell
 
+- (IBAction)onRangeClicked:(id)sender {
+    if (self.rangeTouchedBlocked != nil) {
+        self.rangeTouchedBlocked(self.message.range);
+    }
+}
 
 +(DAMessageDetailCell *) initWithMessage:(DAMessage *)message tableView:(UITableView *)tableView
 {
@@ -21,7 +27,7 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
-    
+    [cell setMessage:message];
     float offset = 8;
     float height = 0;
     float maxWidth = 320 - offset*2;
@@ -33,14 +39,15 @@
     height += label.frame.size.height;
     
     // at view
-    DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(offset, height, maxWidth, 5000)];
+    DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(offset, height, maxWidth, 5000) touchEnable:YES];
     [cell.atArea removeFromSuperview];
     cell.atArea = view;
     [cell addSubview:view];
     height += view.frame.size.height;
     
     if ([message_contenttype_document isEqualToString:message.contentType] || [message_contenttype_file isEqualToString:message.contentType]) {
-        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(20, height, maxWidth - 40, 0)];
+        BOOL touchEnable = [message_contenttype_document isEqualToString:message.contentType] ? YES : NO;
+        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(20, height, maxWidth - 40, 0) touchEnable:touchEnable];
         [cell.fileArea removeFromSuperview];
         cell.fileArea = fview;
         [cell addSubview:fview];
@@ -61,6 +68,23 @@
         [cell.scrollView setHidden:YES];
     }
     
+    cell.lblCreateAt.text = [DAHelper stringFromISODateString:message.createat];
+    if(message.range != nil && [message getPublicRange] != nil){
+        cell.rangeArea.hidden = NO;
+        DAGroup *group = message.part.range;
+        cell.lblRange.text = group.name.name_zh;
+//        if ([@"1" isEqualToString:group.type]) {
+//            if ([@"1" isEqualToString:group.secure]) {
+//                cell.rangIcon.image = [UIImage imageNamed:@"group_security.png"];
+//            } else {
+//                cell.rangIcon.image = [UIImage imageNamed:@"group.png"];
+//            }
+//        } else {
+//            cell.rangIcon.image = [UIImage imageNamed:@"department.png"];
+//        }
+    } else {
+        cell.rangeArea.hidden = YES;
+    }
     return cell;
 }
 
@@ -78,11 +102,11 @@
     DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:[UIFont systemFontOfSize:16] breakMode:NSLineBreakByCharWrapping maxFrame:CGRectMake(offset, height, maxWidth, 5000.0f)];
     height += label.frame.size.height;
     
-    DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(offset, height, maxWidth, 5000)];
+    DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(offset, height, maxWidth, 5000) touchEnable:NO];
     height += view.frame.size.height;
     
     if ([message_contenttype_document isEqualToString:message.contentType] || [message_contenttype_file isEqualToString:message.contentType]) {
-        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(20, height, maxWidth - 40, 0)];
+        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(20, height, maxWidth - 40, 0) touchEnable:NO];
         height += fview.frame.size.height;
     }
     
@@ -94,5 +118,15 @@
     height += 40;
     
     return height;
+}
+
+-(void)setAtTouchedBlocks:(AtDidTouched)atTouchedBlocks
+{
+    self.atArea.didTouchedBlocks = atTouchedBlocks;
+}
+
+-(void)setFileTouchedBlocks:(FileDidTouched)fileTouchedBlocks
+{
+    self.fileArea.didTouchedBlocks = fileTouchedBlocks;
 }
 @end

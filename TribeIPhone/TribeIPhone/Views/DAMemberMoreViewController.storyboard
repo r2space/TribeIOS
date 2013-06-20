@@ -109,7 +109,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="李林" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0UL-Yt-08R">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0UL-Yt-08R">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Yha-tt-8UM"/>
                                                         <constraint firstAttribute="width" constant="169" id="hkS-RO-G35"/>
@@ -156,7 +156,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="186 4085 2861" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AfX-wo-0fa">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="000 0000 0000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AfX-wo-0fa">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="169" id="68q-He-KZL"/>
                                                         <constraint firstAttribute="height" constant="30" id="u9V-mH-qSx"/>
@@ -201,7 +201,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="r2space@gmail.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h5o-Y9-h2k">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mail address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h5o-Y9-h2k">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="8EB-T2-rZs"/>
                                                         <constraint firstAttribute="width" constant="169" id="uHt-VN-xQs"/>
@@ -247,7 +247,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="描述" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x63-Bt-Y9P">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x63-Bt-Y9P">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="169" id="36E-ni-pUu"/>
                                                         <constraint firstAttribute="height" constant="30" id="NNz-K2-rfa"/>
@@ -343,7 +343,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="大连市高新园区黄浦路七贤园" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K2e-Cm-ciD">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K2e-Cm-ciD">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="8G0-Pn-H8e"/>
                                                         <constraint firstAttribute="width" constant="169" id="mzB-js-eYM"/>

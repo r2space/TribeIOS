@@ -49,8 +49,16 @@
     }
 
     // 语言
-    self.segLang.selectedSegmentIndex = 0;
-
+    if ([self.user.lang isEqualToString:UserLanguageZH]) {
+        self.segLang.selectedSegmentIndex = 0;
+    }
+    if ([self.user.lang isEqualToString:UserLanguageJP]) {
+        self.segLang.selectedSegmentIndex = 1;
+    }
+    if ([self.user.lang isEqualToString:UserLanguageEN]) {
+        self.segLang.selectedSegmentIndex = 2;
+    }
+    
     // 地址
     if (self.user.address != nil) {
         self.txtAddress.text = self.user.address.city;

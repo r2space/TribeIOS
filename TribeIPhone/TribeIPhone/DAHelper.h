@@ -15,19 +15,25 @@
 
 @interface DAHelper : NSObject
 
-+ (NSString *) documentPath:(NSString *)file;
-+ (BOOL) isFileExist:(NSString *)fullPahtFile;
 + (NSString *) fileanExtension:(NSString *)type;
 + (BOOL) isNetworkReachable;
-
-
-
 + (CQMFloatingController *) showPopup:(UIViewController *)viewController;
 + (void) hidePopup;
+
 
 + (NSDate *) dateFromISODateString:(NSString *)isodate;
 + (NSString *) currentDateString;
 + (NSString *) stringFromISODate:(NSDate *)isodate;
 + (NSString *) stringFromISODateString:(NSString *)isodate;
+
+
++ (NSString *) documentPath:(NSString *)file;
++ (BOOL) isFileExist:(NSString *)fullPahtFile;
++ (uint64_t)totalSpace;
++ (int)fts:(NSString *)path;
++ (void)removeAllFile:(NSString *)directory;
+
+
++ (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail;
 
 @end
