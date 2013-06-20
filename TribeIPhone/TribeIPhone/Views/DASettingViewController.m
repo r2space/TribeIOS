@@ -27,20 +27,19 @@
     
     self.txtServerAddress.text = serverAddress;
     self.txtServerPort.text = [serverPort stringValue];
-
-    // 获取document目录的大小，计算占整体百分比
-    uint64_t total = [DAHelper totalSpace];
-    int cache = [DAHelper fts:[DAHelper documentPath:@"/"]];
-    self.prvSpace.progress = cache / total;
+    [self showFreeSpace];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    // 设定服务器地址
+    // 离开页面时，设定服务器地址
+    [[NSUserDefaults standardUserDefaults] setObject:self.txtServerAddress.text forKey:kServerAddress];
+    [[NSUserDefaults standardUserDefaults] setInteger:self.txtServerPort.text.intValue forKey:kServerPort];
 }
 
+// 收键盘
 - (IBAction)didEndOnExit:(id)sender
 {
     [((UITextField *)sender) resignFirstResponder];
@@ -51,27 +50,54 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
+        if (indexPath.row == 1) {
             
-            [[DALoginModule alloc] logout:^(NSError *error){
-                
-                // 并清除数据
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.message.userid"];
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.message.password"];
-                
-                NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.message.userid"];
-                NSLog(@"current user : %@", userid);
-            }];
+            UIActionSheet *as = [[UIActionSheet alloc] init];
+            as.delegate = self;
+            as.title = @"确定删除吗？";
+            [as addButtonWithTitle:@"确定"];
+            [as addButtonWithTitle:@"取消"];
+            as.cancelButtonIndex = 1;
+            as.destructiveButtonIndex = 1;
+            [as showInView:self.view];
+            
+            // 并清除数据
+            [DAHelper removeAllFile:@"/"];
         }
     }
 
+    // 注销
     if (indexPath.section == 2) {
-        // 注销
-        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"NeedsLogin" object:nil]];
-        
-        NSLog(@"logout");
+        [[DALoginModule alloc] logout:^(NSError *error){
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.message.userid"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.message.password"];
+            
+            // 显示登陆画面
+            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"NeedsLogin" object:nil]];
+        }];
     }
 
+}
+
+- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (buttonIndex) {
+        case 0:
+            [DAHelper removeAllFile:[DAHelper documentPath:@"/"]];
+            [self showFreeSpace];
+            break;
+        case 1:
+            break;
+    }
+    
+}
+
+- (void)showFreeSpace
+{
+    // 获取document目录的大小，计算占整体百分比
+    uint64_t total = [DAHelper totalSpace];
+    int cache = [DAHelper fts:[DAHelper documentPath:@"/"]];
+    self.prvSpace.progress = cache / total;
 }
 
 @end

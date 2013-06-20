@@ -15,7 +15,7 @@
                         <sections>
                             <tableViewSection headerTitle="服务器" id="LlH-wL-7rA">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eLQ-rb-hD0">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eLQ-rb-hD0">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -38,8 +38,8 @@
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10.2.8.199" placeholder="10.2.8.199" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Sx-fX-Fhb">
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="160" id="0TP-nE-G5b"/>
                                                         <constraint firstAttribute="height" constant="30" id="Fgi-4p-PR7"/>
-                                                        <constraint firstAttribute="width" constant="154" id="ZNk-Qd-9ns"/>
                                                     </constraints>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -53,14 +53,14 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="B2A-Sm-7h3" firstAttribute="leading" secondItem="eLQ-rb-hD0" secondAttribute="leading" constant="30" id="4qD-bw-DbG"/>
-                                            <constraint firstItem="1Sx-fX-Fhb" firstAttribute="leading" secondItem="kGQ-xc-Gkn" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Es5-5w-otS"/>
                                             <constraint firstItem="B2A-Sm-7h3" firstAttribute="centerY" secondItem="kGQ-xc-Gkn" secondAttribute="centerY" type="default" id="FHR-U3-xEc"/>
                                             <constraint firstItem="kGQ-xc-Gkn" firstAttribute="leading" secondItem="B2A-Sm-7h3" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="K4R-7p-h02"/>
                                             <constraint firstItem="1Sx-fX-Fhb" firstAttribute="top" secondItem="eLQ-rb-hD0" secondAttribute="top" constant="8" id="gX8-C5-kmF"/>
-                                            <constraint firstItem="kGQ-xc-Gkn" firstAttribute="centerY" secondItem="eLQ-rb-hD0" secondAttribute="centerY" type="default" id="ocR-8O-RMp"/>
+                                            <constraint firstItem="B2A-Sm-7h3" firstAttribute="centerY" secondItem="eLQ-rb-hD0" secondAttribute="centerY" type="default" id="iEb-y5-tnS"/>
+                                            <constraint firstItem="1Sx-fX-Fhb" firstAttribute="leading" secondItem="eLQ-rb-hD0" secondAttribute="leading" constant="130" id="kvT-Wb-TCu"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RHM-g7-enc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RHM-g7-enc">
                                         <rect key="frame" x="0.0" y="91" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -83,7 +83,7 @@
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="80" placeholder="10.2.8.199" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdI-mW-hf2">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="39" id="Qqm-id-6DD"/>
+                                                        <constraint firstAttribute="width" constant="160" id="wQs-oJ-E4i"/>
                                                         <constraint firstAttribute="height" constant="30" id="zjf-KX-Sdd"/>
                                                     </constraints>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,8 +99,9 @@
                                         <constraints>
                                             <constraint firstItem="WID-Yf-agz" firstAttribute="leading" secondItem="0yZ-kZ-ay6" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0BL-pT-D9D"/>
                                             <constraint firstItem="rdI-mW-hf2" firstAttribute="centerY" secondItem="RHM-g7-enc" secondAttribute="centerY" type="default" id="4YM-jv-usW"/>
+                                            <constraint firstItem="rdI-mW-hf2" firstAttribute="leading" secondItem="RHM-g7-enc" secondAttribute="leading" constant="130" id="91D-XM-Fro"/>
+                                            <constraint firstItem="rdI-mW-hf2" firstAttribute="baseline" secondItem="WID-Yf-agz" secondAttribute="baseline" type="default" id="ElN-aT-fLF"/>
                                             <constraint firstItem="0yZ-kZ-ay6" firstAttribute="top" secondItem="RHM-g7-enc" secondAttribute="top" constant="4" id="Gyj-Hh-iyW"/>
-                                            <constraint firstItem="rdI-mW-hf2" firstAttribute="leading" secondItem="WID-Yf-agz" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ISP-aX-YyI"/>
                                             <constraint firstItem="0yZ-kZ-ay6" firstAttribute="centerY" secondItem="WID-Yf-agz" secondAttribute="centerY" type="default" id="p9a-be-yh0"/>
                                             <constraint firstItem="0yZ-kZ-ay6" firstAttribute="leading" secondItem="RHM-g7-enc" secondAttribute="leading" constant="30" id="yCy-7A-Xh0"/>
                                         </constraints>
@@ -109,7 +110,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="缓存" id="5vt-iU-YSj">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="AJn-5i-8xG">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="AJn-5i-8xG">
                                         <rect key="frame" x="0.0" y="182" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -144,7 +145,7 @@
                                             <constraint firstItem="J7T-rC-Afx" firstAttribute="leading" secondItem="z7J-uh-NGb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="UcK-8W-NBp"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Tnb-NJ-ptq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Tnb-NJ-ptq">
                                         <rect key="frame" x="0.0" y="227" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -179,7 +180,7 @@
                             </tableViewSection>
                             <tableViewSection id="Km5-Ef-jaO">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ADY-b2-F4c">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ADY-b2-F4c">
                                         <rect key="frame" x="0.0" y="292" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -214,7 +215,7 @@
                             </tableViewSection>
                             <tableViewSection id="yFB-GU-LvW">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="90n-1Z-Plc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="90n-1Z-Plc">
                                         <rect key="frame" x="0.0" y="358" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -282,7 +283,7 @@
     <resources>
         <image name="44-shoebox.png" width="24" height="22"/>
         <image name="database.png" width="26" height="26"/>
-        <image name="man.png" width="26" height="26"/>
+        <image name="man.png" width="52" height="52"/>
         <image name="preferences.png" width="26" height="26"/>
         <image name="refresh.png" width="26" height="26"/>
         <image name="world.png" width="26" height="26"/>

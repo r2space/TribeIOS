@@ -16,21 +16,6 @@
 @implementation DAHelper
 
 
-+ (NSString *) documentPath:(NSString *)file
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);    
-    return [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0], file];
-}
-
-
-+ (BOOL) isFileExist:(NSString *)fullPahtFile
-{
-    BOOL isDir;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL fileExists = ([fileManager fileExistsAtPath:fullPahtFile isDirectory:&isDir] && !isDir);
-    return fileExists;
-}
-
 + (NSString *) fileanExtension:(NSString *)type
 {
     NSMutableDictionary *mime = [[NSMutableDictionary alloc] init];
@@ -94,7 +79,7 @@
 }
 
 
-// 日期相关
+// ---- 日期相关 ----
 + (NSDate *) dateFromISODateString:(NSString *)isodate
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -120,6 +105,22 @@
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [format stringFromDate:[NSDate date]];
+}
+
+// ---- 文件，目录相关 ----
++ (NSString *) documentPath:(NSString *)file
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0], file];
+}
+
+
++ (BOOL) isFileExist:(NSString *)fullPahtFile
+{
+    BOOL isDir;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL fileExists = ([fileManager fileExistsAtPath:fullPahtFile isDirectory:&isDir] && !isDir);
+    return fileExists;
 }
 
 // 获取整个硬盘容量(KB)
@@ -167,6 +168,19 @@
     fts_close(fts);
     
     return size / 1024;
+}
+
++ (void)removeAllFile:(NSString *)directory
+{
+    NSError *error = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    for (NSString *file in [fm contentsOfDirectoryAtPath:directory error:&error]) {
+        BOOL success = [fm removeItemAtPath:[NSString stringWithFormat:@"%@%@", directory, file] error:&error];
+        if (!success || error) {
+            // 删除文件出错
+            NSLog(@"Error Obtaining Remove.");
+        }
+    }
 }
 
 @end

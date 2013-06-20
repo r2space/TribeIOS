@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
-@interface DASettingViewController : UITableViewController
+@interface DASettingViewController : UITableViewController <UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *txtServerAddress;
 @property (weak, nonatomic) IBOutlet UITextField *txtServerPort;
 @property (weak, nonatomic) IBOutlet UIProgressView *prvSpace;
