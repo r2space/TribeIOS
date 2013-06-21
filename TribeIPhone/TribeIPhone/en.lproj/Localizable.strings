@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  TribeIPhone
+
+  Created by kita on 13-6-21.
+  Copyright (c) 2013年 kita. All rights reserved.
+*/
+
+"message.filter.allMessage" = "All messages";

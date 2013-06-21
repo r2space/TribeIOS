@@ -183,6 +183,10 @@
     }
 }
 
++ (NSString *) localizedStringWithKey:(NSString *)key comment:(NSString *)comment
+{
+    return NSLocalizedString(key, comment);
+}
 
 + (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail
 {
