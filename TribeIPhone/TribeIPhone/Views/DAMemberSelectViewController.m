@@ -97,7 +97,7 @@
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
         [self setUnSelectUsers];
         int idx = [self getIndexInUsers:_unSelectUsers user:user];
-        if (idx > 0) {
+        if (idx >= 0) {
             NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:idx inSection:1]];
             [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
         }

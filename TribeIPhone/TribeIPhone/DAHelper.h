@@ -33,6 +33,8 @@
 + (int)fts:(NSString *)path;
 + (void)removeAllFile:(NSString *)directory;
 
++ (NSString *) localizedStringWithKey:(NSString *)key comment:(NSString *)comment;
+
 
 + (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail;
 

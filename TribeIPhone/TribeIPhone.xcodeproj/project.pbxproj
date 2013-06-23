@@ -110,6 +110,7 @@
 		47A021B317261BEF00E2AF6C /* DAMessageFileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A021B217261BEF00E2AF6C /* DAMessageFileView.m */; };
 		47A021B5172660B100E2AF6C /* DAContributeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A021B4172660B100E2AF6C /* DAContributeViewController.xib */; };
 		47A021B7172672DE00E2AF6C /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 47A021B6172672DE00E2AF6C /* camera.png */; };
+		47D476B51774323C003B15E3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47D476B71774323C003B15E3 /* Localizable.strings */; };
 		F223E2D5171D8A760095F1C1 /* DAGroupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F223E2D3171D8A750095F1C1 /* DAGroupDetailViewController.m */; };
 		F223E2D6171D8A760095F1C1 /* DAGroupDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F223E2D4171D8A750095F1C1 /* DAGroupDetailViewController.xib */; };
 		F223E2D9171E35750095F1C1 /* arrowleft.png in Resources */ = {isa = PBXBuildFile; fileRef = F223E2D8171E35750095F1C1 /* arrowleft.png */; };
@@ -346,7 +347,7 @@
 		471648FB1729140700622D5F /* DAMemberSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMemberSelectViewController.xib; sourceTree = "<group>"; };
 		471648FF172932E700622D5F /* round_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = round_delete.png; sourceTree = "<group>"; };
 		471649011729350100622D5F /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
-		471A0559171BC1AD0040CB93 /* Cross.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cross.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		471A0559171BC1AD0040CB93 /* cross.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cross.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		471A055C171BC1AD0040CB93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		471A055E171BC1AD0040CB93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		471A0560171BC1AD0040CB93 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -450,6 +451,9 @@
 		47A021B217261BEF00E2AF6C /* DAMessageFileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMessageFileView.m; sourceTree = "<group>"; };
 		47A021B4172660B100E2AF6C /* DAContributeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAContributeViewController.xib; sourceTree = "<group>"; };
 		47A021B6172672DE00E2AF6C /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		47D476B61774323C003B15E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		47D476B817743425003B15E3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		47D476B9177434D5003B15E3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F223E2D2171D8A750095F1C1 /* DAGroupDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGroupDetailViewController.h; sourceTree = "<group>"; };
 		F223E2D3171D8A750095F1C1 /* DAGroupDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGroupDetailViewController.m; sourceTree = "<group>"; };
 		F223E2D4171D8A750095F1C1 /* DAGroupDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAGroupDetailViewController.xib; sourceTree = "<group>"; };
@@ -780,7 +784,7 @@
 		471A055A171BC1AD0040CB93 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				471A0559171BC1AD0040CB93 /* Cross.app */,
+				471A0559171BC1AD0040CB93 /* cross.app */,
 				471A058A171BC1AE0040CB93 /* TribeIPhoneTests.octest */,
 			);
 			name = Products;
@@ -828,6 +832,7 @@
 				471A0565171BC1AD0040CB93 /* InfoPlist.strings */,
 				471A0568171BC1AD0040CB93 /* main.m */,
 				471A056A171BC1AD0040CB93 /* TribeIPhone-Prefix.pch */,
+				47D476B71774323C003B15E3 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1372,7 +1377,7 @@
 			);
 			name = TribeIPhone;
 			productName = TribeIPhone;
-			productReference = 471A0559171BC1AD0040CB93 /* Cross.app */;
+			productReference = 471A0559171BC1AD0040CB93 /* cross.app */;
 			productType = "com.apple.product-type.application";
 		};
 		471A0589171BC1AE0040CB93 /* TribeIPhoneTests */ = {
@@ -1410,6 +1415,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ja,
+				"zh-Hans",
 			);
 			mainGroup = 471A0550171BC1AD0040CB93;
 			productRefGroup = 471A055A171BC1AD0040CB93 /* Products */;
@@ -1622,6 +1629,7 @@
 				F22F07E61776FF1D003F3479 /* 3.png in Resources */,
 				F22F07E71776FF1D003F3479 /* 4.png in Resources */,
 				F22F07E81776FF1D003F3479 /* 4@2x.png in Resources */,
+				47D476B51774323C003B15E3 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1786,6 +1794,16 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		47D476B71774323C003B15E3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47D476B61774323C003B15E3 /* en */,
+				47D476B817743425003B15E3 /* ja */,
+				47D476B9177434D5003B15E3 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1801,7 +1819,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1815,7 +1834,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1832,14 +1853,18 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1848,7 +1873,7 @@
 		471A059D171BC1AE0040CB93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1859,8 +1884,7 @@
 				INFOPLIST_FILE = "TribeIPhone/TribeIPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = Cross;
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = cross;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1870,8 +1894,8 @@
 		471A059E171BC1AE0040CB93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
@@ -1880,8 +1904,7 @@
 				GCC_PREFIX_HEADER = "TribeIPhone/TribeIPhone-Prefix.pch";
 				INFOPLIST_FILE = "TribeIPhone/TribeIPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = Cross;
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = cross;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

@@ -164,6 +164,10 @@
         DAMemberController *members = [[DAMemberController alloc] initWithNibName:@"DAMemberController" bundle:nil];
         members.kind = DAMemberListAll;
         members.hidesBottomBarWhenPushed = YES;
+        members.selectedBlocks = ^(DAUser *user){
+            [[DAGroupModule alloc] joinGroup:theGroup._id uid:user._id callback:^(NSError *error, DAGroup *group) {
+            }];
+        };
         //[self.navigationController pushViewController:members animated:YES];
         [self presentViewController:members animated:YES completion:nil];
     }

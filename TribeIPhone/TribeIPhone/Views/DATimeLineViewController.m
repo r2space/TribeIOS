@@ -8,6 +8,7 @@
 
 #import "DATimeLineViewController.h"
 #import "DALeftSideViewController.h"
+#import "DAHelper.h"
 
 @interface DATimeLineViewController ()
 {
@@ -23,7 +24,8 @@
     [super viewDidLoad];
     [self fetch];
     NSLog(@"DATimeLineViewController");
-    titleFilter.title = @"全部消息";
+    titleFilter.title = 
+    [DAHelper localizedStringWithKey:@"message.filter.allMessage" comment:@"全部消息"];
     filterType = @"all";
     
 }
@@ -83,7 +85,7 @@
 {
     
     filterType = @"all";
-    titleFilter.title = @"全部消息";
+    titleFilter.title = [DAHelper localizedStringWithKey:@"message.filter.allMessage" comment:@"全部消息"];
     UIBarButtonItem *fixItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     NSMutableArray *items = [NSMutableArray arrayWithArray:self.toolbar.items];
