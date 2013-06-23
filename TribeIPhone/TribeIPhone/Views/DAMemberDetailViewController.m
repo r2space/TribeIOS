@@ -194,22 +194,24 @@
     }
     
     if (3 == item.tag) {
-        // 参加的组
+        // 关注/取消关注
         if (isFollowed) {
-            [[DAUserModule alloc] follow:theUser._id callback:^(NSError *error, NSString *uid){
-                isFollowed = !isFollowed;
-                self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
-            }];
-        } else {
             [[DAUserModule alloc] unfollow:theUser._id callback:^(NSError *error, NSString *uid){
                 isFollowed = !isFollowed;
                 self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
+                // TODO 更新本地存储的user信息
+            }];
+        } else {
+            [[DAUserModule alloc] follow:theUser._id callback:^(NSError *error, NSString *uid){
+                isFollowed = !isFollowed;
+                self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
+                // TODO 更新本地存储的user信息
             }];
         }
     }
     
     if (4 == item.tag) {
-        // 关注/取消关注
+        // 发私信
         
         
     }

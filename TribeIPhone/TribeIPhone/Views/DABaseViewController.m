@@ -47,7 +47,7 @@
     if ([DAHelper isNetworkReachable]) {
 
         // 网络可达，显示等待
-        [self showIndicator:@"Loging..."];
+        [self showIndicator:@"Loading..."];
         return NO;
     }
     
