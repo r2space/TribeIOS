@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
-@interface DALoginViewController : UIViewController
+@interface DALoginViewController : UIViewController<UITextFieldDelegate>
+
 - (IBAction)onLoginTouched:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITextField *txtUserId;

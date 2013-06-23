@@ -16,35 +16,65 @@
 
 @implementation DALoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-    UIImage *backgroundImage = [UIImage imageNamed:@"background2.jpg"];
+    // 设定背景颜色
+    UIImage *backgroundImage = [UIImage imageNamed:@"4.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)onLoginTouched:(id)sender {
-
-    // SEL版
-    //[[DALoginModule alloc] login:self.txtUserId.text password:self.txtPassword.text target:self success:@selector(loginSuccess:) failure:nil];
     
+    // 注册键盘显示的Notification
+    [self registerForKeyboardNotifications];
+
+    // 隐藏状态栏
+    // [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+}
+
+// 绑定键盘显示和关闭Notification
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    // 480为iPhone4画面高度，超过480则为iphone5画面高度
+    CGFloat f = [[UIScreen mainScreen] bounds].size.height > 480 ? 30 : 70;
+    CGRect r = self.view.frame;
+
+    // 上移View
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = CGRectMake(r.origin.x, r.origin.y - f, r.size.width, r.size.height);
+    }];
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    // 480为iPhone4画面高度，超过480则为iphone5画面高度
+    CGFloat f = [[UIScreen mainScreen] bounds].size.height > 480 ? 30 : 70;
+    CGRect r = self.view.frame;
+
+    // 下移View
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = CGRectMake(r.origin.x, r.origin.y + f, r.size.width, r.size.height);
+    }];
+}
+
+// 收起键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)onLoginTouched:(id)sender
+{
     // Blocks版
     [[DALoginModule alloc] login:self.txtUserId.text password:self.txtPassword.text callback:^(NSError *error, DAUser *user){
 
@@ -89,30 +119,5 @@
         [self.view removeFromSuperview];
     }
 }
-
-//- (void) loginSuccess:(DAUser *)user
-//{
-//    [[NSUserDefaults standardUserDefaults] setObject:self.txtUserId.text forKey:@"jp.co.dreamarts.smart.message.userid"];
-//    [[NSUserDefaults standardUserDefaults] setObject:self.txtPassword.text forKey:@"jp.co.dreamarts.smart.message.password"];
-//    
-//    // 保存用户数据
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString* documentDir = [paths objectAtIndex:0];
-//    
-//    NSData *userdata = [NSKeyedArchiver archivedDataWithRootObject:user];
-//    [userdata writeToFile:[NSString stringWithFormat:@"%@/%@", documentDir, user._id] atomically:YES];
-//    
-//    // 显示第一个消息画面
-//    DAViewController *controller = (DAViewController *)self.parentViewController;
-//    UINavigationController *navigationController = [controller.viewControllers objectAtIndex: 0];
-//    controller.selectedViewController = navigationController;
-//    
-//    // 刷新数据
-//    DATimeLineViewController *timeLineViewController = [navigationController.viewControllers objectAtIndex:0];
-//    [timeLineViewController showMessages];
-//    
-//    NSLog(@"login ok");
-//    [self.view removeFromSuperview];
-//}
 
 @end
