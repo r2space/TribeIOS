@@ -64,18 +64,18 @@
     if (0 == indexPath.section) {
         if (0 == indexPath.row) {
             cell.textLabel.text  = @"私信";
-            cell.imageView.image = [UIImage imageNamed:@"18-envelope.png"];
+            cell.imageView.image = [UIImage imageNamed:@"table_business-team.png"];
         }
         if (1 == indexPath.row) {
             cell.textLabel.text  = @"账户";
-            cell.imageView.image = [UIImage imageNamed:@"man.png"];
+            cell.imageView.image = [UIImage imageNamed:@"table_business-woman.png"];
         }
     }
     
     if (1 == indexPath.section) {
         if (0 == indexPath.row) {
             cell.textLabel.text  = @"设定";
-            cell.imageView.image = [UIImage imageNamed:@"preferences.png"];
+            cell.imageView.image = [UIImage imageNamed:@"table_gear.png"];
         }
     }
 

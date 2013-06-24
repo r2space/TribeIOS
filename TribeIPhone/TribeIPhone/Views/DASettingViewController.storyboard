@@ -11,7 +11,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="McJ-vg-dRn">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.90980398650000005" green="0.86666673419999996" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
                         <sections>
                             <tableViewSection headerTitle="服务器" id="LlH-wL-7rA">
                                 <cells>
@@ -30,16 +30,16 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="44-shoebox.png" translatesAutoresizingMaskIntoConstraints="NO" id="B2A-Sm-7h3">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_satellite-dish.png" translatesAutoresizingMaskIntoConstraints="NO" id="B2A-Sm-7h3">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="9bS-Ir-QTM"/>
-                                                        <constraint firstAttribute="width" constant="35" id="IEN-V9-Rc9"/>
+                                                        <constraint firstAttribute="width" constant="25" id="6sk-EB-Ojb"/>
+                                                        <constraint firstAttribute="height" constant="25" id="cwo-WX-rF2"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10.2.8.199" placeholder="10.2.8.199" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Sx-fX-Fhb">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="160" id="0TP-nE-G5b"/>
-                                                        <constraint firstAttribute="height" constant="30" id="Fgi-4p-PR7"/>
+                                                        <constraint firstAttribute="height" constant="30" id="G5f-ef-ocL"/>
                                                     </constraints>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -53,10 +53,10 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="B2A-Sm-7h3" firstAttribute="leading" secondItem="eLQ-rb-hD0" secondAttribute="leading" constant="30" id="4qD-bw-DbG"/>
-                                            <constraint firstItem="B2A-Sm-7h3" firstAttribute="centerY" secondItem="kGQ-xc-Gkn" secondAttribute="centerY" type="default" id="FHR-U3-xEc"/>
-                                            <constraint firstItem="kGQ-xc-Gkn" firstAttribute="leading" secondItem="B2A-Sm-7h3" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="K4R-7p-h02"/>
-                                            <constraint firstItem="1Sx-fX-Fhb" firstAttribute="top" secondItem="eLQ-rb-hD0" secondAttribute="top" constant="8" id="gX8-C5-kmF"/>
-                                            <constraint firstItem="B2A-Sm-7h3" firstAttribute="centerY" secondItem="eLQ-rb-hD0" secondAttribute="centerY" type="default" id="iEb-y5-tnS"/>
+                                            <constraint firstItem="1Sx-fX-Fhb" firstAttribute="top" secondItem="eLQ-rb-hD0" secondAttribute="top" constant="8" id="7Gq-iU-x0P"/>
+                                            <constraint firstItem="kGQ-xc-Gkn" firstAttribute="centerY" secondItem="eLQ-rb-hD0" secondAttribute="centerY" type="default" id="KqV-vg-6hg"/>
+                                            <constraint firstItem="kGQ-xc-Gkn" firstAttribute="centerY" secondItem="B2A-Sm-7h3" secondAttribute="centerY" type="default" id="S0m-Er-L5T"/>
+                                            <constraint firstItem="kGQ-xc-Gkn" firstAttribute="leading" secondItem="eLQ-rb-hD0" secondAttribute="leading" constant="73" id="Vm4-5m-L6u"/>
                                             <constraint firstItem="1Sx-fX-Fhb" firstAttribute="leading" secondItem="eLQ-rb-hD0" secondAttribute="leading" constant="130" id="kvT-Wb-TCu"/>
                                         </constraints>
                                     </tableViewCell>
@@ -75,10 +75,10 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="preferences.png" translatesAutoresizingMaskIntoConstraints="NO" id="0yZ-kZ-ay6">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_lightbulb.png" translatesAutoresizingMaskIntoConstraints="NO" id="0yZ-kZ-ay6">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="nji-V4-eX2"/>
-                                                        <constraint firstAttribute="width" constant="35" id="x2x-oa-gCL"/>
+                                                        <constraint firstAttribute="height" constant="25" id="R5m-ca-mE0"/>
+                                                        <constraint firstAttribute="width" constant="25" id="io7-n9-hhY"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="80" placeholder="10.2.8.199" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdI-mW-hf2">
@@ -97,13 +97,13 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="WID-Yf-agz" firstAttribute="leading" secondItem="0yZ-kZ-ay6" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0BL-pT-D9D"/>
                                             <constraint firstItem="rdI-mW-hf2" firstAttribute="centerY" secondItem="RHM-g7-enc" secondAttribute="centerY" type="default" id="4YM-jv-usW"/>
                                             <constraint firstItem="rdI-mW-hf2" firstAttribute="leading" secondItem="RHM-g7-enc" secondAttribute="leading" constant="130" id="91D-XM-Fro"/>
                                             <constraint firstItem="rdI-mW-hf2" firstAttribute="baseline" secondItem="WID-Yf-agz" secondAttribute="baseline" type="default" id="ElN-aT-fLF"/>
-                                            <constraint firstItem="0yZ-kZ-ay6" firstAttribute="top" secondItem="RHM-g7-enc" secondAttribute="top" constant="4" id="Gyj-Hh-iyW"/>
-                                            <constraint firstItem="0yZ-kZ-ay6" firstAttribute="centerY" secondItem="WID-Yf-agz" secondAttribute="centerY" type="default" id="p9a-be-yh0"/>
+                                            <constraint firstItem="0yZ-kZ-ay6" firstAttribute="centerY" secondItem="WID-Yf-agz" secondAttribute="centerY" type="default" id="fN6-ME-VFq"/>
+                                            <constraint firstItem="WID-Yf-agz" firstAttribute="leading" secondItem="RHM-g7-enc" secondAttribute="leading" constant="73" id="laT-Mk-vuK"/>
                                             <constraint firstItem="0yZ-kZ-ay6" firstAttribute="leading" secondItem="RHM-g7-enc" secondAttribute="leading" constant="30" id="yCy-7A-Xh0"/>
+                                            <constraint firstItem="0yZ-kZ-ay6" firstAttribute="top" secondItem="RHM-g7-enc" secondAttribute="top" constant="9" id="yvX-Au-Cbs"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>
@@ -122,10 +122,10 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="database.png" translatesAutoresizingMaskIntoConstraints="NO" id="GYb-8h-3nE">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_storage.png" translatesAutoresizingMaskIntoConstraints="NO" id="GYb-8h-3nE">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="pwL-kT-c72"/>
-                                                        <constraint firstAttribute="height" constant="35" id="zAD-zJ-a82"/>
+                                                        <constraint firstAttribute="width" constant="25" id="bRA-E5-aFG"/>
+                                                        <constraint firstAttribute="height" constant="25" id="wW7-vr-L3a"/>
                                                     </constraints>
                                                 </imageView>
                                                 <progressView opaque="NO" contentMode="scaleToFill" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="J7T-rC-Afx">
@@ -139,10 +139,10 @@
                                         <constraints>
                                             <constraint firstItem="J7T-rC-Afx" firstAttribute="centerY" secondItem="z7J-uh-NGb" secondAttribute="centerY" type="default" id="8Kj-io-2u3"/>
                                             <constraint firstItem="GYb-8h-3nE" firstAttribute="leading" secondItem="AJn-5i-8xG" secondAttribute="leading" constant="30" id="Bvt-VY-a2a"/>
-                                            <constraint firstItem="z7J-uh-NGb" firstAttribute="centerY" secondItem="AJn-5i-8xG" secondAttribute="centerY" type="default" id="Cob-In-0ZH"/>
-                                            <constraint firstItem="GYb-8h-3nE" firstAttribute="centerY" secondItem="z7J-uh-NGb" secondAttribute="centerY" type="default" id="Fpd-H8-o4J"/>
-                                            <constraint firstItem="z7J-uh-NGb" firstAttribute="leading" secondItem="GYb-8h-3nE" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Ll6-50-AJv"/>
+                                            <constraint firstItem="z7J-uh-NGb" firstAttribute="centerY" secondItem="AJn-5i-8xG" secondAttribute="centerY" type="default" id="DpN-g1-LZo"/>
+                                            <constraint firstItem="z7J-uh-NGb" firstAttribute="leading" secondItem="AJn-5i-8xG" secondAttribute="leading" constant="73" id="LcQ-Hb-PlE"/>
                                             <constraint firstItem="J7T-rC-Afx" firstAttribute="leading" secondItem="z7J-uh-NGb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="UcK-8W-NBp"/>
+                                            <constraint firstItem="GYb-8h-3nE" firstAttribute="centerY" secondItem="z7J-uh-NGb" secondAttribute="centerY" type="default" id="aT6-o1-Vb9"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Tnb-NJ-ptq">
@@ -160,20 +160,20 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="refresh.png" translatesAutoresizingMaskIntoConstraints="NO" id="UeF-W9-nvH">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_arrow-small-27.png" translatesAutoresizingMaskIntoConstraints="NO" id="UeF-W9-nvH">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="2jx-z1-Whh"/>
-                                                        <constraint firstAttribute="width" constant="35" id="H9x-mF-Fzx"/>
+                                                        <constraint firstAttribute="width" constant="25" id="Siw-Xn-3o0"/>
+                                                        <constraint firstAttribute="height" constant="25" id="YEx-Fp-yzQ"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="UeF-W9-nvH" firstAttribute="top" secondItem="Tnb-NJ-ptq" secondAttribute="top" constant="4" id="0N9-c2-Tuf"/>
-                                            <constraint firstItem="3P1-sn-hi9" firstAttribute="leading" secondItem="UeF-W9-nvH" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="AR5-Bv-GEH"/>
+                                            <constraint firstItem="3P1-sn-hi9" firstAttribute="leading" secondItem="Tnb-NJ-ptq" secondAttribute="leading" constant="73" id="2hh-6w-1nK"/>
                                             <constraint firstItem="UeF-W9-nvH" firstAttribute="leading" secondItem="Tnb-NJ-ptq" secondAttribute="leading" constant="30" id="Geh-hS-1f8"/>
-                                            <constraint firstItem="UeF-W9-nvH" firstAttribute="centerY" secondItem="3P1-sn-hi9" secondAttribute="centerY" type="default" id="Q9k-i8-PGP"/>
+                                            <constraint firstItem="UeF-W9-nvH" firstAttribute="top" secondItem="Tnb-NJ-ptq" secondAttribute="top" constant="9" id="MgD-Id-Q0g"/>
+                                            <constraint firstItem="UeF-W9-nvH" firstAttribute="centerY" secondItem="3P1-sn-hi9" secondAttribute="centerY" type="default" id="Q58-uh-Y9H"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>
@@ -195,20 +195,20 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="man.png" translatesAutoresizingMaskIntoConstraints="NO" id="CWI-ml-W3v">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_entrance.png" translatesAutoresizingMaskIntoConstraints="NO" id="CWI-ml-W3v">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="HEQ-wF-EWS"/>
-                                                        <constraint firstAttribute="width" constant="35" id="wnc-Ml-dVv"/>
+                                                        <constraint firstAttribute="width" constant="25" id="6nf-fk-Xqo"/>
+                                                        <constraint firstAttribute="height" constant="25" id="MUZ-9S-tLc"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="CWI-ml-W3v" firstAttribute="centerY" secondItem="Owr-qG-kEh" secondAttribute="centerY" type="default" id="KR7-mA-PzA"/>
-                                            <constraint firstItem="Owr-qG-kEh" firstAttribute="leading" secondItem="CWI-ml-W3v" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="aib-EM-fn2"/>
+                                            <constraint firstItem="CWI-ml-W3v" firstAttribute="centerY" secondItem="Owr-qG-kEh" secondAttribute="centerY" type="default" id="2aD-ot-4dY"/>
+                                            <constraint firstItem="Owr-qG-kEh" firstAttribute="leading" secondItem="ADY-b2-F4c" secondAttribute="leading" constant="73" id="aLn-8L-F8h"/>
+                                            <constraint firstItem="CWI-ml-W3v" firstAttribute="top" secondItem="ADY-b2-F4c" secondAttribute="top" constant="10" id="hFB-eG-VXn"/>
                                             <constraint firstItem="CWI-ml-W3v" firstAttribute="leading" secondItem="ADY-b2-F4c" secondAttribute="leading" constant="30" id="qEq-bj-kLR"/>
-                                            <constraint firstItem="CWI-ml-W3v" firstAttribute="top" secondItem="ADY-b2-F4c" secondAttribute="top" constant="5" id="vQf-qQ-eaR"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>
@@ -238,10 +238,10 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="world.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dbs-Xv-go9">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_anchor.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dbs-Xv-go9">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="Hjc-Ju-fla"/>
-                                                        <constraint firstAttribute="width" constant="35" id="ohJ-F1-Qx1"/>
+                                                        <constraint firstAttribute="height" constant="25" id="AGZ-qH-ReF"/>
+                                                        <constraint firstAttribute="width" constant="25" id="wCL-go-mb8"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -249,12 +249,12 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="xID-nV-WLV" firstAttribute="bottom" secondItem="xaY-a0-raW" secondAttribute="bottom" type="default" id="BeV-iZ-aT5"/>
-                                            <constraint firstItem="Dbs-Xv-go9" firstAttribute="centerY" secondItem="xaY-a0-raW" secondAttribute="centerY" type="default" id="Eag-AB-iBC"/>
+                                            <constraint firstItem="Dbs-Xv-go9" firstAttribute="top" secondItem="90n-1Z-Plc" secondAttribute="top" constant="10" id="HzR-Co-Yn1"/>
                                             <constraint firstItem="Dbs-Xv-go9" firstAttribute="leading" secondItem="90n-1Z-Plc" secondAttribute="leading" constant="30" id="V1U-iR-0g1"/>
-                                            <constraint firstItem="xaY-a0-raW" firstAttribute="leading" secondItem="Dbs-Xv-go9" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Vpq-he-fzj"/>
+                                            <constraint firstItem="xaY-a0-raW" firstAttribute="leading" secondItem="90n-1Z-Plc" secondAttribute="leading" constant="73" id="WnR-CK-zxA"/>
                                             <constraint firstAttribute="trailing" secondItem="xID-nV-WLV" secondAttribute="trailing" constant="30" id="fV5-4Z-JOf"/>
                                             <constraint firstItem="xID-nV-WLV" firstAttribute="top" secondItem="xaY-a0-raW" secondAttribute="top" type="default" id="n6l-qQ-7Ze"/>
-                                            <constraint firstItem="Dbs-Xv-go9" firstAttribute="top" secondItem="90n-1Z-Plc" secondAttribute="top" constant="5" id="wdt-uJ-vuD"/>
+                                            <constraint firstItem="Dbs-Xv-go9" firstAttribute="centerY" secondItem="xaY-a0-raW" secondAttribute="centerY" type="default" id="v5D-8f-Qiz"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>
@@ -281,12 +281,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="44-shoebox.png" width="24" height="22"/>
-        <image name="database.png" width="26" height="26"/>
-        <image name="man.png" width="52" height="52"/>
-        <image name="preferences.png" width="26" height="26"/>
-        <image name="refresh.png" width="26" height="26"/>
-        <image name="world.png" width="26" height="26"/>
+        <image name="table_anchor.png" width="30" height="30"/>
+        <image name="table_arrow-small-27.png" width="30" height="30"/>
+        <image name="table_entrance.png" width="30" height="30"/>
+        <image name="table_lightbulb.png" width="30" height="30"/>
+        <image name="table_satellite-dish.png" width="30" height="30"/>
+        <image name="table_storage.png" width="30" height="30"/>
     </resources>
     <classes>
         <class className="DASettingViewController" superclassName="UITableViewController">

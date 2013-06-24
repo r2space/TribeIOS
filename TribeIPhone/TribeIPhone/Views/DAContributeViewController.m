@@ -94,32 +94,32 @@
 
 -(void)renderButtons
 {
-    if ([self hasAt]) {
-        [self.btnAt setImage:[UIImage imageNamed:@"group_add_highlight.png"] forState:UIControlStateNormal];
-    } else {
-        [self.btnAt setImage:[UIImage imageNamed:@"group_add.png"] forState:UIControlStateNormal];
-    }
-    
-    
-    
-    if ([message_contenttype_image isEqualToString:_message.contentType]) {
-        if (_photoFromCamera) {
-            [self.btnCamera setImage:[UIImage imageNamed:@"camera_highlight.png"] forState:UIControlStateNormal];
-            [self.btnPhoto setImage:[UIImage imageNamed:@"photo.png"] forState:UIControlStateNormal];
-        } else {
-            [self.btnCamera setImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
-            [self.btnPhoto setImage:[UIImage imageNamed:@"photo_highlight.png"] forState:UIControlStateNormal];
-        }
-    } else {
-        [self.btnCamera setImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
-        [self.btnPhoto setImage:[UIImage imageNamed:@"photo.png"] forState:UIControlStateNormal];
-    }
-    
-    if ([message_contenttype_document isEqualToString:_message.contentType]) {
-        [self.btnDocument setImage:[UIImage imageNamed:@"document_highlight.png"] forState:UIControlStateNormal];
-    } else {
-        [self.btnDocument setImage:[UIImage imageNamed:@"document.png"] forState:UIControlStateNormal];
-    }
+//    if ([self hasAt]) {
+//        [self.btnAt setImage:[UIImage imageNamed:@"group_add_highlight.png"] forState:UIControlStateNormal];
+//    } else {
+//        [self.btnAt setImage:[UIImage imageNamed:@"group_add.png"] forState:UIControlStateNormal];
+//    }
+//    
+//    
+//    
+//    if ([message_contenttype_image isEqualToString:_message.contentType]) {
+//        if (_photoFromCamera) {
+//            [self.btnCamera setImage:[UIImage imageNamed:@"camera_highlight.png"] forState:UIControlStateNormal];
+//            [self.btnPhoto setImage:[UIImage imageNamed:@"photo.png"] forState:UIControlStateNormal];
+//        } else {
+//            [self.btnCamera setImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
+//            [self.btnPhoto setImage:[UIImage imageNamed:@"photo_highlight.png"] forState:UIControlStateNormal];
+//        }
+//    } else {
+//        [self.btnCamera setImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
+//        [self.btnPhoto setImage:[UIImage imageNamed:@"photo.png"] forState:UIControlStateNormal];
+//    }
+//    
+//    if ([message_contenttype_document isEqualToString:_message.contentType]) {
+//        [self.btnDocument setImage:[UIImage imageNamed:@"document_highlight.png"] forState:UIControlStateNormal];
+//    } else {
+//        [self.btnDocument setImage:[UIImage imageNamed:@"document.png"] forState:UIControlStateNormal];
+//    }
 }
 
 - (IBAction)onLocationClicked:(id)sender
