@@ -27,6 +27,7 @@
     
     self.txtServerAddress.text = serverAddress;
     self.txtServerPort.text = [serverPort stringValue];
+    self.lblVersion.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [self showFreeSpace];
 }
 
