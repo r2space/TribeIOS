@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
+#import "DABaseViewController.h"
 
-@interface DAGroupMoreContainerViewController : UIViewController
+@interface DAGroupMoreContainerViewController : DABaseViewController
 
 @property (retain, nonatomic) DAGroup *group;
 

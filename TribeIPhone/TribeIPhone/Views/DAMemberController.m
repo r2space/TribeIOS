@@ -97,11 +97,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.selectedBlocks != nil) {
-        self.selectedBlocks([theMembers objectAtIndex:indexPath.row]);
-    }
-
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        if (self.selectedBlocks != nil) {
+            self.selectedBlocks([theMembers objectAtIndex:indexPath.row]);
+        }
+    }];
 }
 
 

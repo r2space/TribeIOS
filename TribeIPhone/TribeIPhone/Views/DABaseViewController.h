@@ -24,10 +24,16 @@
 
 @property (weak, nonatomic) UITableView *tableView;
 
+// tableView用
 - (BOOL)preFetch;
 - (void)fetch;
 - (BOOL)finishFetch:(NSArray *)result error:(NSError *)error;
 - (void)refresh;
+
+// update用
+- (BOOL)preUpdate;
+- (BOOL)finishUpdateError:(NSError *)error;
+
 
 - (void)showMessage:(NSString *)message detail:(NSString *)detail;
 - (void)showIndicator:(NSString *)message;

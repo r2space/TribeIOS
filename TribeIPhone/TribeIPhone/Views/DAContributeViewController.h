@@ -11,9 +11,10 @@
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DAMemberSelectViewController.h"
 #import "DAGroupSelectViewController.h"
+#import "DABaseViewController.h"
 #import "DAHelper.h"
 
-@interface DAContributeViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, CLLocationManagerDelegate>
+@interface DAContributeViewController : DABaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, CLLocationManagerDelegate>
 {
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnLocation;

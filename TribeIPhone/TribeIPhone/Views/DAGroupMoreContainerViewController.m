@@ -79,13 +79,20 @@
     }
 
     // 更新或新规
+    if ([self preUpdate]) {
+        return;
+    }
     if (self.group._id == nil) {
         [[DAGroupModule alloc] create:self.group callback:^(NSError *error, DAGroup *group) {
-            [DAHelper alert:self.view message:@"创建成功" detail:nil];
+            if ([self finishUpdateError:error]) {
+                return ;
+            }
         }];
     } else {
         [[DAGroupModule alloc] update:self.group callback:^(NSError *error, DAGroup *group) {
-            [DAHelper alert:self.view message:@"更新成功" detail:nil];
+            if ([self finishUpdateError:error]) {
+                return ;
+            }
         }];
     }
 }

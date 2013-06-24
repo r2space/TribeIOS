@@ -143,7 +143,7 @@
 {
     NSString *path = [NSString stringWithFormat:kURLUpdateGroup, group._id];
     
-    [[DAAFHttpClient sharedClient] postPath:path parameters:[group toDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[DAAFHttpClient sharedClient] putPath:path parameters:[group toDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (callback) {
             callback(nil, [[DAGroup alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
         }

@@ -130,6 +130,56 @@
     }
 }
 
+- (BOOL)preUpdate
+{
+    // 判断网络是否可达
+    if ([DAHelper isNetworkReachable]) {
+        
+        // 网络可达，显示等待
+        [self showIndicator:@"Uploading..."];
+        return NO;
+    }
+    
+    // 显示无法连接网络
+    [self showMessage:@"无法连接网络" detail:nil];
+    
+    return YES;
+}
+
+- (BOOL)finishUpdateError:(NSError *)error
+{
+    [progress hide:YES];
+    if (error == nil) {
+        [self showTipMessage:[self successMessage]];
+        return NO;
+    }
+    
+    [self showMessage:[self errorMessage] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+    return YES;
+}
+
+- (NSString *)errorMessage
+{
+    return @"更新失败";
+}
+
+- (NSString *)successMessage
+{
+    return @"更新成功";
+}
+
+-(void)showTipMessage:(NSString *)message
+{
+    progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    progress.mode = MBProgressHUDModeText;
+//    progress.dimBackground = YES;
+    progress.labelText = message;
+//    progress.margin = 10.f;
+//    progress.yOffset = 50.f;
+    progress.removeFromSuperViewOnHide = YES;
+    [progress hide:YES afterDelay:0.6];
+}
+
 - (void)showMessage:(NSString *)message detail:(NSString *)detail
 {
     progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

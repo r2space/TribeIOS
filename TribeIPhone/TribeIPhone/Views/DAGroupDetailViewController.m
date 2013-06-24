@@ -161,11 +161,17 @@
 
     if (2 == item.tag) {
         // 添加
+        if ([self preUpdate]) {
+            return;
+        }
         DAMemberController *members = [[DAMemberController alloc] initWithNibName:@"DAMemberController" bundle:nil];
         members.kind = DAMemberListAll;
         members.hidesBottomBarWhenPushed = YES;
         members.selectedBlocks = ^(DAUser *user){
             [[DAGroupModule alloc] joinGroup:theGroup._id uid:user._id callback:^(NSError *error, DAGroup *group) {
+                if ([self finishUpdateError:error]) {
+                    return ;
+                }
             }];
         };
         //[self.navigationController pushViewController:members animated:YES];
@@ -175,12 +181,23 @@
     if (3 == item.tag) {
         
         // 加入/退出
+        if ([self preUpdate]) {
+            return;
+        }
         if (isMember) {
             [[DAGroupModule alloc] leaveGroup:theGroup._id uid:[DALoginModule getLoginUserId] callback:^(NSError *error, DAGroup *group) {
+                if ([self finishUpdateError:error]) {
+                    return ;
+                }
+                
                 [self didFinishJoin:group];
             }];
         } else {
             [[DAGroupModule alloc] joinGroup:theGroup._id uid:[DALoginModule getLoginUserId] callback:^(NSError *error, DAGroup *group) {
+                if ([self finishUpdateError:error]) {
+                    return ;
+                }
+                
                 [self didFinishJoin:group];
             }];
         }
