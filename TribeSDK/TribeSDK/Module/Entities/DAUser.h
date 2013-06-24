@@ -63,6 +63,7 @@
 @property (retain, nonatomic) UserName *name;
 @property (retain, nonatomic) UserPhoto *photo;
 @property (retain, nonatomic) NSArray *following;
+@property (retain, nonatomic) NSArray *follower;
 @property (retain, nonatomic) NSString *uid;
 @property (retain, nonatomic) DAGroup *department;
 @property (retain, nonatomic) UserCustom *custom;

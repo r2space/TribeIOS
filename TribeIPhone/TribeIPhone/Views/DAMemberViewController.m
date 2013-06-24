@@ -39,6 +39,7 @@
 
 - (void)viewDidLoad
 {
+    withoutGetMore = YES;
     [super viewDidLoad];
     _type = @"all";
     _filterId = @"all";

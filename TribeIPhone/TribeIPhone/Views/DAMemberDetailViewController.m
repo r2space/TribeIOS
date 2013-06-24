@@ -52,7 +52,15 @@
     }
 
     [[DAUserModule alloc] getUserById:self.uid callback:^(NSError *error, DAUser *user){
+        if ([self finishFetchError:error]) {
+            return ;
+        }
         theUser = user;
+        isFollowed = [user.follower containsObject:[DALoginModule getLoginUserId]];
+        self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
+        if ([self preFetch]) {
+            return;
+        }
         [[DAMessageModule alloc] getMessagesByUser:theUser._id start:start count:count before:before callback:^(NSError *error, DAMessageList *messageList){
             
             _messagesTotal = messageList.total.intValue;
@@ -60,15 +68,6 @@
             
         }];
     }];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documentDir = [paths objectAtIndex:0];
-    
-    NSData *userdata = [[NSData alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", documentDir, [DALoginModule getLoginUserId]]];
-    DAUser* loginuser = [NSKeyedUnarchiver unarchiveObjectWithData:userdata];
-    
-    isFollowed = [loginuser.following containsObject:self.uid];
-    self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
-    [userdata writeToFile:[NSString stringWithFormat:@"%@/%@", documentDir, userdata] atomically:YES];
     
 }
 - (void)didReceiveMemoryWarning
@@ -195,14 +194,23 @@
     
     if (3 == item.tag) {
         // 关注/取消关注
+        if ([self preUpdate]) {
+            return;
+        }
         if (isFollowed) {
             [[DAUserModule alloc] unfollow:theUser._id callback:^(NSError *error, NSString *uid){
+                if ([self finishUpdateError:error]) {
+                    return ;
+                }
                 isFollowed = !isFollowed;
                 self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
                 // TODO 更新本地存储的user信息
             }];
         } else {
             [[DAUserModule alloc] follow:theUser._id callback:^(NSError *error, NSString *uid){
+                if ([self finishUpdateError:error]) {
+                    return ;
+                }
                 isFollowed = !isFollowed;
                 self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
                 // TODO 更新本地存储的user信息

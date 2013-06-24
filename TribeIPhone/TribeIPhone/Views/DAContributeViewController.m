@@ -375,11 +375,18 @@
     if ([message_contenttype_image isEqualToString:_message.contentType]) {
         NSString *file = [DAHelper documentPath:@"attach.jpg"];
         if ([DAHelper isFileExist:file]) {
+            if ([self preUpdate]) {
+                return;
+            }
             UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
             [[DAFileModule alloc] uploadFile:UIImageJPEGRepresentation(image, 1.0)
                                     fileName:file mimeType:@"image/jpg"
                                     callback:^(NSError *error, DAFile *file){
-                
+                                        
+                if ([self finishUpdateError:error]) {
+                    return ;
+                }
+                                        
                 MessageAttach *attach = [[MessageAttach alloc] init];
                 attach.fileid = file._id;
                 attach.filename = file.filename;
@@ -402,14 +409,26 @@
 
 -(void)sendMessage:(DAMessage *)message
 {
+    if ([self preUpdate]) {
+        return;
+    }
     [[DAMessageModule alloc] send:message callback:^(NSError *error, DAMessage *message){
+        if ([self finishUpdateError:error]) {
+            return ;
+        }
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
 -(void)forwardMessage:(DAMessage *)message
 {
+    if ([self preUpdate]) {
+        return;
+    }
     [[DAMessageModule alloc] forward:message callback:^(NSError *error, DAMessage *message){
+        if ([self finishUpdateError:error]) {
+            return ;
+        }
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
