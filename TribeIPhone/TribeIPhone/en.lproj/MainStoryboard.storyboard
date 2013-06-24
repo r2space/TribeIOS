@@ -14,7 +14,7 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="Bfz-zi-UQB">
                                 <items>
-                                    <barButtonItem image="tool_email-mini.png" style="plain" id="cjn-aa-Xo4">
+                                    <barButtonItem image="tool_bell-mini.png" style="plain" id="cjn-aa-Xo4">
                                         <connections>
                                             <action selector="onNotifiactionClicked:" destination="eIR-Ka-I3l" id="vYE-q3-OlK"/>
                                         </connections>
@@ -34,6 +34,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="0.30196079611778259" green="0.17254902422428131" blue="0.40000003576278687" alpha="1" colorSpace="deviceRGB"/>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="195" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1DX-X1-3K0">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -290,6 +291,8 @@
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.23529413342475891" green="0.14117647707462311" blue="0.37254902720451355" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="rpT-jv-31W" kind="relationship" relationship="viewControllers" id="IKx-Gq-x90"/>
@@ -459,8 +462,8 @@
         <image name="tab_file.png" width="30" height="30"/>
         <image name="tab_home.png" width="30" height="30"/>
         <image name="tab_more-option.png" width="30" height="30"/>
+        <image name="tool_bell-mini.png" width="19" height="20"/>
         <image name="tool_document-add-mini.png" width="20" height="20"/>
-        <image name="tool_email-mini.png" width="20" height="20"/>
         <image name="tool_referral-mini.png" width="20" height="20"/>
         <image name="tool_write-box-mini.png" width="20" height="20"/>
     </resources>
@@ -508,6 +511,9 @@
         </class>
         <class className="DAMoreViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMoreViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="firstViewReturnActionForSegue:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
         </class>
         <class className="DATimeLineViewController" superclassName="DABaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DATimeLineViewController.h"/>
@@ -522,6 +528,9 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
