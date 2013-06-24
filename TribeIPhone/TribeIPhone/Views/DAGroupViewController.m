@@ -33,8 +33,10 @@
 
 - (void)viewDidLoad
 {
+    withoutGetMore = YES;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
     
     _type = @"all";
     _typeValues = @{@"all":@"组/部门",@"1":@"组",@"2":@"部门"};

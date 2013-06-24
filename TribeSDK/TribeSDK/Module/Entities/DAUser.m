@@ -193,4 +193,8 @@
     return [NSString class];
 }
 
++(Class) follower_class {
+    return [NSString class];
+}
+
 @end

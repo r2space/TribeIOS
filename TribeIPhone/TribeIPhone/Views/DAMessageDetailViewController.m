@@ -315,13 +315,22 @@
     }
     if (4 == item.tag) {
         // like
+        if ([self preUpdate]) {
+            return;
+        }
         if ([_message.likers containsObject:[DALoginModule getLoginUserId]]) {
             [[DAMessageModule alloc] unlike:_messageId callback:^(NSError *error, DAMessage *message) {
+                if ([self finishUpdateError:error]) {
+                    return ;
+                }
                 _message = message;
                 [self setLike];
             }];
         } else {
             [[DAMessageModule alloc] like:_messageId callback:^(NSError *error, DAMessage *message) {
+                if ([self finishUpdateError:error]) {
+                    return ;
+                }
                 _message = message;
                 [self setLike];
             }];

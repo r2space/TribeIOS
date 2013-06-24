@@ -19,6 +19,8 @@
     int                 start;      // 获取数据的起始位置
     int                 count;      // 一次获取的数据个数
     BOOL                hasMore;    // 是否可以从后台获取更多的数据
+    BOOL                withoutRefresh;
+    BOOL                withoutGetMore;
     NSArray             *list;      // 数据
 }
 
@@ -29,6 +31,9 @@
 - (void)fetch;
 - (BOOL)finishFetch:(NSArray *)result error:(NSError *)error;
 - (void)refresh;
+
+//
+- (BOOL)finishFetchError:(NSError *)error;
 
 // update用
 - (BOOL)preUpdate;
