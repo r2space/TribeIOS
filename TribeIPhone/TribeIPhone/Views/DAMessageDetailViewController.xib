@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12E55</string>
+		<string key="IBDocument.SystemVersion">12C54</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.39</string>
-		<string key="IBDocument.HIToolboxVersion">626.00</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -54,12 +54,19 @@
 						<int key="IBUIBarStyle">1</int>
 						<array class="NSMutableArray" key="IBUIItems">
 							<object class="IBUIBarButtonItem" id="1062203170">
-								<string key="IBUITitle">返回</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">tool_arrow-enter-left-mini.png</string>
+								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="37790555"/>
 							</object>
 						</array>
+						<object class="NSColor" key="IBUITintColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4zMDE5NjA3ODQzIDAuMTcyNTQ5MDE5NiAwLjQAA</bytes>
+						</object>
 					</object>
 					<object class="IBUITabBar" id="548250322">
 						<reference key="NSNextResponder" ref="623010731"/>
@@ -68,9 +75,9 @@
 						<reference key="NSSuperview" ref="623010731"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MCAwAA</bytes>
+						<object class="NSColor" key="IBUIBackgroundColor" id="155410528">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4yMzUyOTQxMTc2IDAuMTQxMTc2NDcwNiAwLjM3MjU0OTAxOTYAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<array class="NSMutableArray" key="IBUIItems">
@@ -79,7 +86,7 @@
 								<string key="IBUITitle">评论</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">tool-comment.png</string>
+									<string key="NSResourceName">message-mini.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUITabBar" ref="548250322"/>
@@ -89,17 +96,7 @@
 								<string key="IBUITitle">转发</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">forward.png</string>
-								</object>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<reference key="IBUITabBar" ref="548250322"/>
-							</object>
-							<object class="IBUITabBarItem" id="514606310">
-								<int key="IBUITag">1</int>
-								<string key="IBUITitle">刷新</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">refresh.png</string>
+									<string key="NSResourceName">arrow-right-out.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUITabBar" ref="548250322"/>
@@ -109,12 +106,23 @@
 								<string key="IBUITitle">赞</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">like_outline.png</string>
+									<string key="NSResourceName">thumb-up-mini.png</string>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<reference key="IBUITabBar" ref="548250322"/>
+							</object>
+							<object class="IBUITabBarItem" id="514606310">
+								<int key="IBUITag">1</int>
+								<string key="IBUITitle">刷新</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">arrow-small-27.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUITabBar" ref="548250322"/>
 							</object>
 						</array>
+						<reference key="IBUITintColor" ref="155410528"/>
 					</object>
 					<object class="IBUITableView" id="445968003">
 						<reference key="NSNextResponder" ref="623010731"/>
@@ -451,9 +459,9 @@
 						<int key="objectID">21</int>
 						<reference key="object" ref="548250322"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="514606310"/>
 							<reference ref="598759571"/>
 							<reference ref="141602128"/>
+							<reference ref="514606310"/>
 							<reference ref="29355845"/>
 						</array>
 						<reference key="parent" ref="623010731"/>
@@ -631,10 +639,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="forward.png">{24, 20}</string>
-			<string key="like_outline.png">{26, 26}</string>
-			<string key="refresh.png">{26, 26}</string>
-			<string key="tool-comment.png">{24, 24}</string>
+			<string key="arrow-right-out.png">{30, 30}</string>
+			<string key="arrow-small-27.png">{30, 30}</string>
+			<string key="message-mini.png">{20, 20}</string>
+			<string key="thumb-up-mini.png">{20, 20}</string>
+			<string key="tool_arrow-enter-left-mini.png">{20, 20}</string>
 		</dictionary>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 		<string key="IBCocoaTouchPluginVersion">2083</string>

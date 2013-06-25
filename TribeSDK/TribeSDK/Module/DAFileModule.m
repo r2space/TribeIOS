@@ -16,6 +16,7 @@
 #define kURLUploadFile      @"/file/upload.json"
 #define kURLGetPicture      @"/picture/%@"
 #define kURLDownloadFile    @"/file/download.json?_id=%@"
+#define kURLUploadPicture   @"/gridfs/save.json"
 
 @implementation DAFileModule
 
@@ -37,6 +38,46 @@
     }];
 }
 
+- (void)uploadPicture:(NSData *)data fileName:(NSString *)fileName mimeType:(NSString *)mimeType callback:(void (^)(NSError *error, DAFile *files))callback progress:(void (^)(CGFloat percent))progress
+{
+    DAAFHttpClient *httpClient = [DAAFHttpClient sharedClient];
+    
+    // 添加formData到Request
+    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST"
+                                                                         path:kURLUploadPicture
+                                                                   parameters:nil
+                                                    constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+                                                        
+                                                        [formData appendPartWithFileData:data name:@"files" fileName:fileName mimeType:mimeType];
+                                                    }];
+    
+    // 设定上传进度block
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        if (progress) {
+            progress((CGFloat)totalBytesWritten / (CGFloat)totalBytesExpectedToWrite);
+        }
+    }];
+    
+    // 设定上传结束block
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+        if (callback) {
+            NSError *jsonError = nil;
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&jsonError];
+            DAFileList *files = [[DAFileList alloc] initWithDictionary:[result objectForKey:@"data"]];
+            
+            callback(jsonError, [files.items objectAtIndex:0]);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+    }];
+    
+    [httpClient enqueueHTTPRequestOperation:operation];
+}
 
 - (void)uploadFile:(NSData *)data
           fileName:(NSString *)fileName

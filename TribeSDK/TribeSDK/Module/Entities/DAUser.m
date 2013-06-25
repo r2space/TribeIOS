@@ -147,7 +147,7 @@
 
 -(UIImage *) getUserDefaultPhotoImage
 {
-    return [UIImage imageNamed:@"user_thumb.png"];
+    return [UIImage imageNamed:@"user_thumb_black.png"];
 }
 
 -(UIImage *) getUserPhotoImage

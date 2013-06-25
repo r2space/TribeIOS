@@ -379,7 +379,7 @@
                 return;
             }
             UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
-            [[DAFileModule alloc] uploadFile:UIImageJPEGRepresentation(image, 1.0)
+            [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0)
                                     fileName:file mimeType:@"image/jpg"
                                     callback:^(NSError *error, DAFile *file){
                                         

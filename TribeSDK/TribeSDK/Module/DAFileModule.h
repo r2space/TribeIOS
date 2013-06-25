@@ -17,6 +17,8 @@
 
 - (void)getFileList:(int)start count:(int)count type:(NSString *)type callback:(void (^)(NSError *error, DAFileList *files))callback;
 
+- (void)uploadPicture:(NSData *)data fileName:(NSString *)fileName mimeType:(NSString *)mimeType callback:(void (^)(NSError *error, DAFile *files))callback progress:(void (^)(CGFloat percent))progress;
+
 - (void)uploadFile:(NSData *)data
           fileName:(NSString *)fileName
           mimeType:(NSString *)mimeType
