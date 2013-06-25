@@ -67,157 +67,56 @@
             </objects>
             <point key="canvasLocation" x="1988" y="-1220"/>
         </scene>
-        <!--Group View Controller-->
-        <scene sceneID="dm5-vA-luj">
+        <!--Shortmail View Controller-->
+        <scene sceneID="ahF-rN-fvU">
             <objects>
-                <viewController id="QyM-zc-Dtd" customClass="DAGroupViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uJo-5V-mW9">
+                <viewController id="AZW-QW-C9y" customClass="DAShortmailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5xH-pu-1Up">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="eJe-fW-mkj">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="qES-z7-pi1">
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5XP-V3-lRT"/>
-                                    <barButtonItem title="部门/组" style="plain" id="2g8-7o-PDG">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="OW9-2D-6gT"/>
+                                    <barButtonItem title="私信" style="plain" id="HkR-iB-oWr"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hcU-uW-Met"/>
+                                    <barButtonItem systemItem="add" id="67X-v4-IxG">
                                         <connections>
-                                            <action selector="barFilterOnClick:" destination="QyM-zc-Dtd" id="pvX-Mt-YzE"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem image="tool_down.png" style="plain" id="Ijz-zN-FdG">
-                                        <inset key="imageInsets" minX="-5" minY="0.0" maxX="5" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="barFilterIcoOnClick:" destination="QyM-zc-Dtd" id="D7H-tX-6Xt"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eP1-ts-HfM"/>
-                                    <barButtonItem image="tool_referral-mini.png" style="plain" id="ChP-H8-thm">
-                                        <connections>
-                                            <action selector="onAddTouched:" destination="QyM-zc-Dtd" id="MtR-F1-Qxz"/>
+                                            <action selector="onAddTouched:" destination="AZW-QW-C9y" id="mSz-xP-Pcd"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.30196079609999998" green="0.17254902420000001" blue="0.40000003579999999" alpha="1" colorSpace="deviceRGB"/>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fr1-7n-D14">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ith-BH-LBN">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" showsCancelButton="YES" id="l8j-bs-9Hw">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <scopeButtonTitles>
-                                        <string>Title</string>
-                                        <string>Title</string>
-                                    </scopeButtonTitles>
-                                    <connections>
-                                        <outlet property="delegate" destination="QyM-zc-Dtd" id="2bT-eP-Oje"/>
-                                    </connections>
-                                </searchBar>
                                 <connections>
-                                    <outlet property="dataSource" destination="QyM-zc-Dtd" id="M0b-Kp-0ws"/>
-                                    <outlet property="delegate" destination="QyM-zc-Dtd" id="Sj0-rl-ct6"/>
+                                    <outlet property="dataSource" destination="AZW-QW-C9y" id="nd5-Zq-qyf"/>
+                                    <outlet property="delegate" destination="AZW-QW-C9y" id="JZP-VC-X7Y"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fr1-7n-D14" firstAttribute="leading" secondItem="uJo-5V-mW9" secondAttribute="leading" type="default" id="BFC-r2-gbp"/>
-                            <constraint firstItem="fr1-7n-D14" firstAttribute="trailing" secondItem="uJo-5V-mW9" secondAttribute="trailing" type="default" id="Bbd-UB-cNR"/>
-                            <constraint firstItem="eJe-fW-mkj" firstAttribute="top" secondItem="uJo-5V-mW9" secondAttribute="top" type="default" id="UQP-PY-rKQ"/>
-                            <constraint firstItem="fr1-7n-D14" firstAttribute="top" secondItem="eJe-fW-mkj" secondAttribute="bottom" type="default" id="ZSx-D2-4Ii"/>
-                            <constraint firstItem="eJe-fW-mkj" firstAttribute="trailing" secondItem="uJo-5V-mW9" secondAttribute="trailing" type="default" id="cty-CG-rob"/>
-                            <constraint firstItem="eJe-fW-mkj" firstAttribute="leading" secondItem="uJo-5V-mW9" secondAttribute="leading" type="default" id="gWB-PE-q0R"/>
-                            <constraint firstItem="fr1-7n-D14" firstAttribute="bottom" secondItem="uJo-5V-mW9" secondAttribute="bottom" type="default" id="lDo-tJ-Fv4"/>
+                            <constraint firstItem="qES-z7-pi1" firstAttribute="trailing" secondItem="5xH-pu-1Up" secondAttribute="trailing" type="default" id="7kL-AW-hmD"/>
+                            <constraint firstItem="Ith-BH-LBN" firstAttribute="bottom" secondItem="5xH-pu-1Up" secondAttribute="bottom" type="default" id="ArI-TY-7Zp"/>
+                            <constraint firstItem="Ith-BH-LBN" firstAttribute="leading" secondItem="5xH-pu-1Up" secondAttribute="leading" type="default" id="ObE-s2-u3V"/>
+                            <constraint firstItem="qES-z7-pi1" firstAttribute="top" secondItem="5xH-pu-1Up" secondAttribute="top" type="default" id="P7P-RY-WY9"/>
+                            <constraint firstItem="Ith-BH-LBN" firstAttribute="top" secondItem="qES-z7-pi1" secondAttribute="bottom" type="default" id="R95-cL-8vt"/>
+                            <constraint firstItem="qES-z7-pi1" firstAttribute="leading" secondItem="5xH-pu-1Up" secondAttribute="leading" type="default" id="poA-rp-Tu8"/>
+                            <constraint firstItem="Ith-BH-LBN" firstAttribute="trailing" secondItem="5xH-pu-1Up" secondAttribute="trailing" type="default" id="u2P-IX-nXa"/>
                         </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                        <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zPW-Pg-ZXI"/>
+                    <navigationItem key="navigationItem" id="rI8-zg-1Af"/>
                     <connections>
-                        <outlet property="barFilter" destination="2g8-7o-PDG" id="IiD-qK-DRz"/>
-                        <outlet property="barFilterIco" destination="Ijz-zN-FdG" id="WSW-4s-ieL"/>
-                        <outlet property="searchBar" destination="l8j-bs-9Hw" id="wBN-ef-qTk"/>
-                        <outlet property="tableView" destination="fr1-7n-D14" id="fNB-Zb-KQg"/>
+                        <outlet property="tableView" destination="Ith-BH-LBN" id="k0s-93-hCF"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NPl-mR-OPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vsK-yo-kOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1988" y="786"/>
-        </scene>
-        <!--Member View Controller-->
-        <scene sceneID="Bvq-Ju-OFF">
-            <objects>
-                <viewController id="mdm-pk-ad7" customClass="DAMemberViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ser-Xi-sbg">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="bxG-9F-1RO">
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="YH0-OZ-5aw"/>
-                                    <barButtonItem title="成员" style="plain" id="J5T-fe-QkH">
-                                        <connections>
-                                            <action selector="barFilterOnClick:" destination="mdm-pk-ad7" id="JFM-sT-BcZ"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem image="tool_down.png" style="plain" id="heO-08-86Q">
-                                        <inset key="imageInsets" minX="-5" minY="0.0" maxX="5" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="barFilterIcoOnClick:" destination="mdm-pk-ad7" id="1Ap-v1-t7v"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="w86-GM-PRb"/>
-                                </items>
-                                <color key="tintColor" red="0.30196079609999998" green="0.17254902420000001" blue="0.40000003579999999" alpha="1" colorSpace="deviceRGB"/>
-                            </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gsC-eW-OZY">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" placeholder="检索名称、拼音、邮箱" showsCancelButton="YES" id="SBI-rk-OgH">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <scopeButtonTitles>
-                                        <string>Title</string>
-                                        <string>Title</string>
-                                    </scopeButtonTitles>
-                                    <connections>
-                                        <outlet property="delegate" destination="mdm-pk-ad7" id="r96-W9-CiQ"/>
-                                    </connections>
-                                </searchBar>
-                                <connections>
-                                    <outlet property="dataSource" destination="mdm-pk-ad7" id="pdc-09-c8e"/>
-                                    <outlet property="delegate" destination="mdm-pk-ad7" id="f5A-tJ-Ex5"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gsC-eW-OZY" firstAttribute="trailing" secondItem="Ser-Xi-sbg" secondAttribute="trailing" type="default" id="2he-Ou-rWD"/>
-                            <constraint firstItem="bxG-9F-1RO" firstAttribute="trailing" secondItem="Ser-Xi-sbg" secondAttribute="trailing" type="user" id="DHf-4y-YD2"/>
-                            <constraint firstItem="bxG-9F-1RO" firstAttribute="top" secondItem="Ser-Xi-sbg" secondAttribute="top" type="default" id="Had-ue-3R6"/>
-                            <constraint firstItem="gsC-eW-OZY" firstAttribute="leading" secondItem="Ser-Xi-sbg" secondAttribute="leading" type="default" id="WfU-4M-RFL"/>
-                            <constraint firstItem="gsC-eW-OZY" firstAttribute="top" secondItem="bxG-9F-1RO" secondAttribute="bottom" type="default" id="cDj-x3-qxO"/>
-                            <constraint firstItem="gsC-eW-OZY" firstAttribute="bottom" secondItem="Ser-Xi-sbg" secondAttribute="bottom" type="default" id="nay-K2-bch"/>
-                            <constraint firstItem="bxG-9F-1RO" firstAttribute="leading" secondItem="Ser-Xi-sbg" secondAttribute="leading" type="user" id="rc9-Dg-bDg"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="jqd-WM-jyj"/>
-                    <connections>
-                        <outlet property="barFilter" destination="J5T-fe-QkH" id="o9b-NV-tov"/>
-                        <outlet property="barFilterIco" destination="heO-08-86Q" id="VHd-m1-IDv"/>
-                        <outlet property="searchBar" destination="SBI-rk-OgH" id="ThJ-Ca-7Nf"/>
-                        <outlet property="searchDisplayController" destination="B1A-hd-bhJ" id="nMf-zJ-eyA"/>
-                        <outlet property="tableView" destination="gsC-eW-OZY" id="2iC-yO-rvi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FOf-te-bAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="B1A-hd-bhJ">
-                    <connections>
-                        <outlet property="delegate" destination="mdm-pk-ad7" id="ZzN-v3-HZw"/>
-                        <outlet property="searchContentsController" destination="mdm-pk-ad7" id="Dar-5K-Q1f"/>
-                        <outlet property="searchResultsDataSource" destination="mdm-pk-ad7" id="sak-RW-p1o"/>
-                        <outlet property="searchResultsDelegate" destination="mdm-pk-ad7" id="jlc-5s-UfI"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="1988" y="119"/>
         </scene>
         <!--File View Controller - Second-->
         <scene sceneID="e6V-nJ-Q8I">
@@ -297,9 +196,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="rpT-jv-31W" kind="relationship" relationship="viewControllers" id="IKx-Gq-x90"/>
-                        <segue destination="iLG-Op-85q" kind="relationship" relationship="viewControllers" id="LiN-7d-R5p"/>
-                        <segue destination="fAe-BM-DdQ" kind="relationship" relationship="viewControllers" id="La9-LN-MBx"/>
                         <segue destination="Mx8-cQ-Vqe" kind="relationship" relationship="viewControllers" id="rv6-3v-dac"/>
+                        <segue destination="iLG-Op-85q" kind="relationship" relationship="viewControllers" id="LiN-7d-R5p"/>
                         <segue destination="kHU-lE-1ZD" kind="relationship" relationship="viewControllers" id="W5D-CG-RLN"/>
                     </connections>
                 </tabBarController>
@@ -399,30 +297,11 @@
             </objects>
             <point key="canvasLocation" x="1441" y="-1220"/>
         </scene>
-        <!--Navigation Controller - 成员-->
-        <scene sceneID="5dA-Li-Gok">
-            <objects>
-                <navigationController navigationBarHidden="YES" id="fAe-BM-DdQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="成员" image="tab_business-woman.png" id="g4s-wi-zQO"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5qz-wu-vAL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="mdm-pk-ad7" kind="relationship" relationship="rootViewController" id="HFM-Ee-5Mq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yf2-ms-eLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1441" y="119"/>
-        </scene>
-        <!--Navigation Controller - 部门/组-->
+        <!--Navigation Controller - 私信-->
         <scene sceneID="yfM-pa-Itj">
             <objects>
                 <navigationController navigationBarHidden="YES" id="Mx8-cQ-Vqe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="部门/组" image="tab_business-team.png" id="XIw-BY-e8r"/>
+                    <tabBarItem key="tabBarItem" title="私信" image="tab_business-team.png" id="XIw-BY-e8r"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EPY-eD-cuK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -430,7 +309,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="QyM-zc-Dtd" kind="relationship" relationship="rootViewController" id="7rM-Fl-vle"/>
+                        <segue destination="AZW-QW-C9y" kind="relationship" relationship="rootViewController" id="CF3-E4-wWQ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoF-Zd-tCQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -459,76 +338,14 @@
     </scenes>
     <resources>
         <image name="tab_business-team.png" width="29" height="30"/>
-        <image name="tab_business-woman.png" width="30" height="30"/>
         <image name="tab_file.png" width="30" height="30"/>
         <image name="tab_home.png" width="30" height="30"/>
         <image name="tab_more-option.png" width="30" height="30"/>
         <image name="tool_bell-mini.png" width="19" height="20"/>
         <image name="tool_document-add-mini.png" width="20" height="20"/>
         <image name="tool_down.png" width="10" height="10"/>
-        <image name="tool_referral-mini.png" width="20" height="20"/>
         <image name="tool_write-box-mini.png" width="20" height="20"/>
     </resources>
-    <classes>
-        <class className="DABaseViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DABaseViewController.h"/>
-        </class>
-        <class className="DAFileViewController" superclassName="DABaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAFileViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="barFilterIcoOnClick:"/>
-                <relationship kind="action" name="barFilterOnClick:"/>
-                <relationship kind="action" name="onAddTouched:"/>
-                <relationship kind="action" name="onCancelTouched:"/>
-                <relationship kind="outlet" name="barFilter" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="barFilterIco" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAGroupViewController" superclassName="DABaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAGroupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="barFilterIcoOnClick:"/>
-                <relationship kind="action" name="barFilterOnClick:"/>
-                <relationship kind="action" name="onAddTouched:"/>
-                <relationship kind="outlet" name="barFilter" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="barFilterIco" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAMainViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMainViewController.h"/>
-        </class>
-        <class className="DAMemberViewController" superclassName="DABaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMemberViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="barFilterIcoOnClick:"/>
-                <relationship kind="action" name="barFilterOnClick:"/>
-                <relationship kind="outlet" name="barFilter" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="barFilterIco" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DAMoreViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMoreViewController.h"/>
-        </class>
-        <class className="DATimeLineViewController" superclassName="DABaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DATimeLineViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onContributeClicked:"/>
-                <relationship kind="action" name="onFilterClicked:"/>
-                <relationship kind="action" name="onNotifiactionClicked:"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="titleFilter" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
