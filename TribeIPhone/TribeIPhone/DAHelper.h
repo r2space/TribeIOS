@@ -37,5 +37,6 @@
 
 
 + (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail;
++ (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail delay:(NSTimeInterval)delay yOffset:(CGFloat)yOffset;
 
 @end
