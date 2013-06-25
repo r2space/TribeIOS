@@ -28,11 +28,11 @@
         cell = [array objectAtIndex:0];
     }
     [cell setMessage:message];
-    float offset = 8;
-    float height = 0;
+    float height = 5;
+    float offset = 15;
     float maxWidth = 320 - offset*2;
     // content
-    DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:[UIFont systemFontOfSize:16] breakMode:NSLineBreakByCharWrapping maxFrame:CGRectMake(offset, height, maxWidth, 5000.0f)];
+    DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:[UIFont systemFontOfSize:14] breakMode:NSLineBreakByCharWrapping maxFrame:CGRectMake(offset, height, maxWidth, 5000.0f)];
     [cell.lblMessage removeFromSuperview];
     cell.lblMessage = label;
     [cell addSubview:cell.lblMessage];
@@ -95,11 +95,11 @@
 
 +(float)cellHeightWithMessage:(DAMessage *)message
 {
-    float height = 0;
-    float offset = 8;
+    float height = 5;
+    float offset = 15;
     float maxWidth = 320 - offset*2;
     
-    DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:[UIFont systemFontOfSize:16] breakMode:NSLineBreakByCharWrapping maxFrame:CGRectMake(offset, height, maxWidth, 5000.0f)];
+    DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:[UIFont systemFontOfSize:14] breakMode:NSLineBreakByCharWrapping maxFrame:CGRectMake(offset, height, maxWidth, 5000.0f)];
     height += label.frame.size.height;
     
     DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(offset, height, maxWidth, 5000) touchEnable:NO];

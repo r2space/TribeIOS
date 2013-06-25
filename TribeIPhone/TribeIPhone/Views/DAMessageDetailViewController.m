@@ -281,9 +281,9 @@
 - (void) setLike
 {
     if ([_message.likers containsObject:[DALoginModule getLoginUserId]]) {
-        self.barLike.image = [UIImage  imageNamed:@"like.png"];
+        self.barLike.image = [UIImage  imageNamed:@"thumb-up-mini.png"];
     } else {
-        self.barLike.image = [UIImage  imageNamed:@"like_outline.png"];
+        self.barLike.image = [UIImage  imageNamed:@"thumb-up-white.png"];
     }
 }
 
