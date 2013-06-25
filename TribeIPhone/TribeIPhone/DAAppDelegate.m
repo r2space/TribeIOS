@@ -143,4 +143,12 @@
     NSLog(@"1. Receive remote notification : %@", userInfo);
 }
 
+// 支持从其他应用接受文件
+- (BOOL)application:(UIApplication *)application openURL:(NSURL*)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    // TODO: 保存到本地，并可以发送消息
+    NSLog(@"%@", url);
+    return YES;
+}
+
 @end
