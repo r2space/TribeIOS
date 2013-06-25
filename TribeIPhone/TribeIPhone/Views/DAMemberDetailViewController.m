@@ -94,6 +94,22 @@
     }
     return 0;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        // 更多
+        DAMemberMoreContainerViewController *moreViewController = [[DAMemberMoreContainerViewController alloc] initWithNibName:@"DAMemberMoreContainerViewController" bundle:nil];
+        
+        moreViewController.user = theUser;
+        [self.navigationController pushViewController:moreViewController animated:YES];
+    }
+    
+
+    
+}
+
+
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 //    if (section == 0) {
 //        return 0;
@@ -147,7 +163,7 @@
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     if (indexPath.section == 0) {
-            return 120;
+            return 90;
     }
     if (indexPath.section == 1) {
         return [DAMessageCell cellHeightWithMessage:[list objectAtIndex:indexPath.row ]];

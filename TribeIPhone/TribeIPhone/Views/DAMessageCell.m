@@ -10,7 +10,7 @@
 
 #define CONTENT_LABEL_TO_TOP 37.0f
 #define CONTENT_LABEL_TO_LEFT 70.0f
-#define BUTTON_AREA_HEIGHT 43.0f
+#define BUTTON_AREA_HEIGHT 23.0f
 
 @interface DAMessageCell ()
 {

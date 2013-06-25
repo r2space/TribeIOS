@@ -55,7 +55,7 @@
 
 +(DAMessageLabel *)commentLabelWithContent:(NSString *)content
 {
-    return [[DAMessageLabel alloc] initWithContent:content font:[UIFont systemFontOfSize:12] breakMode:NSLineBreakByCharWrapping maxFrame:CGRectMake(55,30,253,5000)];
+    return [[DAMessageLabel alloc] initWithContent:content font:[UIFont systemFontOfSize:12] breakMode:NSLineBreakByCharWrapping maxFrame:CGRectMake(10,30,253,5000)];
 }
 
 @end

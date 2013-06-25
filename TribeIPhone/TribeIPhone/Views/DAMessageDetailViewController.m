@@ -80,7 +80,7 @@
         UILabel *comment = [[UILabel alloc] initWithFrame:CGRectZero];
         comment.backgroundColor = [UIColor clearColor];
         comment.textColor = [UIColor grayColor];
-        comment.font = [UIFont systemFontOfSize:14];
+        comment.font = [UIFont systemFontOfSize:12];
         comment.frame = CGRectMake(8, 15, 260, 20);
         
         NSMutableString *str = [NSMutableString stringWithFormat: @"评论：%d",_commentsTotal];

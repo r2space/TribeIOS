@@ -43,7 +43,7 @@
             cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
         }];
     } else {
-        cell.imgPortrait.image = [UIImage imageNamed:@"second@2x.png"];
+        cell.imgPortrait.image = [UIImage imageNamed:@"group_blank.png"];
     }
     
     if ([@"1" isEqualToString:group.type]) {
