@@ -46,7 +46,7 @@
     // 更新
     if ([DAHelper isFileExist:file]) {
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
-        [[DAFileModule alloc] uploadFile:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
+        [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
             
             [self updateGroup: file._id];
         } progress:nil];

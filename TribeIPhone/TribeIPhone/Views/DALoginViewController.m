@@ -75,11 +75,39 @@
 
 - (IBAction)onLoginTouched:(id)sender
 {
+    // Alert 显示延迟1秒
+    NSTimeInterval delay = 1;
+    // Alert 竖直偏移
+    CGFloat yOffset = 10.f;
+    
+    // 检证userId是否为空，去掉前后的半角和全角空格
+    NSString * userId = [self.txtUserId.text stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" 　" ]];
+    if ( userId.length  == 0) {
+        [DAHelper alert:self.view message:@"账户不能为空" detail:nil delay:delay yOffset:yOffset];
+        [self.txtUserId becomeFirstResponder];
+        return;
+    }
+    
+    // 检证password是否为空，去掉前后的半角和全角空格
+    NSString * password = [self.txtPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" 　" ]];
+    if ( password.length  == 0) {
+        [DAHelper alert:self.view message:@"密码不能为空" detail:nil delay:delay yOffset:yOffset];
+        [self.txtPassword becomeFirstResponder];
+        return;
+    }
+    
     // Blocks版
-    [[DALoginModule alloc] login:self.txtUserId.text password:self.txtPassword.text callback:^(NSError *error, DAUser *user){
+    [[DALoginModule alloc] login:userId password:password callback:^(NSError *error, DAUser *user){
 
-        [[NSUserDefaults standardUserDefaults] setObject:self.txtUserId.text forKey:@"jp.co.dreamarts.smart.message.userid"];
-        [[NSUserDefaults standardUserDefaults] setObject:self.txtPassword.text forKey:@"jp.co.dreamarts.smart.message.password"];
+        // 登陆失败
+        if ( user == nil) {
+            [DAHelper alert:self.view message:@"用户名或密码不正确！" detail:@"登陆验证失败" delay:delay yOffset:yOffset];
+            [self.txtUserId becomeFirstResponder];
+            return;
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:userId forKey:@"jp.co.dreamarts.smart.message.userid"];
+        [[NSUserDefaults standardUserDefaults] setObject:password forKey:@"jp.co.dreamarts.smart.message.password"];
         
         // 保存用户数据
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

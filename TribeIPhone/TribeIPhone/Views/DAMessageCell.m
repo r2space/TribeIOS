@@ -8,8 +8,8 @@
 
 #import "DAMessageCell.h"
 
-#define CONTENT_LABEL_TO_TOP 22.0f
-#define CONTENT_LABEL_TO_LEFT 55.0f
+#define CONTENT_LABEL_TO_TOP 37.0f
+#define CONTENT_LABEL_TO_LEFT 70.0f
 #define BUTTON_AREA_HEIGHT 43.0f
 
 @interface DAMessageCell ()
@@ -62,7 +62,7 @@
 
 +(float)cellHeightWithMessage:(DAMessage *)message
 {
-    float maxWidth = 253.0f;
+    float maxWidth = 233.0f;
     float height = 0;
     
     // top
@@ -70,15 +70,16 @@
     
     // content
     
-    float lblMaxHeight = 18.0f * 5; // show 5 lines
-    DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:[UIFont systemFontOfSize:14] breakMode:NSLineBreakByTruncatingTail maxFrame:CGRectMake(CONTENT_LABEL_TO_LEFT,height,maxWidth,lblMaxHeight)];
+    UIFont *font = [UIFont systemFontOfSize:12];
+    float lblMaxHeight = font.lineHeight * 5; // show 5 lines
+    DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:font breakMode:NSLineBreakByTruncatingTail maxFrame:CGRectMake(CONTENT_LABEL_TO_LEFT,height,maxWidth - 50,lblMaxHeight)];
     height += label.frame.size.height;
     
     DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT, height, maxWidth, 0) touchEnable:NO];
     height += view.frame.size.height;
     
     if ([message_contenttype_document isEqualToString:message.contentType] || [message_contenttype_file isEqualToString:message.contentType]) {
-        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT + 10, height, maxWidth - 20, 0) touchEnable:NO];
+        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT + 10, height, maxWidth - 50, 0) touchEnable:NO];
         height += fview.frame.size.height;
     }
     
@@ -136,13 +137,13 @@
         self.lblForwardCount.text = [NSString stringWithFormat:@"%@",[message getForwardCount]];
         
     
-    float maxWidth = 253.0f;
+    float maxWidth = 233.0f;
     float height = 0;
     
     
     // content
     height += CONTENT_LABEL_TO_TOP;
-    UIFont *font = [UIFont systemFontOfSize:14];
+    UIFont *font = [UIFont systemFontOfSize:12];
     float lblMaxHeight = font.lineHeight * 5; // show 5 lines
     DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:font breakMode:NSLineBreakByTruncatingTail maxFrame:CGRectMake(CONTENT_LABEL_TO_LEFT,height,maxWidth,lblMaxHeight)];
     [self.lblMessage removeFromSuperview];

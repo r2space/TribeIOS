@@ -190,6 +190,11 @@
 
 + (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail
 {
+    [self alert:view message:message detail:detail delay:5 yOffset:50.f];
+}
+
++ (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail delay:(NSTimeInterval)delay yOffset:(CGFloat)yOffset
+{
     MBProgressHUD *progress;
     progress = [MBProgressHUD showHUDAddedTo:view animated:YES];
     
@@ -198,9 +203,9 @@
     progress.labelText = message;
     progress.detailsLabelText = detail;
     progress.margin = 10.f;
-    progress.yOffset = 50.f;
+    progress.yOffset = yOffset;
     progress.removeFromSuperViewOnHide = YES;
-    [progress hide:YES afterDelay:5];
+    [progress hide:YES afterDelay:delay];
 }
 
 
