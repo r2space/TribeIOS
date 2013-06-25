@@ -73,9 +73,9 @@
 -(void)displayFilter
 {
     if ([_type isEqualToString:@"all"]) {
-        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_binoculars.png"]];
+        [self.barFilterIco setImage:[UIImage imageNamed:@"tool_down.png"]];
     } else {
-        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_cross.png"]];
+        [self.barFilterIco setImage:[UIImage imageNamed:@"tool_multiply-symbol-mini.png"]];
     }
     [self.barFilter setTitle:[_typeValues objectForKey:_type]];
 }
@@ -151,6 +151,11 @@
         _searchBar.text = @"";
         [self refresh];
     }
+}
+
+- (IBAction)onCancelTouched:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

@@ -24,7 +24,7 @@
 
 - (IBAction)barFilterOnClick:(id)sender;
 - (IBAction)barFilterIcoOnClick:(id)sender;
-
+- (IBAction)onCancelTouched:(id)sender;
 
 
 @end

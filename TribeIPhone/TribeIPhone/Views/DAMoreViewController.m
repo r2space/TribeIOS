@@ -11,6 +11,8 @@
 #import "DAMemberMoreContainerViewController.h"
 #import "DASettingContainerViewController.h"
 #import "DAShortmailViewController.h"
+#import "DAMemberViewController.h"
+#import "DAGroupViewController.h"
 #import <TribeSDK/DALoginModule.h>
 
 @interface DAMoreViewController ()
@@ -48,7 +50,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 2;
+        return 3;
     }
     if (section == 1) {
         return 1;
@@ -63,10 +65,18 @@
     
     if (0 == indexPath.section) {
         if (0 == indexPath.row) {
+            cell.textLabel.text  = @"成员";
+            cell.imageView.image = [UIImage imageNamed:@"tab_business-woman.png"];
+        }
+        if (1 == indexPath.row) {
+            cell.textLabel.text  = @"部门/组";
+            cell.imageView.image = [UIImage imageNamed:@"table_business-team.png"];
+        }
+        if (3 == indexPath.row) {
             cell.textLabel.text  = @"私信";
             cell.imageView.image = [UIImage imageNamed:@"table_business-team.png"];
         }
-        if (1 == indexPath.row) {
+        if (2 == indexPath.row) {
             cell.textLabel.text  = @"账户";
             cell.imageView.image = [UIImage imageNamed:@"table_business-woman.png"];
         }
@@ -85,11 +95,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (0 == indexPath.section) {
-        // 私信
-        if (0 == indexPath.row) {
+        
+        if (3 == indexPath.row) {
             DAShortmailViewController *shortmailViewController = [[DAShortmailViewController alloc]initWithNibName:@"DAShortmailViewController" bundle:nil];
             shortmailViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:shortmailViewController animated:YES];
+        }
+        
+        // 成员
+        if (0 == indexPath.row) {
+            DAMemberViewController *memberViewController = [[DAMemberViewController alloc]initWithNibName:@"DAMemberViewController" bundle:nil];
+            memberViewController.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:memberViewController animated:YES];
+        }
+        
+        // 组
+        if (1 == indexPath.row) {
+            DAGroupViewController *groupViewController = [[DAGroupViewController alloc]initWithNibName:@"DAGroupViewController" bundle:nil];
+            groupViewController.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:groupViewController animated:YES];
         }
         
         // 账户

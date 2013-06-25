@@ -73,6 +73,7 @@
     DAShortmailStoryViewController *shortmailStoryViewController =[[DAShortmailStoryViewController alloc]initWithNibName:@"DAShortmailStoryViewController" bundle:nil];
     shortmailStoryViewController.hidesBottomBarWhenPushed = YES;
     
+//    [self presentViewController:shortmailStoryViewController animated:YES completion:nil];
     [self.navigationController pushViewController:shortmailStoryViewController animated:YES];
 }
 

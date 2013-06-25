@@ -53,19 +53,19 @@
 {
     if ([_type isEqualToString:@"all"]) {
         [self.barFilter setTitle:[_typeValues objectForKey:_filterId]];
-        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_binoculars.png"]];
+        [self.barFilterIco setImage:[UIImage imageNamed:@"tool_down.png"]];
     
     } else if ([_type isEqualToString:@"user"])
     {
         [self.barFilter setTitle:[_typeValues objectForKey:_filterId]];
-        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_cross.png"]];
+        [self.barFilterIco setImage:[UIImage imageNamed:@"tool_multiply-symbol-mini.png"]];
     }
     else if ([_type isEqualToString:@"group"])
     {
         [self.barFilter setTitle:_filterTitle];
-        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_cross.png"]];
+        [self.barFilterIco setImage:[UIImage imageNamed:@"tool_multiply-symbol-mini.png"]];
     } else {
-        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_cross.png"]];
+        [self.barFilterIco setImage:[UIImage imageNamed:@"tool_multiply-symbol-mini.png"]];
     }
     
 }
@@ -171,7 +171,10 @@
 }
 
 
-
+- (IBAction)onCancelTouched:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark -
 #pragma mark UISearchDisplayController Delegate Methods

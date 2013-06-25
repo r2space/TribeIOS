@@ -152,7 +152,6 @@
 
 - (BOOL)finishFetchError:(NSError *)error
 {
-    [progress hide:YES];
     if (error == nil) {
         return NO;
     }

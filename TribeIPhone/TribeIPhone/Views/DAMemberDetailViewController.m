@@ -58,9 +58,6 @@
         theUser = user;
         isFollowed = [user.follower containsObject:[DALoginModule getLoginUserId]];
         self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
-        if ([self preFetch]) {
-            return;
-        }
         [[DAMessageModule alloc] getMessagesByUser:theUser._id start:start count:count before:before callback:^(NSError *error, DAMessageList *messageList){
             
             _messagesTotal = messageList.total.intValue;

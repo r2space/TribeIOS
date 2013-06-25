@@ -48,6 +48,8 @@
 		471A0604171BCA250040CB93 /* DATimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471A05F6171BCA250040CB93 /* DATimeLineViewController.m */; };
 		473970D3174A3A6E00B78C1C /* DAPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 473970D1174A3A6E00B78C1C /* DAPictureViewController.m */; };
 		473970D4174A3A6E00B78C1C /* DAPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 473970D2174A3A6E00B78C1C /* DAPictureViewController.xib */; };
+		4747C7FE17792550004B7DC8 /* DAMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4747C7FD17792550004B7DC8 /* DAMemberViewController.xib */; };
+		4747C80017792FBA004B7DC8 /* DAGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4747C7FF17792FBA004B7DC8 /* DAGroupViewController.xib */; };
 		475AC83F176465C10097851B /* DAMemberViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475AC83E176465C10097851B /* DAMemberViewCell.xib */; };
 		475AC841176472240097851B /* DAGroupViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475AC840176472240097851B /* DAGroupViewCell.xib */; };
 		475AC84417699A890097851B /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 475AC84217699A890097851B /* like.png */; };
@@ -414,6 +416,8 @@
 		473970D0174A3A6E00B78C1C /* DAPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPictureViewController.h; sourceTree = "<group>"; };
 		473970D1174A3A6E00B78C1C /* DAPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPictureViewController.m; sourceTree = "<group>"; };
 		473970D2174A3A6E00B78C1C /* DAPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPictureViewController.xib; sourceTree = "<group>"; };
+		4747C7FD17792550004B7DC8 /* DAMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMemberViewController.xib; sourceTree = "<group>"; };
+		4747C7FF17792FBA004B7DC8 /* DAGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAGroupViewController.xib; sourceTree = "<group>"; };
 		475AC83E176465C10097851B /* DAMemberViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMemberViewCell.xib; sourceTree = "<group>"; };
 		475AC840176472240097851B /* DAGroupViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAGroupViewCell.xib; sourceTree = "<group>"; };
 		475AC84217699A890097851B /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
@@ -1261,6 +1265,7 @@
 				475AC83E176465C10097851B /* DAMemberViewCell.xib */,
 				471A05E2171BCA250040CB93 /* DAMemberViewController.h */,
 				471A05E3171BCA250040CB93 /* DAMemberViewController.m */,
+				4747C7FD17792550004B7DC8 /* DAMemberViewController.xib */,
 				F223E30A171EDF9F0095F1C1 /* DAMemberDetailViewController.h */,
 				F223E30B171EDFA00095F1C1 /* DAMemberDetailViewController.m */,
 				F223E30C171EDFA30095F1C1 /* DAMemberDetailViewController.xib */,
@@ -1291,6 +1296,7 @@
 				475AC840176472240097851B /* DAGroupViewCell.xib */,
 				471A05E8171BCA250040CB93 /* DAGroupViewController.h */,
 				471A05E9171BCA250040CB93 /* DAGroupViewController.m */,
+				4747C7FF17792FBA004B7DC8 /* DAGroupViewController.xib */,
 				F223E2D2171D8A750095F1C1 /* DAGroupDetailViewController.h */,
 				F223E2D3171D8A750095F1C1 /* DAGroupDetailViewController.m */,
 				F223E2D4171D8A750095F1C1 /* DAGroupDetailViewController.xib */,
@@ -1770,6 +1776,8 @@
 				F22CA2541778926C00415341 /* table_document-scroll@2x.png in Resources */,
 				F22CA2571778928D00415341 /* table_rural-house.png in Resources */,
 				F22CA2581778928D00415341 /* table_rural-house@2x.png in Resources */,
+				4747C7FE17792550004B7DC8 /* DAMemberViewController.xib in Resources */,
+				4747C80017792FBA004B7DC8 /* DAGroupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
