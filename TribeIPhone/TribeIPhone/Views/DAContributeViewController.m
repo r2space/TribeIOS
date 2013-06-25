@@ -8,6 +8,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DAContributeViewController.h"
 #import "DAFileSelectViewController.h"
+#import "WTStatusBar.h"
 
 @interface DAContributeViewController ()
 {
@@ -379,10 +380,11 @@
                 return;
             }
             UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
-            [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0)
-                                    fileName:file mimeType:@"image/jpg"
-                                    callback:^(NSError *error, DAFile *file){
-                                        
+            // 在状态栏显示进度
+            [WTStatusBar setProgressBarColor:DAColor];
+            [WTStatusBar setStatusText:@"uploading..." animated:YES];
+            [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
+                [WTStatusBar setStatusText:@"done!" timeout:0.5 animated:YES];                        
                 if ([self finishUpdateError:error]) {
                     return ;
                 }
@@ -394,7 +396,9 @@
                 
                 [self sendMessage:_message];
                 
-            } progress:nil];
+            } progress:^(CGFloat percent){
+                [WTStatusBar setProgress:percent animated:YES];
+            }];
         } else {
             // TODO error
         }
