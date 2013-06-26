@@ -87,7 +87,7 @@
 								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
 							<object class="IBUIBarButtonItem" id="838009234">
-								<string key="IBUITitle">用户</string>
+								<string key="IBUITitle">用户主页</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUIToolbar" ref="440212029"/>
 							</object>

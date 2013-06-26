@@ -50,7 +50,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>ServerAddress</key>
-	<string>10.2.3.199</string>
+	<string>176.34.50.171</string>
 	<key>ServerPort</key>
 	<integer>3000</integer>
 	<key>UIMainStoryboardFile</key>

@@ -46,6 +46,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="106655428"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="656219423"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -86,6 +87,8 @@
 						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{0, 499}, {320, 49}}</string>
 						<reference key="NSSuperview" ref="106655428"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -97,7 +100,7 @@
 								<string key="IBUITitle">提到我</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">tab_people-talk.png</string>
+									<string key="NSResourceName">photography-man-shaking.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUITabBar" ref="182326352"/>
@@ -117,7 +120,7 @@
 								<string key="IBUITitle">通知</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">tab_speaker.png</string>
+									<string key="NSResourceName">message-notification.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUITabBar" ref="182326352"/>
@@ -133,6 +136,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 44}, {320, 455}}</string>
 						<reference key="NSSuperview" ref="106655428"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="182326352"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -152,6 +156,7 @@
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 548}}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="524707205"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -646,9 +651,9 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="message-notification.png">{30, 30}</string>
+			<string key="photography-man-shaking.png">{30, 30}</string>
 			<string key="tab_clipboard.png">{29, 30}</string>
-			<string key="tab_people-talk.png">{30, 30}</string>
-			<string key="tab_speaker.png">{30, 30}</string>
 			<string key="tool_multiply-symbol-mini.png">{20, 20}</string>
 		</dictionary>
 		<bool key="IBDocument.UseAutolayout">YES</bool>

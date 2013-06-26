@@ -160,7 +160,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_arrow-small-27.png" translatesAutoresizingMaskIntoConstraints="NO" id="UeF-W9-nvH">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="sweep.png" translatesAutoresizingMaskIntoConstraints="NO" id="UeF-W9-nvH">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="Siw-Xn-3o0"/>
                                                         <constraint firstAttribute="height" constant="25" id="YEx-Fp-yzQ"/>
@@ -281,13 +281,28 @@
         </scene>
     </scenes>
     <resources>
+        <image name="sweep.png" width="30" height="30"/>
         <image name="table_anchor.png" width="30" height="30"/>
-        <image name="table_arrow-small-27.png" width="30" height="30"/>
         <image name="table_entrance.png" width="30" height="30"/>
         <image name="table_lightbulb.png" width="30" height="30"/>
         <image name="table_satellite-dish.png" width="30" height="30"/>
         <image name="table_storage.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="DASettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DASettingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didEndOnExit:"/>
+                <relationship kind="outlet" name="lblVersion" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="prvSpace" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="txtServerAddress" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtServerPort" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -66,20 +66,21 @@
     if (0 == indexPath.section) {
         if (0 == indexPath.row) {
             cell.textLabel.text  = @"成员";
-            cell.imageView.image = [UIImage imageNamed:@"tab_business-woman.png"];
+            cell.imageView.image = [UIImage imageNamed:@"people-communicate.png"];
         }
         if (1 == indexPath.row) {
             cell.textLabel.text  = @"部门/组";
             cell.imageView.image = [UIImage imageNamed:@"table_business-team.png"];
         }
+        if (2 == indexPath.row) {
+            cell.textLabel.text  = @"账户";
+            cell.imageView.image = [UIImage imageNamed:@"people-single.png"];
+        }
         if (3 == indexPath.row) {
             cell.textLabel.text  = @"私信";
             cell.imageView.image = [UIImage imageNamed:@"table_business-team.png"];
         }
-        if (2 == indexPath.row) {
-            cell.textLabel.text  = @"账户";
-            cell.imageView.image = [UIImage imageNamed:@"table_business-woman.png"];
-        }
+        
     }
     
     if (1 == indexPath.section) {
