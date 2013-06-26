@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DAGroupCell.h"
+#import "DABaseViewController.h"
 
 typedef void (^GroupsDidSelected)(NSArray *groups);
 
-@interface DAGroupSelectViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface DAGroupSelectViewController : DABaseViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSelect;
 @property (weak, nonatomic) NSMutableArray *selectedGroups;
