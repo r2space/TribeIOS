@@ -26,6 +26,44 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)onNameClicked:(id)sender {
+    if (self.nameClickedBlock != nil) {
+        self.nameClickedBlock(_group._id);
+    }
+}
+
+- (IBAction)onInviteClicked:(id)sender {
+    if (self.inviteClickedBlock != nil) {
+        self.inviteClickedBlock(_group._id);
+    }
+}
+
+- (IBAction)onJoinClicked:(id)sender {
+    if (self.joinClickedBlock != nil) {
+        self.joinClickedBlock(_group._id);
+    }
+}
+- (void)setJoinAndInviteBtn:(BOOL)isMember
+{
+    if ([@"1" isEqualToString:self.group.type]) {
+        // group
+        [self.btnJoin setHidden:NO];
+        if (isMember) {
+            [self.btnInvite setHidden:NO];
+        } else {
+            [self.btnInvite setHidden:YES];
+        }
+    } else {
+        [self.btnJoin setHidden:YES];
+        [self.btnInvite setHidden:YES];
+    }
+    
+    NSString *title = isMember ? @"退出" : @"加入";
+    [self.btnJoin setTitle:title forState:UIControlStateNormal];
+    
+    
+}
+
 +(DAGroupDetailCell *)initWithMessage:(DAGroup *)group tableView:(UITableView *)tableView
 {
     NSString *identifier = @"DAGroupDetailCell";    
@@ -36,6 +74,15 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
+    
+    cell.group = group;
+    
+
+    
+    NSMutableString *members = [NSMutableString stringWithString:@"成员人数："];
+    [members appendString:[NSString stringWithFormat:@"%d", group.member.count]];
+    
+    cell.lblMemberCount.text = members;
     
     if (group.photo != nil) {
         [[DAFileModule alloc] getPicture:group.photo.small callback:^(NSError *err, NSString *pictureId){
