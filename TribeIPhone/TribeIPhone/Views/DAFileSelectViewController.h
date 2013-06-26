@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
+#import "DABaseViewController.h"
 
 typedef void (^FilesDidSelected)(NSArray *files);
 
-@interface DAFileSelectViewController : UIViewController
+@interface DAFileSelectViewController : DABaseViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) NSMutableArray *selectedFiles;
 @property (nonatomic) BOOL allowMultiSelect;
