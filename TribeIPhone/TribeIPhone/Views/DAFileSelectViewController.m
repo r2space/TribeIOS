@@ -35,17 +35,53 @@
     _allFiles = [[NSArray alloc] init];
     _unSelectFiles = [[NSMutableArray alloc] init];
     
-    [[DAFileModule alloc] getFileList:0 count:20 type:@"all" callback:^(NSError *error, DAFileList *files) {
-        _allFiles = files.items;
-        [self setUnSelectFiles];
-        [self.tableView reloadData];
-    }];
+    [self refresh];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)fetch
+{
+    if ([self preFetch]) {
+        return;
+    }
+    
+    [[DAFileModule alloc] getFileList:start count:20 type:@"all" callback:^(NSError *error, DAFileList *files) {
+        
+        [progress hide:YES];
+        [refresh endRefreshing];
+        [((UIActivityIndicatorView *)self.tableView.tableFooterView) stopAnimating];
+        
+        // 判断是否有错误
+        if (error != nil) {
+            
+            // 显示错误消息
+            [self showMessage:@"无法获取数据" detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+            
+        }
+        
+        // 如果获取的实际数小于，指定的数，则标记为没有更多数据
+        if (files.items.count < count) {
+            hasMore = NO;
+        } else {
+            hasMore = YES;
+        }
+        
+        // 保存数据
+        if (_allFiles == nil || start == 0) {
+            _allFiles = files.items;
+        } else {
+            _allFiles = [_allFiles arrayByAddingObjectsFromArray:files.items];
+        }
+        
+        [self setUnSelectFiles];
+        // 刷新UITableView
+        [self.tableView reloadData];
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

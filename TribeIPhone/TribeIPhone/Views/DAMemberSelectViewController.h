@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DAMemberCell.h"
+#import "DABaseViewController.h"
 
 typedef void (^UsersDidSelected)(NSArray *users);
 
 
-@interface DAMemberSelectViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface DAMemberSelectViewController : DABaseViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) NSMutableArray *selectedUsers;
 @property (nonatomic) BOOL allowMultiSelect;

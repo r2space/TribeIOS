@@ -28,22 +28,31 @@
 
 - (void)viewDidLoad
 {
+    withoutGetMore = YES;
     [super viewDidLoad];
 
     _allGroups = [[NSArray alloc] init];
     _unSelectGroups = [[NSMutableArray alloc] init];
     
-    [[DAGroupModule alloc] getGroupListByUser:[DALoginModule getLoginUserId] start:0 count:20 callback:^(NSError *error, DAGroupList *groups){
-        _allGroups = groups.items;
-        [self setUnSelectGroups];
-        [self.tableView reloadData];
-    }];
+    [self refresh];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)fetch
+{
+    if ([self preFetch]) {
+        return;
+    }
+    [[DAGroupModule alloc] getGroupListByUser:[DALoginModule getLoginUserId] start:0 count:20 callback:^(NSError *error, DAGroupList *groups){
+        _allGroups = groups.items;
+        [self setUnSelectGroups];
+        [self finishFetch:groups.items error:error];
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -55,6 +64,11 @@
         return self.selectedGroups.count;
     }
     return _unSelectGroups.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

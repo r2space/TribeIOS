@@ -29,31 +29,40 @@
 
 - (void)viewDidLoad
 {
+    withoutGetMore = YES;
     [super viewDidLoad];
     loginuid = [DALoginModule getLoginUserId];
     _allUsers = [[NSArray alloc] init];
     _unSelectUsers = [[NSMutableArray alloc] init];
     
-    if (_inGroup != nil) {
-        [[DAUserModule alloc] getUserListInGroup:_inGroup._id uid:[DALoginModule getLoginUserId] start:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users) {
-            _allUsers = users.items;
-            [self setUnSelectUsers];
-            [self.tableView reloadData];
-        }];
-    } else {
-        [[DAUserModule alloc] getUserListStart:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
-            _allUsers = users.items;
-            [self setUnSelectUsers];
-            [self.tableView reloadData];
-        }];
-    }
     
+    [self refresh];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)fetch
+{
+    if ([self preFetch]) {
+        return;
+    }
+    if (_inGroup != nil) {
+        [[DAUserModule alloc] getUserListInGroup:_inGroup._id uid:[DALoginModule getLoginUserId] start:start count:20 keywords:@"" callback:^(NSError *error, DAUserList *users) {
+            _allUsers = users.items;
+            [self setUnSelectUsers];
+            [self finishFetch:users.items error:error];
+        }];
+    } else {
+        [[DAUserModule alloc] getUserListStart:start count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
+            _allUsers = users.items;
+            [self setUnSelectUsers];
+            [self finishFetch:users.items error:error];
+        }];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
