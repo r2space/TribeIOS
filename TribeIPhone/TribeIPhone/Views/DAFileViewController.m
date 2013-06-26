@@ -64,9 +64,9 @@
 -(void)displayFilter
 {
     if ([_type isEqualToString:@"all"]) {
-        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_binoculars.png"]];
+//        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_binoculars.png"]];
     } else {
-        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_cross.png"]];
+//        [self.barFilterIco setImage:[UIImage imageNamed:@"gateway_cross.png"]];
     }
     [self.barFilter setTitle:[_typeValues objectForKey:_type]];
 }
