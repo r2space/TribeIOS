@@ -22,11 +22,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self fetch];
-    NSLog(@"DATimeLineViewController");
     titleFilter.title = 
     [DAHelper localizedStringWithKey:@"message.filter.allMessage" comment:@"全部消息"];
     filterType = @"all";
+    [self fetch];
     
 }
 
@@ -75,47 +74,42 @@
     [DAHelper showPopup:viewController];
 }
 
+- (IBAction)onFilterIcoClicked:(id)sender
+{
+    if ([filterType isEqualToString:@"all"]) {
+        [self onFilterClicked:nil];
+    } else {
+        filterType = @"all";
+        titleFilter.title = [DAHelper localizedStringWithKey:@"message.filter.allMessage" comment:@"全部消息"];
+        [self refresh];
+    }
+}
+
 
 - (IBAction)onContributeClicked:(id)sender
 {
     DAContributeViewController *ctrl = [[DAContributeViewController alloc] initWithNibName:@"DAContributeViewController" bundle:nil];
     [self presentViewController:ctrl animated:YES completion:nil];
 }
-- (IBAction)onShowAllBtn:(id)sender
-{
-    
-    filterType = @"all";
-    titleFilter.title = [DAHelper localizedStringWithKey:@"message.filter.allMessage" comment:@"全部消息"];
-    UIBarButtonItem *fixItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-    NSMutableArray *items = [NSMutableArray arrayWithArray:self.toolbar.items];
-    [items replaceObjectAtIndex:4 withObject:fixItem];
-    
-    [self.toolbar setItems:items];
-    [self fetch];
-}
 
 
 -(void)filter:(NSString*)type filterid:(NSString *)filterid filtername:(NSString *)filtername
 {
-    
-    
-    UIBarButtonItem *allItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(onShowAllBtn:)];
-    
-    UIBarButtonItem *fixItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    NSMutableArray *items = [NSMutableArray arrayWithArray:self.toolbar.items];
-    [items replaceObjectAtIndex:4 withObject:allItem];
-    [items replaceObjectAtIndex:5 withObject:fixItem];
-    [self.toolbar setItems:items];
-    
     titleFilter.title =[NSString stringWithFormat:@"%@ ",filtername];
     filterType = type;
     filterId = filterid;
-    [self fetch];
+    [self refresh];
     
 }
 
-
+-(void)displayFilter
+{
+    if ([filterType isEqualToString:@"all"]) {
+        [self.barFilterIco setImage:[UIImage imageNamed:@"tool_down.png"]];
+    } else {
+        [self.barFilterIco setImage:[UIImage imageNamed:@"tool_multiply-symbol-mini.png"]];
+    }
+}
 
 #pragma mark - overwrite DABaseViewController
 
@@ -147,6 +141,8 @@
             [self finishFetch:messageList.items error:error];
         }];
     }
+    
+    [self displayFilter];
 }
 
 #pragma mark - Table view delegate

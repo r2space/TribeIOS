@@ -19,6 +19,7 @@
 
 - (IBAction)onFilterClicked:(id)sender;
 - (IBAction)onContributeClicked:(id)sender;
+- (IBAction)onFilterIcoClicked:(id)sender;
 - (IBAction)onNotifiactionClicked:(id)sender;
 
 
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *titleFilter;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barFilterIco;
 
 -(void)filter:(NSString*)type filterid:(NSString *)filterid filtername:(NSString *)filtername;
 
