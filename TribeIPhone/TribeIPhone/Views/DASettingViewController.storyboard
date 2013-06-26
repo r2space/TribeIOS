@@ -288,21 +288,6 @@
         <image name="table_satellite-dish.png" width="30" height="30"/>
         <image name="table_storage.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="DASettingViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DASettingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="didEndOnExit:"/>
-                <relationship kind="outlet" name="lblVersion" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="prvSpace" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="txtServerAddress" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtServerPort" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

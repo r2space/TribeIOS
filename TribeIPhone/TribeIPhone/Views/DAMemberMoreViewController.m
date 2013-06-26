@@ -84,7 +84,7 @@
     }
 
     // 修改头像
-    if (indexPath.section == 1 && indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 1) {
         
         // 判断相机是否可用（模拟器）
         if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {

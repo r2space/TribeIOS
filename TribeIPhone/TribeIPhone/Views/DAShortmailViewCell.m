@@ -50,7 +50,7 @@
             cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
         }];
     } else {
-        cell.imgPortrait.image = [UIImage imageNamed:@"Default.png"];
+        cell.imgPortrait.image = [UIImage imageNamed:@"user_thumb.png"];
     }
     return cell;
 

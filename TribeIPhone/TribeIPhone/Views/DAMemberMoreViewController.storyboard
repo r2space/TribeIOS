@@ -232,53 +232,8 @@
                                             <constraint firstItem="CkF-P2-dsw" firstAttribute="leading" secondItem="G7a-Jd-kAq" secondAttribute="leading" constant="70" id="wS7-Za-QhK"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0Qd-tn-TBP">
-                                        <rect key="frame" x="0.0" y="267" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="语言" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMm-Gd-l0K">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="31" id="cMC-Gp-HPM"/>
-                                                        <constraint firstAttribute="width" constant="42" id="j4i-vB-W8Q"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FlT-Wg-S2d">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="161" id="Q4o-qs-hde"/>
-                                                    </constraints>
-                                                    <segments>
-                                                        <segment title="中"/>
-                                                        <segment title="日"/>
-                                                        <segment title="英"/>
-                                                    </segments>
-                                                </segmentedControl>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_earth-wireframe.png" translatesAutoresizingMaskIntoConstraints="NO" id="wM9-ab-vfJ">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="25" id="Hnt-si-9P2"/>
-                                                        <constraint firstAttribute="height" constant="25" id="pAE-KO-0Ix"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="FlT-Wg-S2d" firstAttribute="centerY" secondItem="wM9-ab-vfJ" secondAttribute="centerY" type="default" id="5bf-UM-ZVC"/>
-                                            <constraint firstItem="ZMm-Gd-l0K" firstAttribute="leading" secondItem="0Qd-tn-TBP" secondAttribute="leading" constant="70" id="977-u0-h1g"/>
-                                            <constraint firstItem="FlT-Wg-S2d" firstAttribute="top" secondItem="0Qd-tn-TBP" secondAttribute="top" constant="7" id="9K7-4e-veP"/>
-                                            <constraint firstItem="ZMm-Gd-l0K" firstAttribute="top" secondItem="wM9-ab-vfJ" secondAttribute="top" type="default" id="GIJ-xW-IIb"/>
-                                            <constraint firstItem="FlT-Wg-S2d" firstAttribute="baseline" secondItem="ZMm-Gd-l0K" secondAttribute="baseline" type="default" id="Zhj-TE-0dK"/>
-                                            <constraint firstItem="wM9-ab-vfJ" firstAttribute="leading" secondItem="0Qd-tn-TBP" secondAttribute="leading" constant="30" id="h0q-Td-h26"/>
-                                            <constraint firstItem="FlT-Wg-S2d" firstAttribute="leading" secondItem="0Qd-tn-TBP" secondAttribute="leading" constant="129" id="msL-2g-Sgt"/>
-                                        </constraints>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ECs-7m-b3O">
-                                        <rect key="frame" x="0.0" y="311" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="267" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -328,10 +283,10 @@
                             <tableViewSection headerTitle="详细信息" id="KwW-F3-yfr">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0fG-q1-KAo">
-                                        <rect key="frame" x="0.0" y="402" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="358" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_business-team.png" translatesAutoresizingMaskIntoConstraints="NO" id="eap-y5-LIc">
@@ -360,7 +315,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="J0m-qE-y72">
-                                        <rect key="frame" x="0.0" y="447" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="403" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -384,7 +339,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="Nx0-fK-l6s">
-                                        <rect key="frame" x="0.0" y="491" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="447" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -421,7 +376,7 @@
                     <connections>
                         <outlet property="imgPhoto" destination="z2f-7Q-yh4" id="utb-2w-3RM"/>
                         <outlet property="lblPhoto" destination="e4g-kl-w0V" id="iG6-6p-VA8"/>
-                        <outlet property="segLang" destination="FlT-Wg-S2d" id="CeA-87-x37"/>
+                        <outlet property="photoCell" destination="fhi-oM-rrV" id="EvN-bS-kvO"/>
                         <outlet property="tvcPhoto" destination="fhi-oM-rrV" id="CXL-UQ-8DO"/>
                         <outlet property="txtAddress" destination="K2e-Cm-ciD" id="ojH-GJ-4Vw"/>
                         <outlet property="txtDescription" destination="x63-Bt-Y9P" id="DOO-2q-ey3"/>
@@ -439,7 +394,6 @@
         <image name="tab_email.png" width="30" height="30"/>
         <image name="table_business-team.png" width="29" height="30"/>
         <image name="table_document-scroll.png" width="30" height="30"/>
-        <image name="table_earth-wireframe.png" width="30" height="30"/>
         <image name="table_phone.png" width="30" height="30"/>
         <image name="table_photo.png" width="30" height="30"/>
         <image name="table_price-tag.png" width="30" height="30"/>
@@ -452,6 +406,7 @@
                 <relationship kind="action" name="didEndOnExit:"/>
                 <relationship kind="outlet" name="imgPhoto" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="lblPhoto" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="photoCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="segLang" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tvcPhoto" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="txtAddress" candidateClass="UITextField"/>
