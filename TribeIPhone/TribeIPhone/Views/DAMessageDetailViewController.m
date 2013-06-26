@@ -85,7 +85,10 @@
         
         NSMutableString *str = [NSMutableString stringWithFormat: @"评论：%d",_commentsTotal];
         [str appendString:@"  "];
-        [str appendString:[NSString stringWithFormat:@"转发：%@", _message.part.forwardNums]];
+        
+        [str appendString:[NSString stringWithFormat:@"转发：%@", _message.part.forwardNums==nil ? @"0" : _message.part.forwardNums ]];
+            
+        
         [str appendString:@"  "];
         [str appendString:[NSString stringWithFormat:@"赞：%d", _message.likers.count]];
         comment.text =  str;

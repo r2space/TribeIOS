@@ -215,7 +215,7 @@
 
 - (void)didFinishJoin:(DAGroup *)group
 {
-    NSLog(@"level success");
+    
     isMember = !isMember;
     self.barJoinOrLeave.title = isMember ? @"退出" : @"加入";
 }

@@ -31,7 +31,7 @@
 
 - (IBAction)onNotifiactionClicked:(id)sender
 {
-    NSLog(@"notification");
+    
     DANotificationViewController *ctrl = [[DANotificationViewController alloc]initWithNibName:@"DANotificationViewController" bundle:nil];
     [self presentViewController:ctrl animated:YES completion:nil];
 }

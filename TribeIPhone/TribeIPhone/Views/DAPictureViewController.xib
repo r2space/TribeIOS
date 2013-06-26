@@ -48,7 +48,6 @@
 								<string key="NSFrame">{{0, 25}, {320, 44}}</string>
 								<reference key="NSSuperview" ref="511716157"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -59,7 +58,7 @@
 									<object class="IBUIBarButtonItem" id="668281607">
 										<object class="NSCustomResource" key="IBUIImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">tool_arrow-enter-left-mini.png</string>
+											<string key="NSResourceName">tool_multiply-symbol-mini.png</string>
 										</object>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<reference key="IBUIToolbar" ref="92276488"/>
@@ -561,7 +560,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="arrow-in.png">{30, 30}</string>
-			<string key="tool_arrow-enter-left-mini.png">{20, 20}</string>
+			<string key="tool_multiply-symbol-mini.png">{20, 20}</string>
 		</dictionary>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 		<string key="IBCocoaTouchPluginVersion">2083</string>

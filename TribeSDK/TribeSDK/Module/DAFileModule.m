@@ -122,7 +122,7 @@
 {
     NSString *path = [NSString stringWithFormat:kURLFileDetail, fid];
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
+        
         if (callback) {
             callback(nil, [[DAFileDetail alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
         }
@@ -139,7 +139,7 @@
 {
     NSString *path = [NSString stringWithFormat:kURLFileHistory, fid];
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
+        
         if (callback) {
             callback(nil, [[DAFileHistory alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
         }

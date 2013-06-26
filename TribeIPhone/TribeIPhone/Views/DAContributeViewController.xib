@@ -205,7 +205,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="1043327438"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">document-attachment.png</string>
+							<string key="NSResourceName">folder.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="353164054"/>
 						<reference key="IBUIFont" ref="406062232"/>
@@ -250,7 +250,6 @@
 						<string key="NSFrame">{{255, 291}, {60, 30}}</string>
 						<reference key="NSSuperview" ref="517917157"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<reference key="IBUIBackgroundColor" ref="547726755"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -264,7 +263,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="1043327438"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">judges.png</string>
+							<string key="NSResourceName">business-team.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="485046167"/>
 						<reference key="IBUIFont" ref="683600621"/>
@@ -435,22 +434,6 @@
 								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">3</int>
 							</object>
-							<object class="IBNSLayoutConstraint" id="1388126">
-								<reference key="firstItem" ref="517917157"/>
-								<int key="firstAttribute">4</int>
-								<int key="relation">0</int>
-								<reference key="secondItem" ref="534004160"/>
-								<int key="secondAttribute">4</int>
-								<float key="multiplier">1</float>
-								<object class="IBLayoutConstant" key="constant">
-									<double key="value">227</double>
-								</object>
-								<float key="priority">1000</float>
-								<reference key="containingView" ref="517917157"/>
-								<int key="scoringType">3</int>
-								<float key="scoringTypeFloat">9</float>
-								<int key="contentType">3</int>
-							</object>
 							<object class="IBNSLayoutConstraint" id="314295134">
 								<reference key="firstItem" ref="534004160"/>
 								<int key="firstAttribute">3</int>
@@ -562,6 +545,22 @@
 								<int key="scoringType">6</int>
 								<float key="scoringTypeFloat">24</float>
 								<int key="contentType">2</int>
+							</object>
+							<object class="IBNSLayoutConstraint" id="1388126">
+								<reference key="firstItem" ref="517917157"/>
+								<int key="firstAttribute">4</int>
+								<int key="relation">0</int>
+								<reference key="secondItem" ref="1062600147"/>
+								<int key="secondAttribute">4</int>
+								<float key="multiplier">1</float>
+								<object class="IBLayoutConstant" key="constant">
+									<double key="value">227</double>
+								</object>
+								<float key="priority">1000</float>
+								<reference key="containingView" ref="517917157"/>
+								<int key="scoringType">3</int>
+								<float key="scoringTypeFloat">9</float>
+								<int key="contentType">3</int>
 							</object>
 							<object class="IBNSLayoutConstraint" id="884318435">
 								<reference key="firstItem" ref="1062600147"/>
@@ -959,13 +958,13 @@
 						<reference key="parent" ref="517917157"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">1101</int>
-						<reference key="object" ref="1388126"/>
+						<int key="objectID">1102</int>
+						<reference key="object" ref="667503656"/>
 						<reference key="parent" ref="517917157"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">1102</int>
-						<reference key="object" ref="667503656"/>
+						<int key="objectID">1104</int>
+						<reference key="object" ref="1388126"/>
 						<reference key="parent" ref="517917157"/>
 					</object>
 				</array>
@@ -982,8 +981,8 @@
 				<string key="1049.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1051.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1099.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="1101.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1102.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="1104.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<boolean value="NO" key="17.showNotes"/>
 				<string key="172.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1041,6 +1040,7 @@
 					<reference ref="902417193"/>
 					<reference ref="155488579"/>
 					<reference ref="884318435"/>
+					<reference ref="1388126"/>
 					<reference ref="651813253"/>
 					<reference ref="667244481"/>
 					<reference ref="63346028"/>
@@ -1048,7 +1048,6 @@
 					<reference ref="75543355"/>
 					<reference ref="332772172"/>
 					<reference ref="314295134"/>
-					<reference ref="1388126"/>
 					<reference ref="667503656"/>
 				</array>
 				<boolean value="NO" key="4.showNotes"/>
@@ -1077,7 +1076,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1102</int>
+			<int key="maxID">1104</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1220,9 +1219,9 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="document-attachment.png">{30, 30}</string>
+			<string key="business-team.png">{29, 30}</string>
+			<string key="folder.png">{30, 30}</string>
 			<string key="image.png">{30, 30}</string>
-			<string key="judges.png">{30, 30}</string>
 			<string key="people-communicate.png">{30, 30}</string>
 			<string key="photography-camera.png">{30, 30}</string>
 			<string key="tool_arrow-box-out-right-mini.png">{20, 20}</string>
