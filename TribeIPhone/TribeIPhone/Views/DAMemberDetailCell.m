@@ -26,7 +26,7 @@
     // Configure the view for the selected state
 }
 
-+(DAMemberDetailCell *)initWithMessage:(DAUser *)group tableView:(UITableView *)tableView
++(DAMemberDetailCell *)initWithMessage:(DAUser *)user tableView:(UITableView *)tableView
 {
     NSString *identifier = @"DAMemberDetailCell";
     
@@ -36,14 +36,45 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
-    
-    if (group.photo != nil) {
-        [[DAFileModule alloc] getPicture:group.photo.small callback:^(NSError *err, NSString *pictureId){
+    cell.user = user;
+    if (user.photo != nil) {
+        [[DAFileModule alloc] getPicture:user.photo.small callback:^(NSError *err, NSString *pictureId){
             cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
         }];
     }
     
+    if ([[DALoginModule getLoginUserId] isEqualToString:user._id]) {
+        [cell.btnFollow setHidden:YES];
+    } else {
+        [cell.btnFollow setHidden:NO];
+    }
+    
+    NSMutableString *followCnt = [NSMutableString stringWithString:@"粉丝："];
+    [followCnt appendString:[NSString stringWithFormat:@"%d", user.follower.count]];
+    [followCnt appendString:@"     "];
+    [followCnt appendString:@"关注的人："];
+    [followCnt appendString:[NSString stringWithFormat:@"%d", user.following.count]];
+    cell.lblFollowCount.text = followCnt;
+    
+    
     return cell;
 }
 
+-(void)setFollow:(BOOL)isFollowed
+{
+    NSString *title = isFollowed ? @"取消关注" : @"关注";
+    [self.btnFollow setTitle:title forState:UIControlStateNormal];
+}
+
+- (IBAction)onNameClicked:(id)sender {
+    if (self.userClickedBlock != nil) {
+        self.userClickedBlock(_user._id);
+    }
+}
+
+- (IBAction)onFollowClicked:(id)sender {
+    if (self.followClickedBlock != nil) {
+        self.followClickedBlock(_user._id);
+    }
+}
 @end

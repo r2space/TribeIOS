@@ -43,4 +43,6 @@
 - (void)showMessage:(NSString *)message detail:(NSString *)detail;
 - (void)showIndicator:(NSString *)message;
 
+- (NSString *)errorMessage;
+- (NSString *)successMessage;
 @end
