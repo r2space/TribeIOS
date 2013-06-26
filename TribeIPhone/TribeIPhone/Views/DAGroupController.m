@@ -31,7 +31,6 @@
 	// Do any additional setup after loading the view.
     
     [[DAGroupModule alloc] getGroupListByUser:self.uid start:0 count:20 callback:^(NSError *error, DAGroupList *groups){
-        NSLog(@"%d", groups.items.count);
         theGroups = groups.items;
         [self.tblGroupList reloadData];
     }];

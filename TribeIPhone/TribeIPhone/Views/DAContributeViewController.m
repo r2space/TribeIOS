@@ -244,19 +244,31 @@
 
 - (IBAction)onAtClicked:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-    actionSheet.delegate = self;
-    
-    int cancelIdx = 1;
-    [actionSheet addButtonWithTitle:@"@users"];
-    if (![self hasRange]) {
-        [actionSheet addButtonWithTitle:@"@groups"];
-        cancelIdx = 2;
+    DAMemberSelectViewController *ctrl = [[DAMemberSelectViewController alloc]initWithNibName:@"DAMemberSelectViewController" bundle:nil];
+    ctrl.allowMultiSelect = YES;
+    ctrl.selectedBlocks = ^(NSArray *users){
+        _atUsers = [NSMutableArray arrayWithArray:users];
+        [self renderButtons];
+    };
+    ctrl.selectedUsers = _atUsers;
+    if ([self hasRange]) {
+        ctrl.inGroup = [_rangeGroup objectAtIndex:0];
     }
-    [actionSheet addButtonWithTitle:@"Cancel"];
-    [actionSheet setCancelButtonIndex:cancelIdx];
+    [self presentViewController:ctrl animated:YES completion:nil];
     
-    [actionSheet showInView:self.view];
+//    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+//    actionSheet.delegate = self;
+//    
+//    int cancelIdx = 1;
+//    [actionSheet addButtonWithTitle:@"@users"];
+//    if (![self hasRange]) {
+//        [actionSheet addButtonWithTitle:@"@groups"];
+//        cancelIdx = 2;
+//    }
+//    [actionSheet addButtonWithTitle:@"Cancel"];
+//    [actionSheet setCancelButtonIndex:cancelIdx];
+//    
+//    [actionSheet showInView:self.view];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

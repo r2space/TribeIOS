@@ -84,7 +84,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="OW9-2D-6gT"/>
                                     <barButtonItem title="私信" style="plain" id="HkR-iB-oWr"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hcU-uW-Met"/>
-                                    <barButtonItem systemItem="add" id="67X-v4-IxG">
+                                    <barButtonItem style="plain" systemItem="add" id="67X-v4-IxG">
                                         <connections>
                                             <action selector="onAddTouched:" destination="AZW-QW-C9y" id="mSz-xP-Pcd"/>
                                         </connections>
