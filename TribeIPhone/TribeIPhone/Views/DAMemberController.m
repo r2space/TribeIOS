@@ -34,7 +34,14 @@
     if (self.kind == DAMemberListAll) {
         self.barTitle.title = @"选择用户";
         [[DAUserModule alloc] getUserListStart:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
-            theMembers = users.items;
+            //临时对应不能选择自己
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (DAUser *user in users.items) {
+                if (![[DALoginModule getLoginUserId] isEqualToString:user._id]) {
+                    [array addObject:user];
+                }
+            }
+            theMembers = array;
             [self.tblUsers reloadData];
         }];
 
