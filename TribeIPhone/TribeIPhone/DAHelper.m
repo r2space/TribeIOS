@@ -209,4 +209,34 @@
 }
 
 
++ (void)setDefaultButtonStyle:(UIButton *)button name:(NSString *)name
+{
+//    UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
+    
+    UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 13.0f, 0.0f, 13.0f);
+    UIImage *sendBack = [[UIImage imageNamed:@"normal-button"] resizableImageWithCapInsets:insets];
+    UIImage *sendBackHighLighted = [[UIImage imageNamed:@"normal-button-highlighted"] resizableImageWithCapInsets:insets];
+    [button setBackgroundImage:sendBack forState:UIControlStateNormal];
+    [button setBackgroundImage:sendBack forState:UIControlStateDisabled];
+    [button setBackgroundImage:sendBackHighLighted forState:UIControlStateHighlighted];
+    
+    NSString *title = NSLocalizedString(@"Send", nil);
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateHighlighted];
+    [button setTitle:title forState:UIControlStateDisabled];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    
+    UIColor *titleShadow = [UIColor colorWithRed:0.325f green:0.463f blue:0.675f alpha:1.0f];
+    [button setTitleShadowColor:titleShadow forState:UIControlStateNormal];
+    [button setTitleShadowColor:titleShadow forState:UIControlStateHighlighted];
+    button.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f);
+    
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [button setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.5f] forState:UIControlStateDisabled];
+    
+//    return sendButton;
+}
+
 @end
