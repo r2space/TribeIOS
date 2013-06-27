@@ -7,6 +7,7 @@
 //
 
 #import "DAGroupDetailCell.h"
+#import "DAMessageLabel.h"
 
 @implementation DAGroupDetailCell
 
@@ -91,6 +92,10 @@
     }else {
         cell.imgPortrait.image = [UIImage imageNamed:@"group_blank.png"];
     }
+    
+    DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:group.description font:[UIFont systemFontOfSize:12] breakMode:NSLineBreakByCharWrapping maxFrame:CGRectMake(20, 120, 280, 5000.0f)];
+    [label setTextColor:[UIColor grayColor]];
+    [cell addSubview:label];
     
     return cell;
 }

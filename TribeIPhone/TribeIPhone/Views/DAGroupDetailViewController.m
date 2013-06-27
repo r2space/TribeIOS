@@ -187,7 +187,13 @@
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     if (indexPath.section == 0) {
-        return 140;
+        float lblHeight = 0;
+        if (theGroup.description != nil && ![@"" isEqualToString:theGroup.description]) {
+            CGSize expectedLabelSize = [theGroup.description sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(280, 5000.0f) lineBreakMode:NSLineBreakByCharWrapping];
+            lblHeight = expectedLabelSize.height + 10;
+        }
+        
+        return 120 + lblHeight;
     }
     if (indexPath.section == 1) {
         return [DAMessageCell cellHeightWithMessage:[list objectAtIndex:indexPath.row ]];
