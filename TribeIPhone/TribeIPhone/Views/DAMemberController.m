@@ -32,7 +32,7 @@
     [super viewDidLoad];
     loginuid = [DALoginModule getLoginUserId];
     if (self.kind == DAMemberListAll) {
-        self.barTitle.title = @"所有用户";
+        self.barTitle.title = @"选择用户";
         [[DAUserModule alloc] getUserListStart:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
             theMembers = users.items;
             [self.tblUsers reloadData];

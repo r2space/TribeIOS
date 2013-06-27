@@ -17,7 +17,7 @@
 {
     self = [super init];
     _message = message;
-    [self setBackgroundColor:[UIColor grayColor]];
+    [self setBackgroundColor:[UIColor lightGrayColor]];
     if (message.attach.count > 0) {
         float fileX = 10;
         float fileY = 0;
