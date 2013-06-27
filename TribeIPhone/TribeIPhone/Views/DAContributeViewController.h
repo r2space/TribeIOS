@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIView *optionView;
 @property (weak, nonatomic) IBOutlet UIButton *btnAt;
 @property (weak, nonatomic) IBOutlet UIButton *btnDocument;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
+@property (weak, nonatomic) IBOutlet UIButton *btnRange;
 
 @property (retain, nonatomic) DAMessage *message;
 @property (nonatomic) BOOL isForward;
