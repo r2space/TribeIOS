@@ -89,7 +89,7 @@
 							<object class="IBUIBarButtonItem" id="489852099">
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">tool_referral-mini.png</string>
+									<string key="NSResourceName">tool_business-team.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUIToolbar" ref="397109912"/>
@@ -560,9 +560,9 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="tool_arrow-enter-left-mini.png">{20, 20}</string>
-			<string key="tool_down.png">{10, 10}</string>
-			<string key="tool_referral-mini.png">{20, 20}</string>
+			<string key="tool_arrow-enter-left-mini.png">{16, 16}</string>
+			<string key="tool_business-team.png">{16, 16}</string>
+			<string key="tool_down.png">{16, 16}</string>
 		</dictionary>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 		<string key="IBCocoaTouchPluginVersion">2083</string>

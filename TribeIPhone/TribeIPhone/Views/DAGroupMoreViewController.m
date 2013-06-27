@@ -20,7 +20,8 @@
     [super viewDidLoad];
 
     if (self.group != nil) {
-        self.imgPortrait.image = [self.group getGroupPhotoImage];
+        self.imgPortrait.image = [DACommon getCatchedImage: self.group.photo.small defaultImage:[UIImage imageNamed:@"people-group.png"]];
+                                  
         self.txtName.text = self.group.name.name_zh;
         self.segSecurity.selectedSegmentIndex = [self.group.secure isEqualToString:GroupSecureTypePublic] ? 0 : 1;
         self.txtCategory.text = self.group.category;
@@ -33,7 +34,10 @@
         }
     }
 }
-
+- (IBAction)didSwitchON:(id)sender
+{
+//        UISwitch *safe = [(UISwitc
+}
 - (IBAction)didEndOnExit:(id)sender
 {
     [((UITextField *)sender) resignFirstResponder];
@@ -44,7 +48,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 修改头像
-    if (indexPath.section == 0 && indexPath.row == 0) {
+    if (indexPath.section == 1 && indexPath.row == 1) {
         
         // カメラが使用可能かどうか判定する
         if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {

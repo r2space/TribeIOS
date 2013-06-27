@@ -78,7 +78,18 @@
         [self.btnCamera setHidden:YES];
     }
     
+    [self setTitle];
     [self renderButtons];
+    
+    self.barBtnSend.enabled = NO;
+    
+    self.txtMessage.delegate = self;
+    
+    //增加监听，当键盘出现或改变时收出消息
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,32 +106,38 @@
 
 -(void)renderButtons
 {
-//    if ([self hasAt]) {
-//        [self.btnAt setImage:[UIImage imageNamed:@"group_add_highlight.png"] forState:UIControlStateNormal];
-//    } else {
-//        [self.btnAt setImage:[UIImage imageNamed:@"group_add.png"] forState:UIControlStateNormal];
-//    }
-//    
-//    
-//    
-//    if ([message_contenttype_image isEqualToString:_message.contentType]) {
-//        if (_photoFromCamera) {
-//            [self.btnCamera setImage:[UIImage imageNamed:@"camera_highlight.png"] forState:UIControlStateNormal];
-//            [self.btnPhoto setImage:[UIImage imageNamed:@"photo.png"] forState:UIControlStateNormal];
-//        } else {
-//            [self.btnCamera setImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
-//            [self.btnPhoto setImage:[UIImage imageNamed:@"photo_highlight.png"] forState:UIControlStateNormal];
-//        }
-//    } else {
-//        [self.btnCamera setImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
-//        [self.btnPhoto setImage:[UIImage imageNamed:@"photo.png"] forState:UIControlStateNormal];
-//    }
-//    
-//    if ([message_contenttype_document isEqualToString:_message.contentType]) {
-//        [self.btnDocument setImage:[UIImage imageNamed:@"document_highlight.png"] forState:UIControlStateNormal];
-//    } else {
-//        [self.btnDocument setImage:[UIImage imageNamed:@"document.png"] forState:UIControlStateNormal];
-//    }
+    if ([self hasAt]) {
+        [self.btnAt setImage:[UIImage imageNamed:@"people-communicate_blue.png"] forState:UIControlStateNormal];
+    } else {
+        [self.btnAt setImage:[UIImage imageNamed:@"people-communicate.png"] forState:UIControlStateNormal];
+    }
+    
+    if ([self hasRange]) {
+        [self.btnRange setImage:[UIImage imageNamed:@"business-team_blue.png"] forState:UIControlStateNormal];
+    } else {
+        [self.btnRange setImage:[UIImage imageNamed:@"business-team.png"] forState:UIControlStateNormal];
+    }
+    
+    
+    
+    if ([message_contenttype_image isEqualToString:_message.contentType]) {
+        if (_photoFromCamera) {
+            [self.btnCamera setImage:[UIImage imageNamed:@"photography-camera_blue.png"] forState:UIControlStateNormal];
+            [self.btnPhoto setImage:[UIImage imageNamed:@"image.png"] forState:UIControlStateNormal];
+        } else {
+            [self.btnCamera setImage:[UIImage imageNamed:@"photography-camera.png"] forState:UIControlStateNormal];
+            [self.btnPhoto setImage:[UIImage imageNamed:@"image_blue.png"] forState:UIControlStateNormal];
+        }
+    } else {
+        [self.btnCamera setImage:[UIImage imageNamed:@"photography-camera.png"] forState:UIControlStateNormal];
+        [self.btnPhoto setImage:[UIImage imageNamed:@"image.png"] forState:UIControlStateNormal];
+    }
+    
+    if ([message_contenttype_document isEqualToString:_message.contentType]) {
+        [self.btnDocument setImage:[UIImage imageNamed:@"folder_blue.png"] forState:UIControlStateNormal];
+    } else {
+        [self.btnDocument setImage:[UIImage imageNamed:@"folder.png"] forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)onLocationClicked:(id)sender
@@ -319,12 +336,10 @@
     ctrl.selectedBlocks = ^(NSArray *groups){
         _rangeGroup = [NSMutableArray arrayWithArray:groups];
         if ([self hasRange]) {
-            self.lblRange.text = ((DAGroup *)[_rangeGroup objectAtIndex:0]).name.name_zh;
             [_atGroups removeAllObjects];
             [_atUsers removeAllObjects];
-        } else {
-            self.lblRange.text = @"公开";
         }
+        [self setTitle];
         [self renderButtons];
     };
     [self presentViewController:ctrl animated:YES completion:nil];
@@ -456,7 +471,51 @@
 
 -(BOOL)hasAt
 {
-    return _atUsers.count > 0 || _atGroups.count >0;
+//    return _atUsers.count > 0 || _atGroups.count >0;
+    return _atUsers.count > 0;
+}
+
+-(void)setTitle
+{
+    if ([_message.type isEqualToNumber:[NSNumber numberWithInt:2]]) {
+        self.barTitle.title = @"评论";
+    } else if (_isForward){
+        if ([self hasRange]) {
+            self.barTitle.title = self.barTitle.title = ((DAGroup *)[_rangeGroup objectAtIndex:0]).name.name_zh;
+        } else {
+            self.barTitle.title = @"转发";
+        }
+    } else {
+        if ([self hasRange]) {
+            self.barTitle.title = self.barTitle.title = ((DAGroup *)[_rangeGroup objectAtIndex:0]).name.name_zh;
+        } else {
+            self.barTitle.title = @"写消息";
+        }
+    }
+}
+
+//当键盘出现或改变时调用
+- (void)keyboardWillShow:(NSNotification *)aNotification
+{
+    //获取键盘的高度
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    if ([_message.type isEqualToNumber:[NSNumber numberWithInt:2]]) {
+        height -= 30;
+    } else {
+        height += 8;
+    }
+    [self.lytToBottom setConstant:height];
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSUInteger newLength = (textView.text.length - range.length) + text.length;
+    
+    [self.barBtnSend setEnabled:newLength > 0];
+    return YES;
 }
 
 @end

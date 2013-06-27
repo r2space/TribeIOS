@@ -15,6 +15,7 @@
     DAGroup *theGroup;
     int _messagesTotal;
     BOOL isMember;
+    DAGroupDetailCell *groupCell;
 }
 
 @end
@@ -120,7 +121,59 @@
         } else {
             cell.imgGroup.image = [UIImage imageNamed:@"department.png"];
         }
+        [cell setJoinAndInviteBtn:isMember];
         
+        cell.nameClickedBlock = ^(NSString *groupId){
+            DAGroupMoreContainerViewController *moreViewController = [[DAGroupMoreContainerViewController alloc] initWithNibName:@"DAGroupMoreContainerViewController" bundle:nil];
+            
+            moreViewController.group = theGroup;
+            [self.navigationController pushViewController:moreViewController animated:YES];
+        };
+        cell.inviteClickedBlock = ^(NSString *groupId){
+            if ([self preUpdate]) {
+                return;
+            }
+            DAMemberController *members = [[DAMemberController alloc] initWithNibName:@"DAMemberController" bundle:nil];
+            members.kind = DAMemberListAll;
+            members.hidesBottomBarWhenPushed = YES;
+            members.selectedBlocks = ^(DAUser *user){
+                [[DAGroupModule alloc] joinGroup:theGroup._id uid:user._id callback:^(NSError *error, DAGroup *group) {
+                    if ([self finishUpdateError:error]) {
+                        return ;
+                    }
+//                    theGroup = group;
+//                    [self.tableView reloadData];
+                }];
+            };
+            //[self.navigationController pushViewController:members animated:YES];
+            [self presentViewController:members animated:YES completion:nil];
+        };
+        cell.joinClickedBlock = ^(NSString *groupId){
+            // 加入/退出
+            if ([self preUpdate]) {
+                return;
+            }
+            if (isMember) {
+                [[DAGroupModule alloc] leaveGroup:theGroup._id uid:[DALoginModule getLoginUserId] callback:^(NSError *error, DAGroup *group) {
+                    if (error != nil) {
+                        [self showMessage:[self errorMessage] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+                        return ;
+                    }
+
+                    [self didFinishJoin:group];
+                }];
+            } else {
+                [[DAGroupModule alloc] joinGroup:theGroup._id uid:[DALoginModule getLoginUserId] callback:^(NSError *error, DAGroup *group) {
+                    if (error != nil) {
+                        [self showMessage:[self errorMessage] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+                        return ;
+                    }
+
+                    [self didFinishJoin:group];
+                }];
+            }
+        };
+        groupCell = cell;
         return cell;
         
     } else {
@@ -134,7 +187,13 @@
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     if (indexPath.section == 0) {
-        return 140;
+        float lblHeight = 0;
+        if (theGroup.description != nil && ![@"" isEqualToString:theGroup.description]) {
+            CGSize expectedLabelSize = [theGroup.description sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(280, 5000.0f) lineBreakMode:NSLineBreakByCharWrapping];
+            lblHeight = expectedLabelSize.height + 10;
+        }
+        
+        return 120 + lblHeight;
     }
     if (indexPath.section == 1) {
         return [DAMessageCell cellHeightWithMessage:[list objectAtIndex:indexPath.row ]];
@@ -215,9 +274,8 @@
 
 - (void)didFinishJoin:(DAGroup *)group
 {
-    
     isMember = !isMember;
-    self.barJoinOrLeave.title = isMember ? @"退出" : @"加入";
+    [groupCell setJoinAndInviteBtn:isMember];
 }
 
 - (IBAction)btnHomeTouched:(id)sender {

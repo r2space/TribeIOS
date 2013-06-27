@@ -14,7 +14,7 @@
 #import "DABaseViewController.h"
 #import "DAHelper.h"
 
-@interface DAContributeViewController : DABaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, CLLocationManagerDelegate>
+@interface DAContributeViewController : DABaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, CLLocationManagerDelegate,UITextViewDelegate>
 {
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnLocation;
@@ -27,6 +27,10 @@
 @property (weak, nonatomic) IBOutlet UIView *optionView;
 @property (weak, nonatomic) IBOutlet UIButton *btnAt;
 @property (weak, nonatomic) IBOutlet UIButton *btnDocument;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barBtnSend;
+@property (weak, nonatomic) IBOutlet UIButton *btnRange;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lytToBottom;
 
 @property (retain, nonatomic) DAMessage *message;
 @property (nonatomic) BOOL isForward;

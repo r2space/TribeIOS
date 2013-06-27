@@ -26,4 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPhoto;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPhoto;
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *photoCell;
+
 @end

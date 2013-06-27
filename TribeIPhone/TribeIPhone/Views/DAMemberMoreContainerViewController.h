@@ -15,6 +15,8 @@
 - (IBAction)onSaveTouched:(id)sender;
 
 @property (retain, nonatomic) DAUser *user;
+@property (retain, nonatomic) NSString *userid;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
+@property (retain ,nonatomic) NSString *status;
 
 @end

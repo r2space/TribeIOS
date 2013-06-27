@@ -23,7 +23,7 @@
 
 -(UIImage *) getGroupPhotoImage
 {
-    return [DACommon getCatchedImage: self.photo.small defaultImage:[UIImage imageNamed:@"second@2x.png"]];
+    return [DACommon getCatchedImage: self.photo.small defaultImage:[UIImage imageNamed:@"group_gray.png"]];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary

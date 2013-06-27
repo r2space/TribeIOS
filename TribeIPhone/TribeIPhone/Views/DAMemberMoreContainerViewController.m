@@ -22,16 +22,20 @@
 {
     [super viewDidLoad];
     
-    // 非本人，禁用保存按钮
-    if (![self.user._id isEqualToString:[DALoginModule getLoginUserId]]) {
-        self.btnSave.enabled = NO;
-    }
+    
 
     // 显示静态TableView
     UIStoryboard *stryBoard=[UIStoryboard storyboardWithName:@"DAMemberMoreViewController" bundle:nil];
     moreViewController = [stryBoard instantiateInitialViewController];
     moreViewController.user = self.user;
     moreViewController.view.frame = CGRectMake(0, 44, 320, 548);
+    
+    // 非本人，禁用保存按钮
+    if (![self.userid isEqualToString:[DALoginModule getLoginUserId]]) {
+        self.btnSave.enabled = NO;
+//        [moreViewController.photoCell removeFromSuperview];
+
+    }
     [self addChildViewController:moreViewController];
     [self.view addSubview:moreViewController.view];
 }

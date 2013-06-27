@@ -14,6 +14,7 @@
     NSArray *theMessageList;
     int _messagesTotal;
     BOOL isFollowed;
+    DAMemberDetailCell *userCell;
 }
 
 @end
@@ -87,26 +88,15 @@
 {
     // Return the number of rows in the section.
     if (section == 0) {
+        if (theUser == nil) {
+            return 0;
+        }
         return 1;
     }
     if(section == 1){
         return list.count;
     }
     return 0;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        // 更多
-        DAMemberMoreContainerViewController *moreViewController = [[DAMemberMoreContainerViewController alloc] initWithNibName:@"DAMemberMoreContainerViewController" bundle:nil];
-        
-        moreViewController.user = theUser;
-        [self.navigationController pushViewController:moreViewController animated:YES];
-    }
-    
-
-    
 }
 
 
@@ -139,16 +129,56 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-            DAMemberDetailCell *cell = [DAMemberDetailCell initWithMessage:theUser tableView:tableView];
+        DAMemberDetailCell *cell = [DAMemberDetailCell initWithMessage:theUser tableView:tableView];
             
-            cell.lblName.text = theUser.name.name_zh;
+        cell.lblName.text = theUser.name.name_zh;
+        cell.userClickedBlock = ^(NSString *userId){
+            DAMemberMoreContainerViewController *moreViewController = [[DAMemberMoreContainerViewController alloc] initWithNibName:@"DAMemberMoreContainerViewController" bundle:nil];
             
+            moreViewController.user = theUser;
+            [self.navigationController pushViewController:moreViewController animated:YES];
+        };
+        [cell setFollow:isFollowed];
+        cell.followClickedBlock = ^(NSString *userId){
+            if ([self preUpdate]) {
+                return;
+            }
+            if (isFollowed) {
+                [[DAUserModule alloc] unfollow:theUser._id callback:^(NSError *error, NSString *uid){
+//                    if ([self finishUpdateError:error]) {
+//                        return ;
+//                    }
+                    if (error != nil) {
+                        [self showMessage:[self errorMessage] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+                        return ;
+                    }
+                    
+                    isFollowed = !isFollowed;
+                    [userCell setFollow:isFollowed];
+                    // TODO 更新本地存储的user信息
+                }];
+            } else {
+                [[DAUserModule alloc] follow:theUser._id callback:^(NSError *error, NSString *uid){
+//                    if ([self finishUpdateError:error]) {
+//                        return ;
+//                    }
+                    if (error != nil) {
+                        [self showMessage:[self errorMessage] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+                        return ;
+                    }
+                    isFollowed = !isFollowed;
+                    [userCell setFollow:isFollowed];
+                    // TODO 更新本地存储的user信息
+                }];
+            }
+        };
             //        NSLog(@"%@", theGroup.description);
             //        cell.lblName.text = theGroup.name.name_zh;
             //        cell.txtDescription.text = theGroup.description;
             //        cell.imgPortrait.image = [theGroup getGroupPhotoImage];
             //        cell.imgGroup.hidden = false;
-            return cell;
+        userCell = cell;
+        return cell;
         
     } else {
         DAMessageCell *cell = [DAMessageCell initWithMessage:[list objectAtIndex:indexPath.row ] tableView:tableView];
@@ -163,7 +193,7 @@
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     if (indexPath.section == 0) {
-            return 90;
+            return 120;
     }
     if (indexPath.section == 1) {
         return [DAMessageCell cellHeightWithMessage:[list objectAtIndex:indexPath.row ]];

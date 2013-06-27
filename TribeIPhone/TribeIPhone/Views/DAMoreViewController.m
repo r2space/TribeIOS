@@ -121,7 +121,7 @@
         if (2 == indexPath.row) {
             DAMemberMoreContainerViewController *memberDetailViewController =[[DAMemberMoreContainerViewController alloc]initWithNibName:@"DAMemberMoreContainerViewController" bundle:nil];
             memberDetailViewController.hidesBottomBarWhenPushed = YES;
-            // memberDetailViewController.user = [DALoginModule getLoginUserId];
+            memberDetailViewController.userid = [DALoginModule getLoginUserId];
             
             [self.navigationController pushViewController:memberDetailViewController animated:YES];
         }
