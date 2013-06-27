@@ -36,6 +36,7 @@
     [super viewDidLoad];
     
     [self refresh];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -284,15 +285,18 @@
 - (void) setLike
 {
     if ([_message.likers containsObject:[DALoginModule getLoginUserId]]) {
-        self.barLike.image = [UIImage  imageNamed:@"thumb-up-mini.png"];
+        [self.tabBar setSelectedItem:self.barLike];
+//        self.barLike.image = [UIImage  imageNamed:@"thumb-up-mini.png"];
     } else {
-        self.barLike.image = [UIImage  imageNamed:@"thumb-up-white.png"];
+        [self.tabBar setSelectedItem:nil];
+//        self.barLike.image = [UIImage  imageNamed:@"thumb-up-white.png"];
     }
 }
 
 #pragma mark - UITabBarDelegate
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
+    
     if (1 == item.tag) {
         // refresh
         [self refresh];
@@ -317,13 +321,16 @@
         [self presentViewController:ctrl animated:YES completion:nil];
     }
     if (4 == item.tag) {
+        
+
         // like
         if ([self preUpdate]) {
             return;
         }
         if ([_message.likers containsObject:[DALoginModule getLoginUserId]]) {
             [[DAMessageModule alloc] unlike:_messageId callback:^(NSError *error, DAMessage *message) {
-                if ([self finishUpdateError:error]) {
+                if (error != nil) {
+                    [self showMessage:[self errorMessage] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
                     return ;
                 }
                 _message = message;
@@ -331,7 +338,8 @@
             }];
         } else {
             [[DAMessageModule alloc] like:_messageId callback:^(NSError *error, DAMessage *message) {
-                if ([self finishUpdateError:error]) {
+                if (error != nil) {
+                    [self showMessage:[self errorMessage] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
                     return ;
                 }
                 _message = message;
@@ -339,6 +347,7 @@
             }];
         }
     }
+    [self setLike];
 }
 
 @end

@@ -73,15 +73,15 @@
         cell.rangeArea.hidden = NO;
         DAGroup *group = message.part.range;
         cell.lblRange.text = group.name.name_zh;
-//        if ([@"1" isEqualToString:group.type]) {
-//            if ([@"1" isEqualToString:group.secure]) {
-//                cell.rangIcon.image = [UIImage imageNamed:@"group_security.png"];
-//            } else {
-//                cell.rangIcon.image = [UIImage imageNamed:@"group.png"];
-//            }
-//        } else {
-//            cell.rangIcon.image = [UIImage imageNamed:@"department.png"];
-//        }
+        if ([@"1" isEqualToString:group.type]) {
+            if ([@"1" isEqualToString:group.secure]) {
+                cell.rangIcon.image = [UIImage imageNamed:@"group_security.png"];
+            } else {
+                cell.rangIcon.image = [UIImage imageNamed:@"group.png"];
+            }
+        } else {
+            cell.rangIcon.image = [UIImage imageNamed:@"department.png"];
+        }
     } else {
         cell.rangeArea.hidden = YES;
     }
@@ -111,11 +111,11 @@
     }
     
     if ([message_contenttype_image isEqualToString:message.contentType]) {
-        height += 165;
+        height += 158;
     }
     
     // bottom
-    height += 40;
+    height += 30;
     
     return height;
 }
