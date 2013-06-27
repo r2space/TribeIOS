@@ -12,6 +12,7 @@
 @interface DAGroupCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UIImageView *groupIcon;
 
 +(DAGroupCell *)initWithGroup:(DAGroup *)group tableView:(UITableView *)tableView;
 

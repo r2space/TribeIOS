@@ -404,36 +404,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="business-man.png" width="30" height="30"/>
-        <image name="tab_email.png" width="30" height="30"/>
-        <image name="table_business-team.png" width="29" height="30"/>
-        <image name="table_document-scroll.png" width="30" height="30"/>
-        <image name="table_phone.png" width="30" height="30"/>
-        <image name="table_photo.png" width="30" height="30"/>
-        <image name="table_price-tag.png" width="30" height="30"/>
-        <image name="table_rural-house.png" width="30" height="30"/>
+        <image name="business-man.png" width="16" height="16"/>
+        <image name="tab_email.png" width="16" height="16"/>
+        <image name="table_business-team.png" width="16" height="16"/>
+        <image name="table_document-scroll.png" width="16" height="16"/>
+        <image name="table_phone.png" width="16" height="16"/>
+        <image name="table_photo.png" width="16" height="16"/>
+        <image name="table_price-tag.png" width="16" height="16"/>
+        <image name="table_rural-house.png" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="DAMemberMoreViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMemberMoreViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="didEndOnExit:"/>
-                <relationship kind="outlet" name="imgPhoto" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblPhoto" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="photoCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="segLang" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tvcPhoto" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="txtAddress" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtDescription" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtMobile" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtName" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

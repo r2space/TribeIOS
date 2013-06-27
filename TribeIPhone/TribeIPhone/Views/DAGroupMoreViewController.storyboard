@@ -282,31 +282,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="people-group.png" width="30" height="30"/>
-        <image name="price-tag.png" width="30" height="30"/>
-        <image name="privacy-settings.png" width="30" height="30"/>
-        <image name="table_business-team.png" width="29" height="30"/>
-        <image name="table_document-scroll.png" width="30" height="30"/>
-        <image name="tag.png" width="30" height="30"/>
+        <image name="people-group.png" width="16" height="16"/>
+        <image name="price-tag.png" width="16" height="16"/>
+        <image name="privacy-settings.png" width="16" height="16"/>
+        <image name="table_business-team.png" width="16" height="16"/>
+        <image name="table_document-scroll.png" width="16" height="16"/>
+        <image name="tag.png" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="DAGroupMoreViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAGroupMoreViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="didEndOnExit:"/>
-                <relationship kind="action" name="didSwitchON:"/>
-                <relationship kind="outlet" name="imgPortrait" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="safeSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="segSecurity" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="txtCategory" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtDescription" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtName" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
