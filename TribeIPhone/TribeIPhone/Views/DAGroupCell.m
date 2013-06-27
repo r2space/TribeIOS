@@ -39,6 +39,16 @@
     
     cell.lblName.text = group.name.name_zh;
     
+    if ([@"1" isEqualToString:group.type]) {
+        if ([@"1" isEqualToString:group.secure]) {
+            cell.groupIcon.image = [UIImage imageNamed:@"group_security.png"];
+        } else {
+            cell.groupIcon.image = [UIImage imageNamed:@"group.png"];
+        }
+    } else {
+        cell.groupIcon.image = [UIImage imageNamed:@"department.png"];
+    }
+    
     if (group.photo != nil) {
         [[DAFileModule alloc] getPicture:group.photo.small callback:^(NSError *err, NSString *pictureId){
             cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
