@@ -53,7 +53,7 @@
     CGFloat btnLoginHeight = 31;
     CGFloat btnLoginBottom = btnLoginY + btnLoginHeight;
     CGFloat bottomSpace = screenHeight - btnLoginBottom;
-    CGFloat destY= keyboardEndSize.height - bottomSpace + 10;
+    CGFloat destY= fabsf(keyboardEndSize.height - bottomSpace + 10);
     
     CGRect r = self.view.frame;
     // 上移View
