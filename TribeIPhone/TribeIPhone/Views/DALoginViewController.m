@@ -44,25 +44,30 @@
 
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
-    // 480为iPhone4画面高度，超过480则为iphone5画面高度
-    CGFloat f = [[UIScreen mainScreen] bounds].size.height > 480 ? 30 : 70;
-    CGRect r = self.view.frame;
+    NSDictionary* info = [aNotification userInfo];
+    CGSize keyboardEndSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
 
+    // 先写死代码，将来改成取登陆按钮的位置和宽高
+    CGFloat btnLoginY = 266;
+    CGFloat btnLoginHeight = 31;
+    CGFloat btnLoginBottom = btnLoginY + btnLoginHeight;
+    CGFloat bottomSpace = screenHeight - btnLoginBottom;
+    CGFloat destY= keyboardEndSize.height - bottomSpace + 10;
+    
+    CGRect r = self.view.frame;
     // 上移View
     [UIView animateWithDuration:0.2 animations:^{
-        self.view.frame = CGRectMake(r.origin.x, r.origin.y - f, r.size.width, r.size.height);
+        self.view.frame = CGRectMake(r.origin.x, -destY, r.size.width, r.size.height);
     }];
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-    // 480为iPhone4画面高度，超过480则为iphone5画面高度
-    CGFloat f = [[UIScreen mainScreen] bounds].size.height > 480 ? 30 : 70;
     CGRect r = self.view.frame;
-
     // 下移View
     [UIView animateWithDuration:0.2 animations:^{
-        self.view.frame = CGRectMake(r.origin.x, r.origin.y + f, r.size.width, r.size.height);
+        self.view.frame = CGRectMake(r.origin.x, 0, r.size.width, r.size.height);
     }];
 }
 

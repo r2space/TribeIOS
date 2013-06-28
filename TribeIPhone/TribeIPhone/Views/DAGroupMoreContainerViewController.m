@@ -9,10 +9,16 @@
 #import "DAGroupMoreContainerViewController.h"
 #import "DAGroupMoreViewController.h"
 #import "DAHelper.h"
+#import "DAGroupMoreDetailCell.h"
+#import "DAMemberController.h"
 
 @interface DAGroupMoreContainerViewController ()
 {
-    DAGroupMoreViewController *moreViewController;
+    
+    BOOL ISNEW;
+    BOOL isPhotoChanged;
+    BOOL isAdmin;
+    UISwitch *switchView;
 }
 
 @end
@@ -23,13 +29,18 @@
 {
     [super viewDidLoad];
     
-    UIStoryboard *stryBoard=[UIStoryboard storyboardWithName:@"DAGroupMoreViewController" bundle:nil];
-    moreViewController = [stryBoard instantiateInitialViewController];
+    ISNEW = YES;
+    isAdmin = YES;
+    isPhotoChanged = NO;
+    if (self.group !=nil) {
+        
+        ISNEW = NO;
+        self.saveBtn.enabled = NO;
+    }
+    if (isAdmin) {
+        self.saveBtn.enabled = YES;
+    }
     
-    moreViewController.group = self.group;
-    moreViewController.view.frame = CGRectMake(0, 44, 320, 548);
-    [self addChildViewController:moreViewController];
-    [self.view addSubview:moreViewController.view];
 }
 
 // 返回
@@ -44,11 +55,12 @@
     NSString *file = [DAHelper documentPath:@"upload.jpg"];
     
     // 更新
-    if ([DAHelper isFileExist:file]) {
+    if (isPhotoChanged&&[DAHelper isFileExist:file]) {
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
         [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
             
             [self updateGroup: file._id];
+            isPhotoChanged = NO;
         } progress:nil];
     } else {
         [self updateGroup: nil];
@@ -58,15 +70,7 @@
 - (void)updateGroup:(NSString *)fileId
 {
     // 没有，则创建组
-    if (self.group == nil) {
-        self.group = [[DAGroup alloc] init];
-        self.group.name = [[GroupName alloc] init];
-    }
-    
-    self.group.name.name_zh = moreViewController.txtName.text;
-    self.group.description = moreViewController.txtDescription.text;
-    self.group.category = moreViewController.txtCategory.text;
-    self.group.secure = moreViewController.segSecurity.selectedSegmentIndex == 0 ? GroupSecureTypePublic : GroupSecureTypePrivate;
+//    self.group.secure = GroupSecureTypePublic;
 
     // 如果头像存在，指定新照片的切割范围
     if (fileId) {
@@ -77,24 +81,361 @@
         photo.width = @"320";
         self.group.photo = photo;
     }
-
     // 更新或新规
-    if ([self preUpdate]) {
-        return;
-    }
+    
     if (self.group._id == nil) {
-        [[DAGroupModule alloc] create:self.group callback:^(NSError *error, DAGroup *group) {
-            if ([self finishUpdateError:error]) {
-                return ;
-            }
+        [[DAGroupModule alloc] create:self.group callback:^(NSError *error, DAGroup *group){
+            
+            [DAHelper alert:self.view message:@"更新成功" detail:nil];
+            
         }];
     } else {
-        [[DAGroupModule alloc] update:self.group callback:^(NSError *error, DAGroup *group) {
-            if ([self finishUpdateError:error]) {
-                return ;
-            }
+        [[DAGroupModule alloc] update:self.group callback:^(NSError *error, DAGroup *group){
+            
+            [DAHelper alert:self.view message:@"更新成功" detail:nil];
+            
         }];
     }
+
 }
+
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    if (isAdmin) {
+        if (0==section) {
+            return 1;
+        }else{
+            return 5;
+        }
+    }
+    if (ISNEW) {
+        if (0==section) {
+            return 0;
+        }else{
+            return 5;
+        }
+    }else{
+        if (0==section) {
+            return 1;
+        }else{
+            return 4;
+        }
+    }
+    
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 10;
+    }
+    return 10;
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *identifier = @"DAGroupMoreDetailCell";
+    
+    DAGroupMoreDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil) {
+        UINib *nib = [UINib nibWithNibName:identifier bundle:nil];
+        NSArray *array = [nib instantiateWithOwner:nil options:nil];
+        cell = [array objectAtIndex:0];
+    }
+    if (isAdmin) {
+        if (indexPath.section ==0 ) {
+            if (!ISNEW) {
+                switch (indexPath.row) {
+                        
+                    case 0:
+                        [self rendCell:cell title:@"成员一览" icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
+                        
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }else{
+            switch (indexPath.row) {
+                case 0:
+                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
+                    break;
+                case 1:
+                    
+                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:1 hasDetail:YES];
+                    break;
+                case 2:
+                    
+                    [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:2 hasDetail:NO];
+                    break;
+                case 3:
+                    
+                    [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
+                    
+                    break;
+                case 4:
+                    
+                    [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊" tag:4 hasDetail:NO];
+                    
+                    
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    }else{
+        
+  
+    if (indexPath.section ==0 ) {
+        if (!ISNEW) {
+        switch (indexPath.row) {
+                
+            case 0:
+                [self rendCell:cell title:@"成员一览" icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
+                
+                break;
+            default:
+                break;
+        }
+        }
+    }else{
+        if (ISNEW) {
+            switch (indexPath.row) {
+                case 0:
+                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
+                    break;
+                case 1:
+                    
+                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:1 hasDetail:YES];
+                    break;
+                case 2:
+                    
+                    [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:2 hasDetail:NO];
+                    break;
+                case 3:
+                    
+                    [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
+                    
+                    break;
+                case 4:
+                    
+                    [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊" tag:4 hasDetail:NO];
+                    
+                    
+                    break;
+                default:
+                    break;
+            }
+        }else{
+            switch (indexPath.row) {
+                case 0:
+                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
+                    break;
+                case 1:
+                    
+                    [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:1 hasDetail:NO];
+                    break;
+                case 2:
+                    
+                    [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:2 hasDetail:NO];
+                    
+                    break;
+                case 3:
+                    
+                    [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊"  tag:3 hasDetail:NO];
+                    
+                    
+                    break;
+                default:
+                    break;
+                }
+        }
+        
+    }
+    }
+    return cell;
+    
+}
+- (IBAction)didEndOnExit:(id)sender
+{
+    [((UITextField *)sender) resignFirstResponder];
+}
+
+
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    if (indexPath.section == 0) {
+        return 44;
+    }else{
+        return 44;
+    }
+    
+}
+
+
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if(indexPath.section == 0){
+        if (indexPath.row == 0 ) {
+            //组成员一览
+            DAMemberController *members = [[DAMemberController alloc] initWithNibName:@"DAMemberController" bundle:nil];
+            members.gid = self.group._id;
+            members.kind = DAMemberListGroupMember;
+            
+            members.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:members animated:YES];
+        }
+    }else{
+        if (indexPath.row == 0 ) {
+            
+        }else if((indexPath.row == 1&&ISNEW)||isAdmin){
+            // 判断相机是否可用（模拟器）
+            if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                return;
+            }
+            
+            // UIImagePickerControllerのインスタンスを生成
+            UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+            
+            // デリゲートを設定
+            imagePickerController.delegate = self;
+            
+            // 画像の取得先をカメラに設定
+            imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+            
+            // 画像取得後に編集するかどうか（デフォルトはNO）
+            imagePickerController.allowsEditing = YES;
+            
+            // 撮影画面をモーダルビューとして表示する
+            [self presentViewController:imagePickerController animated:YES completion:nil];
+        }else if(indexPath.row == 2){
+            
+        }else if(indexPath.row == 3){
+            
+        }else if(indexPath.row == 4){
+            
+        }
+    }
+}
+// 1:私密，2:公开
+- (void) switchAction:(id)sender{
+    UISwitch* control = (UISwitch*)sender;
+    if(control == switchView){
+        BOOL on = control.on;
+        if (on) {
+            self.group.secure = GroupSecureTypePublic;
+        }else{
+            self.group.secure = GroupSecureTypePrivate;
+        }
+        
+    }
+}
+-(DAGroupMoreDetailCell *)rendCell:(DAGroupMoreDetailCell *)cell title:(NSString *)title icon:(NSString *)icon value:(NSString *)value tag:(int )tag hasDetail:(BOOL)hasDetail
+{
+    cell.lblTitle.text = title;
+    cell.txtValue.text = value;
+    if (tag==2) {
+        switchView = [[UISwitch alloc] initWithFrame:CGRectMake(123.0f, 10.0f, 169.0f, 30.0f)];
+        
+        if (self.group!=nil) {
+            if ([self.group.secure isEqualToString:GroupSecureTypePublic]) {
+                switchView.on = YES;
+            }else{
+                switchView.on = NO;
+            }
+            
+        }else{
+            switchView.on = YES;
+        }
+        
+        [switchView addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+        [cell addSubview:switchView];
+    }
+    if (!ISNEW) {
+        [cell.txtValue setEnabled:NO];
+    }else{
+        [cell.txtValue setEnabled:YES];
+    }
+    
+    if (isAdmin) {
+        [cell.txtValue setEnabled:YES];
+    }
+    cell.imageView.image = [UIImage imageNamed:icon];
+    if (hasDetail) {
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        [cell.txtValue removeFromSuperview];
+    }else{
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    [cell.txtValue addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [cell.txtValue setTag:tag];
+    return cell;
+}
+
+- (void) textFieldDidChange:(UITextField *) TextField
+{
+    // 没有，则创建组
+    if (self.group == nil) {
+        self.group = [[DAGroup alloc] init];
+        self.group.name = [[GroupName alloc] init];
+    }
+    if (TextField.tag == 0) {
+        self.group.name.name_zh = TextField.text;
+    } else if(TextField.tag == 3){
+        self.group.category = TextField.text;
+    } else if(TextField.tag == 4){
+        self.group.description = TextField.text;
+    }
+    
+}
+// 画像が選択された時に呼ばれるデリゲートメソッド
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+{
+    // モーダルビューを閉じる
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [UIImageJPEGRepresentation(image, 1.0) writeToFile:[DAHelper documentPath:@"upload.jpg"] atomically:YES];
+    isPhotoChanged = YES;
+    
+    // 渡されてきた画像をフォトアルバムに保存
+    // UIImageWriteToSavedPhotosAlbum(image, self, @selector(targetImage:didFinishSavingWithError:contextInfo:), NULL);
+}
+
+// 画像の選択がキャンセルされた時に呼ばれるデリゲートメソッド
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    // モーダルビューを閉じる
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    // キャンセルされたときの処理を記述・・・
+}
+
+// 画像の保存完了時に呼ばれるメソッド
+- (void)targetImage:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)context
+{
+    if (error) {
+        // 保存失敗時の処理
+    } else {
+        // 保存成功時の処理
+    }
+}
+
 
 @end

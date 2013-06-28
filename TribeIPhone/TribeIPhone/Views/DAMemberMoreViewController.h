@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
-
+#import "DAMemberDetailCell.h"
+#import "DAMessageCell.h"
+#import "DAMemberController.h"
+#import "DAMemberMoreContainerViewController.h"
 @interface DAMemberMoreViewController : UITableViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 - (IBAction)didEndOnExit:(id)sender;
 
 @property (retain, nonatomic) DAUser *user;
 
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
 @property (weak, nonatomic) IBOutlet UITextField *txtMobile;
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;

@@ -87,7 +87,7 @@
     if ([message_contenttype_image isEqualToString:message.contentType]) {
         height += 5;
         if (message.thumb!=nil) {
-            height =160* [message.thumb.height floatValue]/500;
+            height +=160* [message.thumb.height floatValue]/500;
         }else{
             height += 120;
         }

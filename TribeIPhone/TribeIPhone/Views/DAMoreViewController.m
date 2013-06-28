@@ -122,8 +122,9 @@
             DAMemberMoreContainerViewController *memberDetailViewController =[[DAMemberMoreContainerViewController alloc]initWithNibName:@"DAMemberMoreContainerViewController" bundle:nil];
             memberDetailViewController.hidesBottomBarWhenPushed = YES;
             memberDetailViewController.userid = [DALoginModule getLoginUserId];
-            
             [self.navigationController pushViewController:memberDetailViewController animated:YES];
+            
+            
         }
     }
     

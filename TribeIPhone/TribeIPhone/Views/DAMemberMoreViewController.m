@@ -82,9 +82,32 @@
         groupController.uid = self.user._id;
         [self.navigationController pushViewController:groupController animated:YES];
     }
+    // 关注的人一览
+    if (indexPath.section == 0 && indexPath.row == 1) {
+        // 关注的人
+        DAMemberController *members = [[DAMemberController alloc] initWithNibName:@"DAMemberController" bundle:nil];
+        members.uid = self.user._id;
+        members.kind = DAMemberListFollower;
+        
+        members.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:members animated:YES];
+//        [self presentViewController:members animated:YES completion:nil];
+    }
+    // 粉丝一览
+    if (indexPath.section == 0 && indexPath.row == 2) {
+        // 粉丝
+        DAMemberController *members = [[DAMemberController alloc] initWithNibName:@"DAMemberController" bundle:nil];
+        members.uid = self.user._id;
+        members.kind = DAMemberListFollowing;
+        
+        members.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:members animated:YES];
+//        [self presentViewController:members animated:YES completion:nil];
+    }
 
     // 修改头像
-    if (indexPath.section == 0 && indexPath.row == 1) {
+    if (indexPath.section == 1 && indexPath.row == 1) {
         
         // 判断相机是否可用（模拟器）
         if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {

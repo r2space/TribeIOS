@@ -23,10 +23,10 @@ typedef void (^UserDidSelected)(DAUser *);
 @interface DAMemberController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tblUsers;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backBtn;
 @property (nonatomic) DAMemberListType kind;
 @property (weak, nonatomic) NSString *uid;
 @property (weak, nonatomic) NSString *gid;
-
 @property (strong, nonatomic) UserDidSelected selectedBlocks;
 
 - (IBAction)onCancelTouched:(id)sender;

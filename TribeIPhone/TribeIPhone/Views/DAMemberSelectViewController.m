@@ -92,6 +92,7 @@
     }
     DAMemberCell *cell = [DAMemberCell initWithMessage:user tableView:tableView];
     cell.lblName.text = [user getUserName];
+    cell.lblGroup.text = user.department.name.name_zh;
     cell.accessoryType = isSelected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     
     return cell;

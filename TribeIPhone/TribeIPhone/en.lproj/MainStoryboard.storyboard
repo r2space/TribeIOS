@@ -341,14 +341,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="folder.png" width="16" height="16"/>
-        <image name="people-talk.png" width="16" height="16"/>
-        <image name="tab_home.png" width="16" height="16"/>
-        <image name="tab_more-option.png" width="16" height="16"/>
-        <image name="tool_bell-mini.png" width="16" height="16"/>
-        <image name="tool_document-add-mini.png" width="16" height="16"/>
-        <image name="tool_down.png" width="16" height="16"/>
-        <image name="tool_write-box-mini.png" width="16" height="16"/>
+        <image name="folder.png" width="30" height="30"/>
+        <image name="people-talk.png" width="30" height="30"/>
+        <image name="tab_home.png" width="30" height="30"/>
+        <image name="tab_more-option.png" width="30" height="30"/>
+        <image name="tool_bell-mini.png" width="19" height="20"/>
+        <image name="tool_document-add-mini.png" width="20" height="20"/>
+        <image name="tool_down.png" width="10" height="10"/>
+        <image name="tool_write-box-mini.png" width="20" height="20"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
