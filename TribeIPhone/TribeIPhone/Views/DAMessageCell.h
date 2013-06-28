@@ -24,10 +24,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblBy;
 @property (weak, nonatomic) IBOutlet UILabel *lblCommentCount;
 @property (weak, nonatomic) IBOutlet UILabel *lblForwardCount;
+@property (weak, nonatomic) IBOutlet UILabel *lblLikeCount;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
 @property (weak, nonatomic) IBOutlet UIView *groupView;
 @property (weak, nonatomic) IBOutlet UILabel *lblRange;
 @property (weak, nonatomic) IBOutlet UIImageView *imgAttach;
+@property (weak, nonatomic) IBOutlet UIImageView *rangIcon;
 @property (weak, nonatomic) DAMessageAtView *atArea;
 @property (weak, nonatomic) DAMessageFileView *fileArea;
 @property (weak, nonatomic) UILabel *lblMessage;

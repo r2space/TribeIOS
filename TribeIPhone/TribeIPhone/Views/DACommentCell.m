@@ -7,6 +7,7 @@
 //
 
 #import "DACommentCell.h"
+#import "DAHelper.h"
 
 @implementation DACommentCell
 
@@ -44,6 +45,7 @@
     }
     
     cell.lblCreateBy.text = [user getUserName];
+    cell.lblCreateAt.text = [DAHelper stringFromISODateString:comment.createat];
     
     DAMessageLabel *label = [DACommentCell commentLabelWithContent:comment.content];
     [cell.lblComment removeFromSuperview];

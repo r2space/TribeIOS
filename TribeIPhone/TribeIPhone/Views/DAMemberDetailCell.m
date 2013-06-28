@@ -7,6 +7,7 @@
 //
 
 #import "DAMemberDetailCell.h"
+#import "DAHelper.h"
 
 @implementation DAMemberDetailCell
 
@@ -56,6 +57,7 @@
     [followCnt appendString:[NSString stringWithFormat:@"%d", user.following.count]];
     cell.lblFollowCount.text = followCnt;
     
+    [DAHelper setDefaultButtonStyle:cell.btnFollow name:@"关注"];
     
     return cell;
 }

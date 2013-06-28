@@ -10,7 +10,7 @@
 
 #define CONTENT_LABEL_TO_TOP 37.0f
 #define CONTENT_LABEL_TO_LEFT 70.0f
-#define BUTTON_AREA_HEIGHT 23.0f
+#define BUTTON_AREA_HEIGHT 35.0f
 
 @interface DAMessageCell ()
 {
@@ -72,25 +72,24 @@
     
     UIFont *font = [UIFont systemFontOfSize:12];
     float lblMaxHeight = font.lineHeight * 5; // show 5 lines
-    DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:font breakMode:NSLineBreakByTruncatingTail maxFrame:CGRectMake(CONTENT_LABEL_TO_LEFT,height,maxWidth - 50,lblMaxHeight)];
+    DAMessageLabel *label = [[DAMessageLabel alloc] initWithContent:message.content font:font breakMode:NSLineBreakByTruncatingTail maxFrame:CGRectMake(CONTENT_LABEL_TO_LEFT,height,maxWidth,lblMaxHeight)];
     height += label.frame.size.height;
     
     DAMessageAtView *view = [[DAMessageAtView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT, height, maxWidth, 0) touchEnable:NO];
     height += view.frame.size.height;
     
     if ([message_contenttype_document isEqualToString:message.contentType] || [message_contenttype_file isEqualToString:message.contentType]) {
-        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT + 10, height, maxWidth - 50, 0) touchEnable:NO];
+        height += 5;
+        DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT + 10, height, maxWidth - 20, 0) touchEnable:NO];
         height += fview.frame.size.height;
     }
     
     if ([message_contenttype_image isEqualToString:message.contentType]) {
+        height += 5;
         if (message.thumb!=nil) {
-            height =160* [message.thumb.height floatValue]/500;
-            height += 50;
+            height +=160* [message.thumb.height floatValue]/500;
         }else{
             height += 120;
-            height += 50;
-            
         }
         
     }
@@ -120,6 +119,16 @@
         [self.groupView setHidden:NO];
         DAGroup *group = [message getPublicRange];
         self.lblRange.text = group.name.name_zh;
+        
+        if ([@"1" isEqualToString:group.type]) {
+            if ([@"1" isEqualToString:group.secure]) {
+                self.rangIcon.image = [UIImage imageNamed:@"group_security.png"];
+            } else {
+                self.rangIcon.image = [UIImage imageNamed:@"group.png"];
+            }
+        } else {
+            self.rangIcon.image = [UIImage imageNamed:@"department.png"];
+        }
     } else {
         [self.groupView setHidden:YES];
     }
@@ -137,7 +146,14 @@
         self.lblForwardCount.text = @"99+";
     else
         self.lblForwardCount.text = [NSString stringWithFormat:@"%@",[message getForwardCount]];
-        
+    
+    if (message.likers.count > 99) {
+        self.lblLikeCount.text = @"99+";
+    } else {
+        self.lblLikeCount.text = [NSString stringWithFormat:@"%d", message.likers.count];
+    }
+   
+    
     
     float maxWidth = 233.0f;
     float height = 0;
@@ -162,6 +178,7 @@
     height += view.frame.size.height;
     
     if ([message_contenttype_document isEqualToString:message.contentType] || [message_contenttype_file isEqualToString:message.contentType]) {
+        height += 5;
         DAMessageFileView *fview = [[DAMessageFileView alloc] initWithMessage:message frame:CGRectMake(CONTENT_LABEL_TO_LEFT + 10, height, maxWidth - 20, 0) touchEnable:NO];
         [self.fileArea removeFromSuperview];
         self.fileArea = fview;
@@ -172,7 +189,7 @@
     
     if ([message_contenttype_image isEqualToString:message.contentType]) {
         if (message.attach.count > 0) {
-            
+            height += 5;
             MessageAttach *file = [message.attach objectAtIndex:0];
             float imgHeight;
             NSString *fileid = @"";
@@ -184,7 +201,7 @@
                 imgHeight = 120;
             }
             [self.imgAttach removeFromSuperview];
-            UIImageView *newThumb = [[UIImageView alloc]initWithFrame:CGRectMake(56, height, 160, imgHeight)];
+            UIImageView *newThumb = [[UIImageView alloc]initWithFrame:CGRectMake(CONTENT_LABEL_TO_LEFT, height, 160, imgHeight)];
             self.imgAttach = newThumb;
             
             if ([DACommon isImageCatched:fileid]) {

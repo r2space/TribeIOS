@@ -39,4 +39,7 @@
 + (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail;
 + (void)alert:(UIView *)view message:(NSString *)message detail:(NSString *)detail delay:(NSTimeInterval)delay yOffset:(CGFloat)yOffset;
 
+
++ (void)setDefaultButtonStyle:(UIButton *)button name:(NSString *)name;
+
 @end

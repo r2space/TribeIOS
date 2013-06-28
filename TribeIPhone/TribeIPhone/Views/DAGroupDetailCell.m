@@ -8,6 +8,7 @@
 
 #import "DAGroupDetailCell.h"
 #import "DAMessageLabel.h"
+#import "DAHelper.h"
 
 @implementation DAGroupDetailCell
 
@@ -78,7 +79,8 @@
     
     cell.group = group;
     
-
+    [DAHelper setDefaultButtonStyle:cell.btnInvite name:@"退出"];
+    [DAHelper setDefaultButtonStyle:cell.btnJoin name:@"邀请"];
     
     NSMutableString *members = [NSMutableString stringWithString:@"成员人数："];
     [members appendString:[NSString stringWithFormat:@"%d", group.member.count]];

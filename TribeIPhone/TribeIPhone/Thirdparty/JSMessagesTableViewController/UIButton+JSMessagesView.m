@@ -16,8 +16,8 @@
     sendButton.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
     
     UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 13.0f, 0.0f, 13.0f);
-    UIImage *sendBack = [[UIImage imageNamed:@"send"] resizableImageWithCapInsets:insets];
-    UIImage *sendBackHighLighted = [[UIImage imageNamed:@"send-highlighted"] resizableImageWithCapInsets:insets];
+    UIImage *sendBack = [[UIImage imageNamed:@"normal-button"] resizableImageWithCapInsets:insets];
+    UIImage *sendBackHighLighted = [[UIImage imageNamed:@"normal-button-highlighted"] resizableImageWithCapInsets:insets];
     [sendButton setBackgroundImage:sendBack forState:UIControlStateNormal];
     [sendButton setBackgroundImage:sendBack forState:UIControlStateDisabled];
     [sendButton setBackgroundImage:sendBackHighLighted forState:UIControlStateHighlighted];

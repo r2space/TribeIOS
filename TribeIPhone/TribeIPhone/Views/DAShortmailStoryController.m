@@ -46,6 +46,9 @@
         
         [self presentViewController:members animated:YES completion:nil];
     }
+
+    // 设定背景颜色
+    [self setBackgroundColor:[UIColor colorWithRed:232.0f/255.0f green:221.0f/255.0f blue:243.0f/255.0f alpha:1]];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -80,6 +80,16 @@
     
     [self setTitle];
     [self renderButtons];
+    
+    self.barBtnSend.enabled = NO;
+    
+    self.txtMessage.delegate = self;
+    
+    //增加监听，当键盘出现或改变时收出消息
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -482,6 +492,30 @@
             self.barTitle.title = @"写消息";
         }
     }
+}
+
+//当键盘出现或改变时调用
+- (void)keyboardWillShow:(NSNotification *)aNotification
+{
+    //获取键盘的高度
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    if ([_message.type isEqualToNumber:[NSNumber numberWithInt:2]]) {
+        height -= 30;
+    } else {
+        height += 8;
+    }
+    [self.lytToBottom setConstant:height];
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSUInteger newLength = (textView.text.length - range.length) + text.length;
+    
+    [self.barBtnSend setEnabled:newLength > 0];
+    return YES;
 }
 
 @end
