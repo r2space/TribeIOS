@@ -134,9 +134,13 @@
 
 - (void)setTimestamp:(NSDate *)date
 {
-    self.timestampLabel.text = [NSDateFormatter localizedStringFromDate:date
-                                                              dateStyle:NSDateFormatterMediumStyle
-                                                              timeStyle:NSDateFormatterShortStyle];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MM/dd HH:mm"];
+    self.timestampLabel.text = [format stringFromDate:date];
+
+//    self.timestampLabel.text = [NSDateFormatter localizedStringFromDate:date
+//                                                              dateStyle:NSDateFormatterMediumStyle
+//                                                              timeStyle:NSDateFormatterShortStyle];
 }
 
 @end

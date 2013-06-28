@@ -208,7 +208,7 @@
     [progress hide:YES afterDelay:delay];
 }
 
-
+// 设定按钮风格
 + (void)setDefaultButtonStyle:(UIButton *)button name:(NSString *)name
 {
     button.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
