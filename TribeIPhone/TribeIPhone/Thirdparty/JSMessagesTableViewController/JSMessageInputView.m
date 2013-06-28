@@ -37,7 +37,8 @@
 #import "JSBubbleView.h"
 #import "NSString+JSMessagesView.h"
 
-#define SEND_BUTTON_WIDTH 78.0f
+//#define SEND_BUTTON_WIDTH 78.0f
+#define SEND_BUTTON_WIDTH 40.0f
 
 @interface JSMessageInputView ()
 

@@ -366,6 +366,7 @@
 
 - (IBAction)onSendClicked:(id)sender
 {
+    [self showIndicator:@"updating..."];
     _message.content = self.txtMessage.text;
     if (_rangeGroup.count > 0) {
         _message.range = ((DAGroup *)[_rangeGroup objectAtIndex:0])._id;
@@ -406,6 +407,7 @@
             if ([self preUpdate]) {
                 return;
             }
+            
             UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
             // 在状态栏显示进度
             [WTStatusBar setProgressBarColor:DAColor];
@@ -443,6 +445,7 @@
     if ([self preUpdate]) {
         return;
     }
+    [self showIndicator:@"updating..."];
     [[DAMessageModule alloc] send:message callback:^(NSError *error, DAMessage *message){
         if ([self finishUpdateError:error]) {
             return ;
