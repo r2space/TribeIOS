@@ -374,7 +374,7 @@
     cell.txtValue.placeholder = title;
     if ([title isEqualToString:@"公开"]) {
         cell.txtValue.hidden = YES;
-        switchView = [[UISwitch alloc] initWithFrame:CGRectMake(123.0f, 10.0f, 169.0f, 30.0f)];
+        switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220.0f, 10.0f, 169.0f, 30.0f)];
         
         if (self.group!=nil) {
             if ([self.group.secure isEqualToString:GroupSecureTypePublic]) {
@@ -413,7 +413,7 @@
             [cell.txtValue setEnabled:YES];
         }
     }
-    cell.imageView.image = [UIImage imageNamed:icon];
+    cell.imgIcon.image = [UIImage imageNamed:icon];
     if (hasDetail) {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         [cell.txtValue removeFromSuperview];
