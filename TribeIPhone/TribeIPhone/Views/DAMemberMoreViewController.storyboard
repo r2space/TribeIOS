@@ -382,7 +382,7 @@
                             </tableViewSection>
                         </sections>
                         <connections>
-                            <outlet property="dataSource" destination="QqW-Cy-5OR" id="E8a-3y-9Sy"/>
+                            <outlet property="dataSource" destination="QqW-Cy-5OR" id="isp-Q5-u72"/>
                             <outlet property="delegate" destination="QqW-Cy-5OR" id="N8t-xu-HQk"/>
                         </connections>
                     </tableView>
@@ -390,6 +390,7 @@
                         <outlet property="imgPhoto" destination="z2f-7Q-yh4" id="utb-2w-3RM"/>
                         <outlet property="lblPhoto" destination="e4g-kl-w0V" id="iG6-6p-VA8"/>
                         <outlet property="photoCell" destination="fhi-oM-rrV" id="EvN-bS-kvO"/>
+                        <outlet property="tableview" destination="1NP-Pq-oiH" id="byI-S8-oP6"/>
                         <outlet property="tvcPhoto" destination="fhi-oM-rrV" id="CXL-UQ-8DO"/>
                         <outlet property="txtAddress" destination="K2e-Cm-ciD" id="ojH-GJ-4Vw"/>
                         <outlet property="txtDescription" destination="x63-Bt-Y9P" id="DOO-2q-ey3"/>
@@ -404,14 +405,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="business-man.png" width="16" height="16"/>
-        <image name="tab_email.png" width="16" height="16"/>
-        <image name="table_business-team.png" width="16" height="16"/>
-        <image name="table_document-scroll.png" width="16" height="16"/>
-        <image name="table_phone.png" width="16" height="16"/>
-        <image name="table_photo.png" width="16" height="16"/>
-        <image name="table_price-tag.png" width="16" height="16"/>
-        <image name="table_rural-house.png" width="16" height="16"/>
+        <image name="business-man.png" width="30" height="30"/>
+        <image name="tab_email.png" width="30" height="30"/>
+        <image name="table_business-team.png" width="29" height="30"/>
+        <image name="table_document-scroll.png" width="30" height="30"/>
+        <image name="table_phone.png" width="30" height="30"/>
+        <image name="table_photo.png" width="30" height="30"/>
+        <image name="table_price-tag.png" width="30" height="30"/>
+        <image name="table_rural-house.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

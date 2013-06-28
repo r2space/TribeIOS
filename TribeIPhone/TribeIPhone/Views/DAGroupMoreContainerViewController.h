@@ -10,11 +10,13 @@
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DABaseViewController.h"
 
-@interface DAGroupMoreContainerViewController : DABaseViewController
+@interface DAGroupMoreContainerViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (retain, nonatomic) DAGroup *group;
 
 - (IBAction)onCancelTouched:(id)sender;
 - (IBAction)onSaveTouched:(id)sender;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtn;
 
 @end

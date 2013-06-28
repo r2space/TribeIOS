@@ -33,6 +33,7 @@
     loginuid = [DALoginModule getLoginUserId];
     if (self.kind == DAMemberListAll) {
         self.barTitle.title = @"选择用户";
+        self.backBtn.image = [UIImage imageNamed:@"tool_multiply-symbol-mini.png"];
         [[DAUserModule alloc] getUserListStart:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
             theMembers = users.items;
             [self.tblUsers reloadData];
@@ -111,6 +112,12 @@
     if (self.selectedBlocks != nil) {
         self.selectedBlocks(nil);
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.kind == DAMemberListAll) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 @end

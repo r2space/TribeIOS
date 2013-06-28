@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
-@interface DAMemberMoreContainerViewController : UIViewController
+@interface DAMemberMoreContainerViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 - (IBAction)onCancelTouched:(id)sender;
 - (IBAction)onSaveTouched:(id)sender;
@@ -18,5 +18,7 @@
 @property (retain, nonatomic) NSString *userid;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
 @property (retain ,nonatomic) NSString *status;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+- (void) textFieldDidChange:(UITextField *) TextField;
 @end
