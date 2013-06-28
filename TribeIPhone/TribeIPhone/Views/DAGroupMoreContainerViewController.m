@@ -17,8 +17,10 @@
     
     BOOL ISNEW;
     BOOL isPhotoChanged;
-    BOOL isAdmin;
+    BOOL editEnable;
+    BOOL isDepartment;
     UISwitch *switchView;
+    float viewHeight;
 }
 
 @end
@@ -30,17 +32,34 @@
     [super viewDidLoad];
     
     ISNEW = YES;
-    isAdmin = YES;
+    editEnable = [self.group.member containsObject:[DALoginModule getLoginUserId]];
     isPhotoChanged = NO;
     if (self.group !=nil) {
-        
+        isDepartment = [@"2" isEqualToString:self.group.type];
         ISNEW = NO;
         self.saveBtn.enabled = NO;
+        [self.saveBtn setImage:nil];
     }
-    if (isAdmin) {
+    if (editEnable&&self.group.name.name_zh.length > 0) {
         self.saveBtn.enabled = YES;
+        [self.saveBtn setImage:[UIImage imageNamed:@"tool_save.png"]];
+    }
+    if (ISNEW) {
+        self.saveBtn.enabled = NO;
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    viewHeight = self.view.frame.size.height;
 }
 
 // 返回
@@ -70,8 +89,8 @@
 - (void)updateGroup:(NSString *)fileId
 {
     // 没有，则创建组
-//    self.group.secure = GroupSecureTypePublic;
-
+    //    self.group.secure = GroupSecureTypePublic;
+    
     // 如果头像存在，指定新照片的切割范围
     if (fileId) {
         GroupPhoto * photo = [[GroupPhoto alloc] init];
@@ -96,7 +115,7 @@
             
         }];
     }
-
+    
 }
 
 
@@ -111,7 +130,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (isAdmin) {
+    if (editEnable) {
         if (0==section) {
             return 1;
         }else{
@@ -154,7 +173,7 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
-    if (isAdmin) {
+    if (editEnable) {
         if (indexPath.section ==0 ) {
             if (!ISNEW) {
                 switch (indexPath.row) {
@@ -194,77 +213,77 @@
                 default:
                     break;
             }
-
+            
         }
     }else{
         
-  
-    if (indexPath.section ==0 ) {
-        if (!ISNEW) {
-        switch (indexPath.row) {
-                
-            case 0:
-                [self rendCell:cell title:@"成员一览" icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
-                
-                break;
-            default:
-                break;
-        }
-        }
-    }else{
-        if (ISNEW) {
-            switch (indexPath.row) {
-                case 0:
-                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
-                    break;
-                case 1:
-                    
-                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:1 hasDetail:YES];
-                    break;
-                case 2:
-                    
-                    [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:2 hasDetail:NO];
-                    break;
-                case 3:
-                    
-                    [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
-                    
-                    break;
-                case 4:
-                    
-                    [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊" tag:4 hasDetail:NO];
-                    
-                    
-                    break;
-                default:
-                    break;
+        
+        if (indexPath.section ==0 ) {
+            if (!ISNEW) {
+                switch (indexPath.row) {
+                        
+                    case 0:
+                        [self rendCell:cell title:@"成员一览" icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
+                        
+                        break;
+                    default:
+                        break;
+                }
             }
         }else{
-            switch (indexPath.row) {
-                case 0:
-                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
-                    break;
-                case 1:
-                    
-                    [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:1 hasDetail:NO];
-                    break;
-                case 2:
-                    
-                    [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:2 hasDetail:NO];
-                    
-                    break;
-                case 3:
-                    
-                    [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊"  tag:3 hasDetail:NO];
-                    
-                    
-                    break;
-                default:
-                    break;
+            if (ISNEW) {
+                switch (indexPath.row) {
+                    case 0:
+                        [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
+                        break;
+                    case 1:
+                        
+                        [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:1 hasDetail:YES];
+                        break;
+                    case 2:
+                        
+                        [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:2 hasDetail:NO];
+                        break;
+                    case 3:
+                        
+                        [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
+                        
+                        break;
+                    case 4:
+                        
+                        [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊" tag:4 hasDetail:NO];
+                        
+                        
+                        break;
+                    default:
+                        break;
                 }
+            }else{
+                switch (indexPath.row) {
+                    case 0:
+                        [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
+                        break;
+                    case 1:
+                        
+                        [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:1 hasDetail:NO];
+                        break;
+                    case 2:
+                        
+                        [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:2 hasDetail:NO];
+                        
+                        break;
+                    case 3:
+                        
+                        [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊"  tag:3 hasDetail:NO];
+                        
+                        
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
         }
-        
-    }
     }
     return cell;
     
@@ -305,7 +324,7 @@
     }else{
         if (indexPath.row == 0 ) {
             
-        }else if((indexPath.row == 1&&ISNEW)||isAdmin){
+        }else if((indexPath.row == 1&&ISNEW)||editEnable){
             // 判断相机是否可用（模拟器）
             if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
                 return;
@@ -351,7 +370,10 @@
 {
     cell.lblTitle.text = title;
     cell.txtValue.text = value;
-    if (tag==2) {
+    cell.txtValue.delegate = self;
+    cell.txtValue.placeholder = title;
+    if ([title isEqualToString:@"公开"]) {
+        cell.txtValue.hidden = YES;
         switchView = [[UISwitch alloc] initWithFrame:CGRectMake(123.0f, 10.0f, 169.0f, 30.0f)];
         
         if (self.group!=nil) {
@@ -366,6 +388,16 @@
         }
         
         [switchView addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+        if (!editEnable) {
+            switchView.enabled = NO;
+        }
+        if (isDepartment) {
+            switchView.enabled = NO;
+        }
+        if (ISNEW) {
+            switchView.enabled = YES;
+        }
+        
         [cell addSubview:switchView];
     }
     if (!ISNEW) {
@@ -374,8 +406,12 @@
         [cell.txtValue setEnabled:YES];
     }
     
-    if (isAdmin) {
-        [cell.txtValue setEnabled:YES];
+    if (editEnable) {
+        if (isDepartment&&[title isEqualToString:@"名称"]) {
+            [cell.txtValue setEnabled:NO];
+        }else{
+            [cell.txtValue setEnabled:YES];
+        }
     }
     cell.imageView.image = [UIImage imageNamed:icon];
     if (hasDetail) {
@@ -389,6 +425,12 @@
     return cell;
 }
 
+// 收起键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 - (void) textFieldDidChange:(UITextField *) TextField
 {
     // 没有，则创建组
@@ -398,11 +440,20 @@
     }
     if (TextField.tag == 0) {
         self.group.name.name_zh = TextField.text;
+        if (TextField.text.length>0) {
+            [self.saveBtn setEnabled:YES];
+        }else{
+            [self.saveBtn setEnabled:NO];
+        }
     } else if(TextField.tag == 3){
         self.group.category = TextField.text;
     } else if(TextField.tag == 4){
         self.group.description = TextField.text;
     }
+    
+}
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
     
 }
 // 画像が選択された時に呼ばれるデリゲートメソッド
@@ -435,6 +486,35 @@
     } else {
         // 保存成功時の処理
     }
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    
+    CGRect r = self.view.frame;
+    r.size.height = viewHeight - height;
+    
+    // 上移View
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = r;
+    }];
+    [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    CGRect r = self.view.frame;
+    r.size.height = viewHeight;
+
+    // 下移View
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = r;
+    }];
 }
 
 

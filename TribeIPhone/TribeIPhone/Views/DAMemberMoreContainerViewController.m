@@ -19,6 +19,7 @@
     
     BOOL isPhotoChanged;
     BOOL isMine;
+    float viewHeight;
     
 }
 @end
@@ -35,14 +36,23 @@
     // 非本人，禁用保存按钮
     if (![self.userid isEqualToString:[DALoginModule getLoginUserId]]) {
         self.btnSave.enabled = NO;
-        
+        [self.btnSave setImage:nil];
         isMine = NO;
         
+    }else{
+//        self.userid = [DALoginModule getLoginUserId];
     }
-    [[DAUserModule alloc]getUserById:[DALoginModule getLoginUserId] callback:^(NSError *error, DAUser *userdb){
+    [[DAUserModule alloc]getUserById:self.userid callback:^(NSError *error, DAUser *userdb){
         self.user = userdb;
         [self.tableView reloadData];
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
 }
 
 // 返回
@@ -50,7 +60,11 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    viewHeight = self.view.frame.size.height;
+}
 // 保存
 - (IBAction)onSaveTouched:(id)sender
 {
@@ -176,12 +190,12 @@
                     break;
                 case 4:
                     
-                    [self rendCell:cell title:@"住址" icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"软件园路23号" tag:4 hasDetail:NO];
+                    [self rendCell:cell title:@"住址" icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"" tag:4 hasDetail:NO];
                     cell.tag = 3;
                     break;
                 case 5:
                     
-                    [self rendCell:cell title:@"简介" icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"这家伙很懒什么都没留下" tag:5 hasDetail:NO];
+                    [self rendCell:cell title:@"简介" icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"" tag:5 hasDetail:NO];
                     cell.tag = 4;
                     
                     break;
@@ -202,11 +216,11 @@
                     break;
                 case 3:
                     
-                    [self rendCell:cell title:@"住址" icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"软件园路23号" tag:3  hasDetail:NO];
+                    [self rendCell:cell title:@"住址" icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"" tag:3  hasDetail:NO];
                     break;
                 case 4:
                     
-                    [self rendCell:cell title:@"简介" icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"这家伙很懒什么都没留下" tag:4 hasDetail:NO];
+                    [self rendCell:cell title:@"简介" icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"" tag:4 hasDetail:NO];
                     break;
                 default:
                     break;
@@ -245,13 +259,13 @@
         if (indexPath.row == 0 ) {
             DAGroupController *groupController = [[DAGroupController alloc] initWithNibName:@"DAGroupController" bundle:nil];
             
-            groupController.uid = self.user._id;
+            groupController.uid = self.userid;
             [self.navigationController pushViewController:groupController animated:YES];
         }else if(indexPath.row == 1){
             // 关注的人
             DAMemberController *members = [[DAMemberController alloc] initWithNibName:@"DAMemberController" bundle:nil];
-            members.uid = self.user._id;
-            members.kind = DAMemberListFollower;
+            members.uid = self.userid;
+            members.kind = DAMemberListFollowing;
             
             members.hidesBottomBarWhenPushed = YES;
             
@@ -259,8 +273,8 @@
         }else {
             // 粉丝
             DAMemberController *members = [[DAMemberController alloc] initWithNibName:@"DAMemberController" bundle:nil];
-            members.uid = self.user._id;
-            members.kind = DAMemberListFollowing;
+            members.uid = self.userid;
+            members.kind = DAMemberListFollower;
             
             members.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:members animated:YES];
@@ -307,11 +321,15 @@
 {
     cell.lblName.text = title;
     cell.txtValue.text = value;
-    
+    cell.txtValue.delegate = self;
+    cell.txtValue.placeholder = title;
     if (!isMine) {
         [cell.txtValue setEnabled:NO];
     }else{
         [cell.txtValue setEnabled:YES];
+    }
+    if ([title isEqualToString:@"邮件"]) {
+        [cell.txtValue setEnabled:NO];
     }
     
     cell.imgPortrait.image = [UIImage imageNamed:icon];
@@ -329,6 +347,11 @@
 {
     if (TextField.tag == 0) {
         self.user.name.name_zh = TextField.text;
+        if (TextField.text.length>0) {
+            [self.btnSave setEnabled:YES];
+        }else{
+            [self.btnSave setEnabled:NO];
+        }
     } else if(TextField.tag == 2){
         self.user.tel.mobile = TextField.text;
     } else if(TextField.tag == 3){
@@ -361,7 +384,12 @@
     
     // キャンセルされたときの処理を記述・・・
 }
-
+// 收起键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 // 画像の保存完了時に呼ばれるメソッド
 - (void)targetImage:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)context
 {
@@ -370,6 +398,34 @@
     } else {
         // 保存成功時の処理
     }
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    
+    CGRect r = self.view.frame;
+    r.size.height = viewHeight - height;
+    
+    // 上移View
+    self.view.frame = r;
+
+//    [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:NO];
+//    [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewStylePlain animated:YES];
+    
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    CGRect r = self.view.frame;
+    r.size.height = viewHeight;
+    
+    // 下移View
+    self.view.frame = r;
+
 }
 
 @end

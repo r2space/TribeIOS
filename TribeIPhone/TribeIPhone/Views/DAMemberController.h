@@ -13,7 +13,9 @@
 
 typedef enum {
     DAMemberListGroupMember = 1,
+    //2 粉丝
     DAMemberListFollower = 2,
+    //3 关注的人 
     DAMemberListFollowing = 3,
     DAMemberListAll = 4
 } DAMemberListType;

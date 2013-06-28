@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
-@interface DAMemberMoreContainerViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface DAMemberMoreContainerViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
 
 - (IBAction)onCancelTouched:(id)sender;
 - (IBAction)onSaveTouched:(id)sender;

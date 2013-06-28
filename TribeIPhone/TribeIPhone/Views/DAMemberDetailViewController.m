@@ -136,6 +136,8 @@
             DAMemberMoreContainerViewController *moreViewController = [[DAMemberMoreContainerViewController alloc] initWithNibName:@"DAMemberMoreContainerViewController" bundle:nil];
             
             moreViewController.user = theUser;
+            //TODO 对应用户详细BUG
+            moreViewController.userid = theUser._id ;
             [self.navigationController pushViewController:moreViewController animated:YES];
         };
         [cell setFollow:isFollowed];

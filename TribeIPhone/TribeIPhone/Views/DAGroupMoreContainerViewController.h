@@ -10,7 +10,7 @@
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DABaseViewController.h"
 
-@interface DAGroupMoreContainerViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface DAGroupMoreContainerViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
 
 @property (retain, nonatomic) DAGroup *group;
 
