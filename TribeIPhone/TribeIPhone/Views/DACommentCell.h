@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
 @property (weak, nonatomic) IBOutlet UILabel *lblCreateBy;
 @property (weak, nonatomic) UILabel *lblComment;
+@property (weak, nonatomic) IBOutlet UILabel *lblCreateAt;
 
 +(DACommentCell *)initWithComment:(DAMessage *)comment tableView:(UITableView *)tableView;
 +(float)cellHeightWithComment:(DAMessage *)comment;

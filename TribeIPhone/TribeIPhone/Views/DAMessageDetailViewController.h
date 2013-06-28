@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UITabBarItem *barLike;
 - (IBAction)onCancelTouched:(id)sender;
 - (IBAction)btnHomeTouched:(id)sender;
+@property (weak, nonatomic) IBOutlet UITabBar *tabBar;
 
 @end
