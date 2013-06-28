@@ -47,6 +47,10 @@
 		0A04AF911779C5F6002F44C5 /* people-minus-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A04AF8D1779C5F3002F44C5 /* people-minus-white@2x.png */; };
 		0A04AF941779C78D002F44C5 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A04AF921779C78B002F44C5 /* home.png */; };
 		0A04AF951779C78D002F44C5 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A04AF931779C78C002F44C5 /* home@2x.png */; };
+		0A13CB7D177C38220080989D /* DAMemberMoreDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A13CB7C177C38210080989D /* DAMemberMoreDetailCell.m */; };
+		0A13CB7F177C38540080989D /* DAMemberMoreDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A13CB7E177C38530080989D /* DAMemberMoreDetailCell.xib */; };
+		0A1968E9177D130B00D576B5 /* DAGroupMoreDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1968E8177D130B00D576B5 /* DAGroupMoreDetailCell.m */; };
+		0A1968EB177D132300D576B5 /* DAGroupMoreDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1968EA177D132300D576B5 /* DAGroupMoreDetailCell.xib */; };
 		0A59B1C9177BE6A1005CEC15 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A59B1C7177BE6A1005CEC15 /* info.png */; };
 		0A59B1CA177BE6A1005CEC15 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A59B1C8177BE6A1005CEC15 /* info@2x.png */; };
 		0A59B1CD177BEABF005CEC15 /* info-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A59B1CB177BEABF005CEC15 /* info-white.png */; };
@@ -519,6 +523,12 @@
 		0A04AF8D1779C5F3002F44C5 /* people-minus-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people-minus-white@2x.png"; sourceTree = "<group>"; };
 		0A04AF921779C78B002F44C5 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		0A04AF931779C78C002F44C5 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
+		0A13CB7B177C38210080989D /* DAMemberMoreDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMemberMoreDetailCell.h; sourceTree = "<group>"; };
+		0A13CB7C177C38210080989D /* DAMemberMoreDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMemberMoreDetailCell.m; sourceTree = "<group>"; };
+		0A13CB7E177C38530080989D /* DAMemberMoreDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMemberMoreDetailCell.xib; sourceTree = "<group>"; };
+		0A1968E7177D130B00D576B5 /* DAGroupMoreDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGroupMoreDetailCell.h; sourceTree = "<group>"; };
+		0A1968E8177D130B00D576B5 /* DAGroupMoreDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGroupMoreDetailCell.m; sourceTree = "<group>"; };
+		0A1968EA177D132300D576B5 /* DAGroupMoreDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAGroupMoreDetailCell.xib; sourceTree = "<group>"; };
 		0A59B1C7177BE6A1005CEC15 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		0A59B1C8177BE6A1005CEC15 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
 		0A59B1CB177BEABF005CEC15 /* info-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-white.png"; sourceTree = "<group>"; };
@@ -1653,6 +1663,9 @@
 				0AB15090176E978F002F31FB /* DAMemberFilterViewController.h */,
 				0AB15091176E978F002F31FB /* DAMemberFilterViewController.m */,
 				0AB15092176E978F002F31FB /* DAMemberFilterViewController.xib */,
+				0A13CB7B177C38210080989D /* DAMemberMoreDetailCell.h */,
+				0A13CB7C177C38210080989D /* DAMemberMoreDetailCell.m */,
+				0A13CB7E177C38530080989D /* DAMemberMoreDetailCell.xib */,
 			);
 			name = Member;
 			sourceTree = "<group>";
@@ -1681,6 +1694,9 @@
 				476855CF176F08FF00759389 /* DAGroupFilterViewController.h */,
 				476855D0176F08FF00759389 /* DAGroupFilterViewController.m */,
 				476855D1176F08FF00759389 /* DAGroupFilterViewController.xib */,
+				0A1968E7177D130B00D576B5 /* DAGroupMoreDetailCell.h */,
+				0A1968E8177D130B00D576B5 /* DAGroupMoreDetailCell.m */,
+				0A1968EA177D132300D576B5 /* DAGroupMoreDetailCell.xib */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -2260,6 +2276,8 @@
 				4778D545177C122C00E05BAC /* table_business-team_blue@2x.png in Resources */,
 				4778D548177C1A9A00E05BAC /* business-team_blue.png in Resources */,
 				4778D549177C1A9A00E05BAC /* business-team_blue@2x.png in Resources */,
+				0A13CB7F177C38540080989D /* DAMemberMoreDetailCell.xib in Resources */,
+				0A1968EB177D132300D576B5 /* DAGroupMoreDetailCell.xib in Resources */,
 				F22CA293177C3DE200415341 /* normal-button-highlighted.png in Resources */,
 				F22CA294177C3DE200415341 /* normal-button-highlighted@2x.png in Resources */,
 				F22CA295177C3DE200415341 /* normal-button.png in Resources */,
@@ -2387,6 +2405,8 @@
 				476855D2176F08FF00759389 /* DAGroupFilterViewController.m in Sources */,
 				0A93811C17714DAF00F65CA1 /* DAPictureScrollView.m in Sources */,
 				476855E51771562900759389 /* DAFileSelectViewController.m in Sources */,
+				0A13CB7D177C38220080989D /* DAMemberMoreDetailCell.m in Sources */,
+				0A1968E9177D130B00D576B5 /* DAGroupMoreDetailCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2513,8 +2533,8 @@
 		471A059D171BC1AE0040CB93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
@@ -2525,8 +2545,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = cross;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "C8B6035E-42AF-4AB0-850D-4066DB6C0FE9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C8B6035E-42AF-4AB0-850D-4066DB6C0FE9";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2535,8 +2555,8 @@
 		471A059E171BC1AE0040CB93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
@@ -2546,8 +2566,8 @@
 				INFOPLIST_FILE = "TribeIPhone/TribeIPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = cross;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "C8B6035E-42AF-4AB0-850D-4066DB6C0FE9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C8B6035E-42AF-4AB0-850D-4066DB6C0FE9";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
