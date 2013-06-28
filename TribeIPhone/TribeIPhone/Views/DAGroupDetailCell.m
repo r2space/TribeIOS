@@ -61,7 +61,7 @@
     }
     
     NSString *title = isMember ? @"退出" : @"加入";
-    [self.btnJoin setTitle:title forState:UIControlStateNormal];
+    [DAHelper setDefaultButtonStyle:self.btnJoin name:title];
     
     
 }
@@ -79,8 +79,8 @@
     
     cell.group = group;
     
-    [DAHelper setDefaultButtonStyle:cell.btnInvite name:@"退出"];
-    [DAHelper setDefaultButtonStyle:cell.btnJoin name:@"邀请"];
+    [DAHelper setDefaultButtonStyle:cell.btnInvite name:@"邀请"];
+    [DAHelper setDefaultButtonStyle:cell.btnJoin name:@"退出"];
     
     NSMutableString *members = [NSMutableString stringWithString:@"成员人数："];
     [members appendString:[NSString stringWithFormat:@"%d", group.member.count]];

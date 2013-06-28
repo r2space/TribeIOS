@@ -65,7 +65,7 @@
 -(void)setFollow:(BOOL)isFollowed
 {
     NSString *title = isFollowed ? @"取消关注" : @"关注";
-    [self.btnFollow setTitle:title forState:UIControlStateNormal];
+    [DAHelper setDefaultButtonStyle:self.btnFollow name:title];
 }
 
 - (IBAction)onNameClicked:(id)sender {
