@@ -93,6 +93,14 @@
 - (void) update:(NSString *)photoId
 {
     
+    if (photoId) {
+        UserPhoto * photo = [[UserPhoto alloc] init];
+        photo.fid = photoId;
+        photo.x = @"0";
+        photo.y = @"0";
+        photo.width = @"320";
+        self.user.photo = photo;
+    }
     
     [[DAUserModule alloc] update:self.user callback:^(NSError *error, DAUser *user){
         [DAHelper alert:self.view message:@"更新成功" detail:nil];
