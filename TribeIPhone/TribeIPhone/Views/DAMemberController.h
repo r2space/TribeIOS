@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DAMemberCell.h"
+#import "DABaseViewController.h"
 
 
 typedef enum {
@@ -20,7 +21,7 @@ typedef enum {
 
 typedef void (^UserDidSelected)(DAUser *);
 
-@interface DAMemberController : UIViewController
+@interface DAMemberController : DABaseViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tblUsers;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backBtn;
