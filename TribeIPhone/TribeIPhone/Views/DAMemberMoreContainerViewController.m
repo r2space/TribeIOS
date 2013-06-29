@@ -160,16 +160,16 @@
     if (indexPath.section ==0 ) {
         switch (indexPath.row) {
             case 0:
-                [self rendCell:cell title:@"参加的组" icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
+                [self rendCell:cell title:@"参加的组" icon: @"table_business-team.png" value:@"0" tag:6 hasDetail:YES];
                 
                 break;
             case 1:
-                [self rendCell:cell title:@"关注的人" icon: @"business-man.png" value:@"0" tag:10 hasDetail:YES];
+                [self rendCell:cell title:@"关注的人" icon: @"business-man.png" value:@"0" tag:7 hasDetail:YES];
                 
                 
                 break;
             case 2:
-                [self rendCell:cell title:@"粉丝" icon: @"business-man.png" value:@"0" tag:10 hasDetail:YES];
+                [self rendCell:cell title:@"粉丝" icon: @"business-man.png" value:@"0" tag:8 hasDetail:YES];
                 
                 break;
             default:
@@ -179,33 +179,33 @@
         if (isMine) {
             switch (indexPath.row) {
                 case 0:
-                    [self rendCell:cell title:@"姓名" icon: @"price-tag.png" value:self.user.name.name_zh tag:0 hasDetail:NO];
-                    cell.tag = 0;
+                    [self rendCell:cell title:@"姓名" icon: @"price-tag.png" value:self.user.name.name_zh tag:1 hasDetail:NO];
+                    
                     break;
                 case 1:
                     
-                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:self.user.tel.mobile tag:1  hasDetail:YES];
+                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:self.user.tel.mobile tag:9  hasDetail:YES];
                     break;
                 case 2:
                     
                     [self rendCell:cell title:@"手机" icon: @"table_phone.png" value:self.user.tel.mobile tag:2 hasDetail:NO];
-                    cell.tag = 1;
+                    
                     cell.txtValue.keyboardType = UIKeyboardTypeNumberPad;
                     break;
                 case 3:
                     
                     [self rendCell:cell title:@"邮件" icon: @"tab_email.png" value:self.user.uid tag:3 hasDetail:NO];
-                    cell.tag = 2;
+                    
                     break;
                 case 4:
                     
                     [self rendCell:cell title:@"住址" icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"" tag:4 hasDetail:NO];
-                    cell.tag = 3;
+                    
                     break;
                 case 5:
                     
                     [self rendCell:cell title:@"简介" icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"" tag:5 hasDetail:NO];
-                    cell.tag = 4;
+                    
                     
                     break;
                 default:
@@ -214,22 +214,22 @@
         }else{
             switch (indexPath.row) {
                 case 0:
-                    [self rendCell:cell title:@"姓名" icon: @"price-tag.png" value:self.user.name.name_zh tag:0 hasDetail:NO];
+                    [self rendCell:cell title:@"姓名" icon: @"price-tag.png" value:self.user.name.name_zh tag:1 hasDetail:NO];
                     
                     break;
                 case 1:
-                    [self rendCell:cell title:@"手机" icon: @"table_phone.png" value:self.user.tel.mobile tag:1 hasDetail:NO];
+                    [self rendCell:cell title:@"手机" icon: @"table_phone.png" value:self.user.tel.mobile tag:2 hasDetail:NO];
                     break;
                 case 2:
-                    [self rendCell:cell title:@"邮件" icon: @"tab_email.png" value:self.user.uid tag:2 hasDetail:NO];
+                    [self rendCell:cell title:@"邮件" icon: @"tab_email.png" value:self.user.uid tag:3 hasDetail:NO];
                     break;
                 case 3:
                     
-                    [self rendCell:cell title:@"住址" icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"" tag:3  hasDetail:NO];
+                    [self rendCell:cell title:@"住址" icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"" tag:4  hasDetail:NO];
                     break;
                 case 4:
                     
-                    [self rendCell:cell title:@"简介" icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"" tag:4 hasDetail:NO];
+                    [self rendCell:cell title:@"简介" icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"" tag:5 hasDetail:NO];
                     break;
                 default:
                     break;
@@ -332,7 +332,8 @@
     cell.txtValue.text = value;
     cell.txtValue.delegate = self;
     cell.txtValue.placeholder = title;
-    if ([title isEqualToString:@"头像"]) {
+    //tag 9  设置头像
+    if (tag == 9) {
         if (self.user.photo != nil) {
             [[DAFileModule alloc] getPicture:self.user.photo.big callback:^(NSError *err, NSString *pictureId){
                 photoView.image = [DACommon getCatchedImage:pictureId];
@@ -348,7 +349,8 @@
     }else{
         [cell.txtValue setEnabled:YES];
     }
-    if ([title isEqualToString:@"邮件"]) {
+    // tag 3   设置邮件
+    if (tag == 3) {
         [cell.txtValue setEnabled:NO];
     }
     
@@ -365,7 +367,7 @@
 }
 - (void) textFieldDidChange:(UITextField *) TextField
 {
-    if (TextField.tag == 0) {
+    if (TextField.tag == 1) {
         self.user.name.name_zh = TextField.text;
         if (TextField.text.length>0) {
             [self.btnSave setEnabled:YES];
@@ -373,12 +375,24 @@
             [self.btnSave setEnabled:NO];
         }
     } else if(TextField.tag == 2){
+        if (self.user.address==nil) {
+            UserTel * tel = [[UserTel alloc] init];
+            self.user.tel = tel;
+        }
         self.user.tel.mobile = TextField.text;
     } else if(TextField.tag == 3){
         self.user.uid = TextField.text;
     } else if(TextField.tag == 4){
+        if (self.user.address==nil) {
+            UserAddress * address = [[UserAddress alloc] init];
+            self.user.address = address;
+        }
         self.user.address.city = TextField.text;
     } else if(TextField.tag == 5){
+        if (self.user.custom==nil) {
+            UserCustom * custom = [[UserCustom alloc] init];
+            self.user.custom = custom;
+        }
         self.user.custom.memo = TextField.text;
     }
     

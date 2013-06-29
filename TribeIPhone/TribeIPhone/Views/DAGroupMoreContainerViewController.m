@@ -34,7 +34,7 @@
     photoView = [[UIImageView alloc] initWithFrame:CGRectMake(128.0f, 10.0f, 30.0f, 30.0f)];
     ISNEW = YES;
     editEnable = [self.group.member containsObject:[DALoginModule getLoginUserId]];
-    isPhotoChanged = NO;
+    
     if (self.group !=nil) {
         isDepartment = [@"2" isEqualToString:self.group.type];
         ISNEW = NO;
@@ -62,6 +62,7 @@
 {
     [super viewWillAppear:animated];
     viewHeight = self.view.frame.size.height;
+    isPhotoChanged = NO;
 }
 
 // 返回
@@ -76,15 +77,18 @@
     NSString *file = [DAHelper documentPath:@"upload.jpg"];
     
     // 更新
-    if (isPhotoChanged&&[DAHelper isFileExist:file]) {
-        UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
-        [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
-            
-            [self updateGroup: file._id imageWidth:image.size.width];
-            isPhotoChanged = NO;
-        } progress:nil];
-    } else {
+    if (!isPhotoChanged) {
         [self updateGroup: nil imageWidth:0];
+    }else{
+        if ([DAHelper isFileExist:file]) {
+            UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
+            [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
+                
+                [self updateGroup: file._id imageWidth:image.size.width];
+                
+            } progress:nil];
+            isPhotoChanged = NO;
+        }
     }
 }
 
@@ -192,11 +196,11 @@
         }else{
             switch (indexPath.row) {
                 case 0:
-                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
+                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
                     break;
                 case 1:
                     
-                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:1 hasDetail:YES];
+                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:9 hasDetail:YES];
                     break;
                 case 2:
                     
@@ -237,11 +241,11 @@
             if (ISNEW) {
                 switch (indexPath.row) {
                     case 0:
-                        [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
+                        [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
                         break;
                     case 1:
                         
-                        [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:1 hasDetail:YES];
+                        [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:9 hasDetail:YES];
                         break;
                     case 2:
                         
@@ -264,20 +268,20 @@
             }else{
                 switch (indexPath.row) {
                     case 0:
-                        [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
+                        [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
                         break;
                     case 1:
                         
-                        [self rendCell:cell title:@"公开" icon: @"lock-open.png" value:self.group.secure tag:1 hasDetail:NO];
+                        [self rendCell:cell title:@"公开" icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
                         break;
                     case 2:
                         
-                        [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:2 hasDetail:NO];
+                        [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
                         
                         break;
                     case 3:
                         
-                        [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊"  tag:3 hasDetail:NO];
+                        [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊"  tag:4 hasDetail:NO];
                         
                         
                         break;
@@ -375,7 +379,8 @@
     cell.txtValue.text = value;
     cell.txtValue.delegate = self;
     cell.txtValue.placeholder = title;
-    if ([title isEqualToString:@"头像"]) {
+    //tag  9  设置头像
+    if (tag == 9) {
         if (self.group.photo != nil) {
             [[DAFileModule alloc] getPicture:self.group.photo.big callback:^(NSError *err, NSString *pictureId){
                 photoView.image = [DACommon getCatchedImage:pictureId];
@@ -386,7 +391,8 @@
         
         [cell addSubview:photoView];
     }
-    if ([title isEqualToString:@"公开"]) {
+    //tag ==2  设置公开
+    if (tag == 2) {
         cell.txtValue.hidden = YES;
         switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220.0f, 10.0f, 169.0f, 30.0f)];
         
@@ -421,7 +427,7 @@
     }
     
     if (editEnable) {
-        if (isDepartment&&[title isEqualToString:@"名称"]) {
+        if (isDepartment&&tag == 2) {
             [cell.txtValue setEnabled:NO];
         }else{
             [cell.txtValue setEnabled:YES];
@@ -452,7 +458,7 @@
         self.group = [[DAGroup alloc] init];
         self.group.name = [[GroupName alloc] init];
     }
-    if (TextField.tag == 0) {
+    if (TextField.tag == 1) {
         self.group.name.name_zh = TextField.text;
         if (TextField.text.length>0) {
             [self.saveBtn setEnabled:YES];
