@@ -18,5 +18,6 @@
 - (IBAction)onSaveTouched:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBtn;
 
 @end

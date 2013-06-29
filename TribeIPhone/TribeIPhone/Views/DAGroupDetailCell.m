@@ -88,7 +88,7 @@
     cell.lblMemberCount.text = members;
     
     if (group.photo != nil) {
-        [[DAFileModule alloc] getPicture:group.photo.small callback:^(NSError *err, NSString *pictureId){
+        [[DAFileModule alloc] getPicture:group.photo.big callback:^(NSError *err, NSString *pictureId){
             cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
         }];
     }else {
