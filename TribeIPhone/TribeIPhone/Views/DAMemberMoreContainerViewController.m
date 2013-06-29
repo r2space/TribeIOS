@@ -20,6 +20,7 @@
     BOOL isPhotoChanged;
     BOOL isMine;
     float viewHeight;
+    UIImageView *photoView;
     
 }
 @end
@@ -29,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    photoView = [[UIImageView alloc] initWithFrame:CGRectMake(128.0f, 10.0f, 30.0f, 30.0f)];
     isMine = YES;
     
     isPhotoChanged = NO;
@@ -79,18 +80,18 @@
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
         [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
 
-            [self update:file._id];
+            [self update:file._id imageWidth:image.size.width];
             isPhotoChanged = NO;
         } progress:nil];
     } else {
         
         // 更新
-        [self update:nil];
+        [self update:nil imageWidth:0];
     }
 }
 
 // 更新用户信息
-- (void) update:(NSString *)photoId
+- (void) update:(NSString *)photoId imageWidth:(float)imageWidth
 {
     
     if (photoId) {
@@ -98,7 +99,7 @@
         photo.fid = photoId;
         photo.x = @"0";
         photo.y = @"0";
-        photo.width = @"320";
+        photo.width = [NSString stringWithFormat:@"%d",(int)imageWidth];
         self.user.photo = photo;
     }
     
@@ -331,6 +332,17 @@
     cell.txtValue.text = value;
     cell.txtValue.delegate = self;
     cell.txtValue.placeholder = title;
+    if ([title isEqualToString:@"头像"]) {
+        if (self.user.photo != nil) {
+            [[DAFileModule alloc] getPicture:self.user.photo.big callback:^(NSError *err, NSString *pictureId){
+                photoView.image = [DACommon getCatchedImage:pictureId];
+            }];
+        } else {
+            photoView.image = [UIImage imageNamed:@"user_thumb.png"];
+        }
+        
+        [cell addSubview:photoView];
+    }
     if (!isMine) {
         [cell.txtValue setEnabled:NO];
     }else{
@@ -379,7 +391,7 @@
     
     [UIImageJPEGRepresentation(image, 1.0) writeToFile:[DAHelper documentPath:@"upload.jpg"] atomically:YES];
     isPhotoChanged = YES;
-    
+    photoView.image = image;
     // 渡されてきた画像をフォトアルバムに保存
     // UIImageWriteToSavedPhotosAlbum(image, self, @selector(targetImage:didFinishSavingWithError:contextInfo:), NULL);
 }

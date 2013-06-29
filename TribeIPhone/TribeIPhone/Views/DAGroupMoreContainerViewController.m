@@ -20,6 +20,7 @@
     BOOL editEnable;
     BOOL isDepartment;
     UISwitch *switchView;
+    UIImageView *photoView;
     float viewHeight;
 }
 
@@ -30,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    photoView = [[UIImageView alloc] initWithFrame:CGRectMake(128.0f, 10.0f, 30.0f, 30.0f)];
     ISNEW = YES;
     editEnable = [self.group.member containsObject:[DALoginModule getLoginUserId]];
     isPhotoChanged = NO;
@@ -46,6 +47,7 @@
     }
     if (ISNEW) {
         self.saveBtn.enabled = NO;
+        self.titleBtn.title = @"新建组";
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -78,15 +80,15 @@
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
         [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
             
-            [self updateGroup: file._id];
+            [self updateGroup: file._id imageWidth:image.size.width];
             isPhotoChanged = NO;
         } progress:nil];
     } else {
-        [self updateGroup: nil];
+        [self updateGroup: nil imageWidth:0];
     }
 }
 
-- (void)updateGroup:(NSString *)fileId
+- (void)updateGroup:(NSString *)fileId imageWidth:(float)imageWidth
 {
     // 没有，则创建组
     //    self.group.secure = GroupSecureTypePublic;
@@ -97,7 +99,8 @@
         photo.fid = fileId;
         photo.x = @"0";
         photo.y = @"0";
-        photo.width = @"320";
+        photo.width = [NSString stringWithFormat:@"%d",(int)imageWidth];
+        
         self.group.photo = photo;
     }
     // 更新或新规
@@ -197,7 +200,7 @@
                     break;
                 case 2:
                     
-                    [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:2 hasDetail:NO];
+                    [self rendCell:cell title:@"公开" icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
                     break;
                 case 3:
                     
@@ -242,7 +245,7 @@
                         break;
                     case 2:
                         
-                        [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:2 hasDetail:NO];
+                        [self rendCell:cell title:@"公开" icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
                         break;
                     case 3:
                         
@@ -265,7 +268,7 @@
                         break;
                     case 1:
                         
-                        [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:1 hasDetail:NO];
+                        [self rendCell:cell title:@"公开" icon: @"lock-open.png" value:self.group.secure tag:1 hasDetail:NO];
                         break;
                     case 2:
                         
@@ -372,6 +375,17 @@
     cell.txtValue.text = value;
     cell.txtValue.delegate = self;
     cell.txtValue.placeholder = title;
+    if ([title isEqualToString:@"头像"]) {
+        if (self.group.photo != nil) {
+            [[DAFileModule alloc] getPicture:self.group.photo.big callback:^(NSError *err, NSString *pictureId){
+                photoView.image = [DACommon getCatchedImage:pictureId];
+            }];
+        } else {
+            photoView.image = [UIImage imageNamed:@"group_gray.png"];
+        }
+        
+        [cell addSubview:photoView];
+    }
     if ([title isEqualToString:@"公开"]) {
         cell.txtValue.hidden = YES;
         switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220.0f, 10.0f, 169.0f, 30.0f)];
@@ -464,7 +478,7 @@
     
     [UIImageJPEGRepresentation(image, 1.0) writeToFile:[DAHelper documentPath:@"upload.jpg"] atomically:YES];
     isPhotoChanged = YES;
-    
+    photoView.image = image;
     // 渡されてきた画像をフォトアルバムに保存
     // UIImageWriteToSavedPhotosAlbum(image, self, @selector(targetImage:didFinishSavingWithError:contextInfo:), NULL);
 }
