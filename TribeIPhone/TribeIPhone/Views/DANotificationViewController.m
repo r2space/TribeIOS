@@ -39,7 +39,7 @@
     item.title = [DAHelper localizedStringWithKey:@"notification.comment" comment:@"评论"];
 
     item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:2];
-    [DAHelper localizedStringWithKey:@"notification.notify" comment:@"通知"];
+    item.title = [DAHelper localizedStringWithKey:@"notification.notify" comment:@"通知"];
     
     // 高亮显示第一个Tab
     [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:0]];

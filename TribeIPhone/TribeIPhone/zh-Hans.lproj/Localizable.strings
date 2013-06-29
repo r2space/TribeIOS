@@ -65,7 +65,12 @@
 "file.type.application" = "其它";
 "file.type.all" = "全部";
 "file.title" = "文书";
-
+"file.detail.title" = "文件详细";
+"file.name" = "文件名：";
+"file.owner" = "发布者：";
+"file.size" = "文件大小：";
+"file.date" = "更新时间：";
+"file.history" = "文件履历";
 
 // Setting
 "setting.confirmClearCache" = "确定删除吗？";
@@ -107,3 +112,4 @@
 "account.title" = "账户";
 "home.title" = "首页";
 "home.more" = "更多";
+

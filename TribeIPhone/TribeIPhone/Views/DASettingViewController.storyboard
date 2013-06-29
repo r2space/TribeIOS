@@ -24,7 +24,7 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" text="地址" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGQ-xc-Gkn">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="57" id="CYg-rt-e6B"/>
+                                                        <constraint firstAttribute="width" constant="160" id="mwt-Lc-mu2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -52,9 +52,9 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="B2A-Sm-7h3" firstAttribute="centerY" secondItem="eLQ-rb-hD0" secondAttribute="centerY" type="default" id="6UO-zC-4P0"/>
                                             <constraint firstItem="1Sx-fX-Fhb" firstAttribute="top" secondItem="eLQ-rb-hD0" secondAttribute="top" constant="8" id="7Gq-iU-x0P"/>
                                             <constraint firstItem="B2A-Sm-7h3" firstAttribute="leading" secondItem="eLQ-rb-hD0" secondAttribute="leading" constant="25" id="DGo-YS-OsK"/>
-                                            <constraint firstItem="kGQ-xc-Gkn" firstAttribute="centerY" secondItem="eLQ-rb-hD0" secondAttribute="centerY" type="default" id="KqV-vg-6hg"/>
                                             <constraint firstItem="kGQ-xc-Gkn" firstAttribute="centerY" secondItem="B2A-Sm-7h3" secondAttribute="centerY" type="default" id="S0m-Er-L5T"/>
                                             <constraint firstItem="kGQ-xc-Gkn" firstAttribute="leading" secondItem="eLQ-rb-hD0" secondAttribute="leading" constant="63" id="eeK-Rf-UeW"/>
                                             <constraint firstItem="1Sx-fX-Fhb" firstAttribute="leading" secondItem="eLQ-rb-hD0" secondAttribute="leading" constant="130" id="kvT-Wb-TCu"/>
@@ -117,7 +117,10 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="21" contentMode="left" text="缓存容量" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7J-uh-NGb">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="21" contentMode="left" text="缓存容量" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="z7J-uh-NGb">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="78" id="5VQ-Zt-nLF"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -138,8 +141,8 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="z7J-uh-NGb" firstAttribute="leading" secondItem="AJn-5i-8xG" secondAttribute="leading" constant="63" id="11l-ys-zFP"/>
+                                            <constraint firstItem="J7T-rC-Afx" firstAttribute="leading" secondItem="z7J-uh-NGb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="3iI-v0-bo7"/>
                                             <constraint firstItem="J7T-rC-Afx" firstAttribute="centerY" secondItem="z7J-uh-NGb" secondAttribute="centerY" type="default" id="8Kj-io-2u3"/>
-                                            <constraint firstItem="J7T-rC-Afx" firstAttribute="leading" secondItem="AJn-5i-8xG" secondAttribute="leading" constant="149" id="CIe-X8-v9t"/>
                                             <constraint firstItem="GYb-8h-3nE" firstAttribute="leading" secondItem="AJn-5i-8xG" secondAttribute="leading" constant="25" id="SUw-OF-4TD"/>
                                             <constraint firstItem="GYb-8h-3nE" firstAttribute="centerY" secondItem="AJn-5i-8xG" secondAttribute="centerY" type="default" id="Yh5-ia-8xm"/>
                                             <constraint firstItem="GYb-8h-3nE" firstAttribute="centerY" secondItem="z7J-uh-NGb" secondAttribute="centerY" type="default" id="aT6-o1-Vb9"/>
@@ -224,7 +227,7 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="41" contentMode="left" text="版本信息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaY-a0-raW">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="rSK-PS-5Rw"/>
+                                                        <constraint firstAttribute="width" constant="134" id="9Zp-Ya-ECu"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
