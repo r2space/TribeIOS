@@ -27,12 +27,20 @@
 
 - (void)viewDidLoad
 {
+    withoutGetMore = YES;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self refresh];
+}
+
+- (void)fetch
+{
+    if ([self preFetch]) {
+        return;
+    }
     [[DAGroupModule alloc] getGroupListByUser:self.uid start:0 count:20 callback:^(NSError *error, DAGroupList *groups){
-        theGroups = groups.items;
-        [self.tblGroupList reloadData];
+        [self finishFetch:groups.items error:error];
     }];
 }
 
@@ -50,19 +58,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return theGroups.count;
+    return list.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAGroup *group = [theGroups objectAtIndex:indexPath.row];
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    }
-    
-    cell.textLabel.text = group.name.name_zh;
+    DAGroup *group = [list objectAtIndex:indexPath.row];
+    DAGroupCell *cell = [DAGroupCell initWithGroup:group tableView:tableView];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+//    }
+//    
+//    cell.textLabel.text = group.name.name_zh;
     return cell;
 }
 

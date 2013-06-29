@@ -361,6 +361,7 @@
 
 - (IBAction)onCancelClicked:(id)sender
 {
+    [WTStatusBar clearStatusAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
