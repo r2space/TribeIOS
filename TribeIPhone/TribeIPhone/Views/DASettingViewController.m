@@ -55,9 +55,9 @@
             
             UIActionSheet *as = [[UIActionSheet alloc] init];
             as.delegate = self;
-            as.title = @"确定删除吗？";
-            [as addButtonWithTitle:@"确定"];
-            [as addButtonWithTitle:@"取消"];
+            as.title = [DAHelper localizedStringWithKey:@"setting.confirmClearCache" comment:@"确定删除吗？"];
+            [as addButtonWithTitle:[DAHelper localizedStringWithKey:@"btn.ok" comment:@"确定"]];
+            [as addButtonWithTitle:[DAHelper localizedStringWithKey:@"btn.cancel" comment:@"取消"]];
             as.cancelButtonIndex = 1;
             as.destructiveButtonIndex = 1;
             [as showInView:self.view];

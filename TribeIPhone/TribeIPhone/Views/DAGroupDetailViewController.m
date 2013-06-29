@@ -59,7 +59,7 @@
             }
         }
         
-        self.barJoinOrLeave.title = isMember ? @"退出" : @"加入";
+        self.barJoinOrLeave.title = isMember ? [DAHelper localizedStringWithKey:@"group.leave" comment:@"退出"] : [DAHelper localizedStringWithKey:@"group.join" comment:@"加入"];
         
         [[DAMessageModule alloc] getMessagesInGroup:group._id start:start count:count  before:before callback:^(NSError *error, DAMessageList *messageList){
             _messagesTotal = messageList.total.intValue;

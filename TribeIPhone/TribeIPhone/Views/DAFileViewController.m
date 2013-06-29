@@ -38,7 +38,7 @@
 {
     [super viewDidLoad];
     _type = @"all";
-    _typeValues = @{@"all":@"全部",@"image":@"图片",@"video":@"视频",@"audio":@"音频",@"application":@"其它"};
+    _typeValues = @{@"all":[DAHelper localizedStringWithKey:@"file.type.all" comment:@"全部"],@"image":[DAHelper localizedStringWithKey:@"file.type.image" comment:@"图片"],@"video":[DAHelper localizedStringWithKey:@"file.type.video" comment:@"视频"],@"audio":[DAHelper localizedStringWithKey:@"file.type.audio" comment:@"音频"],@"application":[DAHelper localizedStringWithKey:@"file.type.application" comment:@"其它"]};
     
     [self fetch];
 }

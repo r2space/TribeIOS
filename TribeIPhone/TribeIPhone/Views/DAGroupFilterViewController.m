@@ -7,6 +7,7 @@
 //
 
 #import "DAGroupFilterViewController.h"
+#import "DAHelper.h"
 
 @interface DAGroupFilterViewController ()
 {
@@ -29,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _list = @[@"组", @"部门"];
+    _list = @[[DAHelper localizedStringWithKey:@"group.type.group" comment:@"组"], [DAHelper localizedStringWithKey:@"group.type.department" comment:@"部门"]];
     _typeList = @[@"1", @"2"];
 }
 

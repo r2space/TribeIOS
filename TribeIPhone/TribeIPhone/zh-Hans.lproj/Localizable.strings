@@ -6,4 +6,73 @@
   Copyright (c) 2013年 kita. All rights reserved.
 */
 
+// Message
 "message.filter.allMessage" = "全部消息";
+"message.comment" = "评论";
+"message.forward" = "转发";
+"message.contribute" = "写消息";
+"message.filter" = "筛选";
+
+
+// Users
+"user.follower.count" = "粉丝：";
+"user.following.count" = "关注的人：";
+"user.follow" = "关注";
+"user.unfollow" = "取消关注";
+"user.filter.type.following" = "关注";
+"user.filter.type.follower" = "粉丝";
+"user.filter.type.joinGroup" = "参加的组";
+"user.filter.type.all" = "全部";
+"user.search.placeholder" = "检索名称、拼音、邮箱";
+"user.filter" = "筛选";
+"user.joinGroup" = "参加的组";
+
+
+// Groups
+"group.join" = "加入";
+"group.invite" = "邀请";
+"group.leave" = "退出";
+"group.memberCount" = "成员人数：";
+"group.type.group" = "组";
+"group.type.department" = "部门";
+"group.type.all" = "组/部门";
+"group.search.placeholder" = "检索名称、拼音";
+"group.cell.memberCount" = "%d 成员";
+
+
+// Files
+"file.type.image" = "图片";
+"file.type.video" = "视频";
+"file.type.audio" = "音频";
+"file.type.application" = "其它";
+"file.type.all" = "全部";
+
+
+// Setting
+"setting.confirmClearCache" = "确定删除吗？";
+"setting.title.server" =  "服务器";
+"setting.ipAddress" = "地址";
+"setting.port" = "端口";
+"setting.title.cache" = "缓存";
+"setting.cacheSize" = "缓存容量";
+"setting.clearCache" = "清除缓存数据";
+"setting.logout" = "注销";
+"setting.version" = "版本信息";
+
+
+// Error
+"error.network.dosnotWork" = "无法连接网络";
+"error.FetchError" = "无法获取数据";
+"error.updateError" = "更新失败";
+"error.nullUid" = "邮箱地址不能为空";
+"error.nullPassWord" = "密码不能为空";
+"error.loginError" = "登录失败";
+"error.loginError.detail" = "登录验证失败";
+
+
+
+// Others
+"msg.updateSuccess" = "更新成功";
+"msg.saveSuccess" = "已保存";
+"btn.ok" = "确定";
+"btn.cancel" = "取消";

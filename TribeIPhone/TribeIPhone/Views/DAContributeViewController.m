@@ -482,18 +482,19 @@
 -(void)setTitle
 {
     if ([_message.type isEqualToNumber:[NSNumber numberWithInt:2]]) {
-        self.barTitle.title = @"评论";
+        self.barTitle.title = [DAHelper localizedStringWithKey:@"message.comment" comment:@"评论"];
     } else if (_isForward){
         if ([self hasRange]) {
             self.barTitle.title = self.barTitle.title = ((DAGroup *)[_rangeGroup objectAtIndex:0]).name.name_zh;
         } else {
-            self.barTitle.title = @"转发";
+            self.barTitle.title = [DAHelper localizedStringWithKey:@"message.forward" comment:@"转发"];
+;
         }
     } else {
         if ([self hasRange]) {
             self.barTitle.title = self.barTitle.title = ((DAGroup *)[_rangeGroup objectAtIndex:0]).name.name_zh;
         } else {
-            self.barTitle.title = @"写消息";
+            self.barTitle.title = [DAHelper localizedStringWithKey:@"message.contribute" comment:@"写消息"];
         }
     }
 }
