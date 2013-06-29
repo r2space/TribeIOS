@@ -37,8 +37,6 @@
         // Login信息保存到UserDefautls里
         if (cookie != nil) {
             [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:kHTTPCookie];
-            //重置cookie   
-            [[DAAFHttpClient sharedClient] setCookies:cookie];
         }
         if (csrftoken != nil) {
             [[NSUserDefaults standardUserDefaults] setObject:csrftoken forKey:kHTTPCsrfToken];
