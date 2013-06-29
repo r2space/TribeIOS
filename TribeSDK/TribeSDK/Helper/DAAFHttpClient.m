@@ -58,7 +58,10 @@
     
     return self;
 }
-
+-(void)setCookie :(NSString *)cookie
+{
+    [self setDefaultHeader:@"cookie" value:cookie];
+}
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
     [self setDefaultHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
