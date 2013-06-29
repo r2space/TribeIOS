@@ -88,7 +88,7 @@
     // 检证userId是否为空，去掉前后的半角和全角空格
     NSString * userId = [self.txtUserId.text stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" 　" ]];
     if ( userId.length  == 0) {
-        [DAHelper alert:self.view message:@"邮箱地址不能为空" detail:nil delay:delay yOffset:yOffset];
+        [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"error.nullUid" comment:@"邮箱地址不能为空"] detail:nil delay:delay yOffset:yOffset];
         [self.txtUserId becomeFirstResponder];
         return;
     }
@@ -96,13 +96,13 @@
     // 检证password是否为空，去掉前后的半角和全角空格
     NSString * password = [self.txtPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" 　" ]];
     if ( password.length  == 0) {
-        [DAHelper alert:self.view message:@"密码不能为空" detail:nil delay:delay yOffset:yOffset];
+        [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"error.nullPassWord" comment:@"密码不能为空"] detail:nil delay:delay yOffset:yOffset];
         [self.txtPassword becomeFirstResponder];
         return;
     }
     
     if (![DAHelper isNetworkReachable]) {
-        [DAHelper alert:self.view message:@"无法连接网络" detail:nil delay:delay yOffset:yOffset];
+        [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"error.network.dosnotWork" comment:@"无法连接网络"] detail:nil delay:delay yOffset:yOffset];
         return;
     }
     
@@ -117,7 +117,7 @@
         
         // 登陆失败
         if ( user == nil) {
-            [DAHelper alert:self.view message:@"登录失败" detail:@"登录验证失败" delay:delay yOffset:yOffset];
+            [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"error.loginError" comment:@"登录失败"] detail:[DAHelper localizedStringWithKey:@"error.loginError.detail" comment:@"登录验证失败"] delay:delay yOffset:yOffset];
             [self.txtUserId becomeFirstResponder];
             return;
         }

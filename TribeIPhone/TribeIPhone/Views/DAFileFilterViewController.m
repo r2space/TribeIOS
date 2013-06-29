@@ -7,6 +7,7 @@
 //
 
 #import "DAFileFilterViewController.h"
+#import "DAHelper.h"
 
 @interface DAFileFilterViewController ()
 {
@@ -30,7 +31,7 @@
 {
     [super viewDidLoad];
     
-    _list = @[@"图片", @"视频", @"音频", @"其它"];
+    _list = @[[DAHelper localizedStringWithKey:@"file.type.image" comment:@"图片"], [DAHelper localizedStringWithKey:@"file.type.video" comment:@"视频"], [DAHelper localizedStringWithKey:@"file.type.audio" comment:@"音频"], [DAHelper localizedStringWithKey:@"file.type.application" comment:@"其它"]];
     _typeList = @[@"image", @"video", @"audio", @"application"];
 }
 

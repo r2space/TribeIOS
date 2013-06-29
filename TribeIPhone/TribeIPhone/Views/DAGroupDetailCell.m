@@ -60,7 +60,7 @@
         [self.btnInvite setHidden:YES];
     }
     
-    NSString *title = isMember ? @"退出" : @"加入";
+    NSString *title = isMember ? [DAHelper localizedStringWithKey:@"group.leave" comment:@"退出"] : [DAHelper localizedStringWithKey:@"group.join" comment:@"加入"];
     [DAHelper setDefaultButtonStyle:self.btnJoin name:title];
     
     
@@ -79,10 +79,10 @@
     
     cell.group = group;
     
-    [DAHelper setDefaultButtonStyle:cell.btnInvite name:@"邀请"];
-    [DAHelper setDefaultButtonStyle:cell.btnJoin name:@"退出"];
+    [DAHelper setDefaultButtonStyle:cell.btnInvite name:[DAHelper localizedStringWithKey:@"group.invite" comment:@"邀请"]];
+    [DAHelper setDefaultButtonStyle:cell.btnJoin name:[DAHelper localizedStringWithKey:@"group.leave" comment:@"退出"]];
     
-    NSMutableString *members = [NSMutableString stringWithString:@"成员人数："];
+    NSMutableString *members = [NSMutableString stringWithString:[DAHelper localizedStringWithKey:@"group.memberCount" comment:@"成员人数："]];
     [members appendString:[NSString stringWithFormat:@"%d", group.member.count]];
     
     cell.lblMemberCount.text = members;

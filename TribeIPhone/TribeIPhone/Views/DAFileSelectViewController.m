@@ -60,7 +60,7 @@
         if (error != nil) {
             
             // 显示错误消息
-            [self showMessage:@"无法获取数据" detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+            [self showMessage:[DAHelper localizedStringWithKey:@"error.FetchError" comment:@"无法获取数据"] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
             
         }
         

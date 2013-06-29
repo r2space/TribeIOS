@@ -8,6 +8,7 @@
 
 #import "DAPictureViewController.h"
 #import "MBProgressHUD.h"
+#import "DAHelper.h"
 
 #define prictureSpace 0
 
@@ -97,7 +98,7 @@
         progress.mode = MBProgressHUDModeText;
         progress.dimBackground = YES;
         progress.labelText = @"";
-        progress.detailsLabelText = @"已保存";
+        progress.detailsLabelText = [DAHelper localizedStringWithKey:@"msg.saveSuccess" comment:@"已保存"];
         progress.margin = 10.f;
         progress.yOffset = 50.f;
         progress.removeFromSuperViewOnHide = YES;

@@ -58,7 +58,7 @@
         }
         theUser = user;
         isFollowed = [user.follower containsObject:[DALoginModule getLoginUserId]];
-        self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
+        self.barFollow.title = isFollowed ? [DAHelper localizedStringWithKey:@"user.unfollow" comment:@"取消关注"] : [DAHelper localizedStringWithKey:@"user.follow" comment:@"关注"];
         [[DAMessageModule alloc] getMessagesByUser:theUser._id start:start count:count before:before callback:^(NSError *error, DAMessageList *messageList){
             
             _messagesTotal = messageList.total.intValue;
@@ -248,7 +248,7 @@
                     return ;
                 }
                 isFollowed = !isFollowed;
-                self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
+                self.barFollow.title = isFollowed ? [DAHelper localizedStringWithKey:@"user.unfollow" comment:@"取消关注"] : [DAHelper localizedStringWithKey:@"user.follow" comment:@"关注"];
                 // TODO 更新本地存储的user信息
             }];
         } else {
@@ -257,7 +257,7 @@
                     return ;
                 }
                 isFollowed = !isFollowed;
-                self.barFollow.title = isFollowed ? @"取消关注" : @"关注";
+                self.barFollow.title = isFollowed ? [DAHelper localizedStringWithKey:@"user.unfollow" comment:@"取消关注"] : [DAHelper localizedStringWithKey:@"user.follow" comment:@"关注"];
                 // TODO 更新本地存储的user信息
             }];
         }

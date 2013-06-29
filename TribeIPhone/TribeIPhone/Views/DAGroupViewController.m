@@ -40,7 +40,7 @@
     
     
     _type = @"all";
-    _typeValues = @{@"all":@"组/部门",@"1":@"组",@"2":@"部门"};
+    _typeValues = @{@"all":[DAHelper localizedStringWithKey:@"group.type.all" comment:@"组/部门"],@"1":[DAHelper localizedStringWithKey:@"group.type.group" comment:@"组"],@"2":[DAHelper localizedStringWithKey:@"group.type.department" comment:@"部门"]};
     _keywords =@"";
     isFirstIn = YES;
     
@@ -52,7 +52,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    _searchBar.placeholder = @"检索名称、拼音";
+    _searchBar.placeholder = [DAHelper localizedStringWithKey:@"group.search.placeholder" comment:@"检索名称、拼音"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,7 +109,7 @@
     [cell lblName].text = group.name.name_zh;
     cell.gid = group._id;
     cell.lblDescription.text = group.description;
-    cell.lblMembers.text = [NSString stringWithFormat:@"%d 成员",group.member.count];
+    cell.lblMembers.text = [NSString stringWithFormat:[DAHelper localizedStringWithKey:@"group.cell.memberCount" comment:@"%d 成员"],group.member.count];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
