@@ -17,6 +17,7 @@
     NSString *_type;
     NSDictionary *_typeValues;
     NSString *_keywords;
+    BOOL isFirstIn;
 }
 @end
 
@@ -41,6 +42,7 @@
     _type = @"all";
     _typeValues = @{@"all":@"组/部门",@"1":@"组",@"2":@"部门"};
     _keywords =@"";
+    isFirstIn = YES;
     
     // 不显示空行的cell分隔线
 //    self.tblGroups.tableFooterView = [[UIView alloc]init];
@@ -67,6 +69,10 @@
     [[DAGroupModule alloc] getGroupListStart:0 count:20 type:type keywords:_keywords callback:^(NSError *error, DAGroupList *groups){
         [self finishFetch:groups.items error:error];
         [self displayFilter];
+        if (isFirstIn && list.count > 0) {
+            isFirstIn = NO;
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
     }];
 }
 

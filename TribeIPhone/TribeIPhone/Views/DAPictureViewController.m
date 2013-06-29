@@ -97,7 +97,7 @@
         progress.mode = MBProgressHUDModeText;
         progress.dimBackground = YES;
         progress.labelText = @"";
-        progress.detailsLabelText = @"saved";
+        progress.detailsLabelText = @"已保存";
         progress.margin = 10.f;
         progress.yOffset = 50.f;
         progress.removeFromSuperViewOnHide = YES;

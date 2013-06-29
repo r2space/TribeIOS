@@ -88,7 +88,7 @@
     // 检证userId是否为空，去掉前后的半角和全角空格
     NSString * userId = [self.txtUserId.text stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" 　" ]];
     if ( userId.length  == 0) {
-        [DAHelper alert:self.view message:@"账户不能为空" detail:nil delay:delay yOffset:yOffset];
+        [DAHelper alert:self.view message:@"邮箱地址不能为空" detail:nil delay:delay yOffset:yOffset];
         [self.txtUserId becomeFirstResponder];
         return;
     }
@@ -101,12 +101,23 @@
         return;
     }
     
+    if (![DAHelper isNetworkReachable]) {
+        [DAHelper alert:self.view message:@"无法连接网络" detail:nil delay:delay yOffset:yOffset];
+        return;
+    }
+    
     // Blocks版
     [[DALoginModule alloc] login:userId password:password callback:^(NSError *error, DAUser *user){
 
+        //TODO 区分登陆失败和用户名密码错误
+//        if (error != nil) {
+//            [DAHelper alert:self.view message:@"登录失败" detail:[NSString stringWithFormat:@"error : %d", [error code]] delay:delay yOffset:yOffset];
+//            return ;
+//        }
+        
         // 登陆失败
         if ( user == nil) {
-            [DAHelper alert:self.view message:@"用户名或密码不正确！" detail:@"登陆验证失败" delay:delay yOffset:yOffset];
+            [DAHelper alert:self.view message:@"登录失败" detail:@"登录验证失败" delay:delay yOffset:yOffset];
             [self.txtUserId becomeFirstResponder];
             return;
         }
