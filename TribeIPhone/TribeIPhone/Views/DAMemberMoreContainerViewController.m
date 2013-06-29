@@ -104,7 +104,7 @@
     }
     
     [[DAUserModule alloc] update:self.user callback:^(NSError *error, DAUser *user){
-        [DAHelper alert:self.view message:@"更新成功" detail:nil];
+        [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil];
     }];
 }
 
@@ -160,16 +160,16 @@
     if (indexPath.section ==0 ) {
         switch (indexPath.row) {
             case 0:
-                [self rendCell:cell title:@"参加的组" icon: @"table_business-team.png" value:@"0" tag:6 hasDetail:YES];
+                [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.joinGroup" comment:@"参加的组"] icon: @"table_business-team.png" value:@"0" tag:6 hasDetail:YES];
                 
                 break;
             case 1:
-                [self rendCell:cell title:@"关注的人" icon: @"business-man.png" value:@"0" tag:7 hasDetail:YES];
+                [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.folling" comment:@"关注的人"] icon: @"business-man.png" value:@"0" tag:7 hasDetail:YES];
                 
                 
                 break;
             case 2:
-                [self rendCell:cell title:@"粉丝" icon: @"business-man.png" value:@"0" tag:8 hasDetail:YES];
+                [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.follower" comment:@"粉丝"] icon: @"business-man.png" value:@"0" tag:8 hasDetail:YES];
                 
                 break;
             default:
@@ -179,32 +179,32 @@
         if (isMine) {
             switch (indexPath.row) {
                 case 0:
-                    [self rendCell:cell title:@"姓名" icon: @"price-tag.png" value:self.user.name.name_zh tag:1 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.name" comment:@"姓名"] icon: @"price-tag.png" value:self.user.name.name_zh tag:1 hasDetail:NO];
                     
                     break;
                 case 1:
                     
-                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:self.user.tel.mobile tag:9  hasDetail:YES];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.photo" comment:@"头像"] icon: @"table_photo.png" value:self.user.tel.mobile tag:9  hasDetail:YES];
                     break;
                 case 2:
                     
-                    [self rendCell:cell title:@"手机" icon: @"table_phone.png" value:self.user.tel.mobile tag:2 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.tel" comment:@"手机"] icon: @"table_phone.png" value:self.user.tel.mobile tag:2 hasDetail:NO];
                     
                     cell.txtValue.keyboardType = UIKeyboardTypeNumberPad;
                     break;
                 case 3:
                     
-                    [self rendCell:cell title:@"邮件" icon: @"tab_email.png" value:self.user.uid tag:3 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.email" comment:@"邮件"] icon: @"tab_email.png" value:self.user.uid tag:3 hasDetail:NO];
                     
                     break;
                 case 4:
                     
-                    [self rendCell:cell title:@"住址" icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"" tag:4 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.address" comment:@"住址"] icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"" tag:4 hasDetail:NO];
                     
                     break;
                 case 5:
                     
-                    [self rendCell:cell title:@"简介" icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"" tag:5 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.description" comment:@"简介"] icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"" tag:5 hasDetail:NO];
                     
                     
                     break;
@@ -214,22 +214,22 @@
         }else{
             switch (indexPath.row) {
                 case 0:
-                    [self rendCell:cell title:@"姓名" icon: @"price-tag.png" value:self.user.name.name_zh tag:1 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.name" comment:@"姓名"] icon: @"price-tag.png" value:self.user.name.name_zh tag:1 hasDetail:NO];
                     
                     break;
                 case 1:
-                    [self rendCell:cell title:@"手机" icon: @"table_phone.png" value:self.user.tel.mobile tag:2 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.tel" comment:@"手机"] icon: @"table_phone.png" value:self.user.tel.mobile tag:2 hasDetail:NO];
                     break;
                 case 2:
-                    [self rendCell:cell title:@"邮件" icon: @"tab_email.png" value:self.user.uid tag:3 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.email" comment:@"邮件"] icon: @"tab_email.png" value:self.user.uid tag:3 hasDetail:NO];
                     break;
                 case 3:
                     
-                    [self rendCell:cell title:@"住址" icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"" tag:4  hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.address" comment:@"住址"] icon: @"table_rural-house.png" value:self.user.address!=nil?self.user.address.city:@"" tag:4  hasDetail:NO];
                     break;
                 case 4:
                     
-                    [self rendCell:cell title:@"简介" icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"" tag:5 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"user.description" comment:@"简介"] icon: @"table_document-scroll.png" value:self.user.custom != nil?self.user.custom.memo:@"" tag:5 hasDetail:NO];
                     break;
                 default:
                     break;

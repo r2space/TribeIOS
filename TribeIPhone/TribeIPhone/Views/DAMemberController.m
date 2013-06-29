@@ -35,12 +35,12 @@
         return;
     }
     if (self.kind == DAMemberListAll) {
-        self.barTitle.title = @"选择用户";
+        self.barTitle.title = [DAHelper localizedStringWithKey:@"user.title.select" comment:@"选择用户"];
         self.backBtn.image = [UIImage imageNamed:@"tool_multiply-symbol-mini.png"];
         [[DAUserModule alloc] getUserListStart:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
             [progress hide:YES];
             if (error != nil) {
-                [self showMessage:@"无法获取数据" detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+                [self showMessage:[DAHelper localizedStringWithKey:@"error.FetchError" comment:@"无法获取数据"] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
                 return ;
             }
             
@@ -57,12 +57,12 @@
 
     }
     if (self.kind == DAMemberListFollower) {
-        self.barTitle.title = @"粉丝";
+        self.barTitle.title = [DAHelper localizedStringWithKey:@"user.follower" comment:@"粉丝"];
         
         [[DAUserModule alloc] getUserFollowerListByUser:self.uid start:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
             [progress hide:YES];
             if (error != nil) {
-                [self showMessage:@"无法获取数据" detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+                [self showMessage:[DAHelper localizedStringWithKey:@"error.FetchError" comment:@"无法获取数据"] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
                 return ;
             }
             theMembers = users.items;
@@ -70,12 +70,12 @@
         }];
     }
     if (self.kind == DAMemberListFollowing) {
-        self.barTitle.title = @"关注的人";
+        self.barTitle.title = [DAHelper localizedStringWithKey:@"user.folling" comment:@"关注的人"];
 
         [[DAUserModule alloc] getUserFollowingListByUser:self.uid start:0 count:20 keywords:@"" callback:^(NSError *error, DAUserList *users){
             [progress hide:YES];
             if (error != nil) {
-                [self showMessage:@"无法获取数据" detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+                [self showMessage:[DAHelper localizedStringWithKey:@"error.FetchError" comment:@"无法获取数据"] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
                 return ;
             }
             theMembers = users.items;
@@ -83,11 +83,11 @@
         }];
     }
     if (self.kind == DAMemberListGroupMember) {
-        self.barTitle.title = @"成员";
+        self.barTitle.title = [DAHelper localizedStringWithKey:@"user.title" comment:@"成员"];
         [[DAGroupModule alloc] getUserListInGroup:self.gid start:0 count:20 callback:^(NSError *error, DAUserList *users){
             [progress hide:YES];
             if (error != nil) {
-                [self showMessage:@"无法获取数据" detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+                [self showMessage:[DAHelper localizedStringWithKey:@"error.FetchError" comment:@"无法获取数据"] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
                 return ;
             }
             theMembers = users.items;

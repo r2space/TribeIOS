@@ -26,6 +26,16 @@
 "user.search.placeholder" = "检索名称、拼音、邮箱";
 "user.filter" = "筛选";
 "user.joinGroup" = "参加的组";
+"user.title" = "成员";
+"user.follower" = "粉丝";
+"user.folling" = "关注的人";
+"user.title.select" = "选择用户";
+"user.name" = "姓名";
+"user.photo" = "头像";
+"user.tel" = "手机";
+"user.email" = "邮件";
+"user.address" = "住址";
+"user.description" = "简介";
 
 
 // Groups
@@ -38,6 +48,14 @@
 "group.type.all" = "组/部门";
 "group.search.placeholder" = "检索名称、拼音";
 "group.cell.memberCount" = "%d 成员";
+"group.members" = "成员一览";
+"group.name" = "名称";
+"group.photo" = "头像";
+"group.secure" = "公开";
+"group.tag" = "标签";
+"group.description" = "简介";
+"group.create" = "新建组";
+"group.title" = "组/部门";
 
 
 // Files
@@ -46,6 +64,7 @@
 "file.type.audio" = "音频";
 "file.type.application" = "其它";
 "file.type.all" = "全部";
+"file.title" = "文书";
 
 
 // Setting
@@ -58,6 +77,7 @@
 "setting.clearCache" = "清除缓存数据";
 "setting.logout" = "注销";
 "setting.version" = "版本信息";
+"setting.title" = "设定";
 
 
 // Error
@@ -69,6 +89,14 @@
 "error.loginError" = "登录失败";
 "error.loginError.detail" = "登录验证失败";
 
+// shortMail
+"shortmail.title" = "私信";
+
+// Notification
+"notification.title" = "通知";
+"notification.atMe" = "提到我";
+"notification.comment" = "评论";
+"notification.notify" = "通知";
 
 
 // Others
@@ -76,3 +104,6 @@
 "msg.saveSuccess" = "已保存";
 "btn.ok" = "确定";
 "btn.cancel" = "取消";
+"account.title" = "账户";
+"home.title" = "首页";
+"home.more" = "更多";

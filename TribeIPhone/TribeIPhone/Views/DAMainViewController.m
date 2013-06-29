@@ -35,7 +35,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
+    UITabBarItem *item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:0];
+    item.title = [DAHelper localizedStringWithKey:@"home.title" comment:@"首页"];
+    
+    item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:1];
+    item.title = [DAHelper localizedStringWithKey:@"shortmail.title" comment:@"私信"];
 
+    item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:2];
+    item.title = [DAHelper localizedStringWithKey:@"file.title" comment:@"文书"];
+    
+    item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:3];
+    item.title =[DAHelper localizedStringWithKey:@"home.more" comment:@"更多"];
+    
     // 注册没有登陆时调用的函数
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(notificationShowLogin:) name:@"NeedsLogin" object:nil];

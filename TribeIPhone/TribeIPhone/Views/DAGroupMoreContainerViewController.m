@@ -47,7 +47,7 @@
     }
     if (ISNEW) {
         self.saveBtn.enabled = NO;
-        self.titleBtn.title = @"新建组";
+        self.titleBtn.title = [DAHelper localizedStringWithKey:@"group.create" comment:@"新建组"];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -112,13 +112,13 @@
     if (self.group._id == nil) {
         [[DAGroupModule alloc] create:self.group callback:^(NSError *error, DAGroup *group){
             
-            [DAHelper alert:self.view message:@"更新成功" detail:nil];
+            [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil];
             
         }];
     } else {
         [[DAGroupModule alloc] update:self.group callback:^(NSError *error, DAGroup *group){
             
-            [DAHelper alert:self.view message:@"更新成功" detail:nil];
+            [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil];
             
         }];
     }
@@ -186,7 +186,7 @@
                 switch (indexPath.row) {
                         
                     case 0:
-                        [self rendCell:cell title:@"成员一览" icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.members" comment:@"成员一览"] icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
                         
                         break;
                     default:
@@ -196,24 +196,24 @@
         }else{
             switch (indexPath.row) {
                 case 0:
-                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.name" comment:@"名称"] icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
                     break;
                 case 1:
                     
-                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:9 hasDetail:YES];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.photo" comment:@"头像"] icon: @"table_photo.png" value:@"" tag:9 hasDetail:YES];
                     break;
                 case 2:
                     
-                    [self rendCell:cell title:@"公开" icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.secure" comment:@"公开"] icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
                     break;
                 case 3:
                     
-                    [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.tag" comment:@"标签"] icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
                     
                     break;
                 case 4:
                     
-                    [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊" tag:4 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.description" comment:@"简介"] icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"" tag:4 hasDetail:NO];
                     
                     
                     break;
@@ -230,7 +230,7 @@
                 switch (indexPath.row) {
                         
                     case 0:
-                        [self rendCell:cell title:@"成员一览" icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.members" comment:@"成员一览"] icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
                         
                         break;
                     default:
@@ -241,24 +241,24 @@
             if (ISNEW) {
                 switch (indexPath.row) {
                     case 0:
-                        [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.name" comment:@"名称"] icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
                         break;
                     case 1:
                         
-                        [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:9 hasDetail:YES];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.photo" comment:@"头像"] icon: @"table_photo.png" value:@"" tag:9 hasDetail:YES];
                         break;
                     case 2:
                         
-                        [self rendCell:cell title:@"公开" icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.secure" comment:@"公开"] icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
                         break;
                     case 3:
                         
-                        [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.tag" comment:@"标签"] icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
                         
                         break;
                     case 4:
                         
-                        [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊" tag:4 hasDetail:NO];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.description" comment:@"简介"] icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"" tag:4 hasDetail:NO];
                         
                         
                         break;
@@ -268,20 +268,20 @@
             }else{
                 switch (indexPath.row) {
                     case 0:
-                        [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.name" comment:@"名称"] icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
                         break;
                     case 1:
                         
-                        [self rendCell:cell title:@"公开" icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.secure" comment:@"公开"] icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
                         break;
                     case 2:
                         
-                        [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.tag" comment:@"标签"] icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
                         
                         break;
                     case 3:
                         
-                        [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊"  tag:4 hasDetail:NO];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.description" comment:@"简介"] icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@""  tag:4 hasDetail:NO];
                         
                         
                         break;

@@ -40,6 +40,40 @@
     [[NSUserDefaults standardUserDefaults] setInteger:self.txtServerPort.text.intValue forKey:kServerPort];
 }
 
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:animated];
+    
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    UILabel *lbl = (UILabel *)[cell viewWithTag:11];
+    lbl.text = [DAHelper localizedStringWithKey:@"setting.ipAddress" comment:@"地址"];
+    
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    lbl = (UILabel *)[cell viewWithTag:12];
+    lbl.text = [DAHelper localizedStringWithKey:@"setting.port" comment:@"端口"];
+    
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    lbl = (UILabel *)[cell viewWithTag:21];
+    lbl.text = [DAHelper localizedStringWithKey:@"setting.cacheSize" comment:@"缓存容量"];
+    
+    
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    lbl = (UILabel *)[cell viewWithTag:22];
+    lbl.text = [DAHelper localizedStringWithKey:@"setting.clearCache" comment:@"清除缓存数据"];
+    
+    
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+    lbl = (UILabel *)[cell viewWithTag:31];
+    lbl.text = [DAHelper localizedStringWithKey:@"setting.logout" comment:@"注销"];
+    
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+    lbl = (UILabel *)[cell viewWithTag:41];
+    lbl.text = [DAHelper localizedStringWithKey:@"setting.version" comment:@"版本信息"];
+}
+
 // 收键盘
 - (IBAction)didEndOnExit:(id)sender
 {

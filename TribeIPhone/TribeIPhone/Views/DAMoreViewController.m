@@ -67,19 +67,19 @@
     UILabel *lbl = (UILabel *)[cell viewWithTag:1];
     if (0 == indexPath.section) {
         if (0 == indexPath.row) {
-            lbl.text  = @"成员";
+            lbl.text  = [DAHelper localizedStringWithKey:@"user.title" comment:@"成员"];
             img.image  = [UIImage imageNamed:@"people-communicate.png"];
         }
         if (1 == indexPath.row) {
-            lbl.text  = @"部门/组";
+            lbl.text  = [DAHelper localizedStringWithKey:@"group.title" comment:@"组/部门"];
             img.image = [UIImage imageNamed:@"table_business-team.png"];
         }
         if (2 == indexPath.row) {
-            lbl.text  = @"账户";
+            lbl.text  = [DAHelper localizedStringWithKey:@"account.title" comment:@"账户"];
             img.image = [UIImage imageNamed:@"people-single.png"];
         }
         if (3 == indexPath.row) {
-            lbl.text  = @"私信";
+            lbl.text  = [DAHelper localizedStringWithKey:@"shortmail.title" comment:@"私信"];
             img.image = [UIImage imageNamed:@"table_business-team.png"];
         }
         
@@ -87,7 +87,7 @@
     
     if (1 == indexPath.section) {
         if (0 == indexPath.row) {
-            lbl.text  = @"设定";
+            lbl.text  = [DAHelper localizedStringWithKey:@"setting.title" comment:@"设定"];
             img.image = [UIImage imageNamed:@"table_gear.png"];
         }
     }
