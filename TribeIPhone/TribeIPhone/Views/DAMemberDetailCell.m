@@ -39,7 +39,7 @@
     }
     cell.user = user;
     if (user.photo != nil) {
-        [[DAFileModule alloc] getPicture:user.photo.small callback:^(NSError *err, NSString *pictureId){
+        [[DAFileModule alloc] getPicture:user.photo.big callback:^(NSError *err, NSString *pictureId){
             cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
         }];
     }
@@ -50,21 +50,21 @@
         [cell.btnFollow setHidden:NO];
     }
     
-    NSMutableString *followCnt = [NSMutableString stringWithString:@"粉丝："];
+    NSMutableString *followCnt = [NSMutableString stringWithString:[DAHelper localizedStringWithKey:@"user.follower.count" comment:@"粉丝："]];
     [followCnt appendString:[NSString stringWithFormat:@"%d", user.follower.count]];
     [followCnt appendString:@"     "];
-    [followCnt appendString:@"关注的人："];
+    [followCnt appendString:[DAHelper localizedStringWithKey:@"user.following.count" comment:@"关注的人："]];
     [followCnt appendString:[NSString stringWithFormat:@"%d", user.following.count]];
     cell.lblFollowCount.text = followCnt;
     
-    [DAHelper setDefaultButtonStyle:cell.btnFollow name:@"关注"];
+    [DAHelper setDefaultButtonStyle:cell.btnFollow name:[DAHelper localizedStringWithKey:@"user.follow" comment:@"关注"]];
     
     return cell;
 }
 
 -(void)setFollow:(BOOL)isFollowed
 {
-    NSString *title = isFollowed ? @"取消关注" : @"关注";
+    NSString *title = isFollowed ? [DAHelper localizedStringWithKey:@"user.unfollow" comment:@"取消关注"] : [DAHelper localizedStringWithKey:@"user.follow" comment:@"关注"];
     [DAHelper setDefaultButtonStyle:self.btnFollow name:title];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "DAMemberFilterViewController.h"
+#import "DAHelper.h"
 
 @interface DAMemberFilterViewController ()
 {
@@ -45,7 +46,7 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _list = @[@"粉丝", @"关注"];
+    _list = @[[DAHelper localizedStringWithKey:@"user.filter.type.follower" comment:@"粉丝"], [DAHelper localizedStringWithKey:@"user.filter.type.following" comment:@"关注"]];
     _typeList = @[@"follower", @"following"];
     
     [[DAGroupModule alloc] getGroupListStart:0 count:20  type:@"" keywords:@"" callback:^(NSError *error, DAGroupList *groups){

@@ -19,6 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"shortmail.title" comment:@"私信"];
 }
 
 - (void)viewDidAppear:(BOOL)animated

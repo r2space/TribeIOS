@@ -30,7 +30,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"notification.title" comment:@"通知"];
+    UITabBarItem *item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:0];
+    item.title = [DAHelper localizedStringWithKey:@"notification.atMe" comment:@"提到我"];
+    
+    item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:1];
+    item.title = [DAHelper localizedStringWithKey:@"notification.comment" comment:@"评论"];
 
+    item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:2];
+    item.title = [DAHelper localizedStringWithKey:@"notification.notify" comment:@"通知"];
+    
     // 高亮显示第一个Tab
     [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:0]];
 

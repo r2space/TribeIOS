@@ -37,6 +37,13 @@
 
 - (void)viewDidLoad
 {
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"file.detail.title" comment:@"文件详细"];
+    self.lblNameTitle.text = [DAHelper localizedStringWithKey:@"file.name" comment:@"文件名："];
+    self.lblOwnerTitle.text = [DAHelper localizedStringWithKey:@"file.owner" comment:@"发布者："];
+    self.lblSizeTitle.text = [DAHelper localizedStringWithKey:@"file.size" comment:@"文件大小："];
+    self.lblDateTitle.text = [DAHelper localizedStringWithKey:@"file.date" comment:@"更新时间："];
+    self.lblHistoryTitle.text = [DAHelper localizedStringWithKey:@"file.history" comment:@"文件履历"];
+    
     [super viewDidLoad];
     // 初始化HUD
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

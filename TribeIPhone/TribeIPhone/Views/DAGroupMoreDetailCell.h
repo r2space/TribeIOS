@@ -11,6 +11,6 @@
 @interface DAGroupMoreDetailCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UITextField *txtValue;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imgIcon;
 
 @end

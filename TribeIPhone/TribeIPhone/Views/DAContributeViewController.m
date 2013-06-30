@@ -361,11 +361,13 @@
 
 - (IBAction)onCancelClicked:(id)sender
 {
+    [WTStatusBar clearStatusAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)onSendClicked:(id)sender
 {
+    [self showIndicator:@"updating..."];
     _message.content = self.txtMessage.text;
     if (_rangeGroup.count > 0) {
         _message.range = ((DAGroup *)[_rangeGroup objectAtIndex:0])._id;
@@ -406,6 +408,7 @@
             if ([self preUpdate]) {
                 return;
             }
+            
             UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
             // 在状态栏显示进度
             [WTStatusBar setProgressBarColor:DAColor];
@@ -443,6 +446,7 @@
     if ([self preUpdate]) {
         return;
     }
+    [self showIndicator:@"updating..."];
     [[DAMessageModule alloc] send:message callback:^(NSError *error, DAMessage *message){
         if ([self finishUpdateError:error]) {
             return ;
@@ -478,18 +482,19 @@
 -(void)setTitle
 {
     if ([_message.type isEqualToNumber:[NSNumber numberWithInt:2]]) {
-        self.barTitle.title = @"评论";
+        self.barTitle.title = [DAHelper localizedStringWithKey:@"message.comment" comment:@"评论"];
     } else if (_isForward){
         if ([self hasRange]) {
             self.barTitle.title = self.barTitle.title = ((DAGroup *)[_rangeGroup objectAtIndex:0]).name.name_zh;
         } else {
-            self.barTitle.title = @"转发";
+            self.barTitle.title = [DAHelper localizedStringWithKey:@"message.forward" comment:@"转发"];
+;
         }
     } else {
         if ([self hasRange]) {
             self.barTitle.title = self.barTitle.title = ((DAGroup *)[_rangeGroup objectAtIndex:0]).name.name_zh;
         } else {
-            self.barTitle.title = @"写消息";
+            self.barTitle.title = [DAHelper localizedStringWithKey:@"message.contribute" comment:@"写消息"];
         }
     }
 }

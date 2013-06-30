@@ -28,5 +28,6 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITabBar *tabBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 
 @end

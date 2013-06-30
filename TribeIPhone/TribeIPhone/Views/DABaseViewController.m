@@ -56,7 +56,7 @@
     }
     
     // 显示无法连接网络
-    [self showMessage:@"无法连接网络" detail:nil];
+    [self showMessage:[DAHelper localizedStringWithKey:@"error.network.dosnotWork" comment:@"无法连接网络"] detail:nil];
 
     // 停止UIRefreshControl控件
     [refresh endRefreshing];
@@ -109,7 +109,7 @@
     }
     
     // 显示错误消息
-    [self showMessage:@"无法获取数据" detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+    [self showMessage:[DAHelper localizedStringWithKey:@"error.FetchError" comment:@"无法获取数据"] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
 
     NSLog(@"%@", error);
     return YES;
@@ -144,7 +144,7 @@
     }
     
     // 显示无法连接网络
-    [self showMessage:@"无法连接网络" detail:nil];
+    [self showMessage:[DAHelper localizedStringWithKey:@"error.network.dosnotWork" comment:@"无法连接网络"] detail:nil];
     
     return YES;
 }
@@ -155,7 +155,7 @@
         return NO;
     }
     
-    [self showMessage:@"无法获取数据" detail:[NSString stringWithFormat:@"error : %d", [error code]]];
+    [self showMessage:[DAHelper localizedStringWithKey:@"error.FetchError" comment:@"无法获取数据"] detail:[NSString stringWithFormat:@"error : %d", [error code]]];
     return YES;
 }
 
@@ -173,12 +173,12 @@
 
 - (NSString *)errorMessage
 {
-    return @"更新失败";
+    return [DAHelper localizedStringWithKey:@"error.updateError" comment:@"更新失败"];
 }
 
 - (NSString *)successMessage
 {
-    return @"更新成功";
+    return [DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"];
 }
 
 -(void)showTipMessage:(NSString *)message

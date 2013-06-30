@@ -17,6 +17,7 @@
     NSString *_type;
     NSDictionary *_typeValues;
     NSString *_keywords;
+    BOOL isFirstIn;
 }
 @end
 
@@ -39,8 +40,9 @@
     
     
     _type = @"all";
-    _typeValues = @{@"all":@"组/部门",@"1":@"组",@"2":@"部门"};
+    _typeValues = @{@"all":[DAHelper localizedStringWithKey:@"group.type.all" comment:@"组/部门"],@"1":[DAHelper localizedStringWithKey:@"group.type.group" comment:@"组"],@"2":[DAHelper localizedStringWithKey:@"group.type.department" comment:@"部门"]};
     _keywords =@"";
+    isFirstIn = YES;
     
     // 不显示空行的cell分隔线
 //    self.tblGroups.tableFooterView = [[UIView alloc]init];
@@ -50,7 +52,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    _searchBar.placeholder = @"检索名称、拼音";
+    _searchBar.placeholder = [DAHelper localizedStringWithKey:@"group.search.placeholder" comment:@"检索名称、拼音"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +69,10 @@
     [[DAGroupModule alloc] getGroupListStart:0 count:20 type:type keywords:_keywords callback:^(NSError *error, DAGroupList *groups){
         [self finishFetch:groups.items error:error];
         [self displayFilter];
+        if (isFirstIn && list.count > 0) {
+            isFirstIn = NO;
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
     }];
 }
 
@@ -103,7 +109,7 @@
     [cell lblName].text = group.name.name_zh;
     cell.gid = group._id;
     cell.lblDescription.text = group.description;
-    cell.lblMembers.text = [NSString stringWithFormat:@"%d 成员",group.member.count];
+    cell.lblMembers.text = [NSString stringWithFormat:[DAHelper localizedStringWithKey:@"group.cell.memberCount" comment:@"%d 成员"],group.member.count];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

@@ -69,7 +69,7 @@
 - (IBAction)onFilterClicked:(id)sender
 {
     DALeftSideViewController *viewController = [[DALeftSideViewController alloc] initWithNibName:@"DALeftSideViewController" bundle:nil];
-    [viewController setTitle:@"筛选"];
+    [viewController setTitle:[DAHelper localizedStringWithKey:@"message.filter" comment:@"筛选"]];
     viewController.contentController = self;
     [DAHelper showPopup:viewController];
 }

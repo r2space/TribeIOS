@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
+#import "DABaseViewController.h"
+#import "DAGroupCell.h"
 
-@interface DAGroupController : UIViewController
+@interface DAGroupController : DABaseViewController
 
 @property (weak, nonatomic) NSString *uid;
 - (IBAction)onCancelTouched:(id)sender;
-@property (weak, nonatomic) IBOutlet UITableView *tblGroupList;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

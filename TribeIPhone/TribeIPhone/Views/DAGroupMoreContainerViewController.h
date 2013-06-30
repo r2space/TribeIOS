@@ -10,7 +10,7 @@
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DABaseViewController.h"
 
-@interface DAGroupMoreContainerViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface DAGroupMoreContainerViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
 
 @property (retain, nonatomic) DAGroup *group;
 
@@ -18,5 +18,6 @@
 - (IBAction)onSaveTouched:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBtn;
 
 @end

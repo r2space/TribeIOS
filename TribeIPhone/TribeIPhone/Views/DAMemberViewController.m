@@ -21,7 +21,7 @@
     NSString *loginuid ;
     
     NSString *_keywords;
-    
+    BOOL isFirstIn;
 }
 @end
 
@@ -45,9 +45,10 @@
     _filterId = @"all";
     loginuid = [DALoginModule getLoginUserId];
     _keywords =@"";
-    _typeValues = @{@"all":@"全部",@"follower":@"粉丝",@"following":@"关注",@"group":@"参加的组"};
+    _typeValues = @{@"all":[DAHelper localizedStringWithKey:@"user.filter.type.all" comment:@"全部"],@"follower":[DAHelper localizedStringWithKey:@"user.filter.type.follower" comment:@"粉丝"],@"following":[DAHelper localizedStringWithKey:@"user.filter.type.following" comment:@"关注"],@"group":[DAHelper localizedStringWithKey:@"user.filter.type.joinGroup" comment:@"参加的组"]};
+    isFirstIn = YES;
     [self fetch];
-    _searchBar.placeholder = @"检索名称、拼音、邮箱";
+    _searchBar.placeholder = [DAHelper localizedStringWithKey:@"user.search.placeholder" comment:@"检索名称、拼音、邮箱"];
 }
 -(void)displayFilter
 {
@@ -72,6 +73,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
+    
+    
+//    [self.tableView scrollsToTop];
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,13 +96,11 @@
         if ([_filterId isEqualToString:@"following"])
         {
             [[DAUserModule alloc] getUserFollowingListByUser:loginuid start:start count:count keywords:_keywords callback:^(NSError *error, DAUserList *users){
-                [self displayFilter];
-                [self finishFetch:users.items error:error];
+                [self fetchCallBack:users error:error];
             }];
         } else if ([_filterId isEqualToString:@"follower"]){
             [[DAUserModule alloc] getUserFollowerListByUser:loginuid start:start count:count keywords:_keywords callback:^(NSError *error, DAUserList *users){
-                [self displayFilter];
-                [self finishFetch:users.items error:error];
+                [self fetchCallBack:users error:error];
             }];
         }
             
@@ -105,17 +108,16 @@
     else if ([_type isEqualToString:@"group"])
     {
         [[DAUserModule alloc] getUserListInGroup:_filterId uid:loginuid start:start count:count keywords:_keywords callback:^(NSError *error, DAUserList *users){
-            [self displayFilter];
-            [self finishFetch:users.items error:error];
+            [self fetchCallBack:users error:error];
         }];
     } else {
         
         [[DAUserModule alloc] getUserListStart:start count:count keywords:_keywords callback:^(NSError *error, DAUserList *users){
-            [self displayFilter];
-            [self finishFetch:users.items error:error];
+            [self fetchCallBack:users error:error];
         }];
 
     }
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -147,6 +149,16 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+- (void)fetchCallBack:(DAUserList *)users error:(NSError *)error
+{
+    [self displayFilter];
+    [self finishFetch:users.items error:error];
+    if (isFirstIn && list.count > 0) {
+        isFirstIn = NO;
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
 }
 
 //- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -181,12 +193,13 @@
 
 - (IBAction)barFilterOnClick:(id)sender {
     DAMemberFilterViewController *filterCtrl = [[DAMemberFilterViewController alloc] initWithNibName:@"DAMemberFilterViewController" bundle:nil];
-    [filterCtrl setTitle:@"筛选"];
+    [filterCtrl setTitle:[DAHelper localizedStringWithKey:@"user.filter" comment:@"筛选"]];
     filterCtrl.selectedBlocks = ^(NSString *filter,NSString *type,NSString *title){
         _type = type;
         _filterId = filter;
         _filterTitle = title;
         _keywords = @"";
+        _searchBar.text = @"";
         [self refresh];
         [DAHelper hidePopup];
     };
@@ -209,7 +222,6 @@
     [self.view endEditing:YES];
     _keywords = searchBar.text;
     [self refresh];
-    _searchBar.text = @"";
 }
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar

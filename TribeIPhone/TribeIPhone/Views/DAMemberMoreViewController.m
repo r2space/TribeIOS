@@ -26,7 +26,7 @@
     // 非本人，禁止更新
     if (![self.user._id isEqualToString:[DALoginModule getLoginUserId]]) {
         self.tvcPhoto.accessoryType = UITableViewCellAccessoryNone;
-        self.lblPhoto.text = @"头像";
+        self.lblPhoto.text = [DAHelper localizedStringWithKey:@"group.photo" comment:@"头像"];
     }
 }
 

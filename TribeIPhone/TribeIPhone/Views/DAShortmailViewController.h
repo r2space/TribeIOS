@@ -14,6 +14,7 @@
 @interface DAShortmailViewController : DABaseViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 
 - (IBAction)onCancelTouched:(id)sender;
 - (IBAction)onAddTouched:(id)sender;

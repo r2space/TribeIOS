@@ -26,6 +26,12 @@
 @property (retain, nonatomic) DAFileList *fileList;
 
 @property(nonatomic,retain) IBOutlet UIView *iview;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblNameTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblOwnerTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblSizeTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblDateTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblHistoryTitle;
 
 
 - (IBAction)onShareTouched:(id)sender;

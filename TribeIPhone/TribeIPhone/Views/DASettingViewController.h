@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtServerPort;
 @property (weak, nonatomic) IBOutlet UIProgressView *prvSpace;
 @property (weak, nonatomic) IBOutlet UILabel *lblVersion;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)didEndOnExit:(id)sender;
 

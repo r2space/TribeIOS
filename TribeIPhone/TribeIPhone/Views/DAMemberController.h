@@ -9,18 +9,21 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 #import "DAMemberCell.h"
+#import "DABaseViewController.h"
 
 
 typedef enum {
     DAMemberListGroupMember = 1,
+    //2 粉丝
     DAMemberListFollower = 2,
+    //3 关注的人 
     DAMemberListFollowing = 3,
     DAMemberListAll = 4
 } DAMemberListType;
 
 typedef void (^UserDidSelected)(DAUser *);
 
-@interface DAMemberController : UIViewController
+@interface DAMemberController : DABaseViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tblUsers;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backBtn;

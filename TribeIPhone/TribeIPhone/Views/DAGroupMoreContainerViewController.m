@@ -17,8 +17,11 @@
     
     BOOL ISNEW;
     BOOL isPhotoChanged;
-    BOOL isAdmin;
+    BOOL editEnable;
+    BOOL isDepartment;
     UISwitch *switchView;
+    UIImageView *photoView;
+    float viewHeight;
 }
 
 @end
@@ -28,19 +31,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    photoView = [[UIImageView alloc] initWithFrame:CGRectMake(128.0f, 10.0f, 30.0f, 30.0f)];
     ISNEW = YES;
-    isAdmin = YES;
-    isPhotoChanged = NO;
+    editEnable = [self.group.member containsObject:[DALoginModule getLoginUserId]];
+    
     if (self.group !=nil) {
-        
+        isDepartment = [@"2" isEqualToString:self.group.type];
         ISNEW = NO;
         self.saveBtn.enabled = NO;
+        [self.saveBtn setImage:nil];
     }
-    if (isAdmin) {
+    if (editEnable&&self.group.name.name_zh.length > 0) {
         self.saveBtn.enabled = YES;
+        [self.saveBtn setImage:[UIImage imageNamed:@"tool_save.png"]];
+    }
+    if (ISNEW) {
+        self.saveBtn.enabled = NO;
+        self.titleBtn.title = [DAHelper localizedStringWithKey:@"group.create" comment:@"新建组"];
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    viewHeight = self.view.frame.size.height;
+    isPhotoChanged = NO;
 }
 
 // 返回
@@ -55,30 +77,34 @@
     NSString *file = [DAHelper documentPath:@"upload.jpg"];
     
     // 更新
-    if (isPhotoChanged&&[DAHelper isFileExist:file]) {
-        UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
-        [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
-            
-            [self updateGroup: file._id];
+    if (!isPhotoChanged) {
+        [self updateGroup: nil imageWidth:0];
+    }else{
+        if ([DAHelper isFileExist:file]) {
+            UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
+            [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
+                
+                [self updateGroup: file._id imageWidth:image.size.width];
+                
+            } progress:nil];
             isPhotoChanged = NO;
-        } progress:nil];
-    } else {
-        [self updateGroup: nil];
+        }
     }
 }
 
-- (void)updateGroup:(NSString *)fileId
+- (void)updateGroup:(NSString *)fileId imageWidth:(float)imageWidth
 {
     // 没有，则创建组
-//    self.group.secure = GroupSecureTypePublic;
-
+    //    self.group.secure = GroupSecureTypePublic;
+    
     // 如果头像存在，指定新照片的切割范围
     if (fileId) {
         GroupPhoto * photo = [[GroupPhoto alloc] init];
         photo.fid = fileId;
         photo.x = @"0";
         photo.y = @"0";
-        photo.width = @"320";
+        photo.width = [NSString stringWithFormat:@"%d",(int)imageWidth];
+        
         self.group.photo = photo;
     }
     // 更新或新规
@@ -86,17 +112,17 @@
     if (self.group._id == nil) {
         [[DAGroupModule alloc] create:self.group callback:^(NSError *error, DAGroup *group){
             
-            [DAHelper alert:self.view message:@"更新成功" detail:nil];
+            [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil];
             
         }];
     } else {
         [[DAGroupModule alloc] update:self.group callback:^(NSError *error, DAGroup *group){
             
-            [DAHelper alert:self.view message:@"更新成功" detail:nil];
+            [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil];
             
         }];
     }
-
+    
 }
 
 
@@ -111,7 +137,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (isAdmin) {
+    if (editEnable) {
         if (0==section) {
             return 1;
         }else{
@@ -154,13 +180,13 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
-    if (isAdmin) {
+    if (editEnable) {
         if (indexPath.section ==0 ) {
             if (!ISNEW) {
                 switch (indexPath.row) {
                         
                     case 0:
-                        [self rendCell:cell title:@"成员一览" icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.members" comment:@"成员一览"] icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
                         
                         break;
                     default:
@@ -170,101 +196,101 @@
         }else{
             switch (indexPath.row) {
                 case 0:
-                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.name" comment:@"名称"] icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
                     break;
                 case 1:
                     
-                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:1 hasDetail:YES];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.photo" comment:@"头像"] icon: @"table_photo.png" value:@"" tag:9 hasDetail:YES];
                     break;
                 case 2:
                     
-                    [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:2 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.secure" comment:@"公开"] icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
                     break;
                 case 3:
                     
-                    [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.tag" comment:@"标签"] icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
                     
                     break;
                 case 4:
                     
-                    [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊" tag:4 hasDetail:NO];
+                    [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.description" comment:@"简介"] icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"" tag:4 hasDetail:NO];
                     
                     
                     break;
                 default:
                     break;
             }
-
+            
         }
     }else{
         
-  
-    if (indexPath.section ==0 ) {
-        if (!ISNEW) {
-        switch (indexPath.row) {
-                
-            case 0:
-                [self rendCell:cell title:@"成员一览" icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
-                
-                break;
-            default:
-                break;
-        }
-        }
-    }else{
-        if (ISNEW) {
-            switch (indexPath.row) {
-                case 0:
-                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
-                    break;
-                case 1:
-                    
-                    [self rendCell:cell title:@"头像" icon: @"table_photo.png" value:@"" tag:1 hasDetail:YES];
-                    break;
-                case 2:
-                    
-                    [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:2 hasDetail:NO];
-                    break;
-                case 3:
-                    
-                    [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
-                    
-                    break;
-                case 4:
-                    
-                    [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊" tag:4 hasDetail:NO];
-                    
-                    
-                    break;
-                default:
-                    break;
+        
+        if (indexPath.section ==0 ) {
+            if (!ISNEW) {
+                switch (indexPath.row) {
+                        
+                    case 0:
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.members" comment:@"成员一览"] icon: @"table_business-team.png" value:@"0" tag:10 hasDetail:YES];
+                        
+                        break;
+                    default:
+                        break;
+                }
             }
         }else{
-            switch (indexPath.row) {
-                case 0:
-                    [self rendCell:cell title:@"名称" icon: @"price-tag.png" value:self.group.name.name_zh tag:0 hasDetail:NO];
-                    break;
-                case 1:
-                    
-                    [self rendCell:cell title:@"公开" icon: @"table_phone.png" value:self.group.secure tag:1 hasDetail:NO];
-                    break;
-                case 2:
-                    
-                    [self rendCell:cell title:@"标签" icon: @"tab_email.png" value:self.group.category tag:2 hasDetail:NO];
-                    
-                    break;
-                case 3:
-                    
-                    [self rendCell:cell title:@"简介" icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"还没有填写啊"  tag:3 hasDetail:NO];
-                    
-                    
-                    break;
-                default:
-                    break;
+            if (ISNEW) {
+                switch (indexPath.row) {
+                    case 0:
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.name" comment:@"名称"] icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
+                        break;
+                    case 1:
+                        
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.photo" comment:@"头像"] icon: @"table_photo.png" value:@"" tag:9 hasDetail:YES];
+                        break;
+                    case 2:
+                        
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.secure" comment:@"公开"] icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
+                        break;
+                    case 3:
+                        
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.tag" comment:@"标签"] icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
+                        
+                        break;
+                    case 4:
+                        
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.description" comment:@"简介"] icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@"" tag:4 hasDetail:NO];
+                        
+                        
+                        break;
+                    default:
+                        break;
                 }
+            }else{
+                switch (indexPath.row) {
+                    case 0:
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.name" comment:@"名称"] icon: @"price-tag.png" value:self.group.name.name_zh tag:1 hasDetail:NO];
+                        break;
+                    case 1:
+                        
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.secure" comment:@"公开"] icon: @"lock-open.png" value:self.group.secure tag:2 hasDetail:NO];
+                        break;
+                    case 2:
+                        
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.tag" comment:@"标签"] icon: @"tab_email.png" value:self.group.category tag:3 hasDetail:NO];
+                        
+                        break;
+                    case 3:
+                        
+                        [self rendCell:cell title:[DAHelper localizedStringWithKey:@"group.description" comment:@"简介"] icon: @"table_rural-house.png" value:self.group.description!=nil?self.group.description:@""  tag:4 hasDetail:NO];
+                        
+                        
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
         }
-        
-    }
     }
     return cell;
     
@@ -305,7 +331,7 @@
     }else{
         if (indexPath.row == 0 ) {
             
-        }else if((indexPath.row == 1&&ISNEW)||isAdmin){
+        }else if((indexPath.row == 1&&ISNEW)||editEnable){
             // 判断相机是否可用（模拟器）
             if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
                 return;
@@ -351,8 +377,24 @@
 {
     cell.lblTitle.text = title;
     cell.txtValue.text = value;
-    if (tag==2) {
-        switchView = [[UISwitch alloc] initWithFrame:CGRectMake(123.0f, 10.0f, 169.0f, 30.0f)];
+    cell.txtValue.delegate = self;
+    cell.txtValue.placeholder = title;
+    //tag  9  设置头像
+    if (tag == 9) {
+        if (self.group.photo != nil) {
+            [[DAFileModule alloc] getPicture:self.group.photo.big callback:^(NSError *err, NSString *pictureId){
+                photoView.image = [DACommon getCatchedImage:pictureId];
+            }];
+        } else {
+            photoView.image = [UIImage imageNamed:@"group_gray.png"];
+        }
+        
+        [cell addSubview:photoView];
+    }
+    //tag ==2  设置公开
+    if (tag == 2) {
+        cell.txtValue.hidden = YES;
+        switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220.0f, 10.0f, 169.0f, 30.0f)];
         
         if (self.group!=nil) {
             if ([self.group.secure isEqualToString:GroupSecureTypePublic]) {
@@ -366,6 +408,16 @@
         }
         
         [switchView addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+        if (!editEnable) {
+            switchView.enabled = NO;
+        }
+        if (isDepartment) {
+            switchView.enabled = NO;
+        }
+        if (ISNEW) {
+            switchView.enabled = YES;
+        }
+        
         [cell addSubview:switchView];
     }
     if (!ISNEW) {
@@ -374,10 +426,14 @@
         [cell.txtValue setEnabled:YES];
     }
     
-    if (isAdmin) {
-        [cell.txtValue setEnabled:YES];
+    if (editEnable) {
+        if (isDepartment&&tag == 2) {
+            [cell.txtValue setEnabled:NO];
+        }else{
+            [cell.txtValue setEnabled:YES];
+        }
     }
-    cell.imageView.image = [UIImage imageNamed:icon];
+    cell.imgIcon.image = [UIImage imageNamed:icon];
     if (hasDetail) {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         [cell.txtValue removeFromSuperview];
@@ -389,6 +445,12 @@
     return cell;
 }
 
+// 收起键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 - (void) textFieldDidChange:(UITextField *) TextField
 {
     // 没有，则创建组
@@ -396,13 +458,22 @@
         self.group = [[DAGroup alloc] init];
         self.group.name = [[GroupName alloc] init];
     }
-    if (TextField.tag == 0) {
+    if (TextField.tag == 1) {
         self.group.name.name_zh = TextField.text;
+        if (TextField.text.length>0) {
+            [self.saveBtn setEnabled:YES];
+        }else{
+            [self.saveBtn setEnabled:NO];
+        }
     } else if(TextField.tag == 3){
         self.group.category = TextField.text;
     } else if(TextField.tag == 4){
         self.group.description = TextField.text;
     }
+    
+}
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
     
 }
 // 画像が選択された時に呼ばれるデリゲートメソッド
@@ -413,7 +484,7 @@
     
     [UIImageJPEGRepresentation(image, 1.0) writeToFile:[DAHelper documentPath:@"upload.jpg"] atomically:YES];
     isPhotoChanged = YES;
-    
+    photoView.image = image;
     // 渡されてきた画像をフォトアルバムに保存
     // UIImageWriteToSavedPhotosAlbum(image, self, @selector(targetImage:didFinishSavingWithError:contextInfo:), NULL);
 }
@@ -435,6 +506,35 @@
     } else {
         // 保存成功時の処理
     }
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    
+    CGRect r = self.view.frame;
+    r.size.height = viewHeight - height;
+    
+    // 上移View
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = r;
+    }];
+    [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    CGRect r = self.view.frame;
+    r.size.height = viewHeight;
+
+    // 下移View
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = r;
+    }];
 }
 
 
