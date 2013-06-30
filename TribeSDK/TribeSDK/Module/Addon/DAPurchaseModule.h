@@ -22,7 +22,9 @@
        callback:(void (^)(NSError *error, DAPurchaseList *list))callback;
 
 - (void)getByDate:(NSString *)date
-         callback:(void (^)(NSError *error, DAPurchase *purchase))callback;
+         callback:(void (^)(NSError *error, DAPurchaseList *purchase))callback;
+
+- (void)getTemplate:(void (^)(NSError *error, DAPurchaseList *purchase))callback;
 
 
 @end

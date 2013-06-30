@@ -8,16 +8,18 @@
 
 #import "DAPurchaseModule.h"
 
-#define kURLPurchaseAdd     @"/app/purchase/add.json"
-#define kURLPurchaseUpdate  @"/app/purchase/update.json?id=%@"
-#define kURLPurchase        @"/app/purchase/get.json?date=%@"
-#define kURLPurchaseList    @"/app/purchase/list.json?from=%@&start=%d&limit=%d"
+#define kURLPurchaseAdd         @"/app/purchase/add.json"
+#define kURLPurchaseUpdate      @"/app/purchase/update.json?id=%@"
+#define kURLPurchase            @"/app/purchase/list.json?date=%@"
+#define kURLPurchaseTemplate    @"/app/purchase/list.json?category=0"
+#define kURLPurchaseList        @"/app/purchase/list.json?from=%@&start=%d&limit=%d"
 
 @implementation DAPurchaseModule
 
 - (void)add:(DAPurchase *)daily callback:(void (^)(NSError *error, DAPurchase *daily))callback
 {
-    NSDictionary *params = [daily toDictionary];
+    NSMutableDictionary *params = [daily toDictionary];
+    [params removeObjectForKey:@"_id"];
     
     [[DAAFHttpClient sharedClient] postPath:kURLPurchaseAdd parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -35,10 +37,12 @@
 
 - (void)update:(DAPurchase *)daily callback:(void (^)(NSError *error, DAPurchase *daily))callback
 {
-    NSDictionary *params = [daily toDictionary];
+    NSMutableDictionary *params = [daily toDictionary];
+    [params removeObjectForKey:@"_id"];
+    
     NSString *path = [NSString stringWithFormat:kURLPurchaseUpdate, daily._id];
     
-    [[DAAFHttpClient sharedClient] postPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[DAAFHttpClient sharedClient] putPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
             callback(nil, [[DAPurchase alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
@@ -75,8 +79,9 @@
     }];
 }
 
+// 获取指定日期的数据
 - (void)getByDate:(NSString *)date
-         callback:(void (^)(NSError *error, DAPurchase *purchase))callback
+         callback:(void (^)(NSError *error, DAPurchaseList *purchase))callback
 {
     NSString *d = [DARequestHelper uriEncodeForString:date];
     NSString *path = [NSString stringWithFormat:kURLPurchase, d];
@@ -84,7 +89,7 @@
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
-            callback(nil, [[DAPurchase alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
+            callback(nil, [[DAPurchaseList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -95,5 +100,21 @@
     }];
 }
 
+// 获取明细一览
+- (void)getTemplate:(void (^)(NSError *error, DAPurchaseList *purchase))callback
+{
+    [[DAAFHttpClient sharedClient] getPath:kURLPurchaseTemplate parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (callback) {
+            callback(nil, [[DAPurchaseList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+    }];
+}
 
 @end

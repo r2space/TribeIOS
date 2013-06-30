@@ -14,4 +14,8 @@
 - (void)getCategory:(NSString *)categoryId
            callback:(void (^)(NSError *error, DACategory *category))callback;
 
+- (void)create:(DACategory *)category callback:(void (^)(NSError *error, DACategory *category))callback;
+
+- (void)addItem:(DACategory *)category callback:(void (^)(NSError *error, DACategory *category))callback;
+
 @end
