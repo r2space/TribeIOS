@@ -7,6 +7,7 @@
 //
 
 #import "DAGroupCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation DAGroupCell
 
@@ -36,6 +37,10 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
+    
+    cell.imgPortrait.layer.masksToBounds = YES;
+    cell.imgPortrait.layer.cornerRadius = 5;
+
     
     cell.lblName.text = group.name.name_zh;
     

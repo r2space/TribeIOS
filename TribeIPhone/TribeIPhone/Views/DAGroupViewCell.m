@@ -7,6 +7,7 @@
 //
 
 #import "DAGroupViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation DAGroupViewCell
 
@@ -37,6 +38,9 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
+    
+    cell.imgPortrait.layer.masksToBounds = YES;
+    cell.imgPortrait.layer.cornerRadius = 5;
     
     if (group.photo != nil) {
         [[DAFileModule alloc] getPicture:group.photo.small callback:^(NSError *err, NSString *pictureId){

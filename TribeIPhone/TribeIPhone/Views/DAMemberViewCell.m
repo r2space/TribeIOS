@@ -7,6 +7,7 @@
 //
 
 #import "DAMemberViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation DAMemberViewCell
 
@@ -37,6 +38,9 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
+    cell.imgPortrait.layer.masksToBounds = YES;
+    cell.imgPortrait.layer.cornerRadius = 5;
+
     
     if ([user isUserPhotoCatched] || [user getUserPhotoId] == nil) {
         cell.imgPortrait.image = [user getUserPhotoImage];

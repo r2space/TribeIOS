@@ -8,6 +8,7 @@
 
 #import "DAShortmailViewCell.h"
 #import "DAHelper.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation DAShortmailViewCell
 
@@ -40,6 +41,8 @@
         cell = [array objectAtIndex:0];
     }
     
+    cell.imgPortrait.layer.masksToBounds = YES;
+    cell.imgPortrait.layer.cornerRadius = 5;
     cell.lblName.text = contact.user.name.name_zh;
     cell.lblContent.text = contact.lastMessage;
     cell.lblAt.text = [DAHelper stringFromISODateString:contact.editat];

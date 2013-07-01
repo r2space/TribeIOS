@@ -7,6 +7,7 @@
 //
 
 #import "DAMessageCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define CONTENT_LABEL_TO_TOP 37.0f
 #define CONTENT_LABEL_TO_LEFT 70.0f
@@ -105,6 +106,8 @@
     
     DAUser *user = message.part.createby;
     
+    self.imgPortrait.layer.masksToBounds = YES;
+    self.imgPortrait.layer.cornerRadius = 5;
     if ([user isUserPhotoCatched] || [user getUserPhotoId] == nil) {
 //    if ([user getUserPhotoId] == nil) {
         self.imgPortrait.image = [user getUserPhotoImage];

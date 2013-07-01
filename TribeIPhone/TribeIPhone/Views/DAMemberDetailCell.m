@@ -8,6 +8,7 @@
 
 #import "DAMemberDetailCell.h"
 #import "DAHelper.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation DAMemberDetailCell
 
@@ -37,6 +38,10 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
+    cell.imgPortrait.layer.masksToBounds = YES;
+    cell.imgPortrait.layer.cornerRadius = 10;
+
+    
     cell.user = user;
     if (user.photo != nil) {
         [[DAFileModule alloc] getPicture:user.photo.big callback:^(NSError *err, NSString *pictureId){

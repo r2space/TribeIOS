@@ -9,6 +9,7 @@
 #import "DAGroupDetailCell.h"
 #import "DAMessageLabel.h"
 #import "DAHelper.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation DAGroupDetailCell
 
@@ -76,6 +77,9 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
+    
+    cell.imgPortrait.layer.masksToBounds = YES;
+    cell.imgPortrait.layer.cornerRadius = 10;
     
     cell.group = group;
     

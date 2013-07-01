@@ -7,6 +7,7 @@
 //
 
 #import "DAMessageFileView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation DAMessageFileView
 {
@@ -16,8 +17,10 @@
 -(UIView *)initWithMessage:(DAMessage *)message frame:(CGRect)frame touchEnable:(BOOL)touchEnable
 {
     self = [super init];
+    self.layer.cornerRadius = 5;
     _message = message;
-    [self setBackgroundColor:[UIColor lightGrayColor]];
+    
+    [self setBackgroundColor:[UIColor colorWithRed:212.2/255 green:212.0/255 blue:212.0/255 alpha:1.0]];
     if (message.attach.count > 0) {
         float fileX = 10;
         float fileY = 0;
@@ -30,7 +33,9 @@
             [label setNumberOfLines:1];
             [label setLineBreakMode:NSLineBreakByTruncatingMiddle];
             [label setFont:[UIFont systemFontOfSize:12]];
-            label.text = file.filename;
+//            label.text = file.filename;
+
+            label.attributedText = [[NSAttributedString alloc] initWithString:file.filename attributes:@{NSUnderlineStyleAttributeName: @1}];
             
             fileY += fileHeight;
             

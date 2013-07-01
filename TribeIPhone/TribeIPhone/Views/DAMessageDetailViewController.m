@@ -11,6 +11,7 @@
 #import "DAMemberDetailViewController.h"
 #import "DAGroupDetailViewController.h"
 #import "DAFileWebViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface DAMessageDetailViewController ()
 
@@ -128,6 +129,9 @@
                 NSArray *array = [nib instantiateWithOwner:nil options:nil];
                 cell = [array objectAtIndex:0];
             }
+            cell.imgPortrait.layer.masksToBounds = YES;
+            cell.imgPortrait.layer.cornerRadius = 5;
+
             cell.imgPortrait.image = [[_message getCreatUser] getUserPhotoImage];
             cell.lblName.text = [[_message getCreatUser] getUserName];
             cell.lblGroup.text = [_message getCreatUser].department.name.name_zh;
