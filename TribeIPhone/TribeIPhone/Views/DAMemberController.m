@@ -140,9 +140,9 @@
 - (IBAction)onCancelTouched:(id)sender {
     
 //    [self.navigationController popViewControllerAnimated:YES];
-//    if (self.selectedBlocks != nil) {
-//        self.selectedBlocks(nil);
-//    }
+    if (self.selectedBlocks != nil) {
+        self.selectedBlocks(nil);
+    }
     if (self.kind == DAMemberListAll) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{

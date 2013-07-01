@@ -115,6 +115,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rI8-zg-1Af"/>
                     <connections>
+                        <outlet property="barTitle" destination="HkR-iB-oWr" id="0qM-qv-Omy"/>
                         <outlet property="tableView" destination="Ith-BH-LBN" id="k0s-93-hCF"/>
                     </connections>
                 </viewController>
@@ -398,6 +399,7 @@
         <class className="DAMoreViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMoreViewController.h"/>
             <relationships>
+                <relationship kind="action" name="firstViewReturnActionForSegue:" candidateClass="UIStoryboardSegue"/>
                 <relationship kind="outlet" name="barTitle" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
@@ -425,6 +427,9 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

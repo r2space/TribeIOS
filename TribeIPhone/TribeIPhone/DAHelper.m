@@ -227,7 +227,7 @@
     [button setTitle:title forState:UIControlStateDisabled];
     button.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
     
-    UIColor *titleShadow = [UIColor colorWithRed:0.325f green:0.463f blue:0.675f alpha:1.0f];
+    UIColor *titleShadow = DAColor;
     [button setTitleShadowColor:titleShadow forState:UIControlStateNormal];
     [button setTitleShadowColor:titleShadow forState:UIControlStateHighlighted];
     button.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f);

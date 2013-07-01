@@ -139,6 +139,9 @@
             members.kind = DAMemberListAll;
             members.hidesBottomBarWhenPushed = YES;
             members.selectedBlocks = ^(DAUser *user){
+                if (user == nil) {
+                    return ;
+                }
                 [[DAGroupModule alloc] joinGroup:theGroup._id uid:user._id callback:^(NSError *error, DAGroup *group) {
                     if ([self finishUpdateError:error]) {
                         return ;
