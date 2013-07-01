@@ -57,7 +57,7 @@
 {
     // Get shared floating controller, and customize if needed
     CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
-    [floatingController setFrameColor:[UIColor darkGrayColor]];
+    [floatingController setFrameColor:[UIColor colorWithRed:0.30f green:0.17f blue:0.4f alpha:1.0f]];
     
     // Show floating controller with content
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
@@ -67,6 +67,7 @@
     [floatingController showInView:rootView
          withContentViewController:viewController
                           animated:YES];
+
     return floatingController;
 }
 
