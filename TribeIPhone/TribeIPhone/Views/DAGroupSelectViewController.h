@@ -17,6 +17,7 @@ typedef void (^GroupsDidSelected)(NSArray *groups);
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSelect;
 @property (weak, nonatomic) NSMutableArray *selectedGroups;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 @property (nonatomic) BOOL allowMultiSelect;
 @property(strong, nonatomic) GroupsDidSelected selectedBlocks;
 - (IBAction)onCancelClicked:(id)sender;

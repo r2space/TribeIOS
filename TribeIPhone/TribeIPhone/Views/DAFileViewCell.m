@@ -7,6 +7,7 @@
 //
 
 #import "DAFileViewCell.h"
+#import "DAHelper.h"
 
 @implementation DAFileViewCell
 
@@ -36,7 +37,7 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
-    
+    cell.lblDateTitle.text = [DAHelper localizedStringWithKey:@"file.date" comment:@"更新时间："];
     return cell;
 }
 

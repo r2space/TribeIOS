@@ -14,6 +14,7 @@ typedef void (^FilterDidSelected)(NSString *,NSString *,NSString *);
 @interface DAMemberFilterViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(strong, nonatomic)FilterDidSelected selectedBlocks;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segType;
 
 
 -(IBAction)setSegment:(id)sender;

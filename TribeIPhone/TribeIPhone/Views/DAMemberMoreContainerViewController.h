@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
 @property (retain ,nonatomic) NSString *status;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 
 - (void) textFieldDidChange:(UITextField *) TextField;
 @end

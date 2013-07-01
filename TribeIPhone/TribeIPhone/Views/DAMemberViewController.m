@@ -47,6 +47,7 @@
     _keywords =@"";
     _typeValues = @{@"all":[DAHelper localizedStringWithKey:@"user.filter.type.all" comment:@"全部"],@"follower":[DAHelper localizedStringWithKey:@"user.filter.type.follower" comment:@"粉丝"],@"following":[DAHelper localizedStringWithKey:@"user.filter.type.following" comment:@"关注"],@"group":[DAHelper localizedStringWithKey:@"user.filter.type.joinGroup" comment:@"参加的组"]};
     isFirstIn = YES;
+    [self displayFilter];
     [self fetch];
     _searchBar.placeholder = [DAHelper localizedStringWithKey:@"user.search.placeholder" comment:@"检索名称、拼音、邮箱"];
 }

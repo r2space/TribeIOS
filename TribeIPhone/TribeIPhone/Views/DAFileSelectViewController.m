@@ -34,7 +34,7 @@
     
     _allFiles = [[NSArray alloc] init];
     _unSelectFiles = [[NSMutableArray alloc] init];
-    
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"file.select.title" comment:@"文件选择"];
     [self refresh];
 }
 

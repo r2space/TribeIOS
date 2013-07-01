@@ -22,6 +22,7 @@
 @property (retain, nonatomic) NSString *downloadId;
 @property (retain, nonatomic) NSString *fileExt;
 @property (retain, nonatomic) DAFile *fileDb;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 
 - (IBAction)onCancelTouched:(id)sender;
 - (IBAction)onFileDetailTouched:(id)sender;

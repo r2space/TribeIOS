@@ -36,6 +36,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"user.homepage.title" comment:@"用户主页"];
+    
     [self fetch];
 
 

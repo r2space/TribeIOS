@@ -34,6 +34,8 @@
     _allGroups = [[NSArray alloc] init];
     _unSelectGroups = [[NSMutableArray alloc] init];
     
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"group.select.title" comment:@"组/部门选择"];
+    
     [self refresh];
 }
 

@@ -42,7 +42,8 @@
 }
 - (void)viewDidLoad
 {
-    
+    [self.segType setTitle:[DAHelper localizedStringWithKey:@"user.title" comment:@"成员"] forSegmentAtIndex:0];
+    [self.segType setTitle:[DAHelper localizedStringWithKey:@"group.title" comment:@"组/部门"] forSegmentAtIndex:1];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

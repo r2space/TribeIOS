@@ -30,6 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"user.detail.title" comment:@"ユーザ詳細"];
+    
     photoView = [[UIImageView alloc] initWithFrame:CGRectMake(128.0f, 10.0f, 30.0f, 30.0f)];
     isMine = YES;
     

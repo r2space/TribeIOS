@@ -35,6 +35,19 @@
 {
     [super viewDidLoad];
     
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"message.detail" comment:@"消息详细"];
+    UITabBarItem *item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:0];
+    item.title = [DAHelper localizedStringWithKey:@"message.comment" comment:@"评论"];
+    
+    item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:1];
+    item.title = [DAHelper localizedStringWithKey:@"message.forward" comment:@"转发"];
+    
+    item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:2];
+    item.title = [DAHelper localizedStringWithKey:@"message.like" comment:@"赞"];
+    
+    item = (UITabBarItem*)[[self.tabBar items] objectAtIndex:3];
+    item.title = [DAHelper localizedStringWithKey:@"message.refresh" comment:@"刷新"];
+    
     [self refresh];
     
 }
@@ -84,14 +97,13 @@
         comment.font = [UIFont systemFontOfSize:12];
         comment.frame = CGRectMake(8, 15, 260, 20);
         
-        NSMutableString *str = [NSMutableString stringWithFormat: @"评论：%d",_commentsTotal];
+        NSMutableString *str = [NSMutableString stringWithFormat: [DAHelper localizedStringWithKey:@"message.comment.count" comment:@"评论：%d"],_commentsTotal];
         [str appendString:@"  "];
         
-        [str appendString:[NSString stringWithFormat:@"转发：%@", _message.part.forwardNums==nil ? @"0" : _message.part.forwardNums ]];
-            
+        [str appendString:[NSString stringWithFormat:[DAHelper localizedStringWithKey:@"message.forward.count" comment:@"转发：%d"], _message.part.forwardNums==nil ? 0 : [_message.part.forwardNums intValue] ]];
         
         [str appendString:@"  "];
-        [str appendString:[NSString stringWithFormat:@"赞：%d", _message.likers.count]];
+        [str appendString:[NSString stringWithFormat:[DAHelper localizedStringWithKey:@"message.like.count" comment:@"赞：%d"], _message.likers.count]];
         comment.text =  str;
         
         [containerView addSubview:comment];

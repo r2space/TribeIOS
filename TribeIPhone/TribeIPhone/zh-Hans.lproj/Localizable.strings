@@ -12,7 +12,12 @@
 "message.forward" = "转发";
 "message.contribute" = "写消息";
 "message.filter" = "筛选";
-
+"message.like" = "赞";
+"message.detail" = "消息详细";
+"message.refresh" = "刷新";
+"message.comment.count" = "评论：%d";
+"message.forward.count" = "转发：%d";
+"message.like.count" = "赞：%d";
 
 // Users
 "user.follower.count" = "粉丝：";
@@ -26,7 +31,7 @@
 "user.search.placeholder" = "检索名称、拼音、邮箱";
 "user.filter" = "筛选";
 "user.joinGroup" = "参加的组";
-"user.title" = "成员";
+"user.title" = "用户";
 "user.follower" = "粉丝";
 "user.folling" = "关注的人";
 "user.title.select" = "选择用户";
@@ -36,7 +41,9 @@
 "user.email" = "邮件";
 "user.address" = "住址";
 "user.description" = "简介";
-
+"user.homepage.title" = "用户主页";
+"user.detail.title" = "用户详细";
+"user.select.title" = "用户选择";
 
 // Groups
 "group.join" = "加入";
@@ -56,6 +63,10 @@
 "group.description" = "简介";
 "group.create" = "新建组";
 "group.title" = "组/部门";
+"group.joinList.title" = "参加的组";
+"group.homepage.title" = "组/部门主页";
+"group.detail.title" = "组/部门详细";
+"group.select.title" = "组/部门选择";
 
 
 // Files
@@ -71,6 +82,7 @@
 "file.size" = "文件大小：";
 "file.date" = "更新时间：";
 "file.history" = "文件履历";
+"file.select.title" = "文件选择";
 
 // Setting
 "setting.confirmClearCache" = "确定删除吗？";
@@ -83,6 +95,11 @@
 "setting.logout" = "注销";
 "setting.version" = "版本信息";
 "setting.title" = "设定";
+
+// Login
+"login.id.placeholder" = "邮箱地址";
+"login.password.placeholder" = "密码";
+"login.login" = "登录";
 
 
 // Error

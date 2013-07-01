@@ -24,6 +24,10 @@
     UIImage *backgroundImage = [UIImage imageNamed:@"4.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     
+    self.txtUserId.placeholder = [DAHelper localizedStringWithKey:@"login.id.placeholder" comment:@"邮箱地址"];
+    self.txtPassword.placeholder = [DAHelper localizedStringWithKey:@"login.password.placeholder" comment:@"密码"];
+    self.lblLogin.text = [DAHelper localizedStringWithKey:@"login.login" comment:@"登录"];
+    
     // 注册键盘显示的Notification
     [self registerForKeyboardNotifications];
 

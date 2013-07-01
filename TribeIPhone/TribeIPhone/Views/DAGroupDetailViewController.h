@@ -17,5 +17,6 @@
 @property (weak, nonatomic) NSString *gid;
 @property (weak, nonatomic) IBOutlet UITabBarItem *barJoinOrLeave;
 - (IBAction)btnHomeTouched:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 
 @end

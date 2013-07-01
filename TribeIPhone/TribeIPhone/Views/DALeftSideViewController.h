@@ -19,6 +19,7 @@
 
 @property (retain, nonatomic) UIViewController *contentController;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segType;
 
 
 

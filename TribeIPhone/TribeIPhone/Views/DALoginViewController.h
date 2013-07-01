@@ -13,6 +13,7 @@
 
 - (IBAction)onLoginTouched:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblLogin;
 @property (weak, nonatomic) IBOutlet UITextField *txtUserId;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 

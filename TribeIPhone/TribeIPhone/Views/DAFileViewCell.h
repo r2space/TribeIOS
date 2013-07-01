@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblFileName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAt;
 @property (weak, nonatomic) IBOutlet UILabel *lblFileSize;
+@property (weak, nonatomic) IBOutlet UILabel *lblDateTitle;
 
 + (DAFileViewCell *)initWithMessage:(DAFile *)file tableView:(UITableView *)tableView;
 

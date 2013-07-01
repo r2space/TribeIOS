@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"home.more" comment:@"更多"];
 }
 
 - (void)didReceiveMemoryWarning

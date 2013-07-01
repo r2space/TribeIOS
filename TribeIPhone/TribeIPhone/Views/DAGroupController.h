@@ -16,5 +16,6 @@
 @property (weak, nonatomic) NSString *uid;
 - (IBAction)onCancelTouched:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 
 @end

@@ -296,6 +296,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EZK-u2-vIB"/>
+                    <connections>
+                        <outlet property="barTitle" destination="KEA-T2-sHg" id="p0M-4i-m1G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCW-cT-WLb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -373,6 +376,57 @@
         <image name="tool_down.png" width="10" height="10"/>
         <image name="tool_write-box-mini.png" width="20" height="20"/>
     </resources>
+    <classes>
+        <class className="DABaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DABaseViewController.h"/>
+        </class>
+        <class className="DAFileViewController" superclassName="DABaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAFileViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="barFilterIcoOnClick:"/>
+                <relationship kind="action" name="barFilterOnClick:"/>
+                <relationship kind="action" name="onAddTouched:"/>
+                <relationship kind="action" name="onCancelTouched:"/>
+                <relationship kind="outlet" name="barFilter" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="barFilterIco" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="DAMainViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMainViewController.h"/>
+        </class>
+        <class className="DAMoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAMoreViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="barTitle" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="DAShortmailViewController" superclassName="DABaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAShortmailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onAddTouched:"/>
+                <relationship kind="action" name="onCancelTouched:"/>
+                <relationship kind="outlet" name="barTitle" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="DATimeLineViewController" superclassName="DABaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DATimeLineViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onContributeClicked:"/>
+                <relationship kind="action" name="onFilterClicked:"/>
+                <relationship kind="action" name="onFilterIcoClicked:"/>
+                <relationship kind="action" name="onNotifiactionClicked:"/>
+                <relationship kind="outlet" name="barFilterIco" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="titleFilter" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

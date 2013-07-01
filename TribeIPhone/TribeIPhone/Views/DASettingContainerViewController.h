@@ -10,5 +10,6 @@
 
 @interface DASettingContainerViewController : UIViewController
 - (IBAction)onCancelTouched:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 
 @end

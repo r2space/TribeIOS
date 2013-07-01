@@ -20,6 +20,7 @@ typedef void (^UsersDidSelected)(NSArray *users);
 @property (nonatomic) BOOL allowMultiSelect;
 @property(strong, nonatomic) UsersDidSelected selectedBlocks;
 @property(retain,nonatomic) DAGroup *inGroup;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 
 - (IBAction)onCancelClicked:(id)sender;
 - (IBAction)onSelectClicked:(id)sender;

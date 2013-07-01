@@ -47,6 +47,8 @@
 {
     [super viewDidLoad];
     
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"file.title" comment:@"文书"];
+    
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"Downloading...";
     _hud.color = DAColor;

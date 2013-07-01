@@ -35,6 +35,7 @@
     _allUsers = [[NSArray alloc] init];
     _unSelectUsers = [[NSMutableArray alloc] init];
     
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"user.select.title" comment:@"用户选择"];
     
     [self refresh];
 }

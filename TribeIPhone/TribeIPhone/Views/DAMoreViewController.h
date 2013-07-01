@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DAMoreViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 
 @end

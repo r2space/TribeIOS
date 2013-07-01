@@ -2541,8 +2541,8 @@
 		471A059D171BC1AE0040CB93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
@@ -2553,8 +2553,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = cross;
-				PROVISIONING_PROFILE = "C8B6035E-42AF-4AB0-850D-4066DB6C0FE9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C8B6035E-42AF-4AB0-850D-4066DB6C0FE9";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2563,8 +2563,8 @@
 		471A059E171BC1AE0040CB93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
@@ -2574,8 +2574,8 @@
 				INFOPLIST_FILE = "TribeIPhone/TribeIPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = cross;
-				PROVISIONING_PROFILE = "C8B6035E-42AF-4AB0-850D-4066DB6C0FE9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C8B6035E-42AF-4AB0-850D-4066DB6C0FE9";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

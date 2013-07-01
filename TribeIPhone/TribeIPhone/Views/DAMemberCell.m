@@ -44,7 +44,7 @@
             cell.imgPortrait.image = [DACommon getCatchedImage:pictureId];
         }];
     }
-    
+    cell.lblGroup.text = user.department.name.name_zh;
     return cell;
 }
 

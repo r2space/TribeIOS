@@ -43,6 +43,7 @@
     _typeValues = @{@"all":[DAHelper localizedStringWithKey:@"group.type.all" comment:@"组/部门"],@"1":[DAHelper localizedStringWithKey:@"group.type.group" comment:@"组"],@"2":[DAHelper localizedStringWithKey:@"group.type.department" comment:@"部门"]};
     _keywords =@"";
     isFirstIn = YES;
+    [self displayFilter];
     
     // 不显示空行的cell分隔线
 //    self.tblGroups.tableFooterView = [[UIView alloc]init];

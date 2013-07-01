@@ -48,6 +48,8 @@
     if (ISNEW) {
         self.saveBtn.enabled = NO;
         self.titleBtn.title = [DAHelper localizedStringWithKey:@"group.create" comment:@"新建组"];
+    } else {
+        self.titleBtn.title = [DAHelper localizedStringWithKey:@"group.detail.title" comment:@"组/部门详细"];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self

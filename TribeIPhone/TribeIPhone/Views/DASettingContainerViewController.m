@@ -8,6 +8,7 @@
 
 #import "DASettingContainerViewController.h"
 #import "DASettingViewController.h"
+#import "DAHelper.h"
 
 @interface DASettingContainerViewController ()
 {
@@ -31,6 +32,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"setting.title" comment:@"设定"];
 
     UIStoryboard *stryBoard=[UIStoryboard storyboardWithName:@"DASettingViewController" bundle:nil];
     settingViewController = [stryBoard instantiateInitialViewController];

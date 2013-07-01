@@ -31,6 +31,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    self.barTitle.title = [DAHelper localizedStringWithKey:@"group.joinList.title" comment:@"参加的组"];
+    
     [self refresh];
 }
 

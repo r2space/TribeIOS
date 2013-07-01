@@ -35,6 +35,9 @@
     // Do any additional setup after loading the view from its nib.
     type = @"group";
     
+    [self.segType setTitle:[DAHelper localizedStringWithKey:@"user.joinGroup" comment:@"参加的组"] forSegmentAtIndex:0];
+    [self.segType setTitle:[DAHelper localizedStringWithKey:@"user.folling" comment:@"关注的人"] forSegmentAtIndex:1];
+    
     loginuid = [DALoginModule getLoginUserId];
     
     [[DAGroupModule alloc] getGroupListByUser:loginuid start:0 count:20 callback:^(NSError *error, DAGroupList *groups){

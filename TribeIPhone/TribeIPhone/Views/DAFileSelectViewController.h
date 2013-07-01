@@ -16,6 +16,7 @@ typedef void (^FilesDidSelected)(NSArray *files);
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) NSMutableArray *selectedFiles;
 @property (nonatomic) BOOL allowMultiSelect;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barTitle;
 @property(strong, nonatomic) FilesDidSelected selectedBlocks;
 - (IBAction)onCancelClicked:(id)sender;
 - (IBAction)onSelectClicked:(id)sender;
