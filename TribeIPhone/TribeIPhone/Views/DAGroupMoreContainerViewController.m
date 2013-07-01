@@ -85,7 +85,10 @@
         if ([DAHelper isFileExist:file]) {
             UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
             [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
-                
+                if (error != nil) {
+                    [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"error.updateError" comment:@"更新失败"] detail:[NSString stringWithFormat:@"error : %d", [error code]] delay:0.6 yOffset:0];
+                    return ;
+                }
                 [self updateGroup: file._id imageWidth:image.size.width];
                 
             } progress:nil];
@@ -114,13 +117,21 @@
     if (self.group._id == nil) {
         [[DAGroupModule alloc] create:self.group callback:^(NSError *error, DAGroup *group){
             
-            [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil];
+            if (error != nil) {
+                [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"error.updateError" comment:@"更新失败"] detail:[NSString stringWithFormat:@"error : %d", [error code]] delay:0.6 yOffset:0];
+                return ;
+            }
+            [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil delay:0.6 yOffset:0];
             
         }];
     } else {
         [[DAGroupModule alloc] update:self.group callback:^(NSError *error, DAGroup *group){
             
-            [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil];
+            if (error != nil) {
+                [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"error.updateError" comment:@"更新失败"] detail:[NSString stringWithFormat:@"error : %d", [error code]] delay:0.6 yOffset:0];
+                return ;
+            }
+            [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil delay:0.6 yOffset:0];
             
         }];
     }

@@ -83,6 +83,10 @@
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
         [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
 
+            if (error != nil) {
+                [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"error.updateError" comment:@"更新失败"] detail:[NSString stringWithFormat:@"error : %d", [error code]] delay:0.6 yOffset:0];
+                return ;
+            }
             [self update:file._id imageWidth:image.size.width];
             isPhotoChanged = NO;
         } progress:nil];
@@ -107,7 +111,11 @@
     }
     
     [[DAUserModule alloc] update:self.user callback:^(NSError *error, DAUser *user){
-        [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil];
+        if (error != nil) {
+            [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"error.updateError" comment:@"更新失败"] detail:[NSString stringWithFormat:@"error : %d", [error code]] delay:0.6 yOffset:0];
+            return ;
+        }
+        [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"msg.updateSuccess" comment:@"更新成功"] detail:nil delay:0.6 yOffset:0];
     }];
 }
 
