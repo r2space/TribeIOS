@@ -53,9 +53,7 @@
     _hud.labelText = @"Downloading...";
     _hud.color = DAColor;
     
-    // 在状态栏显示进度
-    [WTStatusBar setProgressBarColor:DAColor];
-    [WTStatusBar setStatusText:@"uploading..." animated:YES];
+    
     
     //文件路径
     NSString *m_fileName = [[DAHelper documentPath:self.downloadId] stringByAppendingFormat:@".%@",self.fileExt];
@@ -66,14 +64,17 @@
     if ([DAHelper isFileExist:m_fileName]) {
         [self.webView loadRequest:requests];
         self.webView.scalesPageToFit = YES;
-        
-        [WTStatusBar setStatusText:@"done!" timeout:0.5 animated:YES];
     } else {
+        // 在状态栏显示进度
+        [WTStatusBar setProgressBarColor:DAColor];
+        [WTStatusBar setStatusText:@"downloading..." animated:YES];
         [[DAFileModule alloc] downloadFile:self.downloadId ext:self.fileExt callback:^(NSError *err, NSString *fileid){
             [self.webView loadRequest:requests];
             self.webView.scalesPageToFit = YES;
             
             [WTStatusBar setStatusText:@"done!" timeout:0.5 animated:YES];
+        } progress:^(CGFloat percent){
+            [WTStatusBar setProgress:percent animated:YES];
         }];
     }
 }

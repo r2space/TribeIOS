@@ -172,10 +172,17 @@
     [daoperation start];
 }
 
-- (void)downloadFile:(NSString *)fileId ext:(NSString *)ext callback:(void (^)(NSError *, NSString *))callback
+- (void)downloadFile:(NSString *)fileId ext:(NSString *)ext callback:(void (^)(NSError *, NSString *))callback progress:(void (^)(CGFloat percent))progress
 {
     NSString *path = [NSString stringWithFormat:kURLDownloadFile, fileId];
     DAAFHttpOperation *daoperation = [[DAAFHttpOperation alloc] initWithRequestPath:path];
+    
+    // 设定下载进度block
+    [daoperation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        if (progress) {
+            progress((CGFloat)totalBytesWritten / (CGFloat)totalBytesExpectedToWrite);
+        }
+    }];
     
     [daoperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
         if (callback) {
