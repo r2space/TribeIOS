@@ -21,6 +21,7 @@
     BOOL isMine;
     float viewHeight;
     UIImageView *photoView;
+    int editingRow  ;
     
 }
 @end
@@ -30,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    editingRow = 0 ;
     self.barTitle.title = [DAHelper localizedStringWithKey:@"user.detail.title" comment:@"ユーザ詳細"];
     
     photoView = [[UIImageView alloc] initWithFrame:CGRectMake(128.0f, 10.0f, 30.0f, 30.0f)];
@@ -267,7 +268,12 @@
     }
     
 }
-
+- (void)viewDidLayoutSubviews
+{
+    NSIndexPath *rowToSelect = [NSIndexPath indexPathForRow:editingRow inSection:1];
+    
+    [self.tableView scrollToRowAtIndexPath:rowToSelect atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
 
 
 #pragma mark - Table view delegate
@@ -373,8 +379,13 @@
         [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
      [cell.txtValue addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [cell.txtValue addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingDidBegin];
     [cell.txtValue setTag:tag];
     return cell;
+}
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    editingRow = textField.tag;
 }
 - (void) textFieldDidChange:(UITextField *) TextField
 {
@@ -458,8 +469,7 @@
     // 上移View
     self.view.frame = r;
 
-//    [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:NO];
-//    [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewStylePlain animated:YES];
+    
     
 }
 
