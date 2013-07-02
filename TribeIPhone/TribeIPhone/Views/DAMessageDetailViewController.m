@@ -135,7 +135,12 @@
             cell.imgPortrait.image = [[_message getCreatUser] getUserPhotoImage];
             cell.lblName.text = [[_message getCreatUser] getUserName];
             cell.lblGroup.text = [_message getCreatUser].department.name.name_zh;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            if (self.navigationController == nil) {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+            }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         } else {
