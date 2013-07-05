@@ -22,6 +22,7 @@
 @property (retain, nonatomic) NSString *providerPhone1;     // 供货商电话（主）
 @property (retain, nonatomic) NSString *providerPhone2;     // 供货商电话（备用）
 @property (retain, nonatomic) NSString *providerDescription;// 产品描述
+@property (retain, nonatomic) NSString *realAmount;         // 实物数量
 @property (retain, nonatomic) NSString *realDescription;    // 实物描述
 @property (retain, nonatomic) NSString *realImage;          // 实物照片
 
