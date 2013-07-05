@@ -105,6 +105,14 @@
         return;
     }
     
+    // 临时对应短用户名登录
+    // TODO
+    NSString *suffix = @"@dreamarts.co.jp";
+    NSRange range = [userId rangeOfString:suffix];
+    if (range.location == NSNotFound) {
+        userId = [userId stringByAppendingString:suffix];
+    }
+    
     if (![DAHelper isNetworkReachable]) {
         [DAHelper alert:self.view message:[DAHelper localizedStringWithKey:@"error.network.dosnotWork" comment:@"无法连接网络"] detail:nil delay:delay yOffset:yOffset];
         return;

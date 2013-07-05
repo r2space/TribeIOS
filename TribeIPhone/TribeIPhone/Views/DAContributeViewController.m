@@ -367,7 +367,20 @@
 
 - (IBAction)onSendClicked:(id)sender
 {
+    
     [self showIndicator:@"updating..."];
+    
+    // 开启异步线程，否则阻塞在同一个UI线程中，上面的showIndicator不能立即显示
+    const char *sendQueueName = [@"sendQueue" UTF8String];
+    dispatch_queue_t sendQueue = dispatch_queue_create(sendQueueName, NULL);
+    dispatch_async(sendQueue, ^(void) {
+        [self startSend];
+    });
+}
+
+// 开时发送
+-(void)startSend
+{
     _message.content = self.txtMessage.text;
     if (_rangeGroup.count > 0) {
         _message.range = ((DAGroup *)[_rangeGroup objectAtIndex:0])._id;
@@ -408,17 +421,21 @@
             if ([self preUpdate]) {
                 return;
             }
-            
-            UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
-            // 在状态栏显示进度
-            [WTStatusBar setProgressBarColor:DAColor];
-            [WTStatusBar setStatusText:@"uploading..." animated:YES];
-            [[DAFileModule alloc] uploadPicture:UIImageJPEGRepresentation(image, 1.0) fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
-                [WTStatusBar setStatusText:@"done!" timeout:0.5 animated:YES];                        
+
+            // 在状态栏显示进度， UI的更新需在主线程中进行
+            dispatch_async(dispatch_get_main_queue(), ^(void) {
+                [WTStatusBar setProgressBarColor:DAColor];
+                [WTStatusBar setStatusText:@"uploading..." animated:YES];
+            });
+            // 优化Image数据
+            NSData *jpegData = [self optimizeImage:file];
+            // 开始上传图片
+            [[DAFileModule alloc] uploadPicture:jpegData fileName:file mimeType:@"image/jpg" callback:^(NSError *error, DAFile *file){
+                [WTStatusBar setStatusText:@"done!" timeout:0.5 animated:YES];
                 if ([self finishUpdateError:error]) {
                     return ;
                 }
-                                        
+                
                 MessageAttach *attach = [[MessageAttach alloc] init];
                 attach.fileid = file._id;
                 attach.filename = file.filename;
@@ -439,6 +456,86 @@
             [self sendMessage:_message];
         }
     }
+}
+
+// 优化图片数据的大小
+-(NSData *)optimizeImage:(NSString *)file
+{
+    UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
+    CGFloat compressionQuality = 1;
+    NSData *jpegData = [[NSData alloc] initWithData: UIImageJPEGRepresentation( image, compressionQuality )];
+    NSLog(@"Image width: %f, height: %f, scale:%f", image.size.height, image.size.width,image.scale);
+    
+    // 这个块里的代码留着以后参照
+    {
+        //NSError *attributesError = nil;
+        //NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:file error:&attributesError];
+        //int fileSize = [fileAttributes fileSize];
+        
+        ////NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
+        ////long long fileSize2 = [fileSizeNumber longLongValue];
+        
+        //CGFloat oldCompression = 1;
+        //if(jpegData.length > 0)
+        //    oldCompression = fileSize / jpegData.length;
+    }
+    
+    NSUInteger limitLength = 300 * 1024;    // 限定图片尺寸300K
+    NSUInteger minChangeLength = 10 * 1024; // 最小减少的尺寸10K
+    
+    // 压缩图片
+    NSUInteger lastLength;
+    while (jpegData.length > limitLength) {
+        if (jpegData.length > limitLength * 3)     // 大于限定大小3倍时
+            compressionQuality *= 0.5f; // 50%
+        else if(jpegData.length > limitLength * 2) // 大于限定大小2倍时
+            compressionQuality *= 0.6f; // 60%
+        else
+            compressionQuality *= 0.8f; // 80%
+        
+        lastLength = jpegData.length;
+        jpegData = [[NSData alloc] initWithData: UIImageJPEGRepresentation( image, compressionQuality )];
+        NSLog(@"compressionQuality=%f; jpegData.length=%d" ,compressionQuality, jpegData.length);
+        
+        // 压缩后减少的尺寸太少时，不用再压缩
+        if((lastLength - jpegData.length) < minChangeLength)
+            break;
+    }
+    
+    // 尺寸还大时，进行缩放，这里的算法以后在可优化
+    if (jpegData.length > limitLength + minChangeLength) {
+        UIImage *newImage = image;
+        NSArray *scaleArray = [NSArray arrayWithObjects:
+                               [NSNumber numberWithFloat:0.85]//
+                               ,[NSNumber numberWithFloat:0.5]//
+                               ,[NSNumber numberWithFloat:0.25]//
+                               ,[NSNumber numberWithFloat:0.20]//
+                               ,[NSNumber numberWithFloat:0.15]//
+                               ,[NSNumber numberWithFloat:0.10]//
+                               ,[NSNumber numberWithFloat:0.05]//
+                               ,nil];
+        
+        CGSize newSize = CGSizeMake(newImage.size.width, newImage.size.height);
+        for (NSNumber *scale in scaleArray) {
+            // 缩放图片
+            newSize = CGSizeMake(newSize.width * scale.floatValue, newSize.height * scale.floatValue);
+            UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+            [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+            UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            NSLog(@"After scale, image size: %fx%f" ,newImage.size.width, newImage.size.height);
+            
+            // 按最后一次的压缩率重新生成缩放后的图片数据
+            jpegData = [[NSData alloc] initWithData: UIImageJPEGRepresentation( newImage, compressionQuality )];
+            NSLog(@"After scale, image data length: %d" ,jpegData.length);
+            
+            // 缩放后减少的尺寸太少时，不用再缩放
+            if(jpegData.length <= limitLength + minChangeLength)
+                break;
+        }
+    }
+    
+    return jpegData;
 }
 
 -(void)sendMessage:(DAMessage *)message

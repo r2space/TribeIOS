@@ -31,6 +31,6 @@
 
 - (void)getPicture:(NSString *)pictureId callback:(void (^)(NSError *, NSString *))callback;
 
-- (void)downloadFile:(NSString *)fileId ext:(NSString *)ext callback:(void (^)(NSError *, NSString *))callback;
+- (void)downloadFile:(NSString *)fileId ext:(NSString *)ext callback:(void (^)(NSError *, NSString *))callback progress:(void (^)(CGFloat percent))progress;
 
 @end
